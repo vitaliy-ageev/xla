@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background-color: #F2F3F5;
+    font-family: 'Helvetica', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* For all elements of the page */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    background: none;
+    outline: none;
+}
+
+.container {
+    width: 100%;
+}
