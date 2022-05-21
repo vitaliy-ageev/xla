@@ -1,0 +1,44 @@
+$fontPP_Neue: 'PP Neue Machina';
+$fontHelvetica: 'Helvetica';
+
+.custom_button {
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    line-height: 23px;
+    font-weight: 500;
+    padding: 20px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+
+    font-family: $fontPP_Neue;
+
+    &.none {
+        transition: background .2s linear, color .2s linear;
+    }
+
+    &.none:hover {
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
+    }
+
+    &.background {
+        background: #fff;
+        color: #000;
+    }
+
+    &.background:hover {
+        // transform: translate(0.7px, -0.7px);
+    }
+
+    &.border {
+        border: 1px solid #fff;
+        transition: border .2s linear, background .2s linear, color .2s linear;
+    }
+
+    &.border:hover {
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, .8);
+        color: #000;
+    }
+}

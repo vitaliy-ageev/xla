@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import StartBlock from '../components/StartBlock/StartBlock';
-import Header from '../widgets/Header/Header';
+import Header from '../components/Header/Header';
 
 const Main: FunctionComponent = () => {
     return (

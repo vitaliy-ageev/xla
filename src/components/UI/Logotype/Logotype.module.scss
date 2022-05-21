@@ -1,0 +1,18 @@
+.logotype {
+    width: 359px;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &_icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    &_name {
+        margin-left: 25px;
+    }
+}
