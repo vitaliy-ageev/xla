@@ -1,0 +1,40 @@
+@import '@variables';
+
+.categories {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &_inner {
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgba($Black, 0);
+
+        transition: border 0.1s linear;
+    }
+
+    &.active &_inner {
+        border-bottom: 2px solid rgba($Black, 1);
+    }
+
+    &:hover &_inner {
+        border-bottom: 2px solid rgba($Black, 0.5);
+    }
+
+    &_name {
+        margin-right: 10px;
+
+        font-size: 16px;
+        color: $Black;
+        font-family: $PPNeueMachinaMedium;
+    }
+
+    &_count {
+        font-size: 16px;
+        color: rgba($Black, 0.5);
+        font-family: $PPNeueMachinaMedium;
+    }
+
+    &.active &_count {
+        color: $Blue;
+    }
+}

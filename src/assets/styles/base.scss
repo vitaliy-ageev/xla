@@ -1,10 +1,14 @@
+@import "fonts";
+@import "@variables";
+@import "@mixins";
+
 body {
     margin: 0;
     background-color: #F2F3F5;
     font-family: 'Helvetica', Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 1.6;
-    height: 5000px;
+    overflow-x: hidden;
 }
 
 /* For all elements of the page */
@@ -31,5 +35,5 @@ a {
 
 .container {
     width: 100%;
-    padding: 0 50px;
+    padding: 0 100px;
 }

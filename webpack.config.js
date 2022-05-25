@@ -2,6 +2,7 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     mode: "development",
@@ -15,7 +16,15 @@ module.exports = {
         hints: false,
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.js', '.json', '.wasm'],
+        alias: {
+            '@': path.join(__dirname, 'src/'),
+            '@variables': path.resolve(__dirname, 'src/assets/styles/variables.scss'),
+            '@mixins': path.resolve(__dirname, 'src/assets/styles/mixins.scss'),
+            '@components': path.resolve(__dirname, 'src/components'),
+        },
+        aliasFields: ['browser'],
+        enforceExtension: false,
     },
     devServer: {
         compress: true,
@@ -27,7 +36,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({ template: "./public/index.html" }),
-        new WebpackNotifierPlugin({ alwaysNotify: false }),
+        // new WebpackNotifierPlugin({ alwaysNotify: false }),
+
     ],
     module: {
         rules: [

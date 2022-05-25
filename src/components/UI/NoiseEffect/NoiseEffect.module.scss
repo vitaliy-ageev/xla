@@ -1,0 +1,15 @@
+.noise_effect {
+    width: 100%;
+    position: relative;
+
+    &_canvas {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: scroll;
+        opacity: 1;
+        pointer-events: none;
+        user-select: none;
+        z-index: 1000 !important;
+    }
+}

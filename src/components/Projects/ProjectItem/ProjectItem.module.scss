@@ -1,0 +1,82 @@
+@import '@variables';
+
+.project_item {
+    cursor: pointer;
+    border-top: 1px solid $Black;
+    padding: 26px 0 20px 0;
+
+    &_background {
+        width: 200px;
+        height: 200px;
+        background: $Blue;
+        filter: blur(4px);
+    }
+
+    &_container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    &_title {
+        width: 100%;
+        font-size: 36px;
+        color: $Black;
+        font-family: $PPNeueMachinaRegular;
+        transition: color .2s linear;
+    }
+
+    &_description {
+        width: 100%;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: justify;
+        color: $Black;
+        font-family: $HelveticaLight;
+    }
+
+    &_footer {
+        display: flex;
+        align-items: center;
+
+        &_likes {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+
+            &_count {
+                font-size: 18px;
+                color: $Black;
+                font-family: $PPNeueMachinaRegular;
+
+                margin-left: 5px;
+                padding-top: 3px;
+            }
+        }
+    }
+
+    &_hover {
+        width: 100%;
+        height: 100%;
+        background: $Blue;
+        border-radius: 100px;
+
+        position: absolute;
+        top: 20px;
+        left: -20px;
+
+        filter: blur(70px);
+        opacity: 0;
+
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover &_hover {
+        opacity: 0.3;
+    }
+
+    &:hover &_title {
+        color: $Blue;
+
+    }
+}

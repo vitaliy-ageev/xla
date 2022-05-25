@@ -1,0 +1,44 @@
+// Breakpoint of screen sizes
+@mixin breakpoint($point) {
+    @if $point ==ExtraLarge {
+        @media (max-width: 2560px) {
+            @content;
+        }
+    }
+
+    @if $point ==SemiLarge {
+        @media (max-width: 1920px) {
+            @content;
+        }
+    }
+
+    @if $point ==Large {
+        @media (max-width: 1366px) {
+            @content;
+        }
+    }
+
+    @if $point ==ExtraMedium {
+        @media (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @if $point ==Medium {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @if $point ==SemiMedium {
+        @media (max-width: 576px) {
+            @content;
+        }
+    }
+
+    @if $point ==ExtraSmall {
+        @media (max-width: 320px) {
+            @content;
+        }
+    }
+}
