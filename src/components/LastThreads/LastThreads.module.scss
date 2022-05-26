@@ -1,0 +1,177 @@
+@import '@variables';
+
+.last_threads {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    border: 2px solid $Grey;
+    padding: 50px;
+    margin-top: 50px;
+
+    &_container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &.title_block {
+            border-bottom: 2px solid $Grey;
+        }
+    }
+
+    &_title {
+        cursor: default;
+        font-size: 30px;
+        line-height: 30px;
+        color: $Black;
+        font-family: $PPNeueMachinaRegular;
+        padding-bottom: 30px;
+
+        &.count {
+            color: rgba($Black, 0.5);
+        }
+    }
+
+    &_item {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        border-bottom: 1px solid $Grey;
+        padding-bottom: 20px;
+        margin-top: 25px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &_tranding_block {
+            padding: 8px 12px;
+            background: $Black;
+            margin-bottom: 15px;
+
+            font-size: 14px;
+            line-height: 18px;
+            color: $White;
+            font-family: $PPNeueMachinaRegular;
+        }
+
+        &_title {
+            width: 100%;
+            font-size: 24px;
+            line-height: 28px;
+            color: $Black;
+            font-family: $HelveticaBold;
+            margin-bottom: 30px;
+
+            position: relative;
+
+            &_hover {
+                position: absolute;
+                top: 0;
+                bottom: -20px;
+                width: 100%;
+                height: 50px;
+                background: $Blue;
+                filter: blur(40px);
+                border-radius: 100px;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+        }
+
+        &:hover &_title_hover {
+            opacity: 0.4;
+        }
+
+        &_tags {
+            display: flex;
+            align-items: center;
+        }
+
+        &_tag {
+            font-size: 14px;
+            line-height: 18px;
+            color: $Black;
+            font-family: $PPNeueMachinaRegular;
+            margin-right: 10px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &_comments {
+            display: flex;
+            align-items: center;
+        }
+
+        &_comments_count {
+            font-size: 12px;
+            line-height: 16px;
+            color: $Black;
+            font-family: $PPNeueMachinaBold;
+            margin-left: 10px;
+        }
+    }
+
+    &_border_top {
+        width: 97%;
+        border-bottom: 2px solid $Grey;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &_border_bottom {
+        width: 97%;
+        border-bottom: 2px solid $Grey;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    &_border_left {
+        height: 96.9%;
+        border-left: 2px solid $Grey;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &_border_right {
+        height: 96.8%;
+        border-left: 2px solid $Grey;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    &_corner_upper {
+        width: 30px;
+        height: 30px;
+        background: $Background;
+        border-bottom: 2px solid $Grey;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: rotate(45deg) translateY(-22px);
+    }
+
+    &_corner_down {
+        width: 30px;
+        height: 30px;
+        background: $Background;
+        border-top: 2px solid $Grey;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: rotate(45deg) translateY(22px);
+    }
+}

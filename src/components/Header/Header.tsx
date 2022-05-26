@@ -17,7 +17,7 @@ const Header: FunctionComponent = () => {
                 <div className={classes.header_inner}>
                     <div className={classes.header_left_block}>
                         {/* Logotype */}
-                        <Logotype />
+                        <Logotype color='white' />
                         {/* Menu */}
                         <div className={classes.header_menu}>
                             {menuItems.map(item =>
@@ -27,7 +27,7 @@ const Header: FunctionComponent = () => {
                     </div>
                     {/* Sign In & Sign Up */}
                     <div className={classes.header_buttons}>
-                        <CustomButton name='Log In' />
+                        {/* <CustomButton name='Log In' /> */}
                         <CustomButton name='Sing In' styleBtn='background' />
                     </div>
                 </div>

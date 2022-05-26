@@ -53,12 +53,12 @@ const ProjectItem: FunctionComponent<IProjects> = ({ projectItems }) => {
                                     {/* Footer */}
                                     <div className={classes.project_item_footer}>
                                         {/* Likes */}
-                                        <div className={classes.project_item_footer_likes}>
+                                        {/* <div className={classes.project_item_footer_likes}>
                                             <Like />
                                             <span className={classes.project_item_footer_likes_count}>
                                                 {projectItem.likes}
                                             </span>
-                                        </div>
+                                        </div> */}
                                         {/* Tags */}
                                         <Tags tags={projectItem.tags} />
                                     </div>

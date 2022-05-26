@@ -2,10 +2,11 @@ import React, { FC, ReactElement, useEffect, useRef } from 'react'
 import classes from './NoiseEffect.module.scss'
 
 interface INoiseEffect {
-    children: ReactElement
+    opacity?: string,
+    children: ReactElement | ReactElement[]
 }
 
-const NoiseEffect: FC<INoiseEffect> = ({ children }) => {
+const NoiseEffect: FC<INoiseEffect> = ({ opacity = 1, children }) => {
     const canvas: any = useRef(),
         blockHeight: any = useRef();
 
@@ -46,7 +47,8 @@ const NoiseEffect: FC<INoiseEffect> = ({ children }) => {
 
     return (
         <div ref={blockHeight} className={classes.noise_effect}>
-            <canvas ref={canvas} className={classes.noise_effect_canvas} ></canvas>
+            <canvas ref={canvas} className={classes.noise_effect_canvas}
+                style={{ opacity: `${opacity}` }}></canvas>
             {children}
         </div>
 

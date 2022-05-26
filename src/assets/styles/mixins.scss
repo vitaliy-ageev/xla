@@ -6,37 +6,37 @@
         }
     }
 
-    @if $point ==SemiLarge {
+    @else if $point ==SemiLarge {
         @media (max-width: 1920px) {
             @content;
         }
     }
 
-    @if $point ==Large {
+    @else if $point ==Large {
         @media (max-width: 1366px) {
             @content;
         }
     }
 
-    @if $point ==ExtraMedium {
+    @else if $point ==ExtraMedium {
         @media (max-width: 1024px) {
             @content;
         }
     }
 
-    @if $point ==Medium {
+    @else if $point ==Medium {
         @media (max-width: 768px) {
             @content;
         }
     }
 
-    @if $point ==SemiMedium {
+    @else if $point ==SemiMedium {
         @media (max-width: 576px) {
             @content;
         }
     }
 
-    @if $point ==ExtraSmall {
+    @else if $point ==ExtraSmall {
         @media (max-width: 320px) {
             @content;
         }

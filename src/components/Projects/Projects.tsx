@@ -30,7 +30,7 @@ interface IProjects {
 const Projects: FunctionComponent<IProjects> = ({ projectItems, categorieItems }) => {
     return (
         <div className={classes.projects}>
-            <Categories />
+            {/* <Categories /> */}
             <ProjectItem projectItems={projectItems} />
         </div>
     )

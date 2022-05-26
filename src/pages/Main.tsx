@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import Basement from '../components/Basement/Basement';
+import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import MainSection from '../components/MainSection/MainSection';
 import StartBlock from '../components/StartBlock/StartBlock';
@@ -10,11 +12,11 @@ const Main: FunctionComponent = () => {
             {/* Header */}
             <Header />
             <StartBlock />
-            {/* Main */}
             <NoiseEffect >
                 <MainSection />
+                <Footer />
             </NoiseEffect >
-            {/* Footer */}
+            <Basement />
         </div>
     )
 }

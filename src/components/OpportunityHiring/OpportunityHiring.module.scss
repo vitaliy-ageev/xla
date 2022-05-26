@@ -1,0 +1,105 @@
+@import '@variables';
+
+.oppurtunity_hiring {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(to bottom right, rgb(241, 57, 248), rgb(72, 10, 243));
+
+    padding: 50px;
+    margin-top: 50px;
+
+    &_container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &.title_block {
+            border-bottom: 2px solid $White;
+        }
+    }
+
+    &_title {
+        cursor: default;
+        font-size: 30px;
+        line-height: 30px;
+        color: $White;
+        font-family: $PPNeueMachinaRegular;
+        padding-bottom: 30px;
+
+        &.count {
+            color: rgba($White, 0.5);
+        }
+    }
+
+    &_item {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        border-bottom: 1px solid $White;
+        padding-bottom: 20px;
+        margin-top: 25px;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &_title {
+            width: 100%;
+            font-size: 24px;
+            line-height: 28px;
+            color: $White;
+            font-family: $PPNeueMachinaLight;
+            margin-bottom: 15px;
+
+        }
+
+        &_tags {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &_tag {
+            font-size: 16px;
+            line-height: 22px;
+            color: rgba($White, 0.75);
+            font-family: $PPNeueMachinaRegular;
+            margin-bottom: 10px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &_background {
+            width: 75px;
+            height: 75px;
+            background: #5951F6;
+            filter: blur(2px);
+            position: relative;
+            z-index: 1000000;
+        }
+    }
+
+    &_show_more {
+        cursor: pointer;
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid $White;
+        margin-top: 40px;
+        font-size: 18px;
+        text-align: center;
+        color: $White;
+        font-family: $PPNeueMachinaRegular;
+
+        transition: background 0.2s linear, color 0.2s linear;
+
+        &:hover {
+            background: $White;
+            color: $Black;
+        }
+    }
+}

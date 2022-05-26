@@ -1,0 +1,32 @@
+@import '@variables';
+
+.social_networks {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    &_title {
+        cursor: default;
+        font-size: 18px;
+        color: rgb($Black, 0.5);
+        font-family: $PPNeueMachinaMedium;
+        margin-bottom: 15px;
+    }
+
+    &_inner {
+        display: flex;
+        align-items: center;
+    }
+
+    &_item {
+        width: 42px;
+        height: 42px;
+        border: 1px solid #848484;
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

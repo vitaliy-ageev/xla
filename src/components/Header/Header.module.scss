@@ -17,6 +17,17 @@
         align-items: center;
         height: 130px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+        @include breakpoint (SemiLarge) {
+            height: 100px;
+        }
+
+        @include breakpoint (Medium) {
+            height: 80px;
+            // height: auto;
+            // padding: 20px 0;
+        }
+
     }
 
     &_left_block {
@@ -30,6 +41,10 @@
         align-items: center;
         margin-left: 50px;
         font-family: $PPNeueMachinaRegular;
+
+        @include breakpoint (Medium) {
+            display: none;
+        }
 
         &_item {
             cursor: pointer;
@@ -53,5 +68,9 @@
         display: flex;
         justify-items: end;
         align-items: center;
+
+        @include breakpoint (Medium) {
+            display: none;
+        }
     }
 }
