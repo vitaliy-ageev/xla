@@ -30,6 +30,12 @@
                 border-right: 1px solid $Grey;
                 margin-top: 15px;
             }
+
+            &:nth-child(2) {
+                display: block;
+                border-right: 1px solid $Grey;
+                margin-top: 15px;
+            }
         }
 
         &:last-child {

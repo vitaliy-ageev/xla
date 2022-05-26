@@ -208,69 +208,69 @@ const MainSection: FunctionComponent = () => {
 
             ]
         },
-        {
-            id: 4,
-            name: "Mobile Developer (iOS)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
-            ]
-        },
-        {
-            id: 5,
-            name: "Visual designer (Metaverse)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
+        // {
+        //     id: 4,
+        //     name: "Mobile Developer (iOS)",
+        //     background: "/",
+        //     link: "/",
+        //     tags: [
+        //         { id: 1, name: "Babka Cryptex" },
+        //         { id: 2, name: "Remoute frendly" },
+        //     ]
+        // },
+        // {
+        //     id: 5,
+        //     name: "Visual designer (Metaverse)",
+        //     background: "/",
+        //     link: "/",
+        //     tags: [
+        //         { id: 1, name: "Babka Cryptex" },
+        //         { id: 2, name: "Remoute frendly" },
 
-            ]
-        },
-        {
-            id: 6,
-            name: "Mobile Developer (iOS)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
-            ]
-        },
-        {
-            id: 7,
-            name: "Visual designer (Metaverse)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
+        //     ]
+        // },
+        // {
+        //     id: 6,
+        //     name: "Mobile Developer (iOS)",
+        //     background: "/",
+        //     link: "/",
+        //     tags: [
+        //         { id: 1, name: "Babka Cryptex" },
+        //         { id: 2, name: "Remoute frendly" },
+        //     ]
+        // },
+        // {
+        //     id: 7,
+        //     name: "Visual designer (Metaverse)",
+        //     background: "/",
+        //     link: "/",
+        //     tags: [
+        //         { id: 1, name: "Babka Cryptex" },
+        //         { id: 2, name: "Remoute frendly" },
 
-            ]
-        },
-        {
-            id: 8,
-            name: "Mobile Developer (iOS)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
-            ]
-        },
-        {
-            id: 9,
-            name: "Visual designer (Metaverse)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
+        //     ]
+        // },
+        // {
+        //     id: 8,
+        //     name: "Mobile Developer (iOS)",
+        //     background: "/",
+        //     link: "/",
+        //     tags: [
+        //         { id: 1, name: "Babka Cryptex" },
+        //         { id: 2, name: "Remoute frendly" },
+        //     ]
+        // },
+        // {
+        //     id: 9,
+        //     name: "Visual designer (Metaverse)",
+        //     background: "/",
+        //     link: "/",
+        //     tags: [
+        //         { id: 1, name: "Babka Cryptex" },
+        //         { id: 2, name: "Remoute frendly" },
 
-            ]
-        },
+        //     ]
+        // },
     ]
 
     return (

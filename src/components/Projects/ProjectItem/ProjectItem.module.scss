@@ -176,7 +176,7 @@
     &:hover &_hover {
         opacity: 0.3;
 
-        @include breakpoint (ExtraLarge) {
+        @include breakpoint (ExtraMedium) {
             opacity: 0;
         }
     }

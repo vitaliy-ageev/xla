@@ -27,6 +27,7 @@
 
     @include breakpoint (Large) {
         height: 1060px;
+        background-attachment: initial !important;
     }
 
     @include breakpoint (Medium) {

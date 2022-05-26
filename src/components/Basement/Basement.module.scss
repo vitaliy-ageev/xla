@@ -64,6 +64,10 @@
                 margin-right: 0;
             }
 
+            @include breakpoint (ExtraMedium) {
+                cursor: default;
+            }
+
             @include breakpoint (Large) {
                 margin-bottom: 10px;
                 margin-right: 0;
