@@ -18,16 +18,25 @@
         height: 130px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
-        @include breakpoint (SemiLarge) {
+        @include breakpoint (ExtraLarge) {
             height: 100px;
         }
 
-        @include breakpoint (Medium) {
-            height: 80px;
-            // height: auto;
-            // padding: 20px 0;
+        @include breakpoint (SemiLarge) {
+            height: 90px;
         }
 
+        @include breakpoint (Large) {
+            height: 80px;
+        }
+
+        @include breakpoint (Medium) {
+            height: 66px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            height: 60px;
+        }
     }
 
     &_left_block {
@@ -42,7 +51,7 @@
         margin-left: 50px;
         font-family: $PPNeueMachinaRegular;
 
-        @include breakpoint (Medium) {
+        @include breakpoint (Large) {
             display: none;
         }
 
@@ -53,11 +62,17 @@
             color: $White;
             margin-right: 15px;
             transition: all .2s linear;
+
+            @include breakpoint (SemiLarge) {
+                font-size: 16px;
+                line-height: 16px;
+                margin-right: 30px;
+            }
         }
 
-        &_item:last-child {
-            margin-right: 0;
-        }
+        // &_item:last-child {
+        //     margin-right: 0;
+        // }
 
         &_item:hover {
             color: rgba(255, 255, 255, 0.6);
@@ -69,7 +84,7 @@
         justify-items: end;
         align-items: center;
 
-        @include breakpoint (Medium) {
+        @include breakpoint (Large) {
             display: none;
         }
     }

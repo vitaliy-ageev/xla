@@ -2,7 +2,6 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const WebpackNotifierPlugin = require('webpack-notifier')
-const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     mode: "development",
@@ -36,7 +35,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({ template: "./public/index.html" }),
-        // new WebpackNotifierPlugin({ alwaysNotify: false }),
+        new WebpackNotifierPlugin({ alwaysNotify: false }),
 
     ],
     module: {

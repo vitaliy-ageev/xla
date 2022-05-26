@@ -1,43 +1,49 @@
 // Breakpoint of screen sizes
 @mixin breakpoint($point) {
     @if $point ==ExtraLarge {
-        @media (max-width: 2560px) {
+        @media (max-width: 2559px) {
             @content;
         }
     }
 
     @else if $point ==SemiLarge {
-        @media (max-width: 1920px) {
+        @media (max-width: 1919px) {
             @content;
         }
     }
 
     @else if $point ==Large {
-        @media (max-width: 1366px) {
+        @media (max-width: 1365px) {
+            @content;
+        }
+    }
+
+    @else if $point ==HD {
+        @media (max-width: 1199px) {
             @content;
         }
     }
 
     @else if $point ==ExtraMedium {
-        @media (max-width: 1024px) {
+        @media (max-width: 1023px) {
             @content;
         }
     }
 
     @else if $point ==Medium {
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             @content;
         }
     }
 
     @else if $point ==SemiMedium {
-        @media (max-width: 576px) {
+        @media (max-width: 427px) {
             @content;
         }
     }
 
     @else if $point ==ExtraSmall {
-        @media (max-width: 320px) {
+        @media (max-width: 319px) {
             @content;
         }
     }

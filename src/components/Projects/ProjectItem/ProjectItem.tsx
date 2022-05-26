@@ -1,9 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import LeftRightSection from '../../LeftRightSection/LeftRightSection'
-import LeftSection from '../../LeftRightSection/LeftSection'
-import RightSection from '../../LeftRightSection/RightSection'
 import classes from './ProjectItem.module.scss'
-import BG from '../../../assets/images/1.jpeg'
 import Like from '../../UI/Icons/Like/Like'
 import Tags from './Tags/Tags'
 
@@ -33,12 +29,12 @@ const ProjectItem: FunctionComponent<IProjects> = ({ projectItems }) => {
                 projectItems.map(
                     projectItem =>
                         <div key={projectItem.id} className={classes.project_item}>
-                            <LeftRightSection justify='fles-start'>
-                                <LeftSection width='20%'>
+                            <div className={classes.project_item_inner}>
+                                <div className={classes.project_item_left_container}>
                                     {/* Background */}
                                     <div className={classes.project_item_background} />
-                                </LeftSection>
-                                <RightSection width='80%' justify='space-between' minHeight='200px'>
+                                </div>
+                                <div className={classes.project_item_right_container}>
                                     <div className={classes.project_item_container}>
                                         {/* Title */}
                                         <div className={classes.project_item_title}>
@@ -62,8 +58,8 @@ const ProjectItem: FunctionComponent<IProjects> = ({ projectItems }) => {
                                         {/* Tags */}
                                         <Tags tags={projectItem.tags} />
                                     </div>
-                                </RightSection>
-                            </LeftRightSection>
+                                </div>
+                            </div>
                         </div>
                 )
             }

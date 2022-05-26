@@ -1,7 +1,21 @@
+@import '@mixins';
+
 .main_section {
     width: 100%;
     padding-top: 75px;
     position: relative;
     z-index: 2000;
     color: #000;
+
+    @include breakpoint (Large) {
+        padding-top: 60px;
+    }
+
+    @include breakpoint (Medium) {
+        padding-top: 55px;
+    }
+
+    @include breakpoint (SemiMedium) {
+        padding-top: 50px;
+    }
 }

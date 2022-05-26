@@ -12,10 +12,8 @@ const Main: FunctionComponent = () => {
             {/* Header */}
             <Header />
             <StartBlock />
-            <NoiseEffect >
-                <MainSection />
-                <Footer />
-            </NoiseEffect >
+            <MainSection />
+            {/* <Footer /> */}
             <Basement />
         </div>
     )

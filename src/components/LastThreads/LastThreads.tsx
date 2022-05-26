@@ -70,8 +70,8 @@ const LastThreads: FunctionComponent<ILastThreads> = ({ threadItems }) => {
                 </div>
             )
             }
-            {/* <div className={classes.last_threads_corner_upper} /> */}
-            {/* <div className={classes.last_threads_corner_down} /> */}
+            <div className={classes.last_threads_corner_upper} />
+            <div className={classes.last_threads_corner_down} />
         </div >
     )
 }

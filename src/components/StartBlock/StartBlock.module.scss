@@ -3,7 +3,7 @@
 
 .start_block {
     width: 100%;
-    height: 1163px;
+    height: 1330px;
     padding: 0;
     position: relative;
 
@@ -17,14 +17,86 @@
     background-repeat: no-repeat !important;
     background-size: cover !important;
 
+    @include breakpoint (ExtraLarge) {
+        height: 980px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        height: 858px;
+    }
+
+    @include breakpoint (Large) {
+        height: 1060px;
+    }
+
+    @include breakpoint (Medium) {
+        height: 892px;
+    }
+
+    @include breakpoint (SemiMedium) {
+        height: 580px;
+    }
+
     &_inner {
         width: 100%;
-        height: 100%;
+        height: 1330px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         position: relative;
+
+        @include breakpoint (ExtraLarge) {
+            height: 980px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            height: 858px;
+        }
+
+        @include breakpoint (Large) {
+            height: 1060px;
+        }
+
+        @include breakpoint (Medium) {
+            align-items: flex-start;
+            height: 892px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            height: 580px;
+        }
+    }
+
+    &_title_container {
+        width: 100%;
+        margin-top: 130px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include breakpoint (ExtraLarge) {
+            margin-top: 100px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            margin-top: 90px;
+        }
+
+        @include breakpoint (Large) {
+            margin-top: 80px;
+        }
+
+        @include breakpoint (Medium) {
+            height: 100%;
+            align-items: flex-start;
+            margin-top: 66px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            margin-top: 60px;
+        }
     }
 
     &_title {
@@ -38,6 +110,34 @@
         letter-spacing: 0.02em;
         color: $White;
         font-family: $PPNeueMachinaRegular;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 72px;
+            line-height: 72px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 64px;
+            line-height: 64px;
+        }
+
+        @include breakpoint (Large) {
+            max-width: 700px;
+            font-size: 48px;
+            line-height: 48px;
+        }
+
+        @include breakpoint (Medium) {
+            max-width: 100%;
+            text-align: start;
+            font-size: 36px;
+            line-height: 36px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 24px;
+            line-height: 24px;
+        }
     }
 
     &_subtitle {
@@ -50,11 +150,49 @@
         letter-spacing: 0.02em;
         color: rgba(255, 255, 255, .75);
         font-family: $HelveticaLight;
+
+        @include breakpoint (ExtraLarge) {
+            max-width: 600px;
+            font-size: 36px;
+            line-height: 42px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            max-width: 500px;
+            font-size: 34px;
+            line-height: 38px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 30px;
+            line-height: 34px;
+        }
+
+        @include breakpoint (Medium) {
+            max-width: 100%;
+            text-align: start;
+            font-size: 24px;
+            line-height: 28px;
+            margin-top: 10px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 18px;
+            line-height: 20px;
+        }
     }
 
     &_buttons {
         display: flex;
         align-items: center;
         margin-top: 50px;
+
+        @include breakpoint (Medium) {
+            width: 100%;
+            align-items: flex-start;
+            flex-direction: column;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
     }
 }

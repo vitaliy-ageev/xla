@@ -36,33 +36,43 @@ const OpportunityHiring: FunctionComponent<ILastThreads> = ({ opportunityItems }
                     </span>
                 </div>
 
-                {/* Item */}
-                {opportunityItems.map(opportunityItem =>
-                    <div className={classes.oppurtunity_hiring_item} >
-                        <LeftRightSection justify='space-between'>
-                            <LeftSection width='80%'>
-                                {/* Title */}
-                                <span className={classes.oppurtunity_hiring_item_title}>
-                                    {opportunityItem.name}
-                                </span>
-                                {/* Tags */}
-                                <div className={classes.oppurtunity_hiring_item_tags}>
-                                    {opportunityItem.tags.map(tag =>
-                                        <span className={classes.oppurtunity_hiring_item_tag}>{tag.name}</span>
-                                    )}
+                <div>
+                    {/* Item */}
+                    {opportunityItems.map(opportunityItem =>
+                        <div className={classes.oppurtunity_hiring_item} >
+                            <div className={classes.oppurtunity_hiring_item_inner}>
+                                <div className={classes.oppurtunity_hiring_item_left_container}>
+                                    {/* Title */}
+                                    <span className={classes.oppurtunity_hiring_item_title}>
+                                        {opportunityItem.name}
+                                    </span>
+                                    {/* Tags */}
+                                    <div className={classes.oppurtunity_hiring_item_tags}>
+                                        {opportunityItem.tags.map(tag =>
+                                            <span className={classes.oppurtunity_hiring_item_tag}>{tag.name}</span>
+                                        )}
+                                    </div>
                                 </div>
-                            </LeftSection>
-                            <RightSection width='20%' alignItems='end'>
-                                {/* Background */}
-                                <div className={classes.oppurtunity_hiring_item_background}></div>
-                            </RightSection>
-                        </LeftRightSection>
-                    </div >
-                )}
-                {/* Button Show More */}
-                <div className={classes.oppurtunity_hiring_show_more}>
-                    Show More
+                                <div className={classes.oppurtunity_hiring_item_right_container}>
+                                    {/* Background */}
+                                    <div className={classes.oppurtunity_hiring_item_background}></div>
+                                </div>
+                            </div>
+                        </div >
+                    )}
                 </div>
+
+
+
+                {
+                    opportunityItems.length >= 9 ?
+                        <div className={classes.oppurtunity_hiring_show_more}>
+                            Show More
+                        </div>
+                        :
+                        ''
+                }
+
             </div >
         </NoiseEffect >
 

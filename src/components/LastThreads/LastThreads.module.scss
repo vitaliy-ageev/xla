@@ -1,4 +1,5 @@
 @import '@variables';
+@import '@mixins';
 
 .last_threads {
     width: 100%;
@@ -9,6 +10,20 @@
     border: 2px solid $Grey;
     padding: 50px;
     margin-top: 50px;
+
+    @include breakpoint (ExtraLarge) {
+        margin-top: 50px;
+        padding: 40px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        margin-top: 40px;
+        padding: 25px;
+    }
+
+    @include breakpoint (Medium) {
+        padding: 20px;
+    }
 
     &_container {
         width: 100%;
@@ -27,6 +42,18 @@
         color: $Black;
         font-family: $PPNeueMachinaRegular;
         padding-bottom: 30px;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 24px;
+            line-height: 24px;
+            padding-bottom: 30px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 18px;
+            line-height: 18px;
+            padding-bottom: 15px;
+        }
 
         &.count {
             color: rgba($Black, 0.5);
@@ -47,6 +74,10 @@
             border-bottom: none;
         }
 
+        @include breakpoint (ExtraMedium) {
+            cursor: default;
+        }
+
         &_tranding_block {
             padding: 8px 12px;
             background: $Black;
@@ -56,6 +87,18 @@
             line-height: 18px;
             color: $White;
             font-family: $PPNeueMachinaRegular;
+
+            @include breakpoint (ExtraLarge) {
+                font-size: 14px;
+                line-height: 18px;
+                padding: 8px 12px;
+            }
+
+            @include breakpoint (Large) {
+                font-size: 12px;
+                line-height: 16px;
+                padding: 5px 10px;
+            }
         }
 
         &_title {
@@ -67,6 +110,17 @@
             margin-bottom: 30px;
 
             position: relative;
+
+            @include breakpoint (ExtraLarge) {
+                font-size: 18px;
+                line-height: 20px;
+            }
+
+            @include breakpoint (SemiLarge) {
+                max-width: 800px;
+                font-size: 16px;
+                line-height: 18px;
+            }
 
             &_hover {
                 position: absolute;
@@ -84,6 +138,10 @@
 
         &:hover &_title_hover {
             opacity: 0.4;
+
+            @include breakpoint (ExtraMedium) {
+                opacity: 0;
+            }
         }
 
         &_tags {
@@ -117,42 +175,6 @@
         }
     }
 
-    &_border_top {
-        width: 97%;
-        border-bottom: 2px solid $Grey;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    &_border_bottom {
-        width: 97%;
-        border-bottom: 2px solid $Grey;
-
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-
-    &_border_left {
-        height: 96.9%;
-        border-left: 2px solid $Grey;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    &_border_right {
-        height: 96.8%;
-        border-left: 2px solid $Grey;
-
-        position: absolute;
-        bottom: 0;
-        right: 0;
-    }
-
     &_corner_upper {
         width: 30px;
         height: 30px;
@@ -162,6 +184,18 @@
         top: 0;
         right: 0;
         transform: rotate(45deg) translateY(-22px);
+
+        @include breakpoint (Large) {
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg) translateY(-15px);
+        }
+
+        @include breakpoint (SemiMedium) {
+            width: 15px;
+            height: 15px;
+            transform: rotate(45deg) translateY(-11px);
+        }
     }
 
     &_corner_down {
@@ -173,5 +207,17 @@
         bottom: 0;
         left: 0;
         transform: rotate(45deg) translateY(22px);
+
+        @include breakpoint (Large) {
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg) translateY(15px);
+        }
+
+        @include breakpoint (SemiMedium) {
+            width: 15px;
+            height: 15px;
+            transform: rotate(45deg) translateY(11px);
+        }
     }
 }

@@ -1,10 +1,51 @@
+@import '@mixins';
+
 .left_right_section {
     width: 100%;
     display: flex;
     align-items: start;
 
+    @include breakpoint (Large) {
+        flex-direction: column;
+    }
+
     &_ {
         display: flex;
         flex-direction: column;
+
+        @include breakpoint (ExtraLarge) {
+            width: 100% !important;
+
+            &.left_section {
+                width: 60% !important;
+            }
+
+            &.right_section {
+                width: 30% !important;
+            }
+        }
+
+        @include breakpoint (SemiLarge) {
+            width: 100% !important;
+
+            &.left_section {
+                width: 55% !important;
+            }
+
+            &.right_section {
+                width: 35% !important;
+            }
+        }
+
+        @include breakpoint (Large) {
+            &.left_section {
+                width: 100% !important;
+            }
+
+            &.right_section {
+                width: 100% !important;
+            }
+        }
+
     }
 }

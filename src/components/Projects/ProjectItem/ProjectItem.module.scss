@@ -1,15 +1,87 @@
 @import '@variables';
+@import '@mixins';
 
 .project_item {
     cursor: pointer;
     border-top: 1px solid $Black;
     padding: 26px 0 20px 0;
 
+    @include breakpoint (ExtraLarge) {
+        cursor: default;
+        padding: 20px 0 20px 0;
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+
+    &_inner {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+
+        @include breakpoint (Medium) {
+            flex-direction: column;
+        }
+    }
+
+    &_left_container {
+        width: 20%;
+    }
+
+    &_right_container {
+        width: 80%;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include breakpoint (ExtraLarge) {
+            min-height: 150px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            min-height: 150px;
+        }
+
+        @include breakpoint (Medium) {
+            width: 100%;
+        }
+    }
+
     &_background {
         width: 200px;
         height: 200px;
         background: $Blue;
         filter: blur(4px);
+
+        @include breakpoint (ExtraLarge) {
+            width: 135px;
+            height: 135px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            width: 90px;
+            height: 90px;
+        }
+
+        @include breakpoint (Large) {
+            width: 80px;
+            height: 80px;
+        }
+
+        @include breakpoint (Medium) {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 16px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
     }
 
     &_container {
@@ -21,9 +93,27 @@
     &_title {
         width: 100%;
         font-size: 36px;
+        line-height: 36px;
         color: $Black;
         font-family: $PPNeueMachinaRegular;
         transition: color .2s linear;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 30px;
+            line-height: 30px;
+            margin-bottom: 15px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 24px;
+            line-height: 24px;
+            margin-bottom: 15px;
+        }
+
+        @include breakpoint (Medium) {
+            font-size: 30px;
+            line-height: 30px;
+        }
     }
 
     &_description {
@@ -33,11 +123,23 @@
         text-align: justify;
         color: $Black;
         font-family: $HelveticaLight;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 14px;
+            line-height: 18px;
+            margin-top: 2px;
+            margin-bottom: 15px;
+        }
     }
 
     &_footer {
         display: flex;
         align-items: center;
+        margin-top: 20px;
+
+        @include breakpoint (Large) {
+            margin-top: 10px;
+        }
 
         &_likes {
             display: flex;
@@ -73,10 +175,17 @@
 
     &:hover &_hover {
         opacity: 0.3;
+
+        @include breakpoint (ExtraLarge) {
+            opacity: 0;
+        }
     }
 
     &:hover &_title {
         color: $Blue;
 
+        @include breakpoint (ExtraLarge) {
+            color: $Black;
+        }
     }
 }

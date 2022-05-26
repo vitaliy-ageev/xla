@@ -1,4 +1,5 @@
 @import '@variables';
+@import '@mixins';
 
 .tags {
     display: flex;
@@ -14,6 +15,22 @@
         padding: 10px 15px;
         border: 1px solid $Grey;
         border-right: none;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 14px;
+            line-height: 18px;
+            padding: 8px 12px;
+        }
+
+        @include breakpoint (Medium) {
+            display: none;
+
+            &:first-child {
+                display: block;
+                border-right: 1px solid $Grey;
+                margin-top: 15px;
+            }
+        }
 
         &:last-child {
             border-right: 1px solid $Grey;
