@@ -6,20 +6,18 @@ import classes from './Footer.module.scss'
 const Footer: FunctionComponent = () => {
     return (
         <div className={classes.footer}>
-            <div className='container'>
-                <div className={classes.footer_inner}>
-                    {/* Logotype */}
-                    <div className={classes.footer_left_container}>
-                        <div className={classes.footer_logotype}>
-                            <Logotype color='black' />
-                        </div>
+            <div className={classes.footer_inner}>
+                {/* Logotype */}
+                <div className={classes.footer_left_container}>
+                    <div className={classes.footer_logotype}>
+                        <Logotype color='black' style='footer' />
                     </div>
-                    <div className={classes.footer_right_container}>
-
-                    </div>
-                    {/* Social Networks */}
-                    <SocialNetworks />
                 </div>
+                <div className={classes.footer_right_container}>
+
+                </div>
+                {/* Social Networks */}
+                <SocialNetworks />
             </div>
         </div>
     )

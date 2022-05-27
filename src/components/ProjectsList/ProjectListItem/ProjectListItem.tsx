@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import classes from './ProjectItem.module.scss'
+import classes from './ProjectListItem.module.scss'
 import Like from '../../UI/Icons/Like/Like'
 import Tags from './Tags/Tags'
+import { Link } from 'react-router-dom'
 
 interface ITag {
     id: number,
@@ -15,7 +16,8 @@ interface IprojectItems {
     description: string,
     likes: string,
     tags: ITag[],
-    background: string
+    background: string,
+    path?: string
 }
 
 interface IProjects {
@@ -28,7 +30,8 @@ const ProjectItem: FunctionComponent<IProjects> = ({ projectItems }) => {
             {
                 projectItems.map(
                     projectItem =>
-                        <div key={projectItem.id} className={classes.project_item}>
+                        <Link to={__dirname + projectItem.path}
+                            key={projectItem.id} className={classes.project_item}>
                             <div className={classes.project_item_inner}>
                                 <div className={classes.project_item_left_container}>
                                     {/* Background */}
@@ -60,7 +63,7 @@ const ProjectItem: FunctionComponent<IProjects> = ({ projectItems }) => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                 )
             }
         </>

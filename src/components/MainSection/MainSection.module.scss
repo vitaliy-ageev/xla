@@ -7,12 +7,36 @@
     z-index: 2000;
     color: #000;
 
+    &.project_page {
+        margin-top: 130px;
+    }
+
+    @include breakpoint (ExtraLarge) {
+        &.project_page {
+            margin-top: 100px;
+        }
+    }
+
+    @include breakpoint (SemiLarge) {
+        &.project_page {
+            margin-top: 80px;
+        }
+    }
+
     @include breakpoint (Large) {
         padding-top: 60px;
+
+        &.project_page {
+            margin-top: 55px;
+        }
     }
 
     @include breakpoint (Medium) {
         padding-top: 55px;
+
+        &.project_page {
+            margin-top: 50px;
+        }
     }
 
     @include breakpoint (SemiMedium) {

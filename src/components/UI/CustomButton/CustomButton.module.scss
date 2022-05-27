@@ -11,29 +11,88 @@
     color: $White;
     font-family: $PPNeueMachinaRegular;
 
+    &.project_page {
+        padding: 30px 60px;
+        font-size: 24px;
+        line-height: 23px;
+
+        &:last-child {
+            margin-right: 0 !important;
+        }
+    }
+
     @include breakpoint (ExtraMedium) {
         cursor: default;
+    }
+
+    @include breakpoint (ExtraLarge) {
+        &.project_page {
+            width: 28% !important;
+            padding: 30px 60px;
+            font-size: 18px;
+            line-height: 18px;
+
+            &:last-child {
+                width: 33% !important;
+                margin-right: 0 !important;
+            }
+        }
     }
 
     @include breakpoint (SemiLarge) {
         font-size: 18px;
         line-height: 18px;
+
+        &.project_page {
+            width: 32% !important;
+            padding: 15px 20px;
+            font-size: 15px;
+            line-height: 16px;
+
+            &:last-child {
+                width: 38% !important;
+            }
+        }
     }
 
     @include breakpoint (Large) {
         width: 261px !important;
         font-size: 16px;
         line-height: 16px;
+
+        &.project_page {
+            width: 33% !important;
+
+            &:last-child {
+                width: 40% !important;
+            }
+        }
     }
 
     @include breakpoint (Medium) {
         width: 100% !important;
         margin-bottom: 25px;
+        margin-right: 0 !important;
+
+
+        &.project_page {
+            width: 100% !important;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+
+            &:last-child {
+                width: 100% !important;
+            }
+        }
     }
 
     @include breakpoint (SemiMedium) {
-        margin-bottom: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+
+        &.project_page {
+            margin-bottom: 10px;
+        }
+
     }
 
     &:last-child {
@@ -59,9 +118,32 @@
         color: $Black;
     }
 
+    &.black.background {
+        background: $Black;
+        color: $White;
+        transition: border .2s linear, background .2s linear, color .2s linear;
+
+        &.black.background:hover {
+            border: 1px solid rgba($Black, 0.8);
+            background: rgba($Black, 0.8);
+        }
+
+        @include breakpoint (ExtraMedium) {
+            &.black.background:hover {
+                background: $Black;
+                color: $White;
+            }
+        }
+    }
+
     &.border {
         border: 1px solid $White;
         transition: border .2s linear, background .2s linear, color .2s linear;
+    }
+
+    &.black.border {
+        color: $Black;
+        border: 1px solid $Black;
     }
 
     &.border:hover {
@@ -69,10 +151,25 @@
         background: $WhiteOpacity;
         color: $Black;
 
+        &.black.border {
+            border: 1px solid rgba($Black, 0.8);
+            background: rgba($Black, 0.8);
+            color: $White;
+        }
+
+        @include breakpoint (ExtraMedium) {
+            &.black.border {
+                background: none;
+                color: $Black;
+                border: 1px solid $Black;
+            }
+        }
+
         @include breakpoint (Medium) {
             border: 1px solid $White;
             background: none;
             color: $White;
         }
     }
+
 }

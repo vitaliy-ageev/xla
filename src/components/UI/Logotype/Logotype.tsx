@@ -2,12 +2,18 @@ import React, { FunctionComponent } from 'react'
 import classes from './Logotype.module.scss'
 
 interface ILogotype {
-    color?: string
+    color?: string,
+    style?: string
 }
 
-const Logotype: FunctionComponent<ILogotype> = ({ color = 'white' }) => {
+const Logotype: FunctionComponent<ILogotype> = ({ color = 'white', style }) => {
+    let rootClasses = [classes.logotype];
+    if (style == 'footer') {
+        rootClasses.push(classes.footer)
+    }
+
     return (
-        <div className={classes.logotype}>
+        <div className={rootClasses.join(' ')}>
             {/* Svg Icon */}
             <svg className={classes.logotype_icon} xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
                 <path fillRule="evenodd" clipRule="evenodd" d="M0 0H59.9495L69.7087 9.8V70H9.75922L0 60.2V0Z" fill={color} />

@@ -9,10 +9,12 @@ interface ICustomButton {
     fontSize?: number,
     marginR?: number,
     marginL?: number,
-    width?: number
+    width?: number,
+    color?: string,
+    style?: string
 }
 
-const CustomButton: FunctionComponent<ICustomButton> = ({ name, styleBtn = 'none', paddingLR = 'auto', marginR, marginL, width }) => {
+const CustomButton: FunctionComponent<ICustomButton> = ({ name, styleBtn = 'none', paddingLR = 'auto', marginR, marginL, width, color, style }) => {
     // Перевести логику на редакс??
     let rootClass = [classes.custom_button];
 
@@ -24,6 +26,16 @@ const CustomButton: FunctionComponent<ICustomButton> = ({ name, styleBtn = 'none
         rootClass.push(classes.none);
     } else {
         rootClass.push(classes.none);
+    }
+
+    if (color == 'black') {
+        rootClass.push(classes.black);
+    } else {
+        rootClass.push(classes.white);
+    }
+
+    if (style == 'project_page') {
+        rootClass.push(classes.project_page);
     }
 
     return (

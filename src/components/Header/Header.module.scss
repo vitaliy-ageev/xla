@@ -39,6 +39,10 @@
         }
     }
 
+    &.black &_inner {
+        border-bottom: 1px solid rgba($Black, 0.2);
+    }
+
     &_left_block {
         display: flex;
         justify-content: flex-start;
@@ -76,6 +80,17 @@
 
         &_item:hover {
             color: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    &.black &_menu {
+        &_item {
+            cursor: pointer;
+            color: $Black;
+        }
+
+        &_item:hover {
+            color: rgba($Black, 0.6);
         }
     }
 

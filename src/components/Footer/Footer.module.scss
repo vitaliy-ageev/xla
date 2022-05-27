@@ -1,3 +1,4 @@
+@import '@variables';
 @import "@mixins";
 
 .footer {
@@ -7,14 +8,36 @@
     position: relative;
     z-index: 100000;
 
+    @include breakpoint (SemiLarge) {
+        margin-top: 30px;
+        padding: 35px 0;
+    }
+
+    @include breakpoint (Large) {
+        margin-top: 15px;
+        padding: 35px 0;
+    }
+
+    @include breakpoint (Medium) {
+        margin-top: 25px;
+        padding: 25px 0;
+    }
+
+    @include breakpoint (SemiMedium) {
+        margin-top: 20px;
+        padding: 20px 0;
+    }
+
     &_inner {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
 
-        @include breakpoint (SemiLarge) {
+        @include breakpoint (Medium) {
             flex-direction: column;
+            align-items: center;
+            justify-content: center
         }
     }
 }

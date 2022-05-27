@@ -11,14 +11,28 @@
     padding: 50px;
     margin-top: 50px;
 
+    &.project_page {
+        margin-top: 0;
+    }
+
     @include breakpoint (ExtraLarge) {
         margin-top: 50px;
         padding: 40px;
+
+        &.project_page {
+            margin-top: 0;
+        }
     }
 
     @include breakpoint (SemiLarge) {
         margin-top: 40px;
         padding: 25px;
+    }
+
+    @include breakpoint (Large) {
+        &.project_page {
+            margin-top: 40px;
+        }
     }
 
     @include breakpoint (Medium) {

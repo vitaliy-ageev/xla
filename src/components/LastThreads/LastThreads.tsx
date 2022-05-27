@@ -18,13 +18,20 @@ interface IThreads {
 }
 
 interface ILastThreads {
+    style?: string,
     threadItems: IThreads[]
 }
 
-const LastThreads: FunctionComponent<ILastThreads> = ({ threadItems }) => {
+const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) => {
+    let rootClasses = [classes.last_threads];
+
+    if (style == 'project_page') {
+        rootClasses.push(classes.project_page)
+    }
+
     return (
 
-        <div className={classes.last_threads}>
+        <div className={rootClasses.join(' ')}>
             <div className={[classes.last_threads_container, classes.title_block].join(' ')}>
                 {/* Title */}
                 <span className={[classes.last_threads_title].join(' ')}>

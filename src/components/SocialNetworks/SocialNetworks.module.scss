@@ -1,4 +1,5 @@
 @import '@variables';
+@import "@mixins";
 
 .social_networks {
     display: flex;
@@ -20,13 +21,44 @@
     }
 
     &_item {
+        cursor: pointer;
         width: 42px;
         height: 42px;
         border: 1px solid #848484;
         margin-right: 15px;
+        padding: 10px;
 
         &:last-child {
             margin-right: 0;
+        }
+
+        @include breakpoint (ExtraLarge) {
+            width: 42px;
+            height: 42px;
+            margin-right: 15px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            margin-right: 10px;
+        }
+
+        @include breakpoint (Large) {
+            width: 32px;
+            height: 32px;
+            margin-right: 7px;
+        }
+
+        @include breakpoint (Medium) {
+            width: 42px;
+            height: 42px;
+            margin-right: 7px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+            padding: 2px;
         }
     }
 }
