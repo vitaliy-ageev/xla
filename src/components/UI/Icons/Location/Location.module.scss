@@ -1,0 +1,14 @@
+@import "@variables";
+@import "@mixins";
+
+.location {
+    margin-bottom: 5px;
+
+    @include breakpoint (Large) {
+        margin-bottom: 3px;
+    }
+
+    @include breakpoint (Medium) {
+        margin-bottom: 5px;
+    }
+}

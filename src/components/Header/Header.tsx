@@ -24,16 +24,18 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     )
 
     return (
-        <Link to='/' className={rootClasses.join(' ')}>
+        <div className={rootClasses.join(' ')}>
             <div className='container'>
                 <div className={classes.header_inner}>
                     <div className={classes.header_left_block}>
                         {/* Logotype */}
-                        <Logotype color={style} />
+                        <Link to="/">
+                            <Logotype color={style} />
+                        </Link>
                         {/* Menu */}
                         <div className={classes.header_menu}>
                             {menuItems.map(item =>
-                                <div className={classes.header_menu_item} key={item.id}>{item.name}</div>
+                                <Link to={item.link} className={classes.header_menu_item} key={item.id}>{item.name}</Link>
                             )}
                         </div>
                     </div>
@@ -44,7 +46,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                     </div>
                 </div>
             </div>
-        </Link>
+        </div>
     )
 }
 

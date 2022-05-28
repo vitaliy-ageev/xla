@@ -1,0 +1,19 @@
+@import "@variables";
+@import "@mixins";
+
+.cross {
+    width: 28px;
+    height: 28px;
+    fill: $Black;
+    transition: transform .3s ease-in-out;
+
+    @include breakpoint (ExtraLarge) {
+        width: 27px;
+        height: 27px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        width: 18px;
+        height: 18px;
+    }
+}

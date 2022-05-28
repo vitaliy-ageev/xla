@@ -1,6 +1,6 @@
 import React from "react";
 import Main from "../pages/Main";
-import News from "../pages/News";
+import News from "../pages/Opportunities";
 import Project from "../pages/Project";
 import User from "../pages/User";
 
@@ -12,7 +12,7 @@ export interface IRoute {
 export enum RouteNames {
     MAIN = '/',
     PROJECT = '/project',
-    NEWS = '/news',
+    NEWS = '/opportunities',
     USER = '/user'
 }
 

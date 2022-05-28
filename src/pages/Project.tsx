@@ -11,7 +11,7 @@ import OpportunityHiring from '../components/OpportunityHiring/OpportunityHiring
 import ProjectItem from '../components/ProjectItem/ProjectItem';
 
 const Project: FunctionComponent = () => {
-
+    window.scrollTo(0, 0);
     const LastThreadsItems = [
         {
             id: 1,

@@ -2,31 +2,47 @@
 @import "@mixins";
 
 .linear_separation {
-    width: 100%;
+    width: calc(100% - 15px);
     border-bottom: 2px solid $Black;
-    padding: 30px 0;
 
     position: relative;
 
     @include breakpoint (SemiLarge) {
-        padding: 20px 0;
+        width: calc(100% - 10px);
     }
 
     @include breakpoint (Large) {
         display: none;
+
+        &.mobile {
+            display: block;
+        }
     }
 
     &_corner {
         width: 20px;
         position: absolute;
         border-bottom: 2px solid $Black;
-        top: 67px;
+        top: 7px;
         right: -16px;
 
         transform: rotate(47deg);
 
-        @include breakpoint (SemiLarge) {
-            top: 47px;
+        @include breakpoint (HD) {
+            width: 15px;
+            top: 5px;
+            right: -12px;
+        }
+
+        @include breakpoint (Large) {
+            width: 15px;
+            top: 5px;
+            right: -11px;
+        }
+
+        @include breakpoint (Medium) {
+            top: 5px;
+            right: -10.5px;
         }
     }
 }
