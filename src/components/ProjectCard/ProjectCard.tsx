@@ -17,11 +17,13 @@ const ProjectCard: FunctionComponent = () => {
                 Visit Website
             </a>
             {/* Button */}
-            <CustomButton name='Apply for this position'
+            <CustomButton
                 styleBtn='background'
                 color='black'
                 width={352}
-                style='project_card' />
+                style='project_card'>
+                    <button>Apply for this position</button>
+                </CustomButton>
             {/* Separation */}
             <LinearSeparation />
             <>

@@ -27,24 +27,29 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
                 </h1>
                 {/* Buttons */}
                 <div className={classes.opportuniti_header_buttons}>
-                    <CustomButton name='Share'
+                    <CustomButton
                         styleBtn='border'
                         color='black'
                         width={140}
                         marginR={20}
-                    />
-                    <CustomButton name='Tweet'
+                    >
+                        <button>Share</button>
+                    </CustomButton>
+                    <CustomButton
                         styleBtn='border'
                         color='black'
                         width={140}
                         marginR={20}
-                    />
-                    <CustomButton name='Copy'
+                    ><button>Tweet</button>
+                    </CustomButton>
+                    <CustomButton
                         styleBtn='border'
                         color='black'
                         width={140}
                         marginR={20}
-                    />
+                    >
+                        <button>Copy</button>
+                    </CustomButton>
                 </div>
             </div>
         </div>

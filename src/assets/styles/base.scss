@@ -46,6 +46,10 @@ button {
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+
+    @include breakpoint (ExtraLarge) {
+       padding: 15px 0;
+    }
 }
 
 .container {

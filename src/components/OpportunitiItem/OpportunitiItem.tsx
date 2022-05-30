@@ -52,10 +52,13 @@ const OpportunitiItem: FunctionComponent = () => {
             <CustomTextList title='Benefits:' list={ListArr2} />
             {/* Button */}
             <div className={classes.opportuniti_item_button}>
-                <CustomButton name='Apply for this position'
+                <CustomButton
                     styleBtn='background'
                     color='black'
-                    width={372} />
+                    width={372}
+                    style='opportuniti_apply'>
+                    <button>Apply for this position</button>
+                </CustomButton>
             </div>
         </div>
     )

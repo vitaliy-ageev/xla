@@ -69,6 +69,7 @@
                 width: 38% !important;
             }
         }
+
     }
 
     @include breakpoint (Large) {
@@ -82,6 +83,10 @@
             &:last-child {
                 width: 40% !important;
             }
+        }
+
+        &.opportuniti_apply {
+            display: none;
         }
     }
 
