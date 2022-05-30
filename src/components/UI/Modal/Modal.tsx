@@ -10,9 +10,14 @@ const Modal: FunctionComponent<ModalProps> = (props) => {
     let rootClasses = [classes.modal];
     if (props.viewModal) {
         rootClasses.push(classes.active)
+        document.body.classList.add('modal');
     } else {
         rootClasses = [classes.modal]
+        document.body.classList.remove('modal');
     }
+
+
+
 
     return (
         <div className={rootClasses.join(' ')} onClick={(e) => e.stopPropagation()}>

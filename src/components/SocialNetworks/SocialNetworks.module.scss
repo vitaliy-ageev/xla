@@ -26,7 +26,11 @@
         height: 42px;
         border: 1px solid #848484;
         margin-right: 15px;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
 
         &:last-child {
             margin-right: 0;
@@ -59,6 +63,52 @@
             height: 30px;
             margin-right: 5px;
             padding: 2px;
+        }
+
+        &_upper {
+            width: 10px;
+            height: 10px;
+            background: $Background;
+            border-bottom: 1px solid #848484;
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: rotate(45deg) translateY(-7.5px);
+
+            @include breakpoint (ExtraLarge) {
+                width: 10px;
+                height: 10px;
+                ransform: rotate(45deg) translateY(-7.5px);
+            }
+
+            @include breakpoint (Large) {
+                width: 8px;
+                height: 8px;
+                transform: rotate(46deg) translateY(-6px);
+            }
+        }
+
+        &_down {
+            width: 10px;
+            height: 10px;
+            background: $Background;
+            border-top: 1px solid #848484;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: rotate(42deg) translateY(7.5px);
+
+            @include breakpoint (ExtraLarge) {
+                width: 10px;
+                height: 10px;
+                ransform: rotate(45deg) translateY(7.5px);
+            }
+
+            @include breakpoint (Large) {
+                width: 8px;
+                height: 8px;
+                transform: rotate(46deg) translateY(6px);
+            }
         }
     }
 }

@@ -2,8 +2,6 @@
 @import "@mixins";
 
 .burger_menu {
-    width: 100vw;
-    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -57,8 +55,5 @@
         margin-top: auto;
         border-top: 1px solid $Grey;
         padding: 30px;
-        position: absolute;
-        bottom: 0;
-        left: 0;
     }
 }

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactElement } from 'react'
 import classes from './CustomButton.module.scss'
 
 interface ICustomButton {
@@ -11,10 +11,11 @@ interface ICustomButton {
     marginL?: number,
     width?: number,
     color?: string,
-    style?: string
+    style?: string,
+    children?: ReactElement | ReactElement[]
 }
 
-const CustomButton: FunctionComponent<ICustomButton> = ({ name, styleBtn = 'none', paddingLR = 'auto', marginR, marginL, width, color, style }) => {
+const CustomButton: FunctionComponent<ICustomButton> = ({ children, name, styleBtn = 'none', paddingLR = 'auto', marginR, marginL, width, color, style }) => {
     // Перевести логику на редакс??
     let rootClass = [classes.custom_button];
 
@@ -47,6 +48,7 @@ const CustomButton: FunctionComponent<ICustomButton> = ({ name, styleBtn = 'none
             width: `${width}px`
         }} >
             {name}
+            {children}
         </div >
     )
 }

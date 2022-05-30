@@ -22,27 +22,43 @@ const SocialNetworks: FunctionComponent = () => {
             <div className={classes.social_networks_inner}>
                 <div className={classes.social_networks_item}>
                     <Discord />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <Telegram />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <Instagram />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <Twitter />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <Facebook />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <Reddit />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <LinkedIn />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
                 <div className={classes.social_networks_item}>
                     <Union />
+                    <div className={classes.social_networks_item_upper}></div>
+                    <div className={classes.social_networks_item_down}></div>
                 </div>
             </div>
         </div>

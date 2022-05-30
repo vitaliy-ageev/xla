@@ -1,15 +1,24 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu'
 import Logotype from '../UI/Logotype/Logotype'
 import classes from './Header.module.scss'
+import { Embed } from '../../utils/embed'
 
 interface IHeader {
     style: string
 }
 
 const Header: FunctionComponent<IHeader> = ({ style }) => {
+    const [thisState, setThisState] = useState(false);
+
+    useEffect(() => {
+        Embed()
+    }, [thisState])
+
+
+
 
     const menuItems = [
         { id: 1, name: "All project", link: "/project" },
@@ -43,7 +52,15 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                     {/* Sign In & Sign Up */}
                     <div className={classes.header_buttons}>
                         {/* <CustomButton name='Log In' /> */}
-                        <CustomButton name='Sing In' styleBtn='background' color={style} />
+                        <CustomButton styleBtn='background' color={style}>
+                            <button data-tf-popup="adHiZ5FW"
+                                data-tf-iframe-props="title=Opportunity (copy)"
+                                data-tf-medium="snippet"
+                                data-tf-hidden="hidden1=xxxxx"
+                            >
+                                Sing In
+                            </button>
+                        </CustomButton>
                     </div>
                     <div className={classes.header_burger_menu}>
                         <BurgerMenu style={style} />

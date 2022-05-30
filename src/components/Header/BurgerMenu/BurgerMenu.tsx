@@ -41,7 +41,7 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                         <Link to='/project' className={classes.burger_menu_link}>
                             All projects
                         </Link>
-                        <Link to='/pportunities' className={classes.burger_menu_link}>
+                        <Link to='/opportunities' className={classes.burger_menu_link}>
                             Opportunities
                         </Link>
                         <Link to='/' className={classes.burger_menu_link}>
@@ -50,11 +50,19 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                     </div>
                     {/* Buttons */}
                     <div className={classes.burger_menu_buttons}>
-                        <CustomButton name='Sign Up'
+                        <CustomButton
                             styleBtn='background'
                             color='black'
                             width={352}
-                            style='project_card' />
+                            >
+                            <button data-tf-popup="adHiZ5FW"
+                                data-tf-iframe-props="title=Opportunity (copy)"
+                                data-tf-medium="snippet"
+                                data-tf-hidden="hidden1=xxxxx"
+                            >
+                                Sing In
+                            </button>
+                        </CustomButton>
                     </div>
                 </div>
             </Modal>

@@ -153,7 +153,6 @@
             background: #5951F6;
             filter: blur(2px);
             position: relative;
-            z-index: 1000000;
 
             @include breakpoint (ExtraMedium) {
                 width: 50px;

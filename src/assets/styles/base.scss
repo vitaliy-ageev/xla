@@ -11,6 +11,10 @@ body {
     overflow-x: hidden;
 }
 
+body.modal {
+    overflow: hidden;
+}
+
 /* For all elements of the page */
 *,
 *:before,
@@ -31,6 +35,17 @@ a {
     text-decoration: none;
     background: none;
     outline: none;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    padding: 15px 30px;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .container {
@@ -67,5 +82,31 @@ a {
         width: 100%;
         max-width: 768px;
         padding: 0 20px;
+    }
+}
+
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+
+    @include breakpoint (SemiLarge) {
+        width: 21px;
+        height: 21px;
+    }
+
+    @include breakpoint (Large) {
+        width: 15px;
+        height: 15px;
+    }
+
+    @include breakpoint (Medium) {
+        width: 21px;
+        height: 21px;
+    }
+
+    @include breakpoint (SemiMedium) {
+        width: 15px;
+        height: 16px;
     }
 }

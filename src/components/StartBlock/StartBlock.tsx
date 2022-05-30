@@ -22,8 +22,19 @@ const StartBlock: FunctionComponent = () => {
                     </div>
                     {/* Buttons */}
                     <div className={classes.start_block_buttons}>
-                        <CustomButton name='Get started' styleBtn='background' marginR={20} width={320} />
-                        <CustomButton name='Show all projects' styleBtn='border' width={320} />
+
+                        <CustomButton styleBtn='background' marginR={20} width={320}>
+                            <button data-tf-popup="adHiZ5FW"
+                                data-tf-iframe-props="title=Opportunity (copy)"
+                                data-tf-medium="snippet"
+                                data-tf-hidden="hidden1=xxxxx"
+                            >
+                                Get tarted
+                            </button>
+                        </CustomButton>
+                        <CustomButton name='' styleBtn='border' width={320}>
+                            <button>Shop all projects</button>
+                        </CustomButton>
                     </div>
                 </div>
                 <GlowEffect />

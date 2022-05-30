@@ -15,7 +15,7 @@ module.exports = {
         hints: false,
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.js', '.json', '.wasm'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.wasm'],
         alias: {
             '@': path.join(__dirname, 'src/'),
             '@variables': path.resolve(__dirname, 'src/assets/styles/variables.scss'),

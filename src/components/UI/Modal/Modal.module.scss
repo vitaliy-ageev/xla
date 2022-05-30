@@ -8,12 +8,13 @@
 
     position: fixed;
     top: 0;
-    left: -100vw;
+    left: 0;
+    display: none;
     z-index: 10000;
-    transition: all .3s ease-in-out;
+
 
     &.active {
-        left: 0;
+        display: block;
     }
 
 

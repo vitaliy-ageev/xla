@@ -7,7 +7,6 @@ import LeftSection from '../components/LeftRightSection/LeftSection'
 import RightSection from '../components/LeftRightSection/RightSection'
 import MainSection from '../components/MainSection/MainSection'
 import OpportunitiesList from '../components/OpportunitiesList/OpportunitiesList'
-
 import TitleSection from '../components/TitleSection/TitleSection'
 import Title from '../components/UI/Title/Title'
 

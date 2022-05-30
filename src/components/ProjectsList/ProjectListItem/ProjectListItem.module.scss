@@ -14,8 +14,11 @@
     }
 
     @include breakpoint (ExtraLarge) {
-        cursor: default;
         padding: 20px 0 20px 0;
+    }
+
+    @include breakpoint (ExtraMedium) {
+        cursor: default;
     }
 
     &_inner {
