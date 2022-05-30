@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { Link } from 'react-router-dom'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import Location from '../UI/Icons/Location/Location'
 import classes from './OpportunitiesList.module.scss'
@@ -23,7 +24,7 @@ const OpportunitiesList: FunctionComponent<IOpportunitiesList> = ({ Opportunitie
     return (
         <div className={classes.opportunities_list}>
             {OpportunitiesItems.map(item =>
-                <div key={item.id} className={classes.opportunities_list_item}>
+                <Link to={item.link} key={item.id} className={classes.opportunities_list_item}>
                     <div className={classes.opportunities_list_item_left}>
                         {/* Background */}
                         <div className={classes.opportunities_list_item_background}>
@@ -69,7 +70,7 @@ const OpportunitiesList: FunctionComponent<IOpportunitiesList> = ({ Opportunitie
                         <CustomButton name='View offer' styleBtn='border' marginR={20} width={200} color='black' style='opportunities_list' />
                         <CustomButton name='Apply now' styleBtn='border' width={200} color='black' style='opportunities_list' />
                     </div>
-                </div>
+                </Link>
             )}
         </div>
     )

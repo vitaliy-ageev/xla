@@ -19,6 +19,8 @@ const MainSection: FunctionComponent<IMainSection> = ({ style, children }) => {
 
     if (style == 'project_page') {
         rootClasses.push(classes.project_page)
+    } else if (style == 'opportuniti_page') {
+        rootClasses.push(classes.opportuniti_page)
     }
 
     return (

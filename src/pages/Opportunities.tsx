@@ -24,7 +24,7 @@ const Opportunities: FunctionComponent = () => {
             location: "Malasia",
             data: "Posted about 10 hours ago",
             image: "",
-            link: ""
+            link: "/opportuniti"
         },
         {
             id: 2,
@@ -35,7 +35,7 @@ const Opportunities: FunctionComponent = () => {
             location: "Location lable",
             data: "Posted about 10 hours ago",
             image: "",
-            link: ""
+            link: "/opportuniti"
         },
         {
             id: 3,
@@ -46,7 +46,7 @@ const Opportunities: FunctionComponent = () => {
             location: "Location lable",
             data: "Posted about 10 hours ago",
             image: "",
-            link: ""
+            link: "/opportuniti"
         },
         {
             id: 4,
@@ -131,8 +131,8 @@ const Opportunities: FunctionComponent = () => {
 
                     </RightSection>
                 </LeftRightSection>
-                <Footer />
             </MainSection>
+            <Footer />
             <Basement />
         </div>
     )

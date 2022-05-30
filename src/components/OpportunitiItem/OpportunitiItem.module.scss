@@ -1,0 +1,12 @@
+@import "@variables";
+@import "@mixins";
+
+.opportuniti_item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &_button {
+        margin-top: 50px;
+    }
+}

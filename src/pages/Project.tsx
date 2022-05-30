@@ -165,8 +165,8 @@ const Project: FunctionComponent = () => {
                         <OpportunityHiring opportunityItems={OppurtunityItems} />
                     </RightSection>
                 </LeftRightSection>
-                <Footer />
             </MainSection>
+            <Footer />
             <Basement />
         </div>
     )

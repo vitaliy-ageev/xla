@@ -36,6 +36,8 @@ const CustomButton: FunctionComponent<ICustomButton> = ({ name, styleBtn = 'none
 
     if (style == 'project_page') {
         rootClass.push(classes.project_page);
+    } else if (style == 'project_card') {
+        rootClass.push(classes.project_card)
     }
 
     return (

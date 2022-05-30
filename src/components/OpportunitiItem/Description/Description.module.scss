@@ -1,0 +1,21 @@
+@import "@variables";
+@import "@mixins";
+
+.description_block {
+    width: 100%;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba($Black, 0.75);
+    font-family: $HelveticaLight;
+    margin-bottom: -15px;
+
+    @include breakpoint (ExtraLarge) {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}

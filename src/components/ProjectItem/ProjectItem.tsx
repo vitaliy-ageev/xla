@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom';
 import CustomButton from '../UI/CustomButton/CustomButton';
-import LinearSeparation from '../UI/LinearSeparation/LinearSeparation';
+import LinearSeparation from '../UI/LinearCornerSeparation/LinearCornerSeparation';
 import classes from './ProjectItem.module.scss';
 import BG from '../../assets/images/3.jpeg'
 import OpportunitiesItem from './OpportunitiesItem/OpportunitiesItem';

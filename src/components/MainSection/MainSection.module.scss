@@ -2,25 +2,40 @@
 
 .main_section {
     width: 100%;
-    min-height: 700px;
+    min-height: 80vh;
     padding-top: 75px;
-    position: relative;
-    z-index: 2000;
     color: #000;
 
     &.project_page {
         margin-top: 130px;
     }
 
+    &.opportuniti_page {
+        margin-top: 150px;
+    }
+
+
     @include breakpoint (ExtraLarge) {
         &.project_page {
             margin-top: 100px;
+        }
+
+        &.opportuniti_page {
+            margin-top: 130px;
+        }
+
+        &.opportuniti_page {
+            margin-top: 80px;
         }
     }
 
     @include breakpoint (SemiLarge) {
         &.project_page {
             margin-top: 80px;
+        }
+
+        &.opportuniti_page {
+            margin-top: 75px;
         }
     }
 
@@ -30,6 +45,10 @@
         &.project_page {
             margin-top: 55px;
         }
+
+        &.opportuniti_page {
+            margin-top: 65px;
+        }
     }
 
     @include breakpoint (Medium) {
@@ -37,6 +56,10 @@
 
         &.project_page {
             margin-top: 50px;
+        }
+
+        &.opportuniti_page {
+            margin-top: 40px;
         }
     }
 

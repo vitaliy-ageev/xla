@@ -1,21 +1,17 @@
 import React, { FunctionComponent } from 'react'
 import classes from './LinearSeparation.module.scss'
 
-interface ILineSeparation {
-    mobile?: boolean
+interface LinearSeparationProps {
+    class?: string
 }
 
-const LinearSeparation: FunctionComponent<ILineSeparation> = ({ mobile }) => {
-    let rootClasses = [classes.linear_separation];
-
-    if (mobile) {
-        rootClasses.push(classes.mobile);
+const LinearSeparation: FunctionComponent<LinearSeparationProps> = (props) => {
+    let rootClasses = [classes.linear_separation]
+    if (props.class == 'opportuniti_page') {
+        rootClasses.push(classes.opportuniti_page)
     }
-
     return (
-        <div className={rootClasses.join(' ')}>
-            <div className={classes.linear_separation_corner}></div>
-        </div>
+        <div className={rootClasses.join(' ')} />
     )
 }
 

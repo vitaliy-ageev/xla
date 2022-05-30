@@ -1,0 +1,71 @@
+@import "@variables";
+@import "@mixins";
+
+.tv {
+    cursor: default;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+
+    @include breakpoint (ExtraLarge) {
+        margin-top: 20px;
+    }
+
+    &_title {
+        font-size: 24px;
+        line-height: 30px;
+        color: $Grey;
+        font-weight: 400;
+        font-family: $HelveticaLight;
+        margin-bottom: 15px;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 5px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+
+    &_value {
+        font-size: 36px;
+        line-height: 36px;
+        color: $Black;
+        font-family: $PPNeueMachinaRegular;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 18px;
+            line-height: 18px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 16px;
+            line-height: 16px;
+        }
+    }
+}

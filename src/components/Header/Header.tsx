@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import CustomButton from '../UI/CustomButton/CustomButton'
+import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu'
 import Logotype from '../UI/Logotype/Logotype'
 import classes from './Header.module.scss'
 
@@ -44,9 +45,12 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                         {/* <CustomButton name='Log In' /> */}
                         <CustomButton name='Sing In' styleBtn='background' color={style} />
                     </div>
+                    <div className={classes.header_burger_menu}>
+                        <BurgerMenu style={style} />
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

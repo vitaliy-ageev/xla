@@ -1,0 +1,124 @@
+@import "@variables";
+@import "@mixins";
+
+.opportuniti_header {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+
+    @include breakpoint (Medium) {
+        flex-direction: column;
+    }
+
+    &_left_container {
+        width: auto;
+
+        @include breakpoint (ExtraLarge) {
+            width: auto;
+        }
+
+        @include breakpoint (Medium) {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+    }
+
+    &_right_container {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        margin-left: 50px;
+
+        @include breakpoint (ExtraLarge) {
+            width: auto;
+            margin-left: 40px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            margin-left: 30px;
+        }
+
+        @include breakpoint (Large) {
+            margin-left: 40px;
+        }
+
+        @include breakpoint (Medium) {
+            width: 100%;
+            margin-left: 0;
+            align-items: flex-start;
+        }
+    }
+
+    &_title {
+        cursor: default;
+        font-size: 64px;
+        line-height: 64px;
+        color: $Black;
+        font-family: $PPNeueMachinaRegular;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 36px;
+            line-height: 36px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 24px;
+            line-height: 24px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+    }
+
+    &_suptitle {
+        cursor: default;
+        font-size: 24px;
+        line-height: 27px;
+        color: rgba($Black, 0.75);
+        font-family: $HelveticaBold;
+        margin-bottom: 20px;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 18px;
+            line-height: 20px;
+            margin-bottom: 20px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 16px;
+            line-height: 18px;
+            margin-bottom: 10px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 18px;
+            line-height: 20px;
+        }
+    }
+
+    &_buttons {
+        width: 100%;
+        display: flex;
+        margin-top: 30px;
+
+        @include breakpoint (ExtraLarge) {
+            margin-top: 90px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            margin-top: 40px;
+        }
+
+        @include breakpoint (Large) {
+            margin-top: 30px;
+        }
+
+        @include breakpoint (Medium) {
+            flex-direction: column;
+            margin-top: 20px;
+        }
+    }
+}

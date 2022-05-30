@@ -103,4 +103,14 @@
             display: none;
         }
     }
+
+    &_burger_menu {
+        width: 48px;
+        height: 24px;
+        display: none;
+
+        @include breakpoint (Large) {
+            display: block;
+        }
+    }
 }

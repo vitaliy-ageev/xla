@@ -69,6 +69,7 @@
     }
 
     &_title {
+        cursor: default;
         font-size: 72px;
         line-height: 72px;
         color: $White;
@@ -102,6 +103,7 @@
     }
 
     &_subtitle {
+        cursor: default;
         font-size: 36px;
         line-height: 41px;
         color: rgba($White, 0.75);

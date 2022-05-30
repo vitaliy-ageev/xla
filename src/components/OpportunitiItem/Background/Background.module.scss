@@ -1,0 +1,55 @@
+@import "@variables";
+@import "@mixins";
+
+.background {
+    width: 100%;
+    height: 774px;
+    margin-bottom: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    @include breakpoint (ExtraLarge) {
+        height: 580px;
+        margin-bottom: 20px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        height: 380px;
+    }
+
+    @include breakpoint (Large) {
+        height: 400px;
+        margin-bottom: 15px;
+    }
+
+    @include breakpoint (Medium) {
+        height: 220px;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    @include breakpoint (SemiMedium) {
+        height: 170px;
+        margin-bottom: 5px;
+    }
+
+
+    &_image {
+        width: 100%;
+        height: 100%;
+        background: $Grey;
+        z-index: 20;
+        margin: auto;
+    }
+
+    &_inner {
+        width: 100%;
+        height: 100%;
+        background: $Grey;
+        filter: blur(10px);
+        position: absolute;
+        top: 0;
+        z-index: -1;
+    }
+}

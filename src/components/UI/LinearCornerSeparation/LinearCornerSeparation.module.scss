@@ -1,0 +1,48 @@
+@import "@variables";
+@import "@mixins";
+
+.linear_separation {
+    width: calc(100% - 15px);
+    border-bottom: 2px solid $Black;
+
+    position: relative;
+
+    @include breakpoint (SemiLarge) {
+        width: calc(100% - 10px);
+    }
+
+    @include breakpoint (Large) {
+        display: none;
+
+        &.mobile {
+            display: block;
+        }
+    }
+
+    &_corner {
+        width: 20px;
+        position: absolute;
+        border-bottom: 2px solid $Black;
+        top: 7px;
+        right: -16px;
+
+        transform: rotate(47deg);
+
+        @include breakpoint (HD) {
+            width: 15px;
+            top: 5px;
+            right: -12px;
+        }
+
+        @include breakpoint (Large) {
+            width: 15px;
+            top: 5px;
+            right: -11px;
+        }
+
+        @include breakpoint (Medium) {
+            top: 5px;
+            right: -10.5px;
+        }
+    }
+}
