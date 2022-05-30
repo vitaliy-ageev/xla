@@ -110,3 +110,28 @@ button {
         height: 16px;
     }
 }
+
+.MuiPaper-root.Mui-expanded {
+    overflow: hidden;
+    border: 2px solid $Black  !important;
+}
+
+.MuiPaper-root.Mui-expanded+.MuiPaper-root {
+    border-top: 2px solid rgba($Grey, 0) !important;
+}
+
+.MuiAccordionSummary-content.Mui-expanded {
+    border-bottom: 2px dashed $Grey;
+    transform: scale(1) translate(0, 0);
+    margin: 0 !important;
+
+}
+
+.MuiAccordionSummary-content.Mui-expanded svg {
+    fill: $Blue  !important;
+    transform: rotate(-45deg) !important;
+}
+
+.MuiAccordionSummary-content.Mui-expanded span {
+    color: $Blue;
+}

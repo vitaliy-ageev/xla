@@ -24,24 +24,19 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        margin: 0 !important;
+        padding: 0 !important;
 
-        border-top: 2px solid $Grey;
-        border-bottom: 2px solid rgba($Grey, 0);
-        border-right: 2px solid rgba($Grey, 0);
-        border-left: 2px solid rgba($Grey, 0);
+        background: transparent !important;
+
+        border-top: 2px solid $Grey  !important;
+        border-bottom: 2px solid rgba($Grey, 0) !important;
+        border-right: 2px solid rgba($Grey, 0) !important;
+        border-left: 2px solid rgba($Grey, 0) !important;
+        box-shadow: none !important;
 
         &:first-child {
-            border-top: 2px solid rgba($Grey, 0);
-        }
-
-        &.active {
-            border: 2px solid $Black;
-        }
-
-        &.active svg {
-            fill: $Blue  !important;
-
-            transform: rotate(-45deg);
+            border-top: 2px solid rgba($Grey, 0) !important;
         }
 
         @include breakpoint (ExtraMedium) {
@@ -49,28 +44,27 @@
         }
 
         &_title_block {
-            width: 100%;
+
+
+            width: 100% !important;
             display: flex;
             justify-content: space-between;
 
-            padding: 30px 40px;
+            padding: 30px 10px;
+            margin: 0 !important;
 
             @include breakpoint (ExtraLarge) {
-                padding: 25px 30px;
+                padding: 25px 0
             }
 
             @include breakpoint (SemiLarge) {
-                padding: 20px 20px;
+                padding: 20px 0;
             }
 
             @include breakpoint (Medium) {
-                padding: 15px 20px;
+                padding: 15px 0;
             }
 
-        }
-
-        &.active &_title_block {
-            border-bottom: 2px dashed $Black;
         }
 
         &_title {
@@ -100,41 +94,33 @@
         }
 
         &_description {
+            cursor: default;
             font-size: 18px;
             line-height: 24px;
             color: $Black;
             font-weight: 600;
             font-family: $PPNeueMachinaRegular;
-            padding: 30px 40px;
 
-            display: none;
+            // display: none;
 
-            @include breakpoint (ExtraLarge) {
-                font-size: 16px;
-                line-height: 22px;
-                padding: 25px 30px;
+            & p {
+                @include breakpoint (ExtraLarge) {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+
+                @include breakpoint (SemiLarge) {
+                    font-size: 15px;
+                    line-height: 20px;
+                }
+
+                @include breakpoint (Medium) {
+                    width: 100% !important;
+                    font-size: 14px !important;
+                    line-height: 18px !important;
+                }
             }
 
-            @include breakpoint (SemiLarge) {
-                font-size: 15px;
-                line-height: 20px;
-                padding: 20px 20px;
-            }
-
-            @include breakpoint (Medium) {
-                font-size: 14px;
-                line-height: 18px;
-                padding: 15px 20px;
-            }
         }
-
-        &.active &_description {
-            display: block;
-        }
-
-        &.active+& {
-            border-top: 2px solid rgba($Grey, 0);
-        }
-
     }
 }
