@@ -67,8 +67,12 @@ const OpportunitiesList: FunctionComponent<IOpportunitiesList> = ({ Opportunitie
                         </div>
                     </div>
                     <div className={classes.opportunities_list_item_buttons}>
-                        <CustomButton name='View offer' styleBtn='border' marginR={20} width={200} color='black' style='opportunities_list' />
-                        <CustomButton name='Apply now' styleBtn='border' width={200} color='black' style='opportunities_list' />
+                        <CustomButton styleBtn='border' marginR={20} width={200} color='black' style='opportunities_list'>
+                            <button>View offer</button>
+                        </CustomButton>
+                        <CustomButton styleBtn='border' width={200} color='black' style='opportunities_list'>
+                            <button>Apply now</button>
+                        </CustomButton>
                     </div>
                 </Link>
             )}

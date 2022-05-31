@@ -29,11 +29,11 @@ const StartBlock: FunctionComponent = () => {
                                 data-tf-medium="snippet"
                                 data-tf-hidden="hidden1=xxxxx"
                             >
-                                Get tarted
+                                Get started
                             </button>
                         </CustomButton>
                         <CustomButton name='' styleBtn='border' width={320}>
-                            <button>Shop all projects</button>
+                            <button>Show all projects</button>
                         </CustomButton>
                     </div>
                 </div>
