@@ -1,22 +1,17 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import Cross from '../UI/Icons/Cross/Cross'
 import classes from './FAQ.module.scss'
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
+import { IFAQ } from '../../models/IProject';
 
-interface IFAQItems {
-    id: number,
-    title: string,
-    description: string
+interface FAQProps {
+    faqs: IFAQ[]
 }
 
-interface IFAQ {
-    IFAQItems: IFAQItems[]
-}
-
-const FAQ: FunctionComponent<IFAQ> = ({ IFAQItems }) => {
+const FAQ: FunctionComponent<FAQProps> = (props) => {
     const [currItem, setCurrItem] = useState(true);
 
     let rootClasses = [classes.faq_item]
@@ -34,14 +29,14 @@ const FAQ: FunctionComponent<IFAQ> = ({ IFAQItems }) => {
 
     return (
         <div className={classes.faq}>
-            {IFAQItems.map(item =>
+            {props.faqs.map(faq =>
                 <Accordion square className={rootClasses.join(' ')} onChange={() => setCurrItem(true)}
                     style={currItem ? { border: `2px solid #000 !important` } : {}}>
                     <div className={rootClasses.join(' ')} style={currItem ? { border: `2px solid #000 !important` } : {}}>
                         <AccordionSummary>
                             <div className={classes.faq_item_title_block} >
                                 <span className={classes.faq_item_title}>
-                                    {item.title}
+                                    {faq.question}
                                 </span>
                                 <Cross />
                             </div>
@@ -52,7 +47,7 @@ const FAQ: FunctionComponent<IFAQ> = ({ IFAQItems }) => {
                         <Typography >
                             <div >
                                 <p>
-                                    {item.description}
+                                    {faq.answer}
                                 </p>
                             </div>
                         </Typography>

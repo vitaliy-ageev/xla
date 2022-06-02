@@ -151,8 +151,12 @@
             width: 75px;
             height: 75px;
             background: #5951F6;
-            filter: blur(2px);
+            // filter: blur(2px);
             position: relative;
+
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
 
             @include breakpoint (ExtraMedium) {
                 width: 50px;

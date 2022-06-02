@@ -2,13 +2,13 @@ import React, { FunctionComponent } from 'react'
 import classes from './CustomTextList.module.scss'
 
 interface IList {
-    id: number,
-    description: string
+    description: string,
+    order: number
 }
 
 interface CustomTextList {
     title: string,
-    list: IList[]
+    list?: IList[]
 }
 
 const CustomTextList: FunctionComponent<CustomTextList> = (props) => {
@@ -20,8 +20,8 @@ const CustomTextList: FunctionComponent<CustomTextList> = (props) => {
             </span>
             {/* List */}
             <div className={classes.text_list_block}>
-                {props.list.map(item =>
-                    <div key={item.id} className={classes.text_list_item}>
+                {props.list && props.list.map(item =>
+                    <div key={item.order} className={classes.text_list_item}>
                         <span className={classes.text_list_item_delimiter}>•</span>
                         <span className={classes.text_list_item_description}>{item.description}</span>
                     </div>

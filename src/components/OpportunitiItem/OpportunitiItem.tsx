@@ -5,62 +5,71 @@ import LinearSeparation from '../UI/LinearSeparation/LinearSeparation'
 import Background from './Background/Background'
 import Description from './Description/Description'
 import Header from './Header/Header'
-
+import { useParams } from 'react-router-dom';
 import classes from './OpportunitiItem.module.scss'
+import { opportunityAPI } from '../../services/OpportunityService'
+import { projectAPI } from '../../services/ProjectService'
+
+
+import Babka from '../../../assets/images/logo_projects/Babka.svg'
+import GameInvest from '../../../assets/images/logo_projects/GameInvest.svg'
+import Metaverse from '../../../assets/images/logo_projects/Metaverse.svg'
+import Multiverse from '../../../assets/images/logo_projects/Multiverse.svg'
+import Store3 from '../../../assets/images/logo_projects/Store3.svg'
+import UserEx from '../../../assets/images/logo_projects/UserEx.svg'
+import XLACard from '../../../assets/images/logo_projects/XLACard.svg'
+import Web3 from '../../../assets/images/logo_projects/Web3.svg'
+import PlayEarn from '../../../assets/images/logo_projects/PlayEarn.svg'
 
 const OpportunitiItem: FunctionComponent = () => {
-    const ListArr = [
-        { id: 1, description: 'Fluent in German (C1 or C2)' },
-        { id: 2, description: 'Several years of experience id designing user-friendly, intuitive mobile apps or games' },
-        { id: 3, description: 'Convicing portfolio: outstanding visual design and a very good sense for target-group-oriented communication' },
-        { id: 4, description: 'Very good conceptual skills and ability to learn quickly' },
-        { id: 5, description: 'Good knowledge of Adobe Creative Cloud, Sketch, Figma or comparable tools' },
-    ]
-
-    const ListArr1 = [
-        { id: 1, description: 'Moving image skills and motion design skills, passion for social media experience on programming / HTML/ CSS' },
-    ]
-
-    const ListArr2 = [
-        { id: 1, description: 'Secure and permanent full-time job (even in times of corona)' },
-        { id: 2, description: 'Wide variety of interesting tasks' },
-        { id: 3, description: 'Friendly and dedicated team with flat hierarchies' },
-        { id: 4, description: 'Quick, efficient decisions and active participation' },
-        { id: 5, description: 'Diverse training and development opportunities' },
-        { id: 6, description: 'The most beautiful office in all of Hesse, located in Bad Nauheim (30 minutes from Frankfurt)' },
-        { id: 7, description: 'Option to work from home / remotely' },
-        { id: 8, description: 'Fun – also outside the office at regular team events' },
-    ]
+    const { id } = useParams()
+    const { data: opportunity } = opportunityAPI.useFetchOneOpportunityQuery(`${id}`)
+    const { data: project } = projectAPI.useFetchOneProjectQuery(`${opportunity?.project.id}`)
+    const { data: skills } = opportunityAPI.useFetchSkillsOpportunityQuery(`${id}`)
 
     return (
         <div className={classes.opportuniti_item}>
-            {/* Header */}
-            <Header title='Senior Product Designer (UX/UI)'
-                suptitle='Job Details:'
-                image='' />
-            {/* Separation */}
-            <LinearSeparation class='opportuniti_page' />
-            {/* Image */}
-            <Background />
-            {/* Description */}
-            <Description />
-            {/* Custom Text List */}
-            <CustomTextList title='Your profile:' list={ListArr} />
-            {/* Custom button */}
-            <CustomTextList title='Optional:' list={ListArr1} />
-            {/* Custom button */}
-            <CustomTextList title='Benefits:' list={ListArr2} />
-            {/* Button */}
-            <div className={classes.opportuniti_item_button}>
-                <CustomButton
-                    styleBtn='background'
-                    color='black'
-                    width={372}
-                    style='opportuniti_apply'>
-                    <button>Apply for this position</button>
-                </CustomButton>
-            </div>
-        </div>
+            {opportunity && <>
+                {/* Header */}
+                <Header title={opportunity.name}
+                    suptitle='Job Details:'
+                    image=''
+                    name={project?.name} />
+                {/* Separation */}
+                <LinearSeparation class='opportuniti_page' />
+                {/* Image */}
+                <Background img={project?.images_url} />
+                {/* Description */}
+                <Description description={opportunity.description} />
+                {/* Custom Text List */}
+                {skills?.benefit.toString() && <>
+                    <CustomTextList title='Your profile:' list={skills?.profile} />
+                </>}
+                {/* Custom button */}
+                {skills?.benefit.toString() && <>
+                    <CustomTextList title='Optional:' list={skills?.optional} />
+                </>}
+                {/* Custom button */}
+                {skills?.benefit.toString() && <>
+                    <CustomTextList title='Benefits:' list={skills?.benefit} />
+                </>}
+
+                {/* Button */}
+                <div className={classes.opportuniti_item_button}>
+                    <a href={opportunity.typeform_url?.toString()} target="_blank">
+                        <CustomButton
+                            styleBtn='background'
+                            color='black'
+                            width={372}
+                            style='opportuniti_apply'>
+                            <button>Apply for this position</button>
+                        </CustomButton>
+                    </a>
+                </div>
+            </>
+            }
+
+        </div >
     )
 }
 

@@ -114,6 +114,11 @@
             display: flex;
             justify-content: center;
 
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+
+
             @include breakpoint (ExtraLarge) {
                 width: 161px;
                 height: 161px;

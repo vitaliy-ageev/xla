@@ -42,12 +42,16 @@
         background: $Grey;
         z-index: 20;
         margin: auto;
+
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
     }
 
     &_inner {
         width: 100%;
         height: 100%;
-        background: $Grey;
+        background: $White;
         filter: blur(10px);
         position: absolute;
         top: 0;

@@ -8,6 +8,11 @@
     justify-content: center;
     position: relative;
 
+
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
     // Opportuniti page
     &.opportuniti_page {
         width: 222px;

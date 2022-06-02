@@ -1,21 +1,15 @@
 import React, { FunctionComponent } from 'react'
+import { ITag } from '../../../../models/IProject'
 import classes from './Tags.module.scss'
 
-interface ITag {
-    id: number,
-    name: string,
-    path: string
-}
-
-interface ITags {
+interface TagsProps {
     tags: ITag[]
 }
 
-
-const Tags: FunctionComponent<ITags> = ({ tags }) => {
+const Tags: FunctionComponent<TagsProps> = (props) => {
     return (
         <div className={classes.tags}>
-            {tags.map(tag =>
+            {props.tags.map(tag =>
                 <div key={tag.id} className={classes.tags_item}>
                     {tag.name}
                 </div>

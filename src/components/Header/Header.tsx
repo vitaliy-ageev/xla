@@ -21,9 +21,9 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
 
 
     const menuItems = [
-        { id: 1, name: "All project", link: "/project" },
+        { id: 1, name: "All projects", link: "/" },
         { id: 2, name: "Opportunities", link: "/opportunities" },
-        { id: 3, name: "Hire Creators", link: "/hire-creators" }
+        { id: 3, name: "Hire Creators", link: "/" }
     ]
 
     const rootClasses = [classes.header]

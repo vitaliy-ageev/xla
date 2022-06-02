@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import classes from './TitleValue.module.scss'
 
 interface TitleValueProps {
-    title: string,
-    value: string
+    title: string | null,
+    value: string | null
 }
 
 const TitleValue: FunctionComponent<TitleValueProps> = (props) => {

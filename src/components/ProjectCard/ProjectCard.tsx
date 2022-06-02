@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import { useParams } from 'react-router-dom'
+import { opportunityAPI } from '../../services/OpportunityService'
 import CardWithCorner from '../UI/CardWithCorner/CardWithCorner'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import LinearSeparation from '../UI/LinearSeparation/LinearSeparation'
@@ -6,35 +8,49 @@ import classes from './ProjectCard.module.scss'
 import TitleValue from './TitleValue/TitleValue'
 
 const ProjectCard: FunctionComponent = () => {
+    const { id } = useParams()
+    const { data: opportunity } = opportunityAPI.useFetchOneOpportunityQuery(`${id}`)
+
     return (
-        <CardWithCorner class='project_card'>
-            {/* Name project */}
-            <span className={classes.project_card_name}>
-                Name project
-            </span>
-            {/* Link */}
-            <a href="/" target='_blank' className={classes.project_card_link}>
-                Visit Website
-            </a>
-            {/* Button */}
-            <CustomButton
-                styleBtn='background'
-                color='black'
-                width={352}
-                style='project_card'>
-                    <button>Apply for this position</button>
-                </CustomButton>
-            {/* Separation */}
-            <LinearSeparation />
-            <>
-                {/* Job Type */}
-                <TitleValue title='Job Type' value='Full-time' />
-                {/* Location */}
-                <TitleValue title='Location' value='Frankfurt am Main' />
-                {/* Date posted */}
-                <TitleValue title='Date posted' value='May 01, 2022' />
-            </>
-        </CardWithCorner>
+        <>{opportunity &&
+            <CardWithCorner class='project_card'>
+                {/* Name project */}
+                <span className={classes.project_card_name}>
+                    {opportunity.name}
+                </span>
+                {/* Link */}
+                <a href={opportunity.project.url ? opportunity.project.url : '/'} target='_blank' className={classes.project_card_link}>
+                    Visit Website
+                </a>
+                {/* Button */}
+                <a href={opportunity.typeform_url?.toString()} target="_blank">
+                    <CustomButton
+                        styleBtn='background'
+                        color='black'
+                        width={352}
+                        style='project_card'>
+                        <button>Apply for this position</button>
+                    </CustomButton>
+                </a>
+                {/* Separation */}
+                <LinearSeparation />
+                <>
+                    {/* Job Type */}
+                    {opportunity.job_type.name && <>
+                        <TitleValue title='Job Type' value={opportunity.job_type.name} />
+                    </>}
+                    {/* Location */}
+                    {opportunity.location && <>
+                        <TitleValue title='Location' value={opportunity.location} />
+                    </>}
+                    {/* Date posted */}
+                    {opportunity.created_at && <>
+                        <TitleValue title='Date posted' value={new Date(opportunity.created_at).toDateString()} />
+                    </>}
+                </>
+            </CardWithCorner>
+        }
+        </>
     )
 }
 

@@ -13,108 +13,6 @@ import Title from '../components/UI/Title/Title'
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);
 
-    const OpportunitiesItems = [
-        {
-            id: 1,
-            name: "IOS Developer",
-            project: "Babka Cryptex",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Malasia",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: "/opportuniti"
-        },
-        {
-            id: 2,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: "/opportuniti"
-        },
-        {
-            id: 3,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: "/opportuniti"
-        },
-        {
-            id: 4,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: ""
-        },
-        {
-            id: 5,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: ""
-        },
-        {
-            id: 6,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: ""
-        },
-        {
-            id: 7,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: ""
-        },
-        {
-            id: 8,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: ""
-        },
-        {
-            id: 9,
-            name: "Offer headline",
-            project: "Project name",
-            type: "Contract",
-            method: "Remote Friendly",
-            location: "Location lable",
-            data: "Posted about 10 hours ago",
-            image: "",
-            link: ""
-        },
-    ]
-
     return (
         <div className='App'>
             <Header style='white' />
@@ -124,7 +22,7 @@ const Opportunities: FunctionComponent = () => {
                 <Title title='Latest New Projects' />
                 <LeftRightSection>
                     <LeftSection width='70%'>
-                        <OpportunitiesList OpportunitiesItems={OpportunitiesItems} />
+                        <OpportunitiesList />
                     </LeftSection>
                     <RightSection width='20%'>
 
