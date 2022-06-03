@@ -27,7 +27,7 @@ const StartBlock: FunctionComponent<StartBlockProps> = (props) => {
                     <div className={classes.start_block_title_container}>
                         {/* Title */}
                         <div className={classes.start_block_title}>
-                            Megamall of opportunities
+                            Metamall of opportunities
                         </div>
                         {/* Subtitle */}
                         <div className={classes.start_block_subtitle}>

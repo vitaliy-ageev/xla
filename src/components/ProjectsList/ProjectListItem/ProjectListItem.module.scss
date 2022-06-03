@@ -63,6 +63,7 @@
     &_background {
         width: 220px;
         height: 220px;
+        overflow: hidden;
         background: $Blue;
 
         background-position: center !important;
