@@ -33,5 +33,11 @@ export const opportunityAPI = createApi({
             }),
             providesTags: result => ['Opportunity'],
         }),
+        fetchAllProjectOpportunities: build.query<IFethOpportunity, string>({
+            query: (id: string) => ({
+                url: `/projects/opportunities?project_id=${id}`
+            }),
+            providesTags: result => ['Opportunity'],
+        })
     })
 })

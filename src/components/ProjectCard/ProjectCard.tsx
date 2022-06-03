@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { opportunityAPI } from '../../services/OpportunityService'
+import { Embed } from '../../utils/embed'
 import CardWithCorner from '../UI/CardWithCorner/CardWithCorner'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import LinearSeparation from '../UI/LinearSeparation/LinearSeparation'
@@ -10,6 +11,19 @@ import TitleValue from './TitleValue/TitleValue'
 const ProjectCard: FunctionComponent = () => {
     const { id } = useParams()
     const { data: opportunity } = opportunityAPI.useFetchOneOpportunityQuery(`${id}`)
+
+    const [thisState, setThisState] = useState(false);
+
+    useEffect(() => {
+        Embed()
+    }, [thisState])
+
+    const onClickItem = (e: any) => {
+
+        e.preventDefault()
+        setThisState(true)
+    }
+
 
     return (
         <>{opportunity &&
@@ -23,15 +37,20 @@ const ProjectCard: FunctionComponent = () => {
                     Visit Website
                 </a>
                 {/* Button */}
-                <a href={opportunity.typeform_url?.toString()} target="_blank">
-                    <CustomButton
-                        styleBtn='background'
-                        color='black'
-                        width={352}
-                        style='project_card'>
-                        <button>Apply for this position</button>
-                    </CustomButton>
-                </a>
+                <CustomButton
+                    styleBtn='background'
+                    color='black'
+                    width={352}
+                    style='project_card'>
+                    <button
+                        data-tf-slider={opportunity.typeform_popup ? opportunity.typeform_popup.toString().split('"')[1] : 'VHpdDtau'}
+                        data-tf-width="550"
+                        data-tf-iframe-props={`title=${opportunity.name}`}
+                        data-tf-medium="snippet"
+                        data-tf-hidden="hidden1=xxxxx"
+                        onClick={(e) => onClickItem(e)}
+                    >Apply for this position</button>
+                </CustomButton>
                 {/* Separation */}
                 <LinearSeparation />
                 <>
@@ -40,12 +59,12 @@ const ProjectCard: FunctionComponent = () => {
                         <TitleValue title='Job Type' value={opportunity.job_type.name} />
                     </>}
                     {/* Location */}
-                    {opportunity.location && <>
-                        <TitleValue title='Location' value={opportunity.location} />
+                    {opportunity.working_mode.name && <>
+                        <TitleValue title='Working mode' value={opportunity.working_mode.name} />
                     </>}
                     {/* Date posted */}
                     {opportunity.created_at && <>
-                        <TitleValue title='Date posted' value={new Date(opportunity.created_at).toDateString()} />
+                        {/* <TitleValue title='Date posted' value={new Date(opportunity.created_at).toDateString()} /> */}
                     </>}
                 </>
             </CardWithCorner>

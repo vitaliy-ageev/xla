@@ -6,16 +6,17 @@
     font-size: 24px;
     line-height: 23px;
     // padding: 15px 30px;
-    max-width: 660px;
+    // max-width: 660px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0);
     color: $White;
     font-family: $PPNeueMachinaRegular;
 
     &.project_page {
-        padding: 30px 60px;
+        padding: 20px 30px;
         font-size: 24px;
         line-height: 23px;
+        margin-top: -30px;
 
         &:last-child {
             margin-right: 0 !important;
@@ -31,17 +32,17 @@
     }
 
     @include breakpoint (ExtraLarge) {
-        max-width: 270px;
+        // max-width: 270px;
         font-size: 18px;
     }
 
     @include breakpoint (SemiLarge) {
-        max-width: 240px;
+        // max-width: 240px;
         font-size: 18px;
     }
 
     @include breakpoint (Large) {
-        max-width: 220px;
+        // max-width: 220px;
         font-size: 18px;
     }
 
@@ -57,7 +58,7 @@
     @include breakpoint (ExtraLarge) {
         &.project_page {
             width: 28% !important;
-            padding: 30px 60px;
+            padding: 20px 30px;
             font-size: 18px;
             line-height: 18px;
 
@@ -100,6 +101,8 @@
 
         &.project_page {
             width: 33% !important;
+            padding: 0;
+            margin-top: 1px;
 
             &:last-child {
                 width: 40% !important;
@@ -108,6 +111,11 @@
 
         &.opportuniti_apply {
             display: none;
+        }
+
+        &.opportunity_header {
+            width: 150px !important;
+
         }
     }
 
@@ -119,12 +127,19 @@
 
         &.project_page {
             width: 100% !important;
-            margin-bottom: 15px;
-            padding: 15px 20px;
+            margin-top: 3px;
+            margin-bottom: 20px;
+            padding: 0;
 
             &:last-child {
                 width: 100% !important;
             }
+        }
+
+        &.opportunity_header {
+            width: 100% !important;
+            margin-bottom: 10px !important;
+
         }
     }
 

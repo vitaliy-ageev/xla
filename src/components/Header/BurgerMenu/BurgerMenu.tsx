@@ -36,8 +36,8 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
     }
 
     return (
-        <div className={classes.burger_menu} onClick={clickOnBurgerMenu} >
-            <Burger style={props.style} isActiveBurger={isActiveBurger} />
+        <div className={classes.burger_menu} >
+            <Burger onClick={clickOnBurgerMenu} style={props.style} isActiveBurger={isActiveBurger} />
             <Modal viewModal={viewModal} >
                 <div className='container'>
                     {/* Header */}

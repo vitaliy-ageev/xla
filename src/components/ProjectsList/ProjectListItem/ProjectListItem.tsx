@@ -6,15 +6,7 @@ import { Link } from 'react-router-dom'
 import { projectAPI } from '../../../services/ProjectService'
 import { RouteNames } from '../../../routes/routes'
 
-import Babka from '../../../assets/images/logo_projects/Babka.svg'
-import GameInvest from '../../../assets/images/logo_projects/GameInvest.svg'
-import Metaverse from '../../../assets/images/logo_projects/Metaverse.svg'
-import Multiverse from '../../../assets/images/logo_projects/Multiverse.svg'
-import Store3 from '../../../assets/images/logo_projects/Store3.svg'
-import UserEx from '../../../assets/images/logo_projects/UserEx.svg'
-import XLACard from '../../../assets/images/logo_projects/XLACard.svg'
-import Web3 from '../../../assets/images/logo_projects/Web3.svg'
-import PlayEarn from '../../../assets/images/logo_projects/PlayEarn.svg'
+
 
 const ProjectItem: FunctionComponent = () => {
     const { data: project } = projectAPI.useFetchAllProjectsQuery(9)
@@ -31,16 +23,7 @@ const ProjectItem: FunctionComponent = () => {
                                 {/* Background */}
                                 <div className={classes.project_item_background}
                                     style={{
-                                        background: `url(${projectItem.title == 'Metaverse' ? Metaverse
-                                            : projectItem.title == 'Multiverse' ? Multiverse
-                                                : projectItem.title == 'Babka Drops' ? Babka
-                                                    : projectItem.title == 'Story3' ? Store3
-                                                        : projectItem.title == 'Game Investment Platform' ? GameInvest
-                                                            : projectItem.title == 'User Exchange for Video Games' ? UserEx
-                                                                : projectItem.title == 'X.LA Card' ? XLACard
-                                                                    : projectItem.title == 'Web3 Hollywood Commerce' ? Web3
-                                                                        : projectItem.title == 'Play and Earn economic modes for games' ? PlayEarn
-                                                                            : ''}`
+                                        background: `url(${projectItem.logo_url})`
                                     }}
                                 />
                             </div>

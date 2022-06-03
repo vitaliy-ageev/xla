@@ -13,6 +13,15 @@
         display: flex;
         flex-direction: column;
 
+        // Opportunities
+        &.left_section.opportunities {
+            width: 60% !important;
+        }
+
+        &.right_section.opportunities {
+            width: 30% !important;
+        }
+
         @include breakpoint (ExtraLarge) {
             width: 100% !important;
 

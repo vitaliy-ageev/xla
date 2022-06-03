@@ -41,19 +41,21 @@
         margin-bottom: 50px;
 
         @include breakpoint (ExtraLarge) {
-            font-size: 16px;
+            font-size: 18px;
             line-height: 22px;
         }
 
         @include breakpoint (SemiLarge) {
-            font-size: 14px;
+            font-size: 18px;
             line-height: 18px;
             margin-bottom: 20px;
+            margin-top: 10px;
         }
 
         @include breakpoint (Large) {
             font-size: 16px;
             line-height: 22px;
+            margin-top: 0;
         }
 
         @include breakpoint (SemiMedium) {

@@ -100,9 +100,34 @@
     }
 
     &_buttons {
-        width: 100%;
+        width: 100% !important;
         display: flex;
         margin-top: 30px;
+
+
+        & button {
+            width: 200px !important;
+
+            @include breakpoint (ExtraLarge) {
+                width: 200px !important;
+            }
+
+            @include breakpoint (SemiLarge) {
+                width: 140px !important;
+                height: 40px;
+            }
+
+            @include breakpoint (Large) {
+                margin: auto;
+                height: 40px;
+            }
+
+            @include breakpoint (Medium) {
+                width: 100% !important;
+                margin: auto;
+                height: 40px;
+            }
+        }
 
         @include breakpoint (ExtraLarge) {
             margin-top: 90px;

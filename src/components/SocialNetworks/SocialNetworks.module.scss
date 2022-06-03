@@ -99,6 +99,10 @@
             border-bottom: 2px solid $Black;
         }
 
+        & svg {
+            transition: all .2s linear;
+        }
+
         &:hover svg {
             fill: #3975EA;
         }

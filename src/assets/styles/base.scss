@@ -164,17 +164,27 @@ button {
     transition: all .2s linear;
 
     &.left {
-        right: 80px;
+        right: 100px;
     }
 
     &:hover {
         border: 2px solid rgba($White, 1);
     }
 
+    @include breakpoint (ExtraLarge) {
+        padding: 10px;
+        bottom: 30px;
+        right: 30px;
+    }
+
     @include breakpoint (SemiLarge) {
         padding: 10px;
         bottom: 20px;
         right: 20px;
+
+        &.left {
+            right: 70px;
+        }
     }
 
     @include breakpoint (Medium) {

@@ -22,13 +22,18 @@
 
 
     &_item {
-        cursor: default;
+        cursor: pointer;
         width: 50%;
         display: flex;
-        align-items: flex-start;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
         padding: 30px 0;
 
         border-bottom: 2px solid $Grey;
+
+        &:nth-last-child(2) {
+            border-bottom: none;
+        }
 
         &:last-child {
             border-bottom: none;
@@ -36,6 +41,11 @@
 
         @include breakpoint (ExtraLarge) {
             padding: 20px 0;
+            min-height: 150px;
+        }
+
+        @include breakpoint (Large) {
+            min-height: auto;
         }
 
         @include breakpoint (Medium) {
@@ -100,8 +110,6 @@
                 height: 40px;
                 margin: auto;
 
-                border: 2px solid $Blue;
-
                 @include breakpoint (ExtraLarge) {
                     width: 28px;
                     height: 28px;
@@ -122,6 +130,7 @@
                     height: 20px;
                 }
             }
+
 
             &_corner_upper {
                 width: 20px;
@@ -160,11 +169,22 @@
             }
         }
 
+        &:hover &_background {
+            background: $Blue;
+        }
+
+        &:hover &_background_icon {
+            filter: invert(100%);
+            -webkit-filter: invert(100%);
+        }
+
         &_right_container {
             width: auto;
             max-width: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
 
             @include breakpoint (Medium) {
                 width: 100%;
@@ -174,7 +194,9 @@
         &_title {
             font-size: 36px;
             line-height: 36px;
+            max-width: 95%;
             color: $Black;
+            text-align: start;
             font-family: $PPNeueMachinaRegular;
 
             position: relative;
@@ -182,6 +204,7 @@
             @include breakpoint (ExtraLarge) {
                 font-size: 24px;
                 line-height: 24px;
+                max-width: 95%;
             }
 
             @include breakpoint (SemiLarge) {
@@ -216,7 +239,7 @@
         }
 
         &:hover &_title_hover {
-            opacity: 0;
+            opacity: 0.5;
 
             @include breakpoint (ExtraMedium) {
                 opacity: 0;
@@ -229,6 +252,7 @@
             line-height: 24px;
             color: rgba($Black, 0.75);
             font-family: $HelveticaRegular;
+            text-align: start;
             margin-top: 15px;
 
             @include breakpoint (ExtraLarge) {

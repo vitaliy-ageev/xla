@@ -40,7 +40,6 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
                         <CustomButton
                             styleBtn='border'
                             color='black'
-                            width={140}
                             marginR={20}
                             style='opportunity_header'
                         >
@@ -57,7 +56,6 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
                         <CustomButton
                             styleBtn='border'
                             color='black'
-                            width={140}
                             marginR={20}
                             style='opportunity_header'
                         ><button>
@@ -71,7 +69,6 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
                         <CustomButton
                             styleBtn='border'
                             color='black'
-                            width={140}
                             marginR={20}
                             style='opportunity_header'
                         >

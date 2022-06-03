@@ -20,6 +20,12 @@ export interface IUpdates {
     version: string
 }
 
+export interface IStatis {
+    id: number,
+    key: string,
+    name: string
+}
+
 export interface IProject {
     id: number,
     name: string,
@@ -27,18 +33,15 @@ export interface IProject {
     description: string,
     url: string | null,
     owner_id: number,
-    status: {
-        id: number,
-        key: string,
-        name: string
-    },
+    status: IStatis,
     categories: ICategories[],
     tags: ITag[],
     created_at: string,
     start_date: string,
     close_date: string | null,
     forum_url: string,
-    typeform_url: string,
+    typeform_popup: string,
+    logo_url: string,
     images_url: [],
     opportunities_count: number
 

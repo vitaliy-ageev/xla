@@ -11,79 +11,14 @@ import ImageGallery from 'react-image-gallery';
 import LeftNav from 'react-image-gallery';
 import LeftArrow from '../UI/Icons/Arrows/LeftArrow';
 import RightArrow from '../UI/Icons/Arrows/RightArrow';
+import { opportunityAPI } from '../../services/OpportunityService';
 
 const ProjectItem: FunctionComponent = () => {
-    const OpportunitiesArr = [
-        {
-            id: 1,
-            name: "For Writers",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 2,
-            name: "For Agents",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 3,
-            name: "For Curators",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 4,
-            name: "For Readers",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 5,
-            name: "For Operators",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 6,
-            name: "For Web 3 Developers",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 7,
-            name: "For UX/UI Designers",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 8,
-            name: "For Artists",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-        {
-            id: 9,
-            name: "For Product managers",
-            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-            icon: "/",
-            link: "/"
-        },
-    ]
-
     const { id } = useParams();
     const { data: project } = projectAPI.useFetchOneProjectQuery(`${id}`)
     const { data: faqs } = projectAPI.useFetchProjectFAQQuery(`${id}`)
     const { data: updates } = projectAPI.useFetchProjectUpdatesQuery(`${id}`)
-
+    const { data: opportunities } = opportunityAPI.useFetchAllProjectOpportunitiesQuery(`${id}`)
 
     return (
         <>
@@ -103,9 +38,17 @@ const ProjectItem: FunctionComponent = () => {
                 <LinearSeparation />
                 {/* Buttons */}
                 <div className={classes.project_item_buttons}>
-                    <CustomButton name='Project discussion' styleBtn='background' marginR={20} width={352} color='black' style='project_page' />
-                    <CustomButton name='Ask a Question' styleBtn='border' marginR={20} width={310} color='black' style='project_page' />
-                    <CustomButton name='Share a similar project' styleBtn='border' marginR={20} width={420} color='black' style='project_page' />
+                    {/* <CustomButton name='Project discussion' styleBtn='background' marginR={20} width={352} color='black' style='project_page' /> */}
+                    <CustomButton styleBtn='border' marginR={20} color='black' style='project_page'>
+                        <button
+                            data-tf-slider={project.typeform_popup ? project.typeform_popup.toString().split('"')[0] : 'VHpdDtau'}
+                            data-tf-width="550"
+                            data-tf-iframe-props={`title=${project.name}`}
+                            data-tf-medium="snippet"
+                            data-tf-hidden="hidden1=xxxxx"
+                        >Ask a Question</button>
+                    </CustomButton>
+                    {/* <CustomButton name='Share a similar project' styleBtn='border' marginR={20} width={420} color='black' style='project_page' /> */}
                 </div>
                 {/* Desctiption */}
                 <div className={classes.project_item_description}>
@@ -167,7 +110,7 @@ const ProjectItem: FunctionComponent = () => {
                 </>}
 
                 {/* Opportunities */}
-                {<>
+                {opportunities?.opportunities && <>
                     <div className={classes.project_item_desc_title_block}>
                         {/* Title */}
                         <h3 className={classes.project_item_desc_title}>
@@ -175,9 +118,8 @@ const ProjectItem: FunctionComponent = () => {
                         </h3>
                     </div>
                     <LinearSeparation mobile={true} />
-
                     {/*  */}
-                    <OpportunitiesItem OpportunitiesArr={OpportunitiesArr} />
+                    <OpportunitiesItem opportunities={opportunities} />
                 </>}
 
                 {/* FAQ */}

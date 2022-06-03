@@ -6,8 +6,10 @@ import classes from './Burger.module.scss'
 
 interface BurgerMenuProps {
     isActiveBurger: boolean,
-    style: string
+    style: string,
+    onClick: () => void
 }
+
 
 const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
     let rootClasses = [classes.burger_menu]
@@ -22,7 +24,7 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
         rootClasses.push(classes.white)
 
     return (
-        <div className={rootClasses.join(' ')}>
+        <div onClick={props.onClick} className={rootClasses.join(' ')}>
             <div className={classes.burger_menu_line}></div>
             <div className={classes.burger_menu_line}></div>
             <div className={classes.burger_menu_line}></div>

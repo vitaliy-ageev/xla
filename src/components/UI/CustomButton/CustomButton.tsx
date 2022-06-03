@@ -40,6 +40,8 @@ const CustomButton: FunctionComponent<ICustomButton> = ({ children, name, styleB
     } else if (style == 'project_card') {
     } else if (style == 'opportuniti_apply') {
         rootClass.push(classes.opportuniti_apply)
+    } else if (style == 'opportunity_header') {
+        rootClass.push(classes.opportunity_header)
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Basement from '../components/Basement/Basement'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
@@ -9,9 +9,16 @@ import MainSection from '../components/MainSection/MainSection'
 import OpportunitiesList from '../components/OpportunitiesList/OpportunitiesList'
 import TitleSection from '../components/TitleSection/TitleSection'
 import Title from '../components/UI/Title/Title'
+import { Embed } from '../utils/embed'
 
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);
+
+    const [thisState, setThisState] = useState(false);
+
+    useEffect(() => {
+        Embed()
+    }, [])
 
     return (
         <div className='App'>

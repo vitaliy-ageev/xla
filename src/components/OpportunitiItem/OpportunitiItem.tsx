@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import CustomTextList from '../UI/CustomTextList/CustomTextList'
 import LinearSeparation from '../UI/LinearSeparation/LinearSeparation'
@@ -9,23 +9,27 @@ import { useParams } from 'react-router-dom';
 import classes from './OpportunitiItem.module.scss'
 import { opportunityAPI } from '../../services/OpportunityService'
 import { projectAPI } from '../../services/ProjectService'
+import { Embed } from '../../utils/embed'
 
 
-import Babka from '../../../assets/images/logo_projects/Babka.svg'
-import GameInvest from '../../../assets/images/logo_projects/GameInvest.svg'
-import Metaverse from '../../../assets/images/logo_projects/Metaverse.svg'
-import Multiverse from '../../../assets/images/logo_projects/Multiverse.svg'
-import Store3 from '../../../assets/images/logo_projects/Store3.svg'
-import UserEx from '../../../assets/images/logo_projects/UserEx.svg'
-import XLACard from '../../../assets/images/logo_projects/XLACard.svg'
-import Web3 from '../../../assets/images/logo_projects/Web3.svg'
-import PlayEarn from '../../../assets/images/logo_projects/PlayEarn.svg'
 
 const OpportunitiItem: FunctionComponent = () => {
     const { id } = useParams()
     const { data: opportunity } = opportunityAPI.useFetchOneOpportunityQuery(`${id}`)
     const { data: project } = projectAPI.useFetchOneProjectQuery(`${opportunity?.project.id}`)
     const { data: skills } = opportunityAPI.useFetchSkillsOpportunityQuery(`${id}`)
+
+    const [thisState, setThisState] = useState(false);
+
+    useEffect(() => {
+        Embed()
+    }, [thisState])
+
+    const onClickItem = (e: any) => {
+
+        e.preventDefault()
+        setThisState(true)
+    }
 
     return (
         <div className={classes.opportuniti_item}>
@@ -56,15 +60,21 @@ const OpportunitiItem: FunctionComponent = () => {
 
                 {/* Button */}
                 <div className={classes.opportuniti_item_button}>
-                    <a href={opportunity.typeform_url?.toString()} target="_blank">
-                        <CustomButton
-                            styleBtn='background'
-                            color='black'
-                            width={372}
-                            style='opportuniti_apply'>
-                            <button>Apply for this position</button>
-                        </CustomButton>
-                    </a>
+                    <CustomButton
+                        styleBtn='background'
+                        color='black'
+                        width={372}
+                        style='opportuniti_apply'>
+                        <button
+                            data-tf-slider={opportunity.typeform_popup ? opportunity.typeform_popup.toString().split('"')[1] : 'VHpdDtau'}
+                            data-tf-width="550"
+                            data-tf-iframe-props={`title=${opportunity.name}`}
+                            data-tf-medium="snippet"
+                            data-tf-hidden="hidden1=xxxxx"
+
+                            onClick={(e) => onClickItem(e)}
+                        >Apply for this position</button>
+                    </CustomButton>
                 </div>
             </>
             }
