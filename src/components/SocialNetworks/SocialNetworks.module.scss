@@ -24,7 +24,7 @@
         cursor: pointer;
         width: 42px;
         height: 42px;
-        border: 1px solid #848484;
+        border: 1px solid $Black;
         margin-right: 15px;
         display: flex;
         align-items: center;
@@ -32,8 +32,14 @@
 
         position: relative;
 
+        transition: all .2s linear;
+
         &:last-child {
             margin-right: 0;
+        }
+
+        &:hover {
+            border: 2px solid $Black;
         }
 
         @include breakpoint (ExtraLarge) {
@@ -69,11 +75,12 @@
             width: 10px;
             height: 10px;
             background: $Background;
-            border-bottom: 1px solid #848484;
+            border-bottom: 1px solid $Black;
             position: absolute;
             top: 0;
             right: 0;
             transform: rotate(45deg) translateY(-7.5px);
+            transition: all .2s linear;
 
             @include breakpoint (ExtraLarge) {
                 width: 10px;
@@ -88,15 +95,56 @@
             }
         }
 
+        &:hover &_upper {
+            border-bottom: 2px solid $Black;
+        }
+
+        &:hover svg {
+            fill: #3975EA;
+        }
+
+        &:hover.discord svg {
+            fill: #5862ED;
+        }
+
+        &:hover.telegram svg {
+            fill: #54A7E4 !important;
+        }
+
+        &:hover.instagram svg {
+            fill: #7741A7 !important;
+        }
+
+        &:hover.facebook svg {
+            fill: #3975EA !important;
+        }
+
+        &:hover.twitter svg {
+            fill: #4C9FEA !important;
+        }
+
+        &:hover.reddit svg {
+            fill: #ED6D2F !important;
+        }
+
+        &:hover.linkein svg {
+            fill: #2D64BC !important;
+        }
+
+        &:hover.union svg {
+            fill: #000 !important;
+        }
+
         &_down {
             width: 10px;
             height: 10px;
             background: $Background;
-            border-top: 1px solid #848484;
+            border-top: 1px solid $Black;
             position: absolute;
             bottom: 0;
             left: 0;
             transform: rotate(42deg) translateY(7.5px);
+            transition: all .2s linear;
 
             @include breakpoint (ExtraLarge) {
                 width: 10px;
@@ -109,6 +157,10 @@
                 height: 8px;
                 transform: rotate(46deg) translateY(6px);
             }
+        }
+
+        &:hover &_down {
+            border-top: 2px solid $Black;
         }
     }
 }

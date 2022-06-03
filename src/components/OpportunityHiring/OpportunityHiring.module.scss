@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
 
-    background: linear-gradient(to bottom right, rgb(241, 57, 248), rgb(72, 10, 243));
+    background: radial-gradient(circle, #5D3270, #1F105C);
 
     padding: 50px;
     margin-top: 50px;
@@ -49,7 +49,7 @@
             padding-bottom: 30px;
         }
 
-        @include breakpoint (ExtraMedium) {
+        @include breakpoint (SemiLarge) {
             font-size: 18px;
             line-height: 18px;
             padding-bottom: 15px;
@@ -108,7 +108,7 @@
             font-family: $PPNeueMachinaLight;
             margin-bottom: 15px;
 
-            @include breakpoint (ExtraMedium) {
+            @include breakpoint (ExtraLarge) {
                 font-size: 18px;
                 line-height: 24px;
             }
@@ -129,10 +129,10 @@
             font-size: 16px;
             line-height: 22px;
             color: rgba($White, 0.75);
-            font-family: $PPNeueMachinaRegular;
+            font-family: $HelveticaRegular;
             margin-bottom: 10px;
 
-            @include breakpoint (ExtraMedium) {
+            @include breakpoint (ExtraLarge) {
                 font-size: 14px;
                 line-height: 18px;
             }
@@ -158,7 +158,7 @@
             background-repeat: no-repeat !important;
             background-size: cover !important;
 
-            @include breakpoint (ExtraMedium) {
+            @include breakpoint (ExtraLarge) {
                 width: 50px;
                 height: 50px;
             }

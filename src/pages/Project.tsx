@@ -15,140 +15,42 @@ const Project: FunctionComponent = () => {
     const LastThreadsItems = [
         {
             id: 1,
-            title: "Make Any Web PAge 3-D With 3-D It!",
+            title: "Share your ideas and get rewarded with NFTs!",
             isTrending: true,
             comments: 50,
             tags: [
-                { id: 1, name: "tags" },
-                { id: 2, name: "tags" },
-                { id: 3, name: "tags" },
+                { id: 1, name: "web3" },
+                { id: 2, name: "NFTs" },
+                { id: 3, name: "contest" },
             ],
-            link: "/"
+            link: "https://test.x.la/forum/viewforum.php?f=80"
         },
         {
             id: 2,
-            title: "What is Web3? The future of the internet, cryptocurrency, and estate planning",
+            title: "What are your thoughts on the future of Web3?",
             isTrending: false,
             comments: 50,
             tags: [
-                { id: 1, name: "tags" },
-                { id: 2, name: "tags" },
-                { id: 3, name: "tags" },
+                { id: 1, name: "web3" },
+                { id: 2, name: "future" },
+                { id: 3, name: "blockchain" },
             ],
-            link: "/"
+            link: "https://test.x.la/forum/viewtopic.php?t=78"
         },
         {
             id: 3,
-            title: "iFive: Chinese Web Spying, Twitter on Sale at $10 Billion?, iPad 3 Rumors, Nokia-Microsoft Phones, Designer Dolls-Up \"Square\"",
+            title: "Earn crypto while learning about crypto",
             isTrending: false,
             comments: 50,
             tags: [
-                { id: 1, name: "tags" },
-                { id: 2, name: "tags" },
-                { id: 3, name: "tags" },
+                { id: 1, name: "L2E" },
+                { id: 2, name: "crypto" },
+                { id: 3, name: "blockchain" },
             ],
-            link: "/"
+            link: "https://test.x.la/forum/viewtopic.php?t=84"
         },
     ]
-
-    const OppurtunityItems = [
-        {
-            id: 1,
-            name: "Visual designer (Metaverse)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
-
-            ]
-        },
-        {
-            id: 2,
-            name: "Mobile Developer (iOS)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
-            ]
-        },
-        {
-            id: 3,
-            name: "Visual designer (Metaverse)",
-            background: "/",
-            link: "/",
-            tags: [
-                { id: 1, name: "Babka Cryptex" },
-                { id: 2, name: "Remoute frendly" },
-
-            ]
-        },
-        // {
-        //     id: 4,
-        //     name: "Mobile Developer (iOS)",
-        //     background: "/",
-        //     link: "/",
-        //     tags: [
-        //         { id: 1, name: "Babka Cryptex" },
-        //         { id: 2, name: "Remoute frendly" },
-        //     ]
-        // },
-        // {
-        //     id: 5,
-        //     name: "Visual designer (Metaverse)",
-        //     background: "/",
-        //     link: "/",
-        //     tags: [
-        //         { id: 1, name: "Babka Cryptex" },
-        //         { id: 2, name: "Remoute frendly" },
-
-        //     ]
-        // },
-        // {
-        //     id: 6,
-        //     name: "Mobile Developer (iOS)",
-        //     background: "/",
-        //     link: "/",
-        //     tags: [
-        //         { id: 1, name: "Babka Cryptex" },
-        //         { id: 2, name: "Remoute frendly" },
-        //     ]
-        // },
-        // {
-        //     id: 7,
-        //     name: "Visual designer (Metaverse)",
-        //     background: "/",
-        //     link: "/",
-        //     tags: [
-        //         { id: 1, name: "Babka Cryptex" },
-        //         { id: 2, name: "Remoute frendly" },
-
-        //     ]
-        // },
-        // {
-        //     id: 8,
-        //     name: "Mobile Developer (iOS)",
-        //     background: "/",
-        //     link: "/",
-        //     tags: [
-        //         { id: 1, name: "Babka Cryptex" },
-        //         { id: 2, name: "Remoute frendly" },
-        //     ]
-        // },
-        // {
-        //     id: 9,
-        //     name: "Visual designer (Metaverse)",
-        //     background: "/",
-        //     link: "/",
-        //     tags: [
-        //         { id: 1, name: "Babka Cryptex" },
-        //         { id: 2, name: "Remoute frendly" },
-
-        //     ]
-        // },
-    ]
-
+    
     return (
         <div className='App'>
             <Header style='black' />
@@ -162,7 +64,7 @@ const Project: FunctionComponent = () => {
                         {/* Last Threads */}
                         <LastThreads threadItems={LastThreadsItems} style='project_page' />
                         {/* Opportunity */}
-                        <OpportunityHiring opportunityItems={OppurtunityItems} />
+                        <OpportunityHiring />
                     </RightSection>
                 </LeftRightSection>
             </MainSection>

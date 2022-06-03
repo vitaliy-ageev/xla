@@ -7,6 +7,7 @@
     height: 650px;
     overflow: hidden;
     position: relative;
+    background: $Black;
 
     @include breakpoint (ExtraLarge) {
         height: 615px;
@@ -38,6 +39,7 @@
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
+        opacity: 0.5;
 
         transition: all .3s ease-in-out;
     }

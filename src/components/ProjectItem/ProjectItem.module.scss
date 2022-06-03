@@ -260,14 +260,6 @@
 
         position: relative !important;
 
-        & img {
-            width: 100% !important;
-            height: 810px;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-            background-size: cover !important;
-        }
-
         @include breakpoint (ExtraLarge) {
             height: 596px;
             margin-top: 20px;
@@ -290,6 +282,34 @@
 
         @include breakpoint (SemiMedium) {
             height: 163px;
+        }
+
+        & img {
+            width: 100% !important;
+            height: 810px;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+
+            @include breakpoint (ExtraLarge) {
+                height: 596px;
+            }
+
+            @include breakpoint (SemiLarge) {
+                height: 407px;
+            }
+
+            @include breakpoint (Large) {
+                height: 427px;
+            }
+
+            @include breakpoint (Medium) {
+                height: 227px;
+            }
+
+            @include breakpoint (SemiMedium) {
+                height: 163px;
+            }
         }
     }
 

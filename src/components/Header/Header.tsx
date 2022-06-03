@@ -5,9 +5,10 @@ import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu'
 import Logotype from '../UI/Logotype/Logotype'
 import classes from './Header.module.scss'
 import { Embed } from '../../utils/embed'
+import { useAppSelector } from '../../hooks/hooks'
 
 interface IHeader {
-    style: string
+    style: string,
 }
 
 const Header: FunctionComponent<IHeader> = ({ style }) => {
@@ -17,13 +18,9 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
         Embed()
     }, [thisState])
 
-
-
-
     const menuItems = [
-        { id: 1, name: "All projects", link: "/" },
-        { id: 2, name: "Opportunities", link: "/opportunities" },
-        { id: 3, name: "Hire Creators", link: "/" }
+        { id: 1, name: "All projects", link: "/", isScroll: true },
+        { id: 2, name: "Opportunities", link: "/opportunities", isScroll: false }
     ]
 
     const rootClasses = [classes.header]
@@ -32,6 +29,18 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     } else (
         rootClasses.push(classes.white)
     )
+
+    const { isScroll } = useAppSelector(state => state.generalReducer)
+    const scrollToBlock = (name: string) => {
+        if (name == 'All projects') {
+            document.querySelector('html')?.classList.add('scroll')
+            setTimeout(() => {
+                window.scrollTo(0, Number(isScroll))
+                document.querySelector('html')?.classList.remove('scroll')
+
+            }, 100)
+        }
+    }
 
     return (
         <div className={rootClasses.join(' ')}>
@@ -45,14 +54,16 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                         {/* Menu */}
                         <div className={classes.header_menu}>
                             {menuItems.map(item =>
-                                <Link to={item.link} className={classes.header_menu_item} key={item.id}>{item.name}</Link>
+                                <Link to={item.link} className={classes.header_menu_item} key={item.id}
+                                    onClick={() => scrollToBlock(item.name)}
+                                >{item.name}</Link>
                             )}
                         </div>
                     </div>
                     {/* Sign In & Sign Up */}
                     <div className={classes.header_buttons}>
                         {/* <CustomButton name='Log In' /> */}
-                        <CustomButton styleBtn='background' color={style}>
+                        {/* <CustomButton styleBtn='background' color={style}>
                             <button data-tf-popup="adHiZ5FW"
                                 data-tf-iframe-props="title=Opportunity (copy)"
                                 data-tf-medium="snippet"
@@ -60,7 +71,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                             >
                                 Sing In
                             </button>
-                        </CustomButton>
+                        </CustomButton> */}
                     </div>
                     <div className={classes.header_burger_menu}>
                         <BurgerMenu style={style} />

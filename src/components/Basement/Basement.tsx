@@ -16,12 +16,11 @@ const Basement: FunctionComponent = () => {
                     <div className={classes.basement_right_container}>
                         {/* Links */}
                         <div className={classes.basement_documents}>
-                            <span className={classes.basement_documents_link}>
+                            <a href="https://assets.website-files.com/61fbe6743549d73f922458c1/6274e4b697b7fb0005e12d1a_Privacy%20and%20Cookies%20Policy%20X.LA.pdf"
+                                className={classes.basement_documents_link}
+                                target="_blank">
                                 Privacy policy
-                            </span>
-                            <span className={classes.basement_documents_link}>
-                                Teams and Conditions
-                            </span>
+                            </a>
                         </div>
                     </div>
                 </div>

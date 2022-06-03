@@ -44,7 +44,7 @@ const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) =>
             </div>
             <div>
                 {threadItems.map(threadItem =>
-                    <div key={threadItem.id} className={classes.last_threads_item}>
+                    <a href={threadItem.link} target="_blank" key={threadItem.id} className={classes.last_threads_item}>
                         {/* Tranding? */}
                         {threadItem.isTrending ? <div className={classes.last_threads_item_tranding_block}>
                             Trending 🔥
@@ -67,14 +67,14 @@ const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) =>
                                 )}
                             </div>
                             {/* Comments */}
-                            < div className={classes.last_threads_item_comments} >
+                            {/* < div className={classes.last_threads_item_comments} >
                                 <Comments />
                                 <span className={classes.last_threads_item_comments_count}>
                                     {threadItem.comments}
                                 </span>
-                            </div>
+                            </div> */}
                         </div>
-                    </div>
+                    </a>
                 )
                 }
             </div>

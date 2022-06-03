@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import SocialNetworks from '../SocialNetworks/SocialNetworks'
 import Logotype from '../UI/Logotype/Logotype'
 import classes from './Footer.module.scss'
+import {Link} from 'react-router-dom'
 
 const Footer: FunctionComponent = () => {
     return (
@@ -10,9 +11,9 @@ const Footer: FunctionComponent = () => {
                 <div className={classes.footer_inner}>
                     {/* Logotype */}
                     <div className={classes.footer_left_container}>
-                        <div className={classes.footer_logotype}>
+                        <Link to="/" className={classes.footer_logotype}>
                             <Logotype color='black' style='footer' />
-                        </div>
+                        </Link>
                     </div>
                     <div className={classes.footer_right_container}>
 

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAppSelector } from '../../../hooks/hooks'
 import CustomButton from '../../UI/CustomButton/CustomButton'
 import Burger from '../../UI/Icons/Burger/Burger'
 import Logotype from '../../UI/Logotype/Logotype'
@@ -24,6 +25,16 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
         }
     }
 
+    const { isScroll } = useAppSelector(state => state.generalReducer)
+    const scrollToBlock = () => {
+        document.querySelector('html')?.classList.add('scroll')
+        setTimeout(() => {
+            window.scrollTo(0, Number(isScroll))
+            document.querySelector('html')?.classList.remove('scroll')
+
+        }, 100)
+    }
+
     return (
         <div className={classes.burger_menu} onClick={clickOnBurgerMenu} >
             <Burger style={props.style} isActiveBurger={isActiveBurger} />
@@ -38,14 +49,12 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                     </div>
                     {/* Menu */}
                     <div className={classes.burger_menu_links}>
-                        <Link to='/project' className={classes.burger_menu_link}>
+                        <Link to='/project' className={classes.burger_menu_link}
+                            onClick={scrollToBlock}>
                             All projects
                         </Link>
                         <Link to='/opportunities' className={classes.burger_menu_link}>
                             Opportunities
-                        </Link>
-                        <Link to='/' className={classes.burger_menu_link}>
-                            Hire Creators
                         </Link>
                     </div>
                     {/* Buttons */}
@@ -54,13 +63,15 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                             styleBtn='background'
                             color='black'
                             width={352}
-                            >
-                            <button data-tf-popup="adHiZ5FW"
-                                data-tf-iframe-props="title=Opportunity (copy)"
+                        >
+                            <button
+                                data-tf-slider="adHiZ5FW"
+                                data-tf-width="550"
+                                data-tf-iframe-props="title=Registration"
                                 data-tf-medium="snippet"
                                 data-tf-hidden="hidden1=xxxxx"
                             >
-                                Sing In
+                                Get started
                             </button>
                         </CustomButton>
                     </div>

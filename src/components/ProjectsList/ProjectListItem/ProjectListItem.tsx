@@ -52,7 +52,7 @@ const ProjectItem: FunctionComponent = () => {
                                     </div>
                                     {/* Text */}
                                     <div className={classes.project_item_description}>
-                                        {projectItem.description}
+                                        {projectItem.description.length > 190 ? projectItem.description.slice(0, 190) + '...' : projectItem.description}
                                     </div>
                                     <div className={classes.project_item_hover}></div>
                                 </div>

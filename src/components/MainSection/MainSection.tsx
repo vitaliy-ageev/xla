@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from 'react'
+import React, { FunctionComponent, MutableRefObject, ReactElement, Ref, RefObject } from 'react'
 import Article from '../Article/Article'
 import LastThreads from '../LastThreads/LastThreads'
 import LeftRightSection from '../LeftRightSection/LeftRightSection'

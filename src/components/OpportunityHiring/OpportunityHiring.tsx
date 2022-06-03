@@ -1,11 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { opportunityAPI } from '../../services/OpportunityService'
-import LeftRightSection from '../LeftRightSection/LeftRightSection'
-import LeftSection from '../LeftRightSection/LeftSection'
-import RightSection from '../LeftRightSection/RightSection'
 import NoiseEffect from '../UI/NoiseEffect/NoiseEffect'
 import classes from './OpportunityHiring.module.scss'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Babka from '../../assets/images/logo_projects/Babka.svg'
 import GameInvest from '../../assets/images/logo_projects/GameInvest.svg'
@@ -18,24 +15,7 @@ import Web3 from '../../assets/images/logo_projects/Web3.svg'
 import PlayEarn from '../../assets/images/logo_projects/PlayEarn.svg'
 import { RouteNames } from '../../routes/routes'
 
-interface IOpportTags {
-    id: number,
-    name: string
-}
-
-interface IOpportunity {
-    id: number,
-    name: string,
-    tags: IOpportTags[],
-    background: string,
-    link: string
-}
-
-interface ILastThreads {
-    opportunityItems: IOpportunity[]
-}
-
-const OpportunityHiring: FunctionComponent<ILastThreads> = ({ opportunityItems }) => {
+const OpportunityHiring: FunctionComponent = () => {
     const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(5)
 
     return (
@@ -45,7 +25,7 @@ const OpportunityHiring: FunctionComponent<ILastThreads> = ({ opportunityItems }
                     {/* Header */}
                     <div className={[classes.oppurtunity_hiring_container, classes.title_block].join(' ')}>
                         <span className={[classes.oppurtunity_hiring_title].join(' ')}>
-                            Opportunity hiring
+                            Opportunities
                         </span>
                         <span className={[classes.oppurtunity_hiring_title, classes.count].join(' ')}>
                             {opportunities.opportunities.length}
@@ -65,7 +45,6 @@ const OpportunityHiring: FunctionComponent<ILastThreads> = ({ opportunityItems }
                                         {/* Tags */}
                                         <div className={classes.oppurtunity_hiring_item_tags}>
                                             <span className={classes.oppurtunity_hiring_item_tag}>{opportunity.project.name}</span>
-                                            <span className={classes.oppurtunity_hiring_item_tag}>{opportunity.job_type.name}</span>
                                         </div>
                                     </div>
                                     <div className={classes.oppurtunity_hiring_item_right_container}>
@@ -89,18 +68,6 @@ const OpportunityHiring: FunctionComponent<ILastThreads> = ({ opportunityItems }
                             </Link >
                         )}
                     </div>
-
-
-
-                    {
-                        opportunityItems.length >= 9 ?
-                            <div className={classes.oppurtunity_hiring_show_more}>
-                                Show More
-                            </div>
-                            :
-                            ''
-                    }
-
                 </div >
             </NoiseEffect >}
         </>

@@ -8,6 +8,9 @@ import FAQ from '../FAQ/FAQ';
 import { useParams } from 'react-router-dom';
 import { projectAPI } from '../../services/ProjectService';
 import ImageGallery from 'react-image-gallery';
+import LeftNav from 'react-image-gallery';
+import LeftArrow from '../UI/Icons/Arrows/LeftArrow';
+import RightArrow from '../UI/Icons/Arrows/RightArrow';
 
 const ProjectItem: FunctionComponent = () => {
     const OpportunitiesArr = [
@@ -76,27 +79,10 @@ const ProjectItem: FunctionComponent = () => {
         },
     ]
 
-    // const images = [
-    //     {
-    //         original: 'https://picsum.photos/id/1018/1000/600/',
-    //         thumbnail: 'https://picsum.photos/id/1018/250/150/',
-    //     },
-    //     {
-    //         original: 'https://picsum.photos/id/1015/1000/600/',
-    //         thumbnail: 'https://picsum.photos/id/1015/250/150/',
-    //     },
-    //     {
-    //         original: 'https://picsum.photos/id/1019/1000/600/',
-    //         thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    //     },
-    // ];
-
     const { id } = useParams();
     const { data: project } = projectAPI.useFetchOneProjectQuery(`${id}`)
     const { data: faqs } = projectAPI.useFetchProjectFAQQuery(`${id}`)
     const { data: updates } = projectAPI.useFetchProjectUpdatesQuery(`${id}`)
-
-
 
 
     return (
@@ -140,9 +126,11 @@ const ProjectItem: FunctionComponent = () => {
                     <ImageGallery items={project.images_url.map(img => ({ original: img, thumbnail: img }))}
                         showFullscreenButton={false}
                         showPlayButton={false}
-                        showNav={false}
                         showThumbnails={false}
-                    ></ImageGallery>
+                        autoPlay={true}
+                        renderLeftNav={(onClick, disabled) => <LeftArrow onClick={onClick} disabled={disabled} />}
+                        renderRightNav={(onClick, disabled) => <RightArrow onClick={onClick} disabled={disabled} />}
+                    />
                 </div>
 
                 {/* Recent updates */}
