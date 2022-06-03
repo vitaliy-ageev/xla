@@ -5,12 +5,18 @@ interface ILeftSection {
     width?: string,
     minHeight?: string,
     justify?: string,
+    className?: string,
     children: ReactElement | ReactElement[]
 }
 
-const LeftSection: FunctionComponent<ILeftSection> = ({ width = '60%', minHeight, justify, children }) => {
+const LeftSection: FunctionComponent<ILeftSection> = ({ width = '60%', minHeight, justify, children, className }) => {
+    let rootClasses = [classes.left_right_section_, classes.left_section]
+    if (className == 'opportunities') {
+        rootClasses.push(classes.opportunities)
+    }
+
     return (
-        <div className={[classes.left_right_section_, classes.left_section].join(' ')}
+        <div className={rootClasses.join(' ')}
             style={{
                 width: `${width}`,
                 minHeight: `${minHeight}`,

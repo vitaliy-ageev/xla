@@ -1,6 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import CustomBackground from '../../UI/CustomBackground/CustomBackground'
 import CustomButton from '../../UI/CustomButton/CustomButton'
+import Copy from '../../UI/Icons/Copy/Copy'
+import Facebook from '../../UI/Icons/Social/Facebook'
+import Twitter from '../../UI/Icons/Social/Twitter'
 import classes from './Header.module.scss'
 
 interface HeaderProps {
@@ -11,6 +14,10 @@ interface HeaderProps {
 }
 
 const Header: FunctionComponent<HeaderProps> = (props) => {
+    const copyLink = () => {
+        navigator.clipboard.writeText(window.location.href)
+    }
+
     return (
         <div className={classes.opportuniti_header}>
             <div className={classes.opportuniti_header_left_container}>
@@ -28,29 +35,53 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
                 </h1>
                 {/* Buttons */}
                 <div className={classes.opportuniti_header_buttons}>
-                    <CustomButton
-                        styleBtn='border'
-                        color='black'
-                        width={140}
-                        marginR={20}
-                    >
-                        <button>Share</button>
-                    </CustomButton>
-                    <CustomButton
-                        styleBtn='border'
-                        color='black'
-                        width={140}
-                        marginR={20}
-                    ><button>Tweet</button>
-                    </CustomButton>
-                    <CustomButton
-                        styleBtn='border'
-                        color='black'
-                        width={140}
-                        marginR={20}
-                    >
-                        <button>Copy</button>
-                    </CustomButton>
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank"
+                        className={classes.share_facebook} >
+                        <CustomButton
+                            styleBtn='border'
+                            color='black'
+                            width={140}
+                            marginR={20}
+                            style='opportunity_header'
+                        >
+                            <button>
+                                <Facebook />
+                                Share
+                            </button>
+                        </CustomButton>
+                    </a>
+
+
+                    <a href={`http://twitter.com/share?text=${window.location.href}`} target="_blank"
+                        className={classes.share_twitter}>
+                        <CustomButton
+                            styleBtn='border'
+                            color='black'
+                            width={140}
+                            marginR={20}
+                            style='opportunity_header'
+                        ><button>
+                                <Twitter />
+                                Tweet
+                            </button>
+                        </CustomButton>
+                    </a>
+
+                    <div className={classes.copy_link}>
+                        <CustomButton
+                            styleBtn='border'
+                            color='black'
+                            width={140}
+                            marginR={20}
+                            style='opportunity_header'
+                        >
+                            <button onClick={copyLink}>
+                                <Copy />
+                                Copy
+                            </button>
+                        </CustomButton>
+                    </div>
+
                 </div>
             </div>
         </div>

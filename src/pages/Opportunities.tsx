@@ -21,10 +21,10 @@ const Opportunities: FunctionComponent = () => {
                 {/* Title */}
                 <Title title='Latest New Projects' />
                 <LeftRightSection>
-                    <LeftSection width='70%'>
+                    <LeftSection width='80%' className='opportunities'>
                         <OpportunitiesList />
                     </LeftSection>
-                    <RightSection width='20%'>
+                    <RightSection width='20%' className='opportunities'>
 
                     </RightSection>
                 </LeftRightSection>

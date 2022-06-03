@@ -6,6 +6,7 @@
     font-size: 24px;
     line-height: 23px;
     // padding: 15px 30px;
+    max-width: 660px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0);
     color: $White;
@@ -27,6 +28,26 @@
         line-height: 24px;
         padding: 20px 30px;
         height: 63px;
+    }
+
+    @include breakpoint (ExtraLarge) {
+        max-width: 270px;
+        font-size: 18px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        max-width: 240px;
+        font-size: 18px;
+    }
+
+    @include breakpoint (Large) {
+        max-width: 220px;
+        font-size: 18px;
+    }
+
+    @include breakpoint (Medium) {
+        max-width: 100%;
+        font-size: 18px;
     }
 
     @include breakpoint (ExtraMedium) {

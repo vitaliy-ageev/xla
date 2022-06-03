@@ -53,10 +53,10 @@ const OpportunitiesList: FunctionComponent = () => {
                                 <span className={classes.opportunities_list_item_name_project}>
                                     {opportunity.project.name}
                                 </span>
-                                <div className={classes.opportunities_list_item_delimiter}></div>
+                                {/* <div className={classes.opportunities_list_item_delimiter}></div>
                                 <span className={classes.opportunities_list_item_type}>
                                     {opportunity.job_type.name}
-                                </span>
+                                </span> */}
                                 <div className={classes.opportunities_list_item_delimiter}></div>
                                 <span className={classes.opportunities_list_item_method}>
                                     {opportunity.working_mode.name}
@@ -66,7 +66,7 @@ const OpportunitiesList: FunctionComponent = () => {
                         </div>
                         <div className={classes.opportunities_list_item_container_right}>
                             {/* Location & Data */}
-                            <div className={classes.opportunities_list_item_location_block}>
+                            {/* <div className={classes.opportunities_list_item_location_block}>
                                 {opportunity.location && <>
                                     <span className={classes.opportunities_list_item_location}>
                                         <Location />
@@ -75,17 +75,23 @@ const OpportunitiesList: FunctionComponent = () => {
                                 <span className={classes.opportunities_list_item_data}>
                                     {new Date(opportunity.created_at).toDateString()}
                                 </span>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className={classes.opportunities_list_item_buttons}>
-                        <CustomButton styleBtn='border' marginR={20} width={200} color='black' style='opportunities_list'>
-                            <button onClick={() => history(RouteNames.OPPORTUNITY + '/id=' + opportunity.id)}>View offer</button>
-                        </CustomButton>
-                        <a href={opportunity.typeform_url?.toString()} target="_blank">
-                            <CustomButton styleBtn='border' width={200} color='black' style='opportunities_list'>
-                                <button>Apply now</button>
-                            </CustomButton></a>
+                        <div>
+                            <CustomButton styleBtn='border' marginR={20} width={200} color='black' style='opportunities_list'>
+                                <button onClick={() => history(RouteNames.OPPORTUNITY + '/id=' + opportunity.id)}>View offer</button>
+                            </CustomButton>
+                        </div>
+                        <div>
+                            <a href={opportunity.typeform_url?.toString()} target="_blank" onClick={(e) => { e.stopPropagation() }}>
+                                <CustomButton styleBtn='border' width={200} color='black' style='opportunities_list'>
+                                    <button>Apply now</button>
+                                </CustomButton>
+                            </a>
+                        </div>
+
                     </div>
                 </Link>
             )

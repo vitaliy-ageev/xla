@@ -23,6 +23,15 @@
             &.right_section {
                 width: 30% !important;
             }
+
+            // Opportunities
+            &.left_section.opportunities {
+                width: 65% !important;
+            }
+
+            &.right_section.opportunities {
+                width: 25% !important;
+            }
         }
 
         @include breakpoint (SemiLarge) {
@@ -35,6 +44,15 @@
             &.right_section {
                 width: 35% !important;
             }
+
+            // Opportunities
+            &.left_section.opportunities {
+                width: 65% !important;
+            }
+
+            &.right_section.opportunities {
+                width: 30% !important;
+            }
         }
 
         @include breakpoint (Large) {
@@ -43,6 +61,14 @@
             }
 
             &.right_section {
+                width: 100% !important;
+            }
+
+            &.left_section.opportunities {
+                width: 100% !important;
+            }
+
+            &.right_section.opportunities {
                 width: 100% !important;
             }
         }

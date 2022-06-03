@@ -59,7 +59,7 @@
         }
 
         &_left {
-            width: 18%;
+            width: auto;
 
             @include breakpoint (Large) {
                 width: auto;
@@ -68,12 +68,14 @@
         }
 
         &_right {
-            width: 82%;
+            width: 100%;
+            // width: auto;
             display: flex;
             align-items: center;
+            margin-left: 40px;
 
             @include breakpoint (ExtraLarge) {
-                margin-left: 40px;
+                margin-left: 30px;
             }
 
             @include breakpoint (SemiLarge) {
@@ -336,7 +338,7 @@
         }
 
         &_hover {
-            width: 85%;
+            width: 65%;
             height: 100%;
             background: $Blue;
             position: absolute;
@@ -364,16 +366,33 @@
             right: 0;
             display: flex;
             opacity: 0;
-
-            transition: opacity 0.1s linear;
+            z-index: 10000;
         }
 
         &:hover &_buttons {
             opacity: 1;
 
             @include breakpoint (SemiLarge) {
+                flex-direction: column;
+
+                & div {
+                    width: 180px !important;
+                    margin-bottom: 5px;
+                }
+            }
+
+            @include breakpoint (HD) {
+                background: rgba($White, 0.9);
+
+                & div {
+                    width: 220px !important;
+                }
+            }
+
+            @include breakpoint (ExtraMedium) {
                 opacity: 0;
             }
+
         }
 
     }

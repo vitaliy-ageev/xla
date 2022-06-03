@@ -120,5 +120,60 @@
             flex-direction: column;
             margin-top: 20px;
         }
+
+
+    }
+}
+
+.share_facebook {
+    & button {
+        width: 400px;
+    }
+
+    & svg {
+        width: 16px;
+        height: 16px;
+        fill: #3975EA;
+        margin-right: 5px;
+        margin-bottom: 2px;
+    }
+
+    &:hover svg {
+        fill: #fff;
+    }
+}
+
+.share_twitter {
+    & button {
+        width: 400px;
+    }
+
+    & svg {
+        width: 16px;
+        height: 16px;
+        fill: #4C9FEA;
+        margin-right: 5px;
+        margin-bottom: 2px;
+    }
+
+    &:hover svg {
+        fill: #fff;
+    }
+}
+
+.copy_link {
+    & button {
+        width: 400px;
+    }
+
+    & svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        fill: $Black;
+    }
+
+    &:hover svg {
+        fill: #fff;
     }
 }
