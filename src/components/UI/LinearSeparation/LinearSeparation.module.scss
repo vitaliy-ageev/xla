@@ -21,6 +21,8 @@
     }
 
     @include breakpoint (Medium) {
+        margin-top: 0;
+
         &.opportuniti_page {
             display: none;
         }

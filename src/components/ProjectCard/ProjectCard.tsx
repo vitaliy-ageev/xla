@@ -33,9 +33,13 @@ const ProjectCard: FunctionComponent = () => {
                     {opportunity.name}
                 </span>
                 {/* Link */}
-                <a href={opportunity.project.url ? opportunity.project.url : '/'} target='_blank' className={classes.project_card_link}>
-                    Visit Website
-                </a>
+                <>
+                    {opportunity.project.url &&
+                        < a href={opportunity.project.url ? opportunity.project.url : '/'} target='_blank' className={classes.project_card_link}>
+                            Visit Website
+                        </a>
+                    }
+                </>
                 {/* Button */}
                 <CustomButton
                     styleBtn='background'

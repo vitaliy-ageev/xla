@@ -12,6 +12,21 @@ interface OpportunityHiringProps {
 
 const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => {
 
+    let resultArray = []
+    let array = props.opportunities?.slice()
+    let n = props.opportunities?.length
+    if (array && n && n > array?.length)
+        n = array?.length
+
+    if (array && n) {
+        for (let i = 0; i < n; i += 1) {
+            resultArray.push(array.splice(Math.floor(Math.random() * array.length), 1)[0]);
+        }
+    }
+
+    console.log("result", resultArray)
+
+
     return (
         <>
             {props.opportunities && <NoiseEffect opacity='0.1'>
@@ -28,7 +43,7 @@ const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => 
 
                     <div>
                         {/* Item */}
-                        {props.opportunities && props.opportunities.slice(0, 5).map(opportunity =>
+                        {props.opportunities && resultArray.slice(0, 5).map(opportunity =>
                             <Link to={RouteNames.OPPORTUNITY + '/id=' + opportunity.id} key={opportunity.id} className={classes.oppurtunity_hiring_item} >
                                 <div className={classes.oppurtunity_hiring_item_inner}>
                                     <div className={classes.oppurtunity_hiring_item_left_container}>

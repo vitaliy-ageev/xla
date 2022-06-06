@@ -8,7 +8,7 @@ import Location from '../UI/Icons/Location/Location'
 import classes from './OpportunitiesList.module.scss'
 
 const OpportunitiesList: FunctionComponent = () => {
-    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(10)
+    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(50)
     const history = useNavigate()
 
     const [thisState, setThisState] = useState(false);
@@ -19,7 +19,7 @@ const OpportunitiesList: FunctionComponent = () => {
 
     setTimeout(() => {
         Embed()
-    } ,10 )
+    }, 10)
 
     const onClickItem = (e: any) => {
 
@@ -27,9 +27,22 @@ const OpportunitiesList: FunctionComponent = () => {
         // setThisState(false)
     }
 
+
+    let resultArray = []
+    let array = opportunities?.opportunities.slice()
+    let n = opportunities?.opportunities.length
+    if (array && n && n > array?.length)
+        n = array?.length
+
+    if (array && n) {
+        for (let i = 0; i < n; i += 1) {
+            resultArray.push(array.splice(Math.floor(Math.random() * array.length), 1)[0]);
+        }
+    }
+
     return (
         <div className={classes.opportunities_list}>
-            {opportunities && opportunities.opportunities.map(opportunity =>
+            {opportunities && resultArray.slice(0, 10).map(opportunity =>
                 <Link to={RouteNames.OPPORTUNITY + '/id=' + opportunity.id} key={opportunity.id} className={classes.opportunities_list_item}>
                     <div className={classes.opportunities_list_item_left}>
                         {/* Background */}
@@ -78,7 +91,7 @@ const OpportunitiesList: FunctionComponent = () => {
                     <div className={classes.opportunities_list_item_buttons}>
                         <div>
                             <CustomButton styleBtn='border' marginR={20} width={200} color='black' style='opportunities_list'>
-                                <button onClick={() => history(RouteNames.OPPORTUNITY + '/id=' + opportunity.id)}>View offer</button>
+                                <button>View offer</button>
                             </CustomButton>
                         </div>
                         <div>

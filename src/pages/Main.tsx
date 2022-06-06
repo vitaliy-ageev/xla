@@ -58,7 +58,7 @@ const Main: FunctionComponent = () => {
         },
     ]
 
-    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(5)
+    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(50)
     const scrollRef: any = useRef()
     const { setScroll } = generalSlice.actions;
     const dispatch = useAppDispatch();

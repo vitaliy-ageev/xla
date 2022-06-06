@@ -2,25 +2,19 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import { IOpportunity } from '../../../models/IOpportunity'
 import { Embed } from '../../../utils/embed'
 import classes from './Opportunities.module.scss'
+import { Link } from 'react-router-dom'
+import { RouteNames } from '../../../routes/routes'
 
 interface OpportunitiesItemProps {
     opportunities: IOpportunity[] | undefined
 }
 
 const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
-    useEffect(() => {
-        Embed()
-    }, [])
-
     return (
         <div className={classes.opportunities_section}>
             {props.opportunities && props.opportunities.map(item =>
                 <>
-                    <button data-tf-slider={item.typeform_apply_popup?.split(`"`)[1]}
-                        data-tf-width="550"
-                        data-tf-iframe-props={`title=${item.name}`}
-                        data-tf-medium="snippet"
-                        data-tf-hidden="hidden1=xxxxx"
+                    <Link to={RouteNames.OPPORTUNITY + '/id=' + item.id}
                         key={item.id} className={classes.opportunities_section_item}>
                         {/* Background */}
                         <div className={classes.opportunities_section_item_left_container}>
@@ -48,7 +42,7 @@ const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
                                 {item.description.length > 50 ? item.description.slice(0, 75) + '...' : item.description}
                             </span>
                         </div>
-                    </button>
+                    </Link>
                 </>
             )}
         </div >
