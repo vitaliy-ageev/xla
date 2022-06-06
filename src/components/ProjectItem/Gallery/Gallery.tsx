@@ -15,7 +15,7 @@ const Gallery: FunctionComponent<GalleryProps> = (props) => {
                 showFullscreenButton={false}
                 showPlayButton={false}
                 showThumbnails={false}
-                autoPlay={true}
+                autoPlay={false}
                 renderLeftNav={(onClick, disabled) => <LeftArrow onClick={onClick} disabled={disabled} />}
                 renderRightNav={(onClick, disabled) => <RightArrow onClick={onClick} disabled={disabled} />}
             />
