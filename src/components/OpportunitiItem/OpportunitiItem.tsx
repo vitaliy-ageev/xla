@@ -22,13 +22,18 @@ const OpportunitiItem: FunctionComponent = () => {
     const [thisState, setThisState] = useState(false);
 
     useEffect(() => {
-        Embed()
+        // Embed()
     }, [thisState])
+
+    setTimeout(() => {
+        Embed()
+    } ,10 )
+
 
     const onClickItem = (e: any) => {
 
         e.preventDefault()
-        setThisState(true)
+        // setThisState(true)
     }
 
     return (

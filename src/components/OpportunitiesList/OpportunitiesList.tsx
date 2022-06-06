@@ -14,13 +14,17 @@ const OpportunitiesList: FunctionComponent = () => {
     const [thisState, setThisState] = useState(false);
 
     useEffect(() => {
-        Embed()
+
     }, [thisState])
+
+    setTimeout(() => {
+        Embed()
+    } ,10 )
 
     const onClickItem = (e: any) => {
 
         e.preventDefault()
-        setThisState(true)
+        // setThisState(false)
     }
 
     return (
@@ -80,7 +84,7 @@ const OpportunitiesList: FunctionComponent = () => {
                         <div>
                             <CustomButton styleBtn='border' width={200} color='black' style='opportunities_list'>
                                 <button
-                                    data-tf-slider={opportunity.typeform_popup ? opportunity.typeform_popup.toString().split('"')[1] : 'VHpdDtau'}
+                                    data-tf-slider={opportunity.typeform_apply_popup ? opportunity.typeform_apply_popup.toString().split('"')[1] : ''}
                                     data-tf-width="550"
                                     data-tf-iframe-props={`title=${opportunity.name}`}
                                     data-tf-medium="snippet"

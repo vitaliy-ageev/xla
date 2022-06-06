@@ -1,0 +1,147 @@
+@import "@variables";
+@import "@mixins";
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 55px;
+
+    @include breakpoint (ExtraLarge) {
+        max-width: 1015px;
+        margin-bottom: 50px;
+    }
+
+    @include breakpoint (SemiLarge) {
+        max-width: 692px;
+        margin-bottom: 40px;
+    }
+
+    @include breakpoint (Large) {
+        max-width: 728px;
+        margin-bottom: 30px;
+    }
+
+    @include breakpoint (Medium) {
+        max-width: 388px;
+        margin-bottom: 40px;
+    }
+
+    @include breakpoint (SemiMedium) {
+        max-width: 280px;
+        margin-bottom: 30px;
+    }
+
+
+    &_title {
+        cursor: default;
+        font-size: 96px;
+        line-height: 100px;
+        color: $Black;
+        font-family: $PPNeueMachinaRegular;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 72px;
+            line-height: 69px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 64px;
+            line-height: 64px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 48px;
+            line-height: 48px;
+        }
+
+        @include breakpoint (Medium) {
+            font-size: 36px;
+            line-height: 36px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+    }
+
+    &_subtitle {
+        cursor: default;
+        font-size: 30px;
+        line-height: 34px;
+        color: rgba($Black, 0.75);
+        font-weight: 400;
+        font-family: $HelveticaRegular;
+        margin-top: 15px;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 30px;
+            line-height: 34px;
+            margin-top: 15px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 24px;
+            line-height: 28px;
+            margin-top: 10px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 18px;
+            line-height: 21px;
+        }
+
+
+        @include breakpoint (Medium) {
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+
+    &_link {
+        cursor: pointer;
+        font-size: 24px;
+        line-height: 30px;
+        color: $Blue;
+        font-family: $PPNeueMachinaRegular;
+        display: block;
+        margin-top: 50px;
+        text-decoration: underline;
+
+        @include breakpoint (ExtraLarge) {
+            font-size: 24px;
+            line-height: 30px;
+            margin-top: 50px;
+        }
+
+        @include breakpoint (SemiLarge) {
+            font-size: 18px;
+            line-height: 24px;
+            margin-top: 30px;
+        }
+
+        @include breakpoint (Large) {
+            font-size: 16px;
+            line-height: 22px;
+            margin-top: 20px;
+        }
+
+        @include breakpoint (Medium) {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        @include breakpoint (SemiMedium) {
+            font-size: 14px;
+            line-height: 18px;
+        }
+    }
+}

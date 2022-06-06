@@ -55,7 +55,7 @@ export interface IOpportunity {
     job_type: IJobType,
     working_mode: IWorkingMode,
     location: string | null,
-    typeform_popup: string | null,
+    typeform_apply_popup: string | null,
     created_at: string
 }
 

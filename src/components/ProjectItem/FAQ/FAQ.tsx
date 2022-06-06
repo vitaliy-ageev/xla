@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
-import Cross from '../UI/Icons/Cross/Cross'
+import Cross from '../../UI/Icons/Cross/Cross'
 import classes from './FAQ.module.scss'
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import { IFAQ } from '../../models/IProject';
+import { IFAQ } from '../../../models/IProject';
 
 interface FAQProps {
     faqs: IFAQ[]
@@ -42,7 +42,6 @@ const FAQ: FunctionComponent<FAQProps> = (props) => {
                             </div>
                         </AccordionSummary>
                     </div>
-
                     <AccordionDetails className={classes.faq_item_description}>
                         <Typography >
                             <div >
@@ -51,9 +50,7 @@ const FAQ: FunctionComponent<FAQProps> = (props) => {
                                 </p>
                             </div>
                         </Typography>
-
                     </AccordionDetails>
-
                 </Accordion>
             )}
         </div>

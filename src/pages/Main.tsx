@@ -13,6 +13,7 @@ import Projects from '../components/ProjectsList/ProjectsList';
 import StartBlock from '../components/StartBlock/StartBlock';
 import Title from '../components/UI/Title/Title';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 
 const Main: FunctionComponent = () => {
@@ -29,7 +30,7 @@ const Main: FunctionComponent = () => {
                 { id: 2, name: "NFTs" },
                 { id: 3, name: "contest" },
             ],
-            link: "https://test.x.la/forum/viewforum.php?f=80"
+            link: "https://test.x.la/forum/viewtopic.php?t=137"
         },
         {
             id: 2,
@@ -57,6 +58,7 @@ const Main: FunctionComponent = () => {
         },
     ]
 
+    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(5)
     const scrollRef: any = useRef()
     const { setScroll } = generalSlice.actions;
     const dispatch = useAppDispatch();
@@ -64,8 +66,6 @@ const Main: FunctionComponent = () => {
     useEffect(() => {
         dispatch(setScroll(scrollRef.current.offsetTop))
     }, [])
-
-
 
     return (
         <div className='App'>
@@ -87,7 +87,7 @@ const Main: FunctionComponent = () => {
                             {/* Last Threads */}
                             <LastThreads threadItems={LastThreadsItems} />
                             {/* Opportunity */}
-                            <OpportunityHiring />
+                            <OpportunityHiring opportunities={opportunities?.opportunities} />
                         </RightSection>
                     </LeftRightSection>
                 </MainSection>

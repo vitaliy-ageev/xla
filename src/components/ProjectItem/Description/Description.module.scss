@@ -1,0 +1,38 @@
+@import "@variables";
+@import "@mixins";
+
+.description {
+    cursor: default;
+    width: 100%;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba($Black, 0.75);
+    font-weight: 400;
+    font-family: $HelveticaRegular;
+    margin: 100px 0;
+
+    @include breakpoint (ExtraLarge) {
+        font-size: 16px;
+        line-height: 22px;
+        font-family: $PPNeueMachinaMedium;
+        margin: 50px 0;
+    }
+
+    @include breakpoint (SemiLarge) {
+        font-size: 14px;
+        line-height: 18px;
+        margin: 40px 0;
+    }
+
+    @include breakpoint (Large) {
+        margin: 30px 0;
+    }
+
+    @include breakpoint (Medium) {
+        margin: 40px 0;
+    }
+
+    @include breakpoint (SemiMedium) {
+        margin: 30px 0;
+    }
+}

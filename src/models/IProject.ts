@@ -40,7 +40,8 @@ export interface IProject {
     start_date: string,
     close_date: string | null,
     forum_url: string,
-    typeform_popup: string,
+    typeform_competitor_popup: string,
+    typeform_question_popup: string,
     logo_url: string,
     images_url: [],
     opportunities_count: number

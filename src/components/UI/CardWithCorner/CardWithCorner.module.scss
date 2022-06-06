@@ -12,15 +12,27 @@
 
     padding: 30px;
 
+    &.filter_opportunities {
+        padding: 50px;
+    }
+
     @include breakpoint (ExtraLarge) {
         &.project_card {
             padding: 20px;
+        }
+
+        &.filter_opportunities {
+            padding: 30px;
         }
     }
 
     @include breakpoint (Large) {
         &.project_card {
             padding: 95px;
+        }
+
+        &.filter_opportunities {
+            display: none;
         }
     }
 

@@ -13,10 +13,6 @@ import { Embed } from '../utils/embed';
 const Opportuniti: FunctionComponent = () => {
   window.scrollTo(0, 0);
 
-  useEffect(() => {
-    Embed()
-  }, [])
-
   return (
     <div className='App'>
       {/* Header */}

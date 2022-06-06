@@ -4,13 +4,17 @@ import NoiseEffect from '../UI/NoiseEffect/NoiseEffect'
 import classes from './OpportunityHiring.module.scss'
 import { Link } from 'react-router-dom'
 import { RouteNames } from '../../routes/routes'
+import { IOpportunity } from '../../models/IOpportunity'
 
-const OpportunityHiring: FunctionComponent = () => {
-    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(5)
+interface OpportunityHiringProps {
+    opportunities: IOpportunity[] | undefined
+}
+
+const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => {
 
     return (
         <>
-            {opportunities && <NoiseEffect opacity='0.1'>
+            {props.opportunities && <NoiseEffect opacity='0.1'>
                 <div className={classes.oppurtunity_hiring}>
                     {/* Header */}
                     <div className={[classes.oppurtunity_hiring_container, classes.title_block].join(' ')}>
@@ -18,13 +22,13 @@ const OpportunityHiring: FunctionComponent = () => {
                             Opportunities
                         </span>
                         <span className={[classes.oppurtunity_hiring_title, classes.count].join(' ')}>
-                            {opportunities.opportunities.length}
+                            {props.opportunities.slice(0, 5).length}
                         </span>
                     </div>
 
                     <div>
                         {/* Item */}
-                        {opportunities && opportunities.opportunities.map(opportunity =>
+                        {props.opportunities && props.opportunities.slice(0, 5).map(opportunity =>
                             <Link to={RouteNames.OPPORTUNITY + '/id=' + opportunity.id} key={opportunity.id} className={classes.oppurtunity_hiring_item} >
                                 <div className={classes.oppurtunity_hiring_item_inner}>
                                     <div className={classes.oppurtunity_hiring_item_left_container}>
@@ -39,11 +43,13 @@ const OpportunityHiring: FunctionComponent = () => {
                                     </div>
                                     <div className={classes.oppurtunity_hiring_item_right_container}>
                                         {/* Background */}
-                                        <div className={classes.oppurtunity_hiring_item_background}
-
-                                            style={{
-                                                background: `url(${opportunity.project.logo_url})`
-                                            }}></div>
+                                        <div className={classes.oppurtunity_hiring_item_background}>
+                                            <div className={classes.oppurtunity_hiring_item_background_img}
+                                                style={{
+                                                    background: `url(${opportunity.project.logo_url})`
+                                                }}
+                                            ></div>
+                                        </div>
                                     </div>
                                 </div>
                             </Link >

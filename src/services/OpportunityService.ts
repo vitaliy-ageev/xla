@@ -37,7 +37,7 @@ export const opportunityAPI = createApi({
             query: (id: string) => ({
                 url: `/projects/opportunities?project_id=${id}`
             }),
-            providesTags: result => ['Opportunity'],
+            providesTags: result => ['Opportunity']
         })
     })
 })

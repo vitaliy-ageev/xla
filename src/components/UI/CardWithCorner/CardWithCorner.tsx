@@ -10,6 +10,8 @@ const CardWithCorner: FunctionComponent<CardWithCornerProps> = (props) => {
     let rootClasses = [classes.card_with_corner]
     if (props.class == 'project_card') {
         rootClasses.push(classes.project_card)
+    } else if (props.class == 'filter_opportunities') {
+        rootClasses.push(classes.filter_opportunities)
     }
 
     return (

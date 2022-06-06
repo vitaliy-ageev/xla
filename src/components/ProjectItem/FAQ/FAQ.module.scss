@@ -5,17 +5,21 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
+    margin-top: 45px;
 
     @include breakpoint (ExtraLarge) {
-        margin-top: 50px;
+        margin-top: 45px;
     }
 
     @include breakpoint (SemiLarge) {
-        margin-top: 30px;
+        margin-top: 35px;
     }
 
     @include breakpoint (Medium) {
+        margin-top: 25px;
+    }
+
+    @include breakpoint (SemiMedium) {
         margin-top: 20px;
     }
 
@@ -44,12 +48,9 @@
         }
 
         &_title_block {
-
-
             width: 100% !important;
             display: flex;
             justify-content: space-between;
-
             padding: 30px 10px;
             margin: 0 !important;
 

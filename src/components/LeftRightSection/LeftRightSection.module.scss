@@ -13,33 +13,41 @@
         display: flex;
         flex-direction: column;
 
+        &.left_section {
+            max-width: 1388px;
+        }
+
+        &.right_section {
+            max-width: 793px;
+        }
+
         // Opportunities
         &.left_section.opportunities {
-            width: 60% !important;
+            max-width: 1587px;
         }
 
         &.right_section.opportunities {
-            width: 30% !important;
+            max-width: 595px;
         }
 
         @include breakpoint (ExtraLarge) {
             width: 100% !important;
 
             &.left_section {
-                width: 60% !important;
+                max-width: 1015px;
             }
 
             &.right_section {
-                width: 30% !important;
+                max-width: 582px;
             }
 
             // Opportunities
             &.left_section.opportunities {
-                width: 65% !important;
+                max-width: 1160px;
             }
 
             &.right_section.opportunities {
-                width: 25% !important;
+                max-width: 435px;
             }
         }
 
@@ -47,30 +55,32 @@
             width: 100% !important;
 
             &.left_section {
-                width: 55% !important;
+                max-width: 692px;
             }
 
             &.right_section {
-                width: 35% !important;
+                max-width: 395px;
             }
 
             // Opportunities
             &.left_section.opportunities {
-                width: 65% !important;
+                max-width: 692px;
             }
 
             &.right_section.opportunities {
-                width: 30% !important;
+                max-width: 395px;
             }
         }
 
         @include breakpoint (Large) {
             &.left_section {
                 width: 100% !important;
+                max-width: 100%;
             }
 
             &.right_section {
                 width: 100% !important;
+                max-width: 100%;
             }
 
             &.left_section.opportunities {

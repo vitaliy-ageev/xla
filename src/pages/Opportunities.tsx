@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Basement from '../components/Basement/Basement'
+import FilterOpportunities from '../components/FilterOpportunities/FilterOpportunities'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import LeftRightSection from '../components/LeftRightSection/LeftRightSection'
@@ -14,12 +15,6 @@ import { Embed } from '../utils/embed'
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);
 
-    const [thisState, setThisState] = useState(false);
-
-    useEffect(() => {
-        Embed()
-    }, [])
-
     return (
         <div className='App'>
             <Header style='white' />
@@ -28,11 +23,11 @@ const Opportunities: FunctionComponent = () => {
                 {/* Title */}
                 <Title title='Latest New Projects' />
                 <LeftRightSection>
-                    <LeftSection width='80%' className='opportunities'>
+                    <LeftSection className='opportunities'>
                         <OpportunitiesList />
                     </LeftSection>
-                    <RightSection width='20%' className='opportunities'>
-
+                    <RightSection className='opportunities'>
+                        <FilterOpportunities  />
                     </RightSection>
                 </LeftRightSection>
             </MainSection>

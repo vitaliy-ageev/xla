@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { useParams } from 'react-router-dom';
 import Basement from '../components/Basement/Basement';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
@@ -9,6 +10,8 @@ import RightSection from '../components/LeftRightSection/RightSection';
 import MainSection from '../components/MainSection/MainSection';
 import OpportunityHiring from '../components/OpportunityHiring/OpportunityHiring';
 import ProjectItem from '../components/ProjectItem/ProjectItem';
+import { opportunityAPI } from '../services/OpportunityService';
+import { projectAPI } from '../services/ProjectService';
 
 const Project: FunctionComponent = () => {
     window.scrollTo(0, 0);
@@ -23,7 +26,7 @@ const Project: FunctionComponent = () => {
                 { id: 2, name: "NFTs" },
                 { id: 3, name: "contest" },
             ],
-            link: "https://test.x.la/forum/viewforum.php?f=80"
+            link: "https://test.x.la/forum/viewtopic.php?t=137"
         },
         {
             id: 2,
@@ -50,7 +53,12 @@ const Project: FunctionComponent = () => {
             link: "https://test.x.la/forum/viewtopic.php?t=84"
         },
     ]
-    
+    const { id } = useParams();
+    const { data: project } = projectAPI.useFetchOneProjectQuery(`${id}`)
+    const { data: faqs } = projectAPI.useFetchProjectFAQQuery(`${id}`)
+    const { data: updates } = projectAPI.useFetchProjectUpdatesQuery(`${id}`)
+    const { data: opportunities } = opportunityAPI.useFetchAllProjectOpportunitiesQuery(`${id}`)
+
     return (
         <div className='App'>
             <Header style='black' />
@@ -58,13 +66,13 @@ const Project: FunctionComponent = () => {
                 <LeftRightSection>
                     <LeftSection>
                         {/* Project */}
-                        <ProjectItem />
+                        <ProjectItem project={project} updates={updates} faqs={faqs} opportunities={opportunities?.opportunities} />
                     </LeftSection>
                     <RightSection>
                         {/* Last Threads */}
                         <LastThreads threadItems={LastThreadsItems} style='project_page' />
                         {/* Opportunity */}
-                        <OpportunityHiring />
+                        <OpportunityHiring opportunities={opportunities?.opportunities} />
                     </RightSection>
                 </LeftRightSection>
             </MainSection>

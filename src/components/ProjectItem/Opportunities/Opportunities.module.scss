@@ -6,56 +6,77 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 70px;
+    margin: 45px 0 100px 0;
 
     @include breakpoint (ExtraLarge) {
-        margin-top: 40px;
+        margin: 45px 0 50px 0;
     }
 
     @include breakpoint (SemiLarge) {
-        margin-top: 20px;
+        margin: 35px 0 40px 0;
+    }
+
+    @include breakpoint (Large) {
+        margin: 35px 0 30px 0;
     }
 
     @include breakpoint (Medium) {
-        margin-top: 15px;
+        margin: 35px 0 40px 0;
     }
 
+    @include breakpoint (SemiMedium) {
+        margin: 35px 0 30px 0;
+    }
 
     &_item {
         cursor: pointer;
         width: 50%;
+        max-width: 694px;
+        max-height: 150px;
         display: flex;
         align-items: flex-start !important;
         justify-content: flex-start !important;
-        padding: 30px 0;
+        padding: 25px 0;
 
         border-bottom: 2px solid $Grey;
 
-        &:nth-last-child(2) {
-            border-bottom: none;
-        }
-
-        &:last-child {
-            border-bottom: none;
-        }
-
         @include breakpoint (ExtraLarge) {
-            padding: 20px 0;
-            min-height: 150px;
+            max-width: 507px;
+            max-height: 133px;
+            padding: 25px 25px 25px 0;
+        }
+
+        @include breakpoint (SemiLarge) {
+            max-width: 346px;
+            height: 150px;
+            max-height: 150px;
         }
 
         @include breakpoint (Large) {
-            min-height: auto;
+            max-width: 364px;
+            height: 140px;
+            max-height: 140px;
+            padding: 25px 20px 25px 0;
+            overflow: hidden;
         }
 
         @include breakpoint (Medium) {
             flex-direction: column;
             width: 100%;
-            padding: 20px 0;
+            max-width: 100%;
+            height: auto;
+            max-height: 225px;
+            padding: 20px 20px 20px 0;
+
+            &:last-child {
+                border-bottom: none;
+            }
         }
 
-        @include breakpoint (ExtraMedium) {
-            cursor: default;
+        @include breakpoint (SemiMedium) {
+            width: 100%;
+            max-width: 100%;
+            max-height: 177px;
         }
 
         &_left_container {
@@ -63,11 +84,7 @@
             margin-right: 30px;
 
             @include breakpoint (ExtraLarge) {
-                margin-right: 20px;
-            }
-
-            @include breakpoint (SemiLarge) {
-                margin-right: 20px;
+                margin-right: 30px;
             }
 
             @include breakpoint (Medium) {
@@ -109,7 +126,6 @@
                 width: 40px;
                 height: 40px;
                 margin: auto;
-                background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important;
 
                 @include breakpoint (ExtraLarge) {
                     width: 28px;
@@ -193,9 +209,9 @@
         }
 
         &_title {
+            max-width: 99%;
             font-size: 36px;
             line-height: 36px;
-            max-width: 95%;
             color: $Black;
             text-align: start;
             font-family: $PPNeueMachinaRegular;
@@ -203,9 +219,9 @@
             position: relative;
 
             @include breakpoint (ExtraLarge) {
+                width: 100%;
                 font-size: 24px;
                 line-height: 24px;
-                max-width: 95%;
             }
 
             @include breakpoint (SemiLarge) {
@@ -248,7 +264,7 @@
         }
 
         &_description {
-            max-width: 95%;
+            max-width: 99%;
             font-size: 18px;
             line-height: 24px;
             color: rgba($Black, 0.75);
@@ -257,20 +273,15 @@
             margin-top: 15px;
 
             @include breakpoint (ExtraLarge) {
-                max-width: 90%;
+                max-width: 100%;
                 font-size: 16px;
                 line-height: 22px;
                 margin-top: 15px;
             }
 
             @include breakpoint (SemiLarge) {
-                max-width: 93%;
                 font-size: 14px;
                 line-height: 18px;
-            }
-
-            @include breakpoint (Large) {
-                max-width: 250px;
             }
 
             @include breakpoint (Medium) {
