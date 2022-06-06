@@ -41,6 +41,8 @@
         background-repeat: no-repeat !important;
         background-size: cover !important;
 
+        object-fit: cover !important;
+
         @include breakpoint (ExtraLarge) {
             height: 596px;
         }
