@@ -15,6 +15,7 @@ import Title from '../components/UI/Title/Title';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
 const Main: FunctionComponent = () => {
     window.scrollTo(0, 0);
@@ -92,8 +93,8 @@ const Main: FunctionComponent = () => {
                     </LeftRightSection>
                 </MainSection>
             </div>
-
             <Footer />
+            <Breadcrumbs />
             <Basement />
 
         </div>
