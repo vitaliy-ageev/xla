@@ -44,7 +44,6 @@ const ProjectCard: FunctionComponent = () => {
                 <CustomButton
                     styleBtn='background'
                     color='black'
-                    width={352}
                     style='project_card'>
                     <button
                         data-tf-slider={opportunity.typeform_popup ? opportunity.typeform_popup.toString().split('"')[1] : 'VHpdDtau'}
@@ -53,7 +52,7 @@ const ProjectCard: FunctionComponent = () => {
                         data-tf-medium="snippet"
                         data-tf-hidden="hidden1=xxxxx"
                         onClick={(e) => onClickItem(e)}
-                    >Apply for this position</button>
+                    >Apply to this opportunity</button>
                 </CustomButton>
                 {/* Separation */}
                 <LinearSeparation />

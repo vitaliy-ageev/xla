@@ -180,28 +180,32 @@
     &_show_more {
         cursor: pointer;
         width: 100%;
-        padding: 10px 15px;
+        padding: 15px 30px;
         border: 1px solid $White;
+        background: $White;
         margin-top: 40px;
         font-size: 18px;
+        line-height: 18px;
         text-align: center;
-        color: $White;
+        color: $Black;
         font-family: $PPNeueMachinaRegular;
 
         transition: background 0.2s linear, color 0.2s linear;
+
+        @include breakpoint (SemiLarge) {
+            font-size: 16px;
+            line-height: 16px;
+            padding: 10px 15px;
+            margin-top: 30px;
+        }
 
         @include breakpoint (ExtraMedium) {
             cursor: default;
         }
 
         &:hover {
-            background: $White;
-            color: $Black;
-
-            @include breakpoint (ExtraMedium) {
-                background: none;
-                color: $White;
-            }
+            background: transparent;
+            color: $White;
         }
     }
 }

@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react'
 import { opportunityAPI } from '../../services/OpportunityService'
 import NoiseEffect from '../UI/NoiseEffect/NoiseEffect'
 import classes from './OpportunityHiring.module.scss'
-import { Link } from 'react-router-dom'
 import { RouteNames } from '../../routes/routes'
 import { IOpportunity } from '../../models/IOpportunity'
+import { Link } from 'react-router-dom'
 
 interface OpportunityHiringProps {
     opportunities: IOpportunity[] | undefined
@@ -37,7 +37,7 @@ const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => 
                             Opportunities
                         </span>
                         <span className={[classes.oppurtunity_hiring_title, classes.count].join(' ')}>
-                            {props.opportunities.slice(0, 5).length}
+                            {props.opportunities.length}
                         </span>
                     </div>
 
@@ -70,6 +70,12 @@ const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => 
                             </Link >
                         )}
                     </div>
+
+                    {props.opportunities.length > 5 ?
+                        < Link to="/opportunities" className={classes.oppurtunity_hiring_show_more}>
+                            Show more
+                        </Link>
+                        : ''}
                 </div >
             </NoiseEffect >}
         </>

@@ -191,8 +191,9 @@
         }
 
         &:hover &_background_icon {
-            filter: invert(100%);
-            -webkit-filter: invert(100%);
+            // filter: invert(100%);
+            background-color: #fff !important;
+            // -webkit-filter:brightness(100px);
         }
 
         &_right_container {

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { Link } from 'react-router-dom'
 import CustomBackground from '../../UI/CustomBackground/CustomBackground'
 import CustomButton from '../../UI/CustomButton/CustomButton'
 import Copy from '../../UI/Icons/Copy/Copy'
@@ -7,6 +8,7 @@ import Twitter from '../../UI/Icons/Social/Twitter'
 import classes from './Header.module.scss'
 
 interface HeaderProps {
+    id: number | undefined,
     title: string,
     suptitle: string,
     image: string,
@@ -22,7 +24,9 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
         <div className={classes.opportuniti_header}>
             <div className={classes.opportuniti_header_left_container}>
                 {/* Custom Background */}
-                <CustomBackground class='opportuniti_page' name={props.name} />
+                <Link to={`/project/id=${props.id}`}>
+                    <CustomBackground class='opportuniti_page' name={props.name} />
+                </Link>
             </div>
             <div className={classes.opportuniti_header_right_container}>
                 {/* Suptitle */}

@@ -10,6 +10,7 @@ import classes from './OpportunitiItem.module.scss'
 import { opportunityAPI } from '../../services/OpportunityService'
 import { projectAPI } from '../../services/ProjectService'
 import { Embed } from '../../utils/embed'
+import { Link } from 'react-router-dom'
 
 
 
@@ -27,7 +28,7 @@ const OpportunitiItem: FunctionComponent = () => {
 
     setTimeout(() => {
         Embed()
-    } ,10 )
+    }, 10)
 
 
     const onClickItem = (e: any) => {
@@ -40,7 +41,8 @@ const OpportunitiItem: FunctionComponent = () => {
         <div className={classes.opportuniti_item}>
             {opportunity && <>
                 {/* Header */}
-                <Header title={opportunity.name}
+                <Header id={project?.id}
+                    title={opportunity.name}
                     suptitle='Job Details:'
                     image=''
                     name={project?.name} />
@@ -71,14 +73,14 @@ const OpportunitiItem: FunctionComponent = () => {
                         width={372}
                         style='opportuniti_apply'>
                         <button
-                            data-tf-slider={opportunity.typeform_popup ? opportunity.typeform_popup.toString().split('"')[1] : 'VHpdDtau'}
+                            data-tf-slider={opportunity.typeform_apply_popup ? opportunity.typeform_apply_popup.toString().split('"')[1] : 'VHpdDtau'}
                             data-tf-width="550"
                             data-tf-iframe-props={`title=${opportunity.name}`}
                             data-tf-medium="snippet"
                             data-tf-hidden="hidden1=xxxxx"
 
                             onClick={(e) => onClickItem(e)}
-                        >Apply for this position</button>
+                        >Apply to this opportunity</button>
                     </CustomButton>
                 </div>
             </>

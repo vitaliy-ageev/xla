@@ -31,7 +31,7 @@ const StartBlock: FunctionComponent<StartBlockProps> = (props) => {
                         </div>
                         {/* Subtitle */}
                         <div className={classes.start_block_subtitle}>
-                            Build you DAO with the power of X.LA ecosystem
+                            Build your DAO with the power of the X.LA ecosystem
                         </div>
                     </div>
                     {/* Buttons */}

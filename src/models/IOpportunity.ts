@@ -1,16 +1,29 @@
-interface IWorkingMode {
+interface ICategory {
     id: number,
     key: string,
     name: string
 }
 
-interface IJobType {
+export interface ICategoryFilter {
+    id: number,
+    title: string,
+    isChecked: number,
+    category: ICategory[] | undefined
+}
+
+export interface IWorkingMode {
     id: number,
     key: string,
     name: string
 }
 
-interface IStatus {
+export interface IJobType {
+    id: number,
+    key: string,
+    name: string
+}
+
+export interface IStatus {
     id: number,
     key: string,
     name: string
@@ -57,6 +70,11 @@ export interface IOpportunity {
     location: string | null,
     typeform_apply_popup: string | null,
     created_at: string
+}
+
+export interface paramsQuery {
+    limit: number,
+    offset: number
 }
 
 export interface IFethOpportunity {

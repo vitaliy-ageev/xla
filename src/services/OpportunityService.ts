@@ -1,23 +1,24 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
-import { IFethOpportunity, IOpportunity, ISkills } from "../models/IOpportunity"
+import { IFethOpportunity, IOpportunity, ISkills, paramsQuery } from "../models/IOpportunity"
 
 export const opportunityAPI = createApi({
     reducerPath: 'OpportunityAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://megamall-api-dev.x.la' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://megamall-api-dev.x.la/projects/' }),
     tagTypes: ['Opportunity'],
     endpoints: (build) => ({
-        fetchAllOpportunities: build.query<IFethOpportunity, number>({
-            query: (limit: number = 10) => ({
-                url: '/projects/opportunities',
+        fetchAllOpportunities: build.query<IFethOpportunity, paramsQuery>({
+            query: (paramsQuery) => ({
+                url: '/opportunities',
                 params: {
-                    limit: limit
+                    limit: paramsQuery.limit,
+                    offset: paramsQuery.offset
                 }
             }),
             providesTags: result => ['Opportunity'],
         }),
         fetchOneOpportunity: build.query<IOpportunity, string>({
             query: (id: string) => ({
-                url: `/projects/opportunities/${id}`,
+                url: `/opportunities/${id}`,
                 params: {
                     id: id
                 }
@@ -26,7 +27,7 @@ export const opportunityAPI = createApi({
         }),
         fetchSkillsOpportunity: build.query<ISkills, string>({
             query: (id: string) => ({
-                url: `/projects/opportunities/${id}/skills`,
+                url: `/opportunities/${id}/skills`,
                 params: {
                     id: id
                 }
@@ -35,7 +36,7 @@ export const opportunityAPI = createApi({
         }),
         fetchAllProjectOpportunities: build.query<IFethOpportunity, string>({
             query: (id: string) => ({
-                url: `/projects/opportunities?project_id=${id}`
+                url: `/opportunities?project_id=${id}`
             }),
             providesTags: result => ['Opportunity']
         })

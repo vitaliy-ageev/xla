@@ -11,9 +11,23 @@ import OpportunitiesList from '../components/OpportunitiesList/OpportunitiesList
 import TitleSection from '../components/TitleSection/TitleSection'
 import Title from '../components/UI/Title/Title'
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import { statusAPI } from '../services/StatusService'
+import { workingModeAPI } from '../services/WorkingModeService'
+import { jobTypeAPI } from '../services/JobTypeService'
 
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);
+
+    let category: any = []
+    const { data: statuses } = statusAPI.useFetchAllStatusesQuery();
+    const { data: jobTypes } = jobTypeAPI.useFetchAllStatusesQuery();
+    const { data: workingMode } = workingModeAPI.useFetchAllStatusesQuery();
+
+    category.push(
+        { id: 1, title: "Status project", isChecked: 1, category: statuses },
+        { id: 2, title: "Location", isChecked: 1, category: jobTypes },
+        { id: 3, title: "Working-method", isChecked: 2, category: workingMode }
+    )
 
     return (
         <div className='App'>
@@ -27,7 +41,7 @@ const Opportunities: FunctionComponent = () => {
                         <OpportunitiesList />
                     </LeftSection>
                     <RightSection className='opportunities'>
-                        <FilterOpportunities  />
+                        <FilterOpportunities category={category} />
                     </RightSection>
                 </LeftRightSection>
             </MainSection>

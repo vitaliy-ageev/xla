@@ -91,6 +91,8 @@
 
         &_container_left {
             width: 70%;
+            display: flex;
+            flex-direction: column;
             position: relative;
 
             @include breakpoint (SemiLarge) {
@@ -160,17 +162,20 @@
         }
 
         &_title {
+            max-width: 100%;
             font-size: 36px;
             line-height: 36px;
             color: $Black;
             font-family: $PPNeueMachinaRegular;
 
             @include breakpoint (ExtraLarge) {
+                max-width: 55%;
                 font-size: 30px;
                 line-height: 30px;
             }
 
             @include breakpoint (SemiLarge) {
+                max-width: 100%;
                 font-size: 24px;
                 line-height: 24px;
             }
@@ -210,6 +215,7 @@
             @include breakpoint (SemiLarge) {
                 font-size: 14px;
                 line-height: 18px;
+                margin-top: 5px;
             }
         }
 
@@ -339,7 +345,7 @@
 
         &_hover {
             width: 65%;
-            height: 100%;
+            height: 15%;
             background: $Blue;
             position: absolute;
             top: 0;
@@ -354,7 +360,7 @@
         }
 
         &:hover &_hover {
-            opacity: 0.4;
+            opacity: 1;
 
             @include breakpoint (Large) {
                 opacity: 0;
@@ -362,38 +368,67 @@
         }
 
         &_buttons {
-            position: absolute;
-            right: 0;
             display: flex;
+            flex-direction: row;
             opacity: 0;
-            z-index: 10000;
+            margin-top: 40px;
+
+            & div {
+                width: 220px !important;
+                margin-right: 10px;
+            }
+
+            @include breakpoint (ExtraLarge) {
+                margin-top: 30px;
+            }
+
+            @include breakpoint (SemiLarge) {
+                margin-top: 20px;
+
+                & div {
+                    width: 180px !important;
+                }
+            }
+
+            @include breakpoint (ExtraMedium) {
+                display: none;
+            }
         }
 
         &:hover &_buttons {
             opacity: 1;
 
-            @include breakpoint (SemiLarge) {
-                flex-direction: column;
-
-                & div {
-                    width: 180px !important;
-                    margin-bottom: 5px;
-                }
-            }
-
             @include breakpoint (HD) {
                 background: rgba($White, 0.9);
-
-                & div {
-                    width: 220px !important;
-                }
-            }
-
-            @include breakpoint (ExtraMedium) {
                 opacity: 0;
             }
 
+            @include breakpoint (ExtraMedium) {}
+        }
+    }
+
+    &_show_more {
+        cursor: pointer;
+        width: 100%;
+        background: $Black;
+        padding: 20px 30px;
+        margin-top: 50px;
+        font-size: 24px;
+        line-height: 24px;
+        color: $White;
+        font-family: $HelveticaRegular;
+        text-align: center;
+        vertical-align: middle;
+        transition: all .2s linear;
+
+        @include breakpoint (ExtraLarge) {
+            padding: 15px 30px;
+            font-size: 18px;
+            line-height: 18px;
         }
 
+        &:hover {
+            background: rgba($Black, 0.75);
+        }
     }
 }
