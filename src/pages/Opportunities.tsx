@@ -10,7 +10,7 @@ import MainSection from '../components/MainSection/MainSection'
 import OpportunitiesList from '../components/OpportunitiesList/OpportunitiesList'
 import TitleSection from '../components/TitleSection/TitleSection'
 import Title from '../components/UI/Title/Title'
-import { Embed } from '../utils/embed'
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);
@@ -32,6 +32,7 @@ const Opportunities: FunctionComponent = () => {
                 </LeftRightSection>
             </MainSection>
             <Footer />
+            <Breadcrumbs />
             <Basement />
         </div>
     )

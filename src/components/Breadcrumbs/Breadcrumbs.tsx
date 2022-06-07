@@ -1,9 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import UIArrow from '../UI/Icons/Arrows/UIArrow'
 import classes from './Breadcrumbs.module.scss'
+import { Link } from 'react-router-dom'
+import path from 'path'
 
 interface BreadcrumbsProps {
-
+    location: string,
+    path: string
 }
 
 const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = (props) => {
@@ -11,23 +14,18 @@ const Breadcrumbs: FunctionComponent<BreadcrumbsProps> = (props) => {
         <div className={classes.breadcrumbs}>
             <div className='container'>
                 <div className={classes.breadcrumbs_inner}>
-                    <div className={classes.breadcrumbs_item}>
-                        <span className={classes.breadcrumbs_item_name}>
-                            Main
-                        </span>
-                        {/* Svg */}
-                        <UIArrow />
-                    </div>
-                    <div className={classes.breadcrumbs_item}>
-                        <span className={classes.breadcrumbs_item_name}>
-                            Projects
-                        </span>
-                        {/* Svg */}
-                        {/* <UIArrow /> */}
-                    </div>
+                    {props.location && props.location.split('/').map(loc =>
+                        <Link to='/' className={classes.breadcrumbs_item}>
+                            <span className={classes.breadcrumbs_item_name}>
+                                {loc}
+                            </span>
+                            {/* Svg */}
+                            <UIArrow />
+                        </Link>
+                    )}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

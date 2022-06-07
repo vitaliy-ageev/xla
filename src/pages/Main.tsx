@@ -17,7 +17,7 @@ import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
-const Main: FunctionComponent = () => {
+const Main: FunctionComponent = (props) => {
     window.scrollTo(0, 0);
 
     const LastThreadsItems = [
@@ -94,7 +94,7 @@ const Main: FunctionComponent = () => {
                 </MainSection>
             </div>
             <Footer />
-            <Breadcrumbs />
+            <Breadcrumbs location='Home' path='Main/' />
             <Basement />
 
         </div>

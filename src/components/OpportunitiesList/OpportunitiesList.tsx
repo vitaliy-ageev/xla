@@ -9,24 +9,14 @@ import classes from './OpportunitiesList.module.scss'
 
 const OpportunitiesList: FunctionComponent = () => {
     const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(50)
-    const history = useNavigate()
-
-    const [thisState, setThisState] = useState(false);
-
-    useEffect(() => {
-
-    }, [thisState])
 
     setTimeout(() => {
         Embed()
     }, 10)
 
     const onClickItem = (e: any) => {
-
         e.preventDefault()
-        // setThisState(false)
     }
-
 
     let resultArray = []
     let array = opportunities?.opportunities.slice()

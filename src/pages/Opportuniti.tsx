@@ -8,7 +8,7 @@ import RightSection from '../components/LeftRightSection/RightSection';
 import MainSection from '../components/MainSection/MainSection';
 import OpportunitiItem from '../components/OpportunitiItem/OpportunitiItem';
 import ProjectCard from '../components/ProjectCard/ProjectCard';
-import { Embed } from '../utils/embed';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
 const Opportuniti: FunctionComponent = () => {
   window.scrollTo(0, 0);
@@ -32,6 +32,7 @@ const Opportuniti: FunctionComponent = () => {
       </MainSection>
       {/* Footer */}
       <Footer />
+      <Breadcrumbs location={`Home/Opportunities/For Investors`} path='//opportunities' />
       <Basement />
     </div>
   )

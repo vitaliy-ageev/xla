@@ -12,6 +12,7 @@ import OpportunityHiring from '../components/OpportunityHiring/OpportunityHiring
 import ProjectItem from '../components/ProjectItem/ProjectItem';
 import { opportunityAPI } from '../services/OpportunityService';
 import { projectAPI } from '../services/ProjectService';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
 const Project: FunctionComponent = () => {
     window.scrollTo(0, 0);
@@ -77,6 +78,7 @@ const Project: FunctionComponent = () => {
                 </LeftRightSection>
             </MainSection>
             <Footer />
+            <Breadcrumbs />
             <Basement />
         </div>
     )
