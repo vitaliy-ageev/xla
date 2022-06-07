@@ -32,7 +32,7 @@ const Opportuniti: FunctionComponent = () => {
       </MainSection>
       {/* Footer */}
       <Footer />
-      <Breadcrumbs location={`Home/Opportunities/For Investors`} path='//opportunities' />
+      <Breadcrumbs location={`Home/Opportunities`} path='//opportunities' />
       <Basement />
     </div>
   )

@@ -32,7 +32,7 @@ const Opportunities: FunctionComponent = () => {
                 </LeftRightSection>
             </MainSection>
             <Footer />
-            <Breadcrumbs />
+            <Breadcrumbs location='Home/Opportunities' path='/' />
             <Basement />
         </div>
     )

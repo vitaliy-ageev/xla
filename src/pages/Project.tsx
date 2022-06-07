@@ -78,7 +78,7 @@ const Project: FunctionComponent = () => {
                 </LeftRightSection>
             </MainSection>
             <Footer />
-            <Breadcrumbs />
+            <Breadcrumbs location='Home' path='/' />
             <Basement />
         </div>
     )
