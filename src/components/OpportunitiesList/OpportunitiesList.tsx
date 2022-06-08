@@ -10,27 +10,25 @@ import classes from './OpportunitiesList.module.scss'
 
 const OpportunitiesList: FunctionComponent = () => {
     const [limit, setLimit] = useState<number>(10)
-    // const [offset, setOffset] = useState<number>(1)
-    const [offset, setOffset] = useState<number>(10)
+    const [offset, setOffset] = useState<number>(1)
     const [totalPages, setTotalPages] = useState<number>(0)
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [posts, setPosts] = useState<IOpportunity[]>([])
 
-    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: 51, offset: 0 })
 
-    // const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: limit, offset: offset })
+    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: limit, offset: offset })
 
-    // useEffect(() => {
-    //     const totalCount: number = opportunities?.total as number
-    //     setTotalPages(getPageCount(totalCount - 1, limit))
+    useEffect(() => {
+        const totalCount: number = opportunities?.total as number
+        setTotalPages(getPageCount(totalCount - 1, limit))
 
-    //     if (offset == 1) {
-    //         setPosts(opportunities?.opportunities as IOpportunity[])
-    //     } else {
-    //         setPosts([...posts, ...opportunities?.opportunities as IOpportunity[]])
-    //     }
+        if (offset == 1) {
+            setPosts(opportunities?.opportunities as IOpportunity[])
+        } else {
+            setPosts([...posts, ...opportunities?.opportunities as IOpportunity[]])
+        }
 
-    // }, [opportunities])
+    }, [opportunities])
 
     setTimeout(() => {
         Embed()
@@ -42,25 +40,12 @@ const OpportunitiesList: FunctionComponent = () => {
 
     const showMoreFunc = () => {
         setCurrentPage(currentPage + 1)
-        // setOffset(offset + limit)
         setOffset(offset + limit)
-    }
-
-    let resultArray = []
-    let array = opportunities?.opportunities.slice()
-    let n = opportunities?.opportunities.length
-    if (array && n && n > array?.length)
-        n = array?.length
-
-    if (array && n) {
-        for (let i = 0; i < n; i += 1) {
-            resultArray.push(array.splice(Math.floor(Math.random() * array.length), 1)[0]);
-        }
     }
 
     return (
         <div className={classes.opportunities_list}>
-            {posts && resultArray.slice(0, offset).map(opportunity =>
+            {posts && posts.map(opportunity =>
                 <Link to={RouteNames.OPPORTUNITY + '/id=' + opportunity.id} key={opportunity.id} className={classes.opportunities_list_item}>
                     <div className={classes.opportunities_list_item_left}>
                         {/* Background */}

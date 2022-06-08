@@ -31,13 +31,13 @@ const StartBlock: FunctionComponent<StartBlockProps> = (props) => {
                         </div>
                         {/* Subtitle */}
                         <div className={classes.start_block_subtitle}>
-                            Build your DAO with the power of the X.LA ecosystem
+                            Build your product with the power of X.LA community
                         </div>
                     </div>
                     {/* Buttons */}
                     <div className={classes.start_block_buttons}>
 
-                        <CustomButton styleBtn='background' marginR={20} width={320}>
+                        <div className={classes.start_block_button}>
                             <button
                                 data-tf-slider="adHiZ5FW"
                                 data-tf-width="550"
@@ -47,10 +47,10 @@ const StartBlock: FunctionComponent<StartBlockProps> = (props) => {
                             >
                                 Get started
                             </button>
-                        </CustomButton>
-                        <CustomButton name='' styleBtn='border' width={320}>
+                        </div>
+                        <div className={classes.start_block_button}>
                             <button onClick={scrollToBlock}>Show all projects</button>
-                        </CustomButton>
+                        </div>
                     </div>
                 </div>
                 <GlowEffect />

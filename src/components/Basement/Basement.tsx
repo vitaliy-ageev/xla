@@ -9,7 +9,7 @@ const Basement: FunctionComponent = () => {
                     <div className={classes.basement_left_container}>
                         {/* Information */}
                         <span className={classes.basement_company_information}>
-                            Copyright © 2022 X.LA . All Rights Reserved
+                            Copyright © 2022 X.LA. All Rights Reserved
                         </span>
 
                     </div>

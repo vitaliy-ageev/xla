@@ -19,7 +19,8 @@ const Project: FunctionComponent = () => {
     const LastThreadsItems = [
         {
             id: 1,
-            title: "Share your ideas and get rewarded with NFTs!",
+            title: "Share your ideas and get rewarded with NFTs",
+            mobile_title: "Be creative and get rewarded!",
             isTrending: true,
             comments: 50,
             tags: [
@@ -31,7 +32,8 @@ const Project: FunctionComponent = () => {
         },
         {
             id: 2,
-            title: "What are your thoughts on the future of Web3?",
+            title: "From Web2 to Web3: Is the future closer than we think?",
+            mobile_title: "Moving from Web2 to Web3",
             isTrending: false,
             comments: 50,
             tags: [
@@ -44,6 +46,7 @@ const Project: FunctionComponent = () => {
         {
             id: 3,
             title: "Earn crypto while learning about crypto",
+            mobile_title: "Earn crypto while learning",
             isTrending: false,
             comments: 50,
             tags: [

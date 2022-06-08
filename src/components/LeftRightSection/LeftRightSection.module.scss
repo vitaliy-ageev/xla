@@ -14,40 +14,48 @@
         flex-direction: column;
 
         &.left_section {
+            width: 1388px;
             max-width: 1388px;
         }
 
         &.right_section {
+            width: 793px;
             max-width: 793px;
         }
 
         // Opportunities
         &.left_section.opportunities {
             max-width: 1587px;
+            width: 1587px;
         }
 
         &.right_section.opportunities {
             max-width: 595px;
+            width: 595px;
         }
 
         @include breakpoint (ExtraLarge) {
             width: 100% !important;
 
             &.left_section {
+                width: 1015px;
                 max-width: 1015px;
             }
 
             &.right_section {
+                width: 582px;
                 max-width: 582px;
             }
 
             // Opportunities
             &.left_section.opportunities {
                 max-width: 1160px;
+                width: 1160px;
             }
 
             &.right_section.opportunities {
                 max-width: 435px;
+                width: 435px;
             }
         }
 
@@ -55,20 +63,24 @@
             width: 100% !important;
 
             &.left_section {
+                width: 692px;
                 max-width: 692px;
             }
 
             &.right_section {
+                width: 395px;
                 max-width: 395px;
             }
 
             // Opportunities
             &.left_section.opportunities {
                 max-width: 692px;
+                width: 692px;
             }
 
             &.right_section.opportunities {
                 max-width: 395px;
+                width: 395px;
             }
         }
 

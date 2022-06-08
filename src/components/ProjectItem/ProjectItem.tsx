@@ -11,6 +11,7 @@ import Gallery from './Gallery/Gallery';
 import RecentUpdates from './RecentUpdates/RecentUpdates';
 import { IOpportunity } from '../../models/IOpportunity';
 import { IFAQ, IProject, IUpdates } from '../../models/IProject';
+import { projectAPI } from '../../services/ProjectService';
 
 interface ProjectItemProps {
     project: IProject | undefined,
@@ -28,7 +29,7 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = (props) => {
                 <LinearSeparation />
                 {/* Buttons */}
                 <div className={classes.project_item_buttons}>
-                    <Buttons typeform='dd' name='dd' title='Project discussion' style='black' />
+                    <a href={props.project.forum_url} target="_blank" ><Buttons typeform='dsd' name='dd' title='Discuss the project' style='black' /></a>
                     <Buttons typeform={props.project.typeform_competitor_popup} name={props.project.name} title='Ask a Question' />
                     <Buttons typeform={props.project.typeform_question_popup} name={props.project.name} title='Share a similar project' />
                 </div>

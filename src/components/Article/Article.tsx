@@ -9,7 +9,7 @@ const Article: FunctionComponent = () => {
     return (
         <NoiseEffect opacity='0.1'>
             <div className={classes.article}>
-                <a href="https://cryptomaton.medium.com/does-terra-deserve-a-second-chance-92c9546ae5af"
+                <a href="https://opportunities.x.la/can-anything-on-the-internet-be-a-token-cde8d728a77d"
                     target="_blank">
                     <div className={classes.article_background}
                         style={{
@@ -23,18 +23,18 @@ const Article: FunctionComponent = () => {
                     <div className={classes.article_title_block}>
                         {/* Title */}
                         <div className={classes.article_title}>
-                            Does Terra Deserve a Second Chance?
+                            Can Anything on the Internet be a Token?
                         </div>
                         {/* SubInformation */}
                         <div className={classes.article_subnavigation_block}>
                             {/* Tag */}
                             <div className={[classes.article_subnavigation_text, classes.tag].join(' ')}>
-                                Crypto
+                                NFT
                             </div>
                             {/* Duration */}
                             <div className={[classes.article_subnavigation_text, classes.duration].join(' ')}>
                                 <div className={classes.duration_text}>
-                                    5 min read
+                                    6 min read
                                 </div>
                                 <SandBox />
                             </div>

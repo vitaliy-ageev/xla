@@ -1,9 +1,12 @@
 import React, { FunctionComponent } from 'react'
+import { Link } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { Embed } from '../../../utils/embed'
 import classes from './Buttons.module.scss'
 
 interface ButtonsProps {
-    typeform: string | null,
-    name: string | null,
+    typeform?: string | null,
+    name?: string | null,
     title: string | null,
     style?: string
 }
@@ -14,10 +17,16 @@ const Buttons: FunctionComponent<ButtonsProps> = (props) => {
         rootClasses.push(classes.black)
     }
 
+    setTimeout(() => {
+        Embed()
+    }, 10)
+
+    let navigate = useNavigate();
+
     return (
-        <div className={rootClasses.join(' ')} >
+        <div className={rootClasses.join(' ')}>
             <button
-                data-tf-slider={props.typeform ? props.typeform.toString().split('"')[0] : ''}
+                data-tf-slider={props.typeform ? props.typeform.toString().split('"')[1] : ''}
                 data-tf-width="550"
                 data-tf-iframe-props={`title=${props.name}`}
                 data-tf-medium="snippet"

@@ -45,7 +45,8 @@ const OpportunitiItem: FunctionComponent = () => {
                     title={opportunity.name}
                     suptitle='Job Details:'
                     image=''
-                    name={project?.name} />
+                    name={project?.name}
+                    logotype={project?.logo_url} />
                 {/* Separation */}
                 <LinearSeparation class='opportuniti_page' />
                 {/* Image */}

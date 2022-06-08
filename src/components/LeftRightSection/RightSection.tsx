@@ -10,16 +10,17 @@ interface IRightSection {
     children: ReactElement | ReactElement[]
 }
 
-const RightSection: FunctionComponent<IRightSection> = ({ width = '30%', minHeight, justify, alignItems, children, className }) => {
+const RightSection: FunctionComponent<IRightSection> = ({ width, minHeight, justify, alignItems, children, className }) => {
     let rootClasses = [classes.left_right_section_, classes.right_section]
     if (className == 'opportunities') {
         rootClasses.push(classes.opportunities)
+    } else if (className == 'main_page') {
+        rootClasses.push(classes.main_page)
     }
 
     return (
         <div className={rootClasses.join(' ')}
             style={{
-                width: `${width}`,
                 minHeight: `${minHeight}`,
                 justifyContent: `${justify}`,
                 alignItems: `${alignItems}`

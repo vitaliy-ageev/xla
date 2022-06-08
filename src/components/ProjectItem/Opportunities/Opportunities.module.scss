@@ -34,11 +34,13 @@
         max-width: 694px;
         max-height: 150px;
         display: flex;
-        align-items: flex-start !important;
+        align-items: center !important;
         justify-content: flex-start !important;
-        padding: 25px 0;
+        padding: 25px 30px 25px 0;
 
-        border-bottom: 2px solid $Grey;
+        position: relative;
+
+        border-bottom: 2px solid rgba($Grey, 0.75);
 
         @include breakpoint (ExtraLarge) {
             max-width: 507px;
@@ -48,7 +50,6 @@
 
         @include breakpoint (SemiLarge) {
             max-width: 346px;
-            height: 150px;
             max-height: 150px;
         }
 
@@ -57,7 +58,6 @@
             height: 140px;
             max-height: 140px;
             padding: 25px 20px 25px 0;
-            overflow: hidden;
         }
 
         @include breakpoint (Medium) {
@@ -89,6 +89,7 @@
 
             @include breakpoint (Medium) {
                 width: 100%;
+                margin-right: 0;
             }
         }
 
@@ -115,6 +116,7 @@
                 width: 82px;
                 height: 82px;
                 margin-bottom: 20px;
+                margin-right: 0 !important;
             }
 
             @include breakpoint (SemiMedium) {
@@ -191,9 +193,8 @@
         }
 
         &:hover &_background_icon {
-            // filter: invert(100%);
-            background-color: #fff !important;
-            // -webkit-filter:brightness(100px);
+            filter: invert(100%);
+            -webkit-filter: brightness(100px);
         }
 
         &_right_container {
@@ -210,14 +211,12 @@
         }
 
         &_title {
-            max-width: 99%;
+            max-width: 100%;
             font-size: 36px;
             line-height: 36px;
             color: $Black;
             text-align: start;
             font-family: $PPNeueMachinaRegular;
-
-            position: relative;
 
             @include breakpoint (ExtraLarge) {
                 width: 100%;
@@ -241,23 +240,27 @@
             }
 
             &_hover {
-                width: 100%;
-                height: 100%;
+                width: 70%;
+                height: 80%;
                 background: $Blue;
 
                 position: absolute;
-                top: 30px;
+                top: 10px;
 
                 filter: blur(40px);
                 opacity: 0;
 
                 transition: opacity 0.4s ease-in-out;
 
+                @include breakpoint (SemiLarge) {
+                    width: 60%;
+                }
+
             }
         }
 
         &:hover &_title_hover {
-            opacity: 0.5;
+            opacity: 0.2;
 
             @include breakpoint (ExtraMedium) {
                 opacity: 0;

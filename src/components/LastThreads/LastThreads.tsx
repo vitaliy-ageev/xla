@@ -11,6 +11,7 @@ interface IThreadTags {
 interface IThreads {
     id: number,
     title: string,
+    mobile_title: string,
     isTrending: boolean,
     comments: number,
     tags: IThreadTags[],
@@ -52,7 +53,7 @@ const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) =>
                             : ''}
                         {/* Title */}
                         <span className={classes.last_threads_item_title}>
-                            {threadItem.title}
+                            {window.screen.width > 767 && window.screen.width < 1366 || window.screen.width > 1920 ? threadItem.title : threadItem.mobile_title}
                             <div className={classes.last_threads_item_title_hover} />
                         </span>
                         <div className={classes.last_threads_container}>

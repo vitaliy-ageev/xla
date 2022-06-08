@@ -4,17 +4,17 @@
 .article {
     cursor: pointer;
     width: 100%;
-    height: 650px;
+    height: 793px;
     overflow: hidden;
     position: relative;
     background: $Black;
 
     @include breakpoint (ExtraLarge) {
-        height: 615px;
+        height: 582px;
     }
 
     @include breakpoint (SemiLarge) {
-        height: 415px;
+        height: 395px;
     }
 
     @include breakpoint (ExtraMedium) {
@@ -26,11 +26,11 @@
     }
 
     @include breakpoint (Medium) {
-        height: 410px;
+        height: 388px;
     }
 
     @include breakpoint (SemiMedium) {
-        height: 300px;
+        height: 280px;
     }
 
     &_background {

@@ -35,22 +35,25 @@ const ProjectItem: FunctionComponent = () => {
                                     </div>
                                     {/* Text */}
                                     <div className={classes.project_item_description}>
-                                        {projectItem.description.length > 190 ? projectItem.description.slice(0, 190) + '...' : projectItem.description}
+                                        {projectItem.description.length > 150 ? projectItem.description.slice(0, 170) + '...' : projectItem.description}
                                     </div>
                                     <div className={classes.project_item_hover}></div>
                                 </div>
                                 {/* Footer */}
-                                <div className={classes.project_item_footer}>
-                                    {/* Likes */}
-                                    {/* <div className={classes.project_item_footer_likes}>
+                                {projectItem.tags.length > 0 ?
+                                    <div className={classes.project_item_footer}>
+                                        {/* Likes */}
+                                        {/* <div className={classes.project_item_footer_likes}>
                                     <Like />
                                     <span className={classes.project_item_footer_likes_count}>
                                         {projectItem.likes}
                                     </span>
                                 </div> */}
-                                    {/* Tags */}
-                                    <Tags tags={projectItem.tags} />
-                                </div>
+                                        {/* Tags */}
+                                        <Tags tags={projectItem.tags} />
+
+                                    </div>
+                                    : ''}
                             </div>
                         </div>
                     </Link>

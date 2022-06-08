@@ -29,20 +29,20 @@ const FilterOpportunities: FunctionComponent<FilterOpportunitiesProps> = (props)
                 {props.category && props.category.map(cat =>
                     <div key={cat.id} className={classes.filter_checkbox}>
                         {cat.category &&
-                            <span className={classes.filter_checkbox_title}>
+                        <span className={classes.filter_checkbox_title}>
                                 {cat.title}
                             </span>
                         }
                         <form action="" className={classes.filter_checkbox_block}>
                             {cat.category?.map(item =>
                                 <div key={item.id}
-                                    className={classes.filter_checkbox_block_}>
+                                     className={classes.filter_checkbox_block_}>
                                     <input type="radio"
-                                        name="field"
-                                        id={item.key}
-                                        checked={cat.isChecked == item.id ? true : false}
+                                           name="field"
+                                           id={item.key}
+                                           checked={cat.isChecked == item.id ? true : false}
                                         // onChange={(e) => clickCheckBox(e)}
-                                        className={classes.filter_checkbox_block_input} />
+                                           className={classes.filter_checkbox_block_input} />
                                     <label htmlFor={item.key} className={classes.filter_checkbox_block_label}>
                                         {item.name}
                                     </label>

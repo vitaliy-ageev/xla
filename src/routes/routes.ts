@@ -22,6 +22,6 @@ export const routes: IRoute[] = [
     { path: RouteNames.MAIN, element: Main },
     { path: RouteNames.PROJECT + '/id=:id', element: Project },
     { path: RouteNames.OPPORTUNITIES, element: Opportunities },
-    { path: RouteNames.OPPORTUNITY +  '/id=:id', element: Opportunity },
+    { path: RouteNames.OPPORTUNITY + '/id=:id', element: Opportunity },
     { path: RouteNames.USER, element: User }
 ]

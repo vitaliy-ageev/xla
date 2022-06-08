@@ -63,6 +63,7 @@ export interface IOpportunity {
     id: number,
     name: string,
     description: string,
+    abstract_logo_url: string,
     logo_url: string,
     project: IProject,
     job_type: IJobType,

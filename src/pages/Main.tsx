@@ -23,7 +23,8 @@ const Main: FunctionComponent = (props) => {
     const LastThreadsItems = [
         {
             id: 1,
-            title: "Share your ideas and get rewarded with NFTs!",
+            title: "Share your ideas and get rewarded with NFTs",
+            mobile_title: "Be creative and get rewarded!",
             isTrending: true,
             comments: 50,
             tags: [
@@ -35,7 +36,8 @@ const Main: FunctionComponent = (props) => {
         },
         {
             id: 2,
-            title: "What are your thoughts on the future of Web3?",
+            title: "From Web2 to Web3: Is the future closer than we think?",
+            mobile_title: "Moving from Web2 to Web3",
             isTrending: false,
             comments: 50,
             tags: [
@@ -48,6 +50,7 @@ const Main: FunctionComponent = (props) => {
         {
             id: 3,
             title: "Earn crypto while learning about crypto",
+            mobile_title: "Earn crypto while learning",
             isTrending: false,
             comments: 50,
             tags: [
@@ -59,7 +62,7 @@ const Main: FunctionComponent = (props) => {
         },
     ]
 
-    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery(50)
+    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: 51, offset: 0 })
     const scrollRef: any = useRef()
     const { setScroll } = generalSlice.actions;
     const dispatch = useAppDispatch();
@@ -74,15 +77,15 @@ const Main: FunctionComponent = (props) => {
             <Header style='white' />
             <StartBlock />
             <div ref={scrollRef}>
-                <MainSection>
+                <MainSection style='main_page'>
                     {/* Title */}
                     <Title title='BROWSE PROJECTS BASED ON THEIR SPECIALITY AND STATUS' />
                     <LeftRightSection>
-                        <LeftSection>
+                        <LeftSection className='main_page'>
                             {/* Projects */}
                             <Projects />
                         </LeftSection>
-                        <RightSection>
+                        <RightSection className='main_page'>
                             {/* Article */}
                             <Article />
                             {/* Last Threads */}

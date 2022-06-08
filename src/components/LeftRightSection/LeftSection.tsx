@@ -9,16 +9,17 @@ interface ILeftSection {
     children: ReactElement | ReactElement[]
 }
 
-const LeftSection: FunctionComponent<ILeftSection> = ({ width = '60%', minHeight, justify, children, className }) => {
+const LeftSection: FunctionComponent<ILeftSection> = ({ width, minHeight, justify, children, className }) => {
     let rootClasses = [classes.left_right_section_, classes.left_section]
     if (className == 'opportunities') {
         rootClasses.push(classes.opportunities)
+    } else if (className == 'main_page') {
+        rootClasses.push(classes.main_page)
     }
 
     return (
         <div className={rootClasses.join(' ')}
             style={{
-                width: `${width}`,
                 minHeight: `${minHeight}`,
                 justifyContent: `${justify}`
             }}>

@@ -21,7 +21,7 @@ const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
                             <div className={classes.opportunities_section_item_background}>
                                 <div className={classes.opportunities_section_item_background_icon}
                                     style={{
-                                        background: `url(${item.logo_url})`,
+                                        background: `url(${item.abstract_logo_url})`,
                                         backgroundSize: `cover`,
                                         backgroundPosition: `center`,
                                         backgroundRepeat: `no-repeat`
@@ -36,11 +36,11 @@ const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
                         <div className={classes.opportunities_section_item_right_container}>
                             <span className={classes.opportunities_section_item_title}>
                                 {item.name}
-                                <div className={classes.opportunities_section_item_title_hover} />
                             </span>
-                            <span className={classes.opportunities_section_item_description}>
+                            {/* <span className={classes.opportunities_section_item_description}>
                                 {item.description.length > 50 ? item.description.slice(0, 75) + '...' : item.description}
-                            </span>
+                            </span> */}
+                            <div className={classes.opportunities_section_item_title_hover} />
                         </div>
                     </Link>
                 </>

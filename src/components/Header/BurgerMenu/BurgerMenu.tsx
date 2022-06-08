@@ -49,7 +49,7 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                     </div>
                     {/* Menu */}
                     <div className={classes.burger_menu_links}>
-                        <Link to='/project' className={classes.burger_menu_link}
+                        <Link to='/' className={classes.burger_menu_link}
                             onClick={scrollToBlock}>
                             All projects
                         </Link>

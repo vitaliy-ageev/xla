@@ -12,7 +12,8 @@ interface HeaderProps {
     title: string,
     suptitle: string,
     image: string,
-    name?: string
+    name?: string,
+    logotype?: string
 }
 
 const Header: FunctionComponent<HeaderProps> = (props) => {
@@ -25,7 +26,7 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
             <div className={classes.opportuniti_header_left_container}>
                 {/* Custom Background */}
                 <Link to={`/project/id=${props.id}`}>
-                    <CustomBackground class='opportuniti_page' name={props.name} />
+                    <CustomBackground class='opportuniti_page' logotype={props.logotype} />
                 </Link>
             </div>
             <div className={classes.opportuniti_header_right_container}>
