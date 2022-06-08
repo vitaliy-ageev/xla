@@ -11,7 +11,8 @@ export const opportunityAPI = createApi({
                 url: '/opportunities',
                 params: {
                     limit: paramsQuery.limit,
-                    offset: paramsQuery.offset
+                    offset: paramsQuery.offset,
+                    project_id: paramsQuery.project_id
                 }
             }),
             providesTags: result => ['Opportunity'],

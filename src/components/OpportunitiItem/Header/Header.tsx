@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
+import { RouteNames } from '../../../routes/routes'
 import CustomBackground from '../../UI/CustomBackground/CustomBackground'
 import CustomButton from '../../UI/CustomButton/CustomButton'
 import Copy from '../../UI/Icons/Copy/Copy'
@@ -25,7 +26,7 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
         <div className={classes.opportuniti_header}>
             <div className={classes.opportuniti_header_left_container}>
                 {/* Custom Background */}
-                <Link to={`/project/id=${props.id}`}>
+                <Link to={`${RouteNames.PROJECT}/id=${props.id}`}>
                     <CustomBackground class='opportuniti_page' logotype={props.logotype} />
                 </Link>
             </div>

@@ -3,6 +3,7 @@ import SocialNetworks from '../SocialNetworks/SocialNetworks'
 import Logotype from '../UI/Logotype/Logotype'
 import classes from './Footer.module.scss'
 import { Link } from 'react-router-dom'
+import { RouteNames } from '../../routes/routes'
 
 const Footer: FunctionComponent = () => {
     const clickFooter = () => {
@@ -19,7 +20,7 @@ const Footer: FunctionComponent = () => {
                 <div className={classes.footer_inner}>
                     {/* Logotype */}
                     <div className={classes.footer_left_container}>
-                        <Link to="/" className={classes.footer_logotype}>
+                        <Link to={RouteNames.MAIN} className={classes.footer_logotype}>
                             <Logotype onClick={clickFooter} color='black' style='footer' />
                         </Link>
                     </div>

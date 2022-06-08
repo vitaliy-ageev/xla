@@ -24,7 +24,7 @@ const AppRouter = () => {
         <Route path="*" element={<Navigate to={RouteNames.MAIN} />} />
       </Routes>
       :
-      <Route path="*" element={<Navigate to='/' />} />
+      <Route path="*" element={<Navigate to={RouteNames.MAIN} />} />
   )
 }
 

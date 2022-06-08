@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAppSelector } from '../../hooks/hooks'
 import { IOpportunity } from '../../models/IOpportunity'
 import { RouteNames } from '../../routes/routes'
 import { opportunityAPI } from '../../services/OpportunityService'
@@ -14,9 +15,12 @@ const OpportunitiesList: FunctionComponent = () => {
     const [totalPages, setTotalPages] = useState<number>(0)
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [posts, setPosts] = useState<IOpportunity[]>([])
+    const { projectId } = useAppSelector(state => state.filterReducer)
+    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: limit, offset: offset, project_id: projectId })
 
-
-    const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: limit, offset: offset })
+    useEffect(() => {
+        setOffset(1)
+    }, [projectId])
 
     useEffect(() => {
         const totalCount: number = opportunities?.total as number
@@ -117,8 +121,7 @@ const OpportunitiesList: FunctionComponent = () => {
             )
             }
 
-            {/* {totalPages > 1 ? */}
-            {offset < 51 ?
+            {totalPages > 1 && currentPage != totalPages ?
                 < div onClick={showMoreFunc}
                     className={classes.opportunities_list_show_more}>
                     Show more

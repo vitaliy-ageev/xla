@@ -76,12 +76,12 @@ const Project: FunctionComponent = () => {
                         {/* Last Threads */}
                         <LastThreads threadItems={LastThreadsItems} style='project_page' />
                         {/* Opportunity */}
-                        <OpportunityHiring opportunities={opportunities?.opportunities} />
+                        <OpportunityHiring project_id={project?.id} opportunities={opportunities?.opportunities} />
                     </RightSection>
                 </LeftRightSection>
             </MainSection>
             <Footer />
-            <Breadcrumbs location='Home' path='/' />
+            <Breadcrumbs location='Home' path='/metamall' />
             <Basement />
         </div>
     )

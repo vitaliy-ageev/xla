@@ -1,11 +1,13 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useAppSelector } from '../../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import CustomButton from '../../UI/CustomButton/CustomButton'
 import Burger from '../../UI/Icons/Burger/Burger'
 import Logotype from '../../UI/Logotype/Logotype'
 import Modal from '../../UI/Modal/Modal'
 import classes from './BurgerMenu.module.scss'
+import { filterSlice } from '../../../store/reducers/filterSlice/filterSlice'
+import { RouteNames } from '../../../routes/routes'
 
 interface BurgerMenuProps {
     style: string
@@ -14,6 +16,9 @@ interface BurgerMenuProps {
 const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
     const [isActiveBurger, setIsActiveBurger] = useState<boolean>(false);
     const [viewModal, setViewModal] = useState<boolean>(false);
+
+    const { setProjectId } = filterSlice.actions;
+    const dispatch = useAppDispatch();
 
     const clickOnBurgerMenu = () => {
         if (isActiveBurger) {
@@ -25,6 +30,10 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
         }
     }
 
+    const clickOnOpp = () => {
+        dispatch(setProjectId(undefined))
+    }
+
     const { isScroll } = useAppSelector(state => state.generalReducer)
     const scrollToBlock = () => {
         document.querySelector('html')?.classList.add('scroll')
@@ -33,6 +42,7 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
             document.querySelector('html')?.classList.remove('scroll')
 
         }, 100)
+        clickOnOpp()
     }
 
     return (
@@ -43,17 +53,17 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                     {/* Header */}
                     <div className={classes.burger_menu_header}>
                         {/* Logotype */}
-                        <Link to="/">
+                        <Link to={RouteNames.MAIN}>
                             <Logotype color='black' />
                         </Link>
                     </div>
                     {/* Menu */}
                     <div className={classes.burger_menu_links}>
-                        <Link to='/' className={classes.burger_menu_link}
+                        <Link to={RouteNames.MAIN} className={classes.burger_menu_link}
                             onClick={scrollToBlock}>
                             All projects
                         </Link>
-                        <Link to='/opportunities' className={classes.burger_menu_link}>
+                        <Link onClick={clickOnOpp} to={RouteNames.OPPORTUNITIES} className={classes.burger_menu_link}>
                             Opportunities
                         </Link>
                     </div>
@@ -76,8 +86,8 @@ const BurgerMenu: FunctionComponent<BurgerMenuProps> = (props) => {
                         </CustomButton>
                     </div>
                 </div>
-            </Modal>
-        </div>
+            </Modal >
+        </div >
     )
 }
 

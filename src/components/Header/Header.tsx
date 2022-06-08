@@ -5,7 +5,9 @@ import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu'
 import Logotype from '../UI/Logotype/Logotype'
 import classes from './Header.module.scss'
 import { Embed } from '../../utils/embed'
-import { useAppSelector } from '../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
+import { RouteNames } from '../../routes/routes'
 
 interface IHeader {
     style: string,
@@ -13,14 +15,16 @@ interface IHeader {
 
 const Header: FunctionComponent<IHeader> = ({ style }) => {
     const [thisState, setThisState] = useState(false);
+    const { setProjectId } = filterSlice.actions;
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         Embed()
     }, [thisState])
 
     const menuItems = [
-        { id: 1, name: "All projects", link: "/", isScroll: true },
-        { id: 2, name: "Opportunities", link: "/opportunities", isScroll: false }
+        { id: 1, name: "All projects", link: `${RouteNames.MAIN}`, isScroll: true },
+        { id: 2, name: "Opportunities", link: `${RouteNames.OPPORTUNITIES}`, isScroll: false }
     ]
 
     const rootClasses = [classes.header]
@@ -29,6 +33,10 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     } else (
         rootClasses.push(classes.white)
     )
+
+    const clickOnOpp = () => {
+        dispatch(setProjectId(undefined))
+    }
 
     const { isScroll } = useAppSelector(state => state.generalReducer)
     const scrollToBlock = (name: string) => {
@@ -40,6 +48,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
 
             }, 100)
         }
+        clickOnOpp()
     }
 
     return (
@@ -48,7 +57,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                 <div className={classes.header_inner}>
                     <div className={classes.header_left_block}>
                         {/* Logotype */}
-                        <Link to="/">
+                        <Link to={RouteNames.MAIN}>
                             <Logotype color={style} />
                         </Link>
                         {/* Menu */}

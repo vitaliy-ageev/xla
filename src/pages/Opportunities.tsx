@@ -14,19 +14,29 @@ import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { statusAPI } from '../services/StatusService'
 import { workingModeAPI } from '../services/WorkingModeService'
 import { jobTypeAPI } from '../services/JobTypeService'
+import { projectAPI } from '../services/ProjectService'
 
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);
 
     let category: any = []
-    const { data: statuses } = statusAPI.useFetchAllStatusesQuery();
-    const { data: jobTypes } = jobTypeAPI.useFetchAllStatusesQuery();
-    const { data: workingMode } = workingModeAPI.useFetchAllStatusesQuery();
+    // const { data: statuses } = statusAPI.useFetchAllStatusesQuery();
+    // const { data: jobTypes } = jobTypeAPI.useFetchAllStatusesQuery();
+    // const { data: workingMode } = workingModeAPI.useFetchAllStatusesQuery();
+
+    const { data: projects } = projectAPI.useFetchAllProjectsQuery(100);
+
+    let project: any = []
+    projects?.projects.forEach((item, i, arr) => {
+        project.push({ id: item.id, name: item.name, key: item.name })
+    })
 
     category.push(
-        { id: 1, title: "Status project", isChecked: 1, category: statuses },
-        { id: 2, title: "Location", isChecked: 1, category: jobTypes },
-        { id: 3, title: "Working-method", isChecked: 2, category: workingMode }
+        // { id: 1, title: "Status project", isChecked: 1, category: statuses },
+        // { id: 2, title: "Location", isChecked: 1, category: jobTypes },
+        // { id: 3, title: "Working-method", isChecked: 2, category: workingMode },
+
+        { id: 4, title: "Projects", isChecked: 1, category: project }
     )
 
     return (
@@ -46,7 +56,7 @@ const Opportunities: FunctionComponent = () => {
                 </LeftRightSection>
             </MainSection>
             <Footer />
-            <Breadcrumbs location='Home/Opportunities' path='/' />
+            <Breadcrumbs location='Home/Opportunities' path='/metamall' />
             <Basement />
         </div>
     )

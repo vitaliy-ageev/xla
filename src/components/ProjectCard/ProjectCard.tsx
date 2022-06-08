@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { RouteNames } from '../../routes/routes'
 import { opportunityAPI } from '../../services/OpportunityService'
 import { Embed } from '../../utils/embed'
 import CardWithCorner from '../UI/CardWithCorner/CardWithCorner'
@@ -35,7 +36,7 @@ const ProjectCard: FunctionComponent = () => {
                 {/* Link */}
                 <>
                     {opportunity.project.url &&
-                        < a href={opportunity.project.url ? opportunity.project.url : '/'} target='_blank' className={classes.project_card_link}>
+                        < a href={opportunity.project.url ? opportunity.project.url : RouteNames.MAIN} target='_blank' className={classes.project_card_link}>
                             Visit Website
                         </a>
                     }
@@ -46,7 +47,7 @@ const ProjectCard: FunctionComponent = () => {
                     color='black'
                     style='project_card'>
                     <button
-                        data-tf-slider={opportunity.typeform_popup ? opportunity.typeform_popup.toString().split('"')[1] : 'VHpdDtau'}
+                        data-tf-slider={opportunity.typeform_apply_popup ? opportunity.typeform_apply_popup.toString().split('"')[1] : 'VHpdDtau'}
                         data-tf-width="550"
                         data-tf-iframe-props={`title=${opportunity.name}`}
                         data-tf-medium="snippet"

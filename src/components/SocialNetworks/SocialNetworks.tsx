@@ -10,10 +10,6 @@ import Union from '../UI/Icons/Social/Union'
 import classes from './SocialNetworks.module.scss'
 
 const SocialNetworks: FunctionComponent = () => {
-    const SocialMedia = [
-        { id: 1, name: 'discord', icon: '', link: '/' }
-    ]
-
     return (
         <div className={classes.social_networks}>
             {/* <div className={classes.social_networks_title}>

@@ -11,11 +11,11 @@ export interface IRoute {
 }
 
 export enum RouteNames {
-    MAIN = '/',
-    PROJECT = '/project',
-    OPPORTUNITIES = '/opportunities',
-    OPPORTUNITY = '/opportunity',
-    USER = '/user'
+    MAIN = '/metamall',
+    PROJECT = '/metamall/project',
+    OPPORTUNITIES = '/metamall/opportunities',
+    OPPORTUNITY = '/metamall/opportunity',
+    USER = '/metamall/user'
 }
 
 export const routes: IRoute[] = [

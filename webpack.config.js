@@ -9,7 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].[hash].js",
-        publicPath: '/',
+        publicPath: '/metamall/',
     },
     performance: {
         hints: false,
@@ -34,7 +34,10 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HTMLWebpackPlugin({ template: "./public/index.html" }),
+        new HTMLWebpackPlugin({
+            template: "./public/index.html",
+            favicon: "./public/favicon.png"
+        }),
         new WebpackNotifierPlugin({ alwaysNotify: false }),
 
     ],

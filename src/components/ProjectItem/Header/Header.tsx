@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import classes from './Header.module.scss'
 import { Link } from 'react-router-dom';
+import { RouteNames } from '../../../routes/routes';
 
 interface HeaderProps {
     title: string | null,
@@ -20,7 +21,7 @@ const Header: FunctionComponent<HeaderProps> = (props) => {
                 {props.subtitle}
             </h2>}
             {/* Link */}
-            {props.link && <Link to="/" className={classes.header_link}>
+            {props.link && <Link to={RouteNames.MAIN} className={classes.header_link}>
                 {props.link}
             </Link>}
         </div>

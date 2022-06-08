@@ -75,7 +75,8 @@ export interface IOpportunity {
 
 export interface paramsQuery {
     limit: number,
-    offset: number
+    offset: number,
+    project_id?: number,
 }
 
 export interface IFethOpportunity {
