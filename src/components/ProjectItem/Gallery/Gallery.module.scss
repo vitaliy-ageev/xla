@@ -30,7 +30,7 @@
     }
 
     @include breakpoint (SemiMedium) {
-        height: 163px;
+        height: 200px;
         margin: 10px 0 30px 0;
     }
 
@@ -56,11 +56,12 @@
         }
 
         @include breakpoint (Medium) {
-            height: 227px;
+            min-height: 227px;
+            height: auto;
         }
 
         @include breakpoint (SemiMedium) {
-            height: 163px;
+            min-height: 200px;
         }
     }
 }
