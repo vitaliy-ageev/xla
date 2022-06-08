@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { ICategoryFilter } from '../../models/IOpportunity'
 import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
@@ -11,10 +11,16 @@ interface FilterOpportunitiesProps {
 }
 
 const FilterOpportunities: FunctionComponent<FilterOpportunitiesProps> = (props) => {
-    const [checkBox, setCheckBox] = useState<number>(0)
+    const [checkBox, setCheckBox] = useState<any>(undefined)
     const { setProjectId } = filterSlice.actions;
     const { projectId } = useAppSelector(state => state.filterReducer)
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (projectId) {
+            setCheckBox(projectId)
+        }
+    }, [])
 
     const clickCheckBox = (projectId: number) => {
         // e.currentTarget.checked = true;
@@ -50,7 +56,7 @@ const FilterOpportunities: FunctionComponent<FilterOpportunitiesProps> = (props)
                                     <input type="radio"
                                         name="field"
                                         id={item.key}
-                                        checked={(checkBox == item.id || projectId == item.id) ? true : false}
+                                        checked={checkBox == item.id ? true : false}
                                         onClick={() => clickCheckBox(item.id)}
                                         className={classes.filter_checkbox_block_input} />
                                     <label htmlFor={item.key} className={classes.filter_checkbox_block_label}>
