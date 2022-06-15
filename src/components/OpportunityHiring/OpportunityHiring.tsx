@@ -7,6 +7,8 @@ import { IOpportunity } from '../../models/IOpportunity'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/hooks'
 import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
+import Blur from '../UI/BorderBlur/Blur'
+import BlurBackground from '../ProjectsList/ProjectListItem/Blur/Blur'
 
 interface OpportunityHiringProps {
     project_id?: number,
@@ -71,7 +73,9 @@ const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => 
                                                     style={{
                                                         background: `url(${opportunity.project.logo_url})`
                                                     }}
-                                                ></div>
+                                                >
+                                                    <BlurBackground />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -85,6 +89,8 @@ const OpportunityHiring: FunctionComponent<OpportunityHiringProps> = (props) => 
                             Show more
                         </Link>
                         : ''}
+                    {/* Block Blur */}
+                    <Blur />
                 </div >
             </NoiseEffect >}
         </>

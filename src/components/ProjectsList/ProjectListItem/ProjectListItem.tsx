@@ -5,6 +5,7 @@ import Tags from './Tags/Tags'
 import { Link } from 'react-router-dom'
 import { projectAPI } from '../../../services/ProjectService'
 import { RouteNames } from '../../../routes/routes'
+import Blur from './Blur/Blur'
 
 
 
@@ -18,14 +19,20 @@ const ProjectItem: FunctionComponent = () => {
 
                     <Link to={RouteNames.PROJECT + '/id=' + projectItem.id}
                         key={projectItem.id} className={classes.project_item}>
-                        <div className={classes.project_item_inner}>
+                        <div className={classes.project_item_inner}
+                            style={window.screen.width > 767 && projectItem.tags.length == 0 ? { alignItems: 'center' } : { alignItems: 'start' }}
+                        >
                             <div className={classes.project_item_left_container}>
                                 {/* Background */}
                                 <div className={classes.project_item_background}
                                     style={{
                                         background: `url(${projectItem.logo_url})`
                                     }}
-                                />
+                                >
+                                    {/* Background Blur */}
+                                    <Blur />
+                                </div>
+
                             </div>
                             <div className={classes.project_item_right_container}>
                                 <div className={classes.project_item_container}>

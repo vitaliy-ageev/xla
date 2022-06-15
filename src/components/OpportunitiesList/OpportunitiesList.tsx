@@ -6,6 +6,7 @@ import { RouteNames } from '../../routes/routes'
 import { opportunityAPI } from '../../services/OpportunityService'
 import { Embed } from '../../utils/embed'
 import { getPageCount } from '../../utils/pages'
+import Blur from '../ProjectsList/ProjectListItem/Blur/Blur'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import classes from './OpportunitiesList.module.scss'
 
@@ -56,6 +57,7 @@ const OpportunitiesList: FunctionComponent = () => {
                         <div className={classes.opportunities_list_item_background} style={{
                             background: `url(${opportunity.project.logo_url})`
                         }}>
+                            <Blur />
                         </div>
                     </div>
                     <div className={classes.opportunities_list_item_right}>

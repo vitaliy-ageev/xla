@@ -1,0 +1,11 @@
+@import '@variables';
+@import "@mixins";
+
+.cookies {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #FFF;
+    height: 100px;
+}

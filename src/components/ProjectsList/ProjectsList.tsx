@@ -10,7 +10,6 @@ const Projects: FunctionComponent<ProjectsProps> = (props) => {
 
     return (
         <div className={classes.projects}>
-            {/* <Categories /> */}
             <ProjectItem />
         </div>
     )

@@ -1,0 +1,48 @@
+@import '@variables';
+@import '@mixins';
+
+.background_blur {
+    &_l {
+        width: 16px;
+        height: 110%;
+        position: absolute;
+        top: -5px;
+        left: -8px;
+        background-color: #fff;
+        filter: blur(4px);
+        z-index: 30;
+    }
+
+    &_r {
+        width: 16px;
+        height: 110%;
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        background-color: #fff;
+        filter: blur(4px);
+        z-index: 30;
+    }
+
+    &_t {
+        width: 110%;
+        height: 16px;
+        position: absolute;
+        top: -8px;
+        left: -5px;
+        background-color: #fff;
+        filter: blur(4px);
+        z-index: 30;
+    }
+
+    &_b {
+        width: 110%;
+        height: 16px;
+        position: absolute;
+        bottom: -8px;
+        left: -5px;
+        background-color: #fff;
+        filter: blur(4px);
+        z-index: 30;
+    }
+}

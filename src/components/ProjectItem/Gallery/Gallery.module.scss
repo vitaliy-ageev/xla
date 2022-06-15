@@ -2,36 +2,38 @@
 @import "@mixins";
 
 .gallery {
-    width: 100%;
+    width: calc(100% + $WithBlur);
     height: 812px;
+    overflow: hidden;
     background: rgba($Black, 1);
-    margin: 25px 0 100px 0;
+    margin: calc(25px - $MarginBlur) 0 calc(100px - $MarginBlur) 0;
 
     position: relative !important;
+    left: -$MarginBlur;
 
     @include breakpoint (ExtraLarge) {
         height: 596px;
-        margin: 25px 0 50px 0;
+        margin: calc(25px - $MarginBlur) 0 calc(50px - $MarginBlur) 0;
     }
 
     @include breakpoint (SemiLarge) {
         height: 407px;
-        margin: 10px 0 40px 0;
+        margin: calc(10px - $MarginBlur) 0 calc(40px - $MarginBlur) 0;
     }
 
     @include breakpoint (Large) {
         height: 427px;
-        margin: 10px 0 30px 0;
+        margin: calc(10px - $MarginBlur) 0 calc(30px - $MarginBlur) 0;
     }
 
     @include breakpoint (Medium) {
         height: 227px;
-        margin: 10px 0 40px 0;
+        margin: calc(10px - $MarginBlur) 0 calc(40px - $MarginBlur) 0;
     }
 
     @include breakpoint (SemiMedium) {
         height: 200px;
-        margin: 10px 0 30px 0;
+        margin: calc(10px - $MarginBlur) 0 calc(30px - $MarginBlur) 0;
     }
 
     & img {

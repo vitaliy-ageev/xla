@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import Blur from '../../ProjectsList/ProjectListItem/Blur/Blur';
 import classes from './CustomBackground.module.scss'
 interface CustomBackgroundProps {
     class?: string,
@@ -15,7 +16,7 @@ const CustomBackground: FunctionComponent<CustomBackgroundProps> = (props) => {
         <div className={rootClasses.join(' ')} style={{
             background: `url(${props.logotype})`
         }}>
-            {/* <div className={classes.custom_background_img} ></div> */}
+            <Blur />
 
         </div>
     )

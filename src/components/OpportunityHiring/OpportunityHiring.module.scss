@@ -2,27 +2,34 @@
 @import "@mixins";
 
 .oppurtunity_hiring {
-    width: 100%;
+    width: calc(100% + $WithBlur);
     display: flex;
     flex-direction: column;
 
+    position: relative;
+    left: -$MarginBlur;
+
     background: radial-gradient(circle, #5D3270, #1F105C);
 
-    padding: 50px;
+    padding: calc(60px + $MarginBlur);
     margin-top: 50px;
 
     @include breakpoint (ExtraLarge) {
-        margin-top: 50px;
-        padding: 40px;
+        margin-top: 30px;
+        padding: calc(30px + $MarginBlur);
+    }
+
+    @include breakpoint (SemiLarge) {
+        padding: calc(47px + $MarginBlur) calc(30px + $MarginBlur);
     }
 
     @include breakpoint (Medium) {
-        margin-top: 40px;
-        padding: 30px;
+        margin-top: 20px;
+        padding: calc(47px + $MarginBlur) calc(30px + $MarginBlur);
     }
 
     @include breakpoint (SemiMedium) {
-        padding: 20px;
+        padding: calc(20px + $MarginBlur) calc(20px + $MarginBlur);
     }
 
     &_container {
@@ -41,12 +48,12 @@
         line-height: 30px;
         color: $White;
         font-family: $PPNeueMachinaRegular;
-        padding-bottom: 30px;
+        padding-bottom: 15px;
 
         @include breakpoint (ExtraLarge) {
             font-size: 24px;
             line-height: 24px;
-            padding-bottom: 30px;
+            padding-bottom: 15px;
         }
 
         @include breakpoint (SemiLarge) {
@@ -66,21 +73,23 @@
         flex-direction: column;
         justify-content: start;
         align-items: flex-start;
-        border-bottom: 1px solid $White;
-        padding-bottom: 20px;
-        margin-top: 25px;
+        border-bottom: 1px solid rgba($White, 0.25);
+        padding: 30px 0;
+
+        &:first-child {
+            margin-top: 15px;
+        }
+
+        @include breakpoint (ExtraLarge) {
+            padding: 10px 0;
+        }
 
         @include breakpoint (ExtraMedium) {
             cursor: default;
         }
 
-        @include breakpoint (SemiLarge) {
-            margin-top: 20px;
-        }
-
         &:last-child {
             border-bottom: none !important;
-            padding-bottom: 0 !important;
         }
 
         &_inner {
@@ -103,9 +112,10 @@
         &_title {
             width: 100%;
             font-size: 24px;
-            line-height: 28px;
+            line-height: 30px;
             color: $White;
-            font-family: $PPNeueMachinaLight;
+            font-family: $PPNeueMachinaRegular;
+            font-weight: 500;
             margin-bottom: 15px;
 
             @include breakpoint (ExtraLarge) {
@@ -129,6 +139,7 @@
             font-size: 16px;
             line-height: 22px;
             color: rgba($White, 0.75);
+            font-weight: 400;
             font-family: $HelveticaRegular;
             margin-bottom: 10px;
 
@@ -155,7 +166,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
+            overflow: hidden;
 
             @include breakpoint (ExtraLarge) {
                 width: 50px;
@@ -163,15 +174,16 @@
             }
 
             &_img {
-                width: 54px;
-                height: 54px;
+                width: calc(54px + 8px);
+                height: calc(54px + 8px);
                 background-position: center !important;
                 background-repeat: no-repeat !important;
                 background-size: cover !important;
+                position: relative;
 
                 @include breakpoint (ExtraLarge) {
-                    width: 36px;
-                    height: 36px;
+                    width: calc(36px + 8px);
+                    height: calc(36px + 8px);
                 }
             }
         }

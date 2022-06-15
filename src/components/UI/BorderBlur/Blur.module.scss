@@ -1,0 +1,64 @@
+@import '@variables';
+@import "@mixins";
+
+.block_blur {
+    &_l {
+        width: 30px;
+        height: 104%;
+        position: absolute;
+        top: -10px;
+        left: -15px;
+        background-color: $Background;
+        filter: blur($OpportunitiesHiringBLur);
+        z-index: 30;
+
+        @include breakpoint (Large) {
+            filter: blur($OpportunitiesHiringMobileBLur);
+        }
+    }
+
+    &_r {
+        width: 30px;
+        height: 104%;
+        position: absolute;
+        top: -10px;
+        right: -15px;
+        background-color: $Background;
+        filter: blur($OpportunitiesHiringBLur);
+        z-index: 30;
+
+        @include breakpoint (Large) {
+            filter: blur($OpportunitiesHiringMobileBLur);
+        }
+    }
+
+    &_t {
+        width: 104%;
+        height: 30px;
+        position: absolute;
+        top: -15px;
+        left: -10px;
+        background-color: $Background;
+        filter: blur($OpportunitiesHiringBLur);
+        z-index: 30;
+
+        @include breakpoint (Large) {
+            filter: blur($OpportunitiesHiringMobileBLur);
+        }
+    }
+
+    &_b {
+        width: 104%;
+        height: 30px;
+        position: absolute;
+        bottom: -15px;
+        left: -10px;
+        background-color: $Background;
+        filter: blur($OpportunitiesHiringBLur);
+        z-index: 30;
+
+        @include breakpoint (Large) {
+            filter: blur($OpportunitiesHiringMobileBLur);
+        }
+    }
+}

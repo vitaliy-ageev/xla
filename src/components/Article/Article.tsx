@@ -4,6 +4,7 @@ import BG from '../../assets/images/article.jpeg'
 import SandBox from '../UI/Icons/SandBox/SandBox'
 import Corner from '../UI/Icons/Corner/Corner'
 import NoiseEffect from '../UI/NoiseEffect/NoiseEffect'
+import Blur from '../UI/BorderBlur/Blur'
 
 const Article: FunctionComponent = () => {
     return (
@@ -13,8 +14,9 @@ const Article: FunctionComponent = () => {
                     target="_blank">
                     <div className={classes.article_background}
                         style={{
-                            background: ` rgba(0, 0, 0, 0.5) url(${BG})`
-                        }} />
+                            background: `url(${BG})`
+                        }}>
+                    </div>
                     {/* Icon Corner */}
                     <div className={classes.article_corner}>
                         <Corner />
@@ -41,8 +43,11 @@ const Article: FunctionComponent = () => {
                         </div>
                     </div>
                 </a>
-            </div >
+                {/* Border Blur */}
+                <Blur />
+            </div>
         </NoiseEffect>
+
     )
 }
 
