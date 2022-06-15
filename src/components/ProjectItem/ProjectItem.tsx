@@ -11,7 +11,6 @@ import Gallery from './Gallery/Gallery';
 import RecentUpdates from './RecentUpdates/RecentUpdates';
 import { IOpportunity } from '../../models/IOpportunity';
 import { IFAQ, IProject, IUpdates } from '../../models/IProject';
-import { projectAPI } from '../../services/ProjectService';
 
 interface ProjectItemProps {
     project: IProject | undefined,

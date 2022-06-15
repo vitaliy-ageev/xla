@@ -73,8 +73,9 @@
         font-size: 72px;
         line-height: 72px;
         color: $White;
-        font-family: $PPNeueMachinaRegular;
+        font-family: $PPNeueMachinaLight;
         text-transform: uppercase;
+        letter-spacing: 0.02em;
 
         @include breakpoint (ExtraLarge) {
             font-size: 64px;

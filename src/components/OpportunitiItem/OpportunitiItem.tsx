@@ -71,7 +71,7 @@ const OpportunitiItem: FunctionComponent = () => {
                     <CustomButton
                         styleBtn='background'
                         color='black'
-                        width={372}
+                        width={375}
                         style='opportuniti_apply'>
                         <button
                             data-tf-slider={opportunity.typeform_apply_popup ? opportunity.typeform_apply_popup.toString().split('"')[1] : 'VHpdDtau'}

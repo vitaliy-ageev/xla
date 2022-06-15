@@ -23,6 +23,10 @@
         }
     }
 
+    &.project_card {
+        width: 100% !important;
+    }
+
     @include breakpoint (ExtraLarge) {
         // max-width: 270px;
         font-size: 18px;
@@ -101,9 +105,6 @@
 
         }
 
-        &.project_card {
-            width: 330px !important;
-        }
     }
 
     @include breakpoint (Medium) {
