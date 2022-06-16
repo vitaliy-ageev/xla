@@ -4,11 +4,12 @@
 .gallery {
     width: calc(100% + $WithBlur);
     height: 812px;
-    overflow: hidden !important;
+    // overflow: hidden !important;
     background: rgba($Black, 1);
     margin: calc(25px - $MarginBlur) 0 calc(100px - $MarginBlur) 0;
 
     position: relative !important;
+    z-index: -1;
     left: -$MarginBlur;
 
     @include breakpoint (ExtraLarge) {
@@ -42,7 +43,6 @@
         background-position: center !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
-        overflow: hidden !important;
 
         object-fit: cover !important;
 
