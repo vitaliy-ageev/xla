@@ -1,15 +1,21 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import classes from '@/assets/styles/form/form.module.scss'
 import { authAdminAPI } from '../../../services/AuthAdminService'
+import { useNavigate } from 'react-router-dom'
+import { adminSlice } from '../../../store/reducers/adminSlice/adminSlice'
+import { useDispatch } from 'react-redux'
 
 const initialState = {
-    email: "",
+    username: "",
     password: "",
 }
 
 const LoginAdminForm: FunctionComponent = (prop) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { setAdminAuth } = adminSlice.actions
     const [formValue, setFormValue] = useState(initialState)
-    const { email, password } = formValue
+    const { username, password } = formValue
     const [loginAdmin,
         {
             data: loginData,
@@ -24,10 +30,19 @@ const LoginAdminForm: FunctionComponent = (prop) => {
     }
 
     const handleLogin = async () => {
-        if (email && password) {
+        if (username && password) {
+            await loginAdmin({ username, password })
+        } else {
 
         }
     }
+
+    useEffect(() => {
+        if (isLoginSuccess) {
+            dispatch(setAdminAuth(true))
+            navigate("/metamall")
+        }
+    }, [isLoginSuccess])
 
     return (
         <>
@@ -39,15 +54,15 @@ const LoginAdminForm: FunctionComponent = (prop) => {
                 </h1>
                 {/* Email */}
                 <div className={classes.form_container}>
-                    <label htmlFor="email"
+                    <label htmlFor="username"
                         className={classes.form_label}>
-                        Email
+                        Username
                     </label>
-                    <input type="email"
-                        name='email'
-                        value={email}
+                    <input type="text"
+                        name='username'
+                        value={username}
                         onChange={handleChange}
-                        placeholder='example@mail.com'
+                        placeholder='admin'
                         className={classes.form_input} />
                 </div>
                 {/* Password */}
@@ -65,7 +80,7 @@ const LoginAdminForm: FunctionComponent = (prop) => {
                 </div>
                 {/* Button Submit */}
                 <button className={classes.form_button_submit}
-                    type='submit'
+                    type='button'
                     onClick={() => handleLogin()}>
                     Log In
                 </button>

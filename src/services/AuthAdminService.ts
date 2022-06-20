@@ -8,7 +8,7 @@ export const authAdminAPI = createApi({
     }),
     endpoints: (build) => ({
         loginAdmin: build.mutation({
-            query: (body: { email: string; password: string }) => {
+            query: (body: { username: string; password: string }) => {
                 return {
                     url: RouteNames.LOGIN_ADMIN,
                     method: "post",

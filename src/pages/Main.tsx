@@ -16,7 +16,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import Cookies from '../components/Cookies/Cookies';
 
 const Main: FunctionComponent = (props) => {
     window.scrollTo(0, 0);
