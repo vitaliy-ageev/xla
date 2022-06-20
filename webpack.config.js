@@ -39,7 +39,6 @@ module.exports = {
             favicon: "./public/favicon.png"
         }),
         new WebpackNotifierPlugin({ alwaysNotify: false }),
-
     ],
     module: {
         rules: [
@@ -72,17 +71,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-typescript", "@babel/preset-react"]
-                    }
-                }
-            },
-            {
-                test: /\.tsx$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",

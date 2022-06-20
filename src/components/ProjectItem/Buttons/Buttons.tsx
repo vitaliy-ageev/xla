@@ -35,7 +35,6 @@ const Buttons: FunctionComponent<ButtonsProps> = (props) => {
                     data-tf-hidden="hidden1=xxxxx"
                 >
                     {props.title}
-
                 </button>
             </a>
         </div>

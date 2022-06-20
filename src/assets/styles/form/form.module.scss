@@ -1,0 +1,64 @@
+@import "@variables";
+@import "@mixins";
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &_title {
+        font-size: 24px;
+        line-height: 24px;
+        color: $Black;
+        font-family: $PPNeueMachinaLight;
+        margin-bottom: 25px;
+        ;
+    }
+
+    &_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        margin-bottom: 25px;
+    }
+
+    &_label {
+        font-size: 14px;
+        line-height: 18px;
+        color: #101828;
+        font-family: $HelveticaLight;
+    }
+
+    &_input {
+        width: 100%;
+        height: 45px;
+        border: 1px solid #EAECF0;
+        margin-top: 10px;
+        padding: 10px 15px;
+
+        font-size: 16px;
+        line-height: 22px;
+        color: $Black;
+        font-family: $HelveticaLight;
+
+        &::placeholder {
+            color: #98A2B3;
+        }
+    }
+
+    &_button_submit {
+        width: 100%;
+        padding: 15px 30px;
+        background: $Black;
+        height: 45px;
+
+        font-size: 16px;
+        line-height: 15px;
+        color: $White;
+        font-family: $PPNeueMachinaLight;
+    }
+}

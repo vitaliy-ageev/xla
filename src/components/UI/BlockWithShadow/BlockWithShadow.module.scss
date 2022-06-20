@@ -1,0 +1,10 @@
+@import '@variables';
+@import '@mixins';
+
+.block_with_shadow {
+    width: 520px;
+    height: auto;
+    background: $White;
+    box-shadow: 0px 0px 30px rgba(16, 24, 40, 0.08);
+    padding: 40px 90px;
+}

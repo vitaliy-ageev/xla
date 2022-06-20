@@ -113,4 +113,44 @@
             display: block;
         }
     }
+
+
+    &_buttons_create_project {
+        max-height: 53px;
+        border: 1px solid rgba($White, 0.75) !important;
+        padding: 15px 30px;
+        text-align: center;
+        font-size: 24px;
+        line-height: 23px;
+        color: $White;
+        font-family: $PPNeueMachinaMedium;
+
+        transition: all .2s linear;
+
+        @include breakpoint (ExtraLarge) {}
+
+        @include breakpoint (SemiLarge) {
+            font-size: 16px;
+            line-height: 15px;
+        }
+
+        @include breakpoint (Large) {
+            display: none;
+        }
+    }
+
+    &.white &_buttons_create_project:hover {
+        color: $Black;
+        background: rgba($White, 0.75);
+    }
+
+    &.black &_buttons_create_project {
+        color: $Black;
+        border: 1px solid rgba($Black, 0.75) !important;
+    }
+
+    &.black &_buttons_create_project:hover {
+        color: $White;
+        background: rgba($Black, 0.75);
+    }
 }

@@ -1,0 +1,12 @@
+@import '@variables';
+@import '@mixins';
+
+.close_icon {
+    cursor: pointer;
+
+    &.fixed {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}

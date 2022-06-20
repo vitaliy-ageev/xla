@@ -18,6 +18,9 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     const { setProjectId } = filterSlice.actions;
     const dispatch = useAppDispatch();
 
+    const { isAuth } = useAppSelector(state => state.authReducer);
+    const { adminAuth } = useAppSelector(state => state.adminReducer);
+
     useEffect(() => {
         Embed()
     }, [thisState])
@@ -81,6 +84,15 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                                 Sing In
                             </button>
                         </CustomButton> */}
+
+                        {adminAuth &&
+                            <>
+                                <Link to={RouteNames.CREATE_PROJECT}
+                                    className={classes.header_buttons_create_project}>
+                                    Create Project
+                                </Link>
+                            </>
+                        }
                     </div>
                     <div className={classes.header_burger_menu}>
                         <BurgerMenu style={style} />

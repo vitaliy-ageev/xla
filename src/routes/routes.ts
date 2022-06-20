@@ -4,6 +4,9 @@ import Opportunities from "../pages/Opportunities";
 import Opportunity from "../pages/Opportuniti";
 import Project from "../pages/Project";
 import User from "../pages/User";
+import Admin from "../pages/LoginAdmin";
+import LoginAdmin from "../pages/LoginAdmin";
+import CreateProject from "../pages/CreateProject";
 
 export interface IRoute {
     path: string;
@@ -15,13 +18,26 @@ export enum RouteNames {
     PROJECT = '/metamall/project',
     OPPORTUNITIES = '/metamall/opportunities',
     OPPORTUNITY = '/metamall/opportunity',
-    USER = '/metamall/user'
+    USER = '/metamall/user',
+    LOGIN_ADMIN = '/metamall/login/admin',
+    CREATE_PROJECT = '/metamall/project/create'
 }
 
-export const routes: IRoute[] = [
+export const PublicRoutes: IRoute[] = [
     { path: RouteNames.MAIN, element: Main },
     { path: RouteNames.PROJECT + '/id=:id', element: Project },
     { path: RouteNames.OPPORTUNITIES, element: Opportunities },
     { path: RouteNames.OPPORTUNITY + '/id=:id', element: Opportunity },
-    { path: RouteNames.USER, element: User }
+]
+
+export const PrivateRoutes: IRoute[] = [
+    { path: RouteNames.USER, element: User },
+]
+
+export const AdminRoutes: IRoute[] = [
+    { path: RouteNames.CREATE_PROJECT, element: CreateProject },
+]
+
+export const LoginRoutes: IRoute[] = [
+    { path: RouteNames.LOGIN_ADMIN, element: LoginAdmin }
 ]
