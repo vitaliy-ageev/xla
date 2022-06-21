@@ -19,7 +19,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     const dispatch = useAppDispatch();
 
     const { isAuth } = useAppSelector(state => state.authReducer);
-    const { adminAuth } = useAppSelector(state => state.adminReducer);
+    const { isAdmin } = useAppSelector(state => state.adminReducer);
 
     useEffect(() => {
         Embed()
@@ -85,7 +85,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                             </button>
                         </CustomButton> */}
 
-                        {adminAuth &&
+                        {isAdmin &&
                             <>
                                 <Link to={RouteNames.CREATE_PROJECT}
                                     className={classes.header_buttons_create_project}>

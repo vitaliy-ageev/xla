@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 import { AdminRoutes, LoginRoutes, PublicRoutes, RouteNames } from '../../routes/routes'
-import { selectCurrentAdmin } from '../../store/reducers/adminSlice/adminSlice';
+import { setIsAdmin } from '../../store/reducers/adminSlice/adminSlice';
 import { authReducer } from '../../store/reducers/isAuth/isAuth';
 
 
@@ -11,7 +12,12 @@ import { authReducer } from '../../store/reducers/isAuth/isAuth';
 const AppRouter = () => {
   const { isAuth } = useAppSelector(state => state.authReducer);
   const adminAuth: any = localStorage.getItem("user")
-  const isAdmin = JSON.parse(adminAuth).isAdmin
+  const dispatch = useDispatch();
+  const { isAdmin } = useAppSelector(state => state.adminReducer)
+
+  useEffect(() => {
+    dispatch(setIsAdmin(adminAuth ? JSON.parse(adminAuth).isAdmin : false))
+  }, [])
 
   return (
 

@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classes from '@/assets/styles/form/form.module.scss'
 import { adminAPI } from '../../../services/admin/AdminService'
 import { useNavigate } from 'react-router-dom'
-import { adminSlice } from '../../../store/reducers/adminSlice/adminSlice'
+import { adminSlice, setIsAdmin } from '../../../store/reducers/adminSlice/adminSlice'
 import { useDispatch } from 'react-redux'
 import { useLoginAdminMutation } from '../../../services/admin/AuthAdminService'
 
@@ -62,6 +62,7 @@ const LoginAdminForm: FunctionComponent = (prop) => {
 
     useEffect(() => {
         if (isLoginSuccess) {
+            setIsAdmin(true)
             navigate("/metamall")
         }
     }, [isLoginSuccess])
