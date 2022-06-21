@@ -32,7 +32,7 @@ const Main: FunctionComponent = (props) => {
                 { id: 2, name: "NFTs" },
                 { id: 3, name: "contest" },
             ],
-            link: "https://test.x.la/forum/viewtopic.php?t=137"
+            link: "https://x.la/forum/viewtopic.php?t=137"
         },
         {
             id: 2,
@@ -45,7 +45,7 @@ const Main: FunctionComponent = (props) => {
                 { id: 2, name: "future" },
                 { id: 3, name: "blockchain" },
             ],
-            link: "https://test.x.la/forum/viewtopic.php?t=78"
+            link: "https://x.la/forum/viewtopic.php?t=78"
         },
         {
             id: 3,
@@ -58,7 +58,7 @@ const Main: FunctionComponent = (props) => {
                 { id: 2, name: "crypto" },
                 { id: 3, name: "blockchain" },
             ],
-            link: "https://test.x.la/forum/viewtopic.php?t=84"
+            link: "https://x.la/forum/viewtopic.php?t=84"
         },
     ]
 
