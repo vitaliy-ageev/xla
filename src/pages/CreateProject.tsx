@@ -20,13 +20,13 @@ const CreateProject: FunctionComponent = (props) => {
                 {/* Logotype */}
 
                 {/* Form */}
-                <BlockWithShadow>
-                    <h1>Create Project</h1>
+                {/* <BlockWithShadow> */}
+                    {/* <h1>Create Project</h1> */}
                     {/* Title */}
                     {/* Subtitle */}
                     {/* Form */}
                     {/* Buttom Submit */}
-                </BlockWithShadow>
+                {/* </BlockWithShadow> */}
                 {/* Close Icon */}
                 <div onClick={() => history(-1)}>
                     <CloseWindow style='fixed' />
