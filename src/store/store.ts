@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { authAdminAPI } from "../services/AuthAdminService";
+import { adminAPI } from "../services/admin/AdminService";
 import { jobTypeAPI } from "../services/JobTypeService";
 import { opportunityAPI } from "../services/OpportunityService";
 import { projectAPI } from "../services/ProjectService";
@@ -18,7 +18,7 @@ export const setupStore = () => {
             statusAPI.middleware,
             jobTypeAPI.middleware,
             workingModeAPI.middleware,
-            authAdminAPI.middleware,
+            adminAPI.middleware,
         ])
     })
 }

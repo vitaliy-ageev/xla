@@ -1,19 +1,22 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/hooks';
 import { AdminRoutes, LoginRoutes, PublicRoutes, RouteNames } from '../../routes/routes'
+import { selectCurrentAdmin } from '../../store/reducers/adminSlice/adminSlice';
 import { authReducer } from '../../store/reducers/isAuth/isAuth';
 
 
 
 const AppRouter = () => {
   const { isAuth } = useAppSelector(state => state.authReducer);
-  const { adminAuth } = useAppSelector(state => state.adminReducer);
+  const adminAuth: any = localStorage.getItem("user")
+  const isAdmin = JSON.parse(adminAuth).isAdmin
 
   return (
 
     <Routes>
-      {adminAuth ?
+      {isAdmin ?
         <>
           {AdminRoutes.map(route =>
             <Route
@@ -39,7 +42,7 @@ const AppRouter = () => {
         :
         <Route path="*" element={<Navigate to={RouteNames.MAIN} />} />
       }
-      {!adminAuth && !isAuth ?
+      {!isAdmin && !isAuth ?
         <>
           {LoginRoutes.map(route =>
             <Route

@@ -7,7 +7,7 @@ import generalReducer from './generalSlice/generalSlice'
 import authReducer from './isAuth/isAuth'
 import filterReducer from './filterSlice/filterSlice'
 import adminReducer from './adminSlice/adminSlice'
-import { authAdminAPI } from '../../services/AuthAdminService'
+import { adminAPI } from '../../services/admin/AdminService'
 
 export default {
     authReducer,
@@ -19,5 +19,5 @@ export default {
     [statusAPI.reducerPath]: statusAPI.reducer,
     [jobTypeAPI.reducerPath]: jobTypeAPI.reducer,
     [workingModeAPI.reducerPath]: workingModeAPI.reducer,
-    [authAdminAPI.reducerPath]: authAdminAPI.reducer,
+    [adminAPI.reducerPath]: adminAPI.reducer,
 }

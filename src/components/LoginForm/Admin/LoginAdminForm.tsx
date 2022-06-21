@@ -1,19 +1,27 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classes from '@/assets/styles/form/form.module.scss'
-import { authAdminAPI } from '../../../services/AuthAdminService'
+import { adminAPI } from '../../../services/admin/AdminService'
 import { useNavigate } from 'react-router-dom'
 import { adminSlice } from '../../../store/reducers/adminSlice/adminSlice'
 import { useDispatch } from 'react-redux'
+import { useLoginAdminMutation } from '../../../services/admin/AuthAdminService'
 
 const initialState = {
     username: "",
     password: "",
 }
 
+interface IResponseData {
+    user_id: number,
+    access_token: string,
+    refresh_token: string,
+    expires_in: number,
+}
+
 const LoginAdminForm: FunctionComponent = (prop) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { setAdminAuth } = adminSlice.actions
+    const {setAuthAdmin, logOutAdmin } = adminSlice.actions
     const [formValue, setFormValue] = useState(initialState)
     const { username, password } = formValue
     const [loginAdmin,
@@ -23,23 +31,37 @@ const LoginAdminForm: FunctionComponent = (prop) => {
             isError: isLoginError,
             error: loginError
         }
-    ] = authAdminAPI.useLoginAdminMutation()
+    ] = useLoginAdminMutation()
 
     const handleChange = (e: any) => {
         setFormValue({ ...formValue, [e.target.name]: e.target.value })
     }
 
     const handleLogin = async () => {
-        if (username && password) {
-            await loginAdmin({ username, password })
-        } else {
-
+        try {
+            if (username && password) {
+                const userData: any = await loginAdmin({ username, password })
+                const user_id = userData?.data?.user_id
+                const access_token = userData?.data?.access_token
+                dispatch(setAuthAdmin({ ...userData, user_id, access_token }))
+                setFormValue(initialState)
+            }
+        } catch (e: any) {
+            if (!e?.response) {
+                // No Server Response
+            } else if (e.response?.status === 400) {
+                // missing username or password
+            } else if (e.response?.status === 401) {
+                // unauthorized
+            } else {
+                // login failed
+            }
         }
+
     }
 
     useEffect(() => {
         if (isLoginSuccess) {
-            dispatch(setAdminAuth(true))
             navigate("/metamall")
         }
     }, [isLoginSuccess])
@@ -63,6 +85,7 @@ const LoginAdminForm: FunctionComponent = (prop) => {
                         value={username}
                         onChange={handleChange}
                         placeholder='admin'
+                        autoComplete='off'
                         className={classes.form_input} />
                 </div>
                 {/* Password */}
@@ -76,6 +99,7 @@ const LoginAdminForm: FunctionComponent = (prop) => {
                         value={password}
                         onChange={handleChange}
                         placeholder='●●●●●●●●'
+                        autoComplete='off'
                         className={classes.form_input} />
                 </div>
                 {/* Button Submit */}
