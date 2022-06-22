@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery, FetchBaseQueryError, FetchArgs, BaseQueryFn 
 import { useAppSelector } from '../../hooks/hooks';
 import { RouteNames } from '../../routes/routes';
 import { logOutAdmin, setAuthAdmin } from '../../store/reducers/adminSlice/adminSlice';
-import { RootState } from '../../store/store';
+import { AppStore } from '../../store/store';
 
 interface IResponseData {
     user_id: number,
@@ -16,9 +16,9 @@ const baseQuery = fetchBaseQuery({
     baseUrl: "https://megamall-api-dev.x.la",
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
-        const user_id: any = (getState() as RootState).adminReducer.user_id
-        const refresh_token: any = (getState() as RootState).adminReducer.refresh_token
-        const access_token: any = (getState() as RootState).adminReducer.access_token
+        const user_id: any = (getState() as AppStore).adminReducer.user_id
+        const refresh_token: any = (getState() as AppStore).adminReducer.refresh_token
+        const access_token: any = (getState() as AppStore).adminReducer.access_token
         console.log('access_token', access_token)
         if (access_token) {
             headers.set("Authorization", `Bearer ${access_token}`)
@@ -32,7 +32,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
     if (!result?.error) {
         // const [refreshAdmin] = useRefreshAdminMutation()
-        const refresh_token: any = (api.getState() as RootState).adminReducer.refresh_token
+        const refresh_token: any = (api.getState() as AppStore).adminReducer.refresh_token
         console.log('refresh_token', refresh_token)
         // const refreshResult: any = await baseQuery({ url: '/auth/refresh?role=admin', method: 'POST', body: { refresh_token } }, api, extraOptions)
         // // const refreshResult: any = await refreshAdmin({ refresh_token });
