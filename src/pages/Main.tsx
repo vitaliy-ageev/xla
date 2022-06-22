@@ -68,13 +68,13 @@ const Main: FunctionComponent = (props) => {
     const { setScroll } = generalSlice.actions;
     const dispatch = useAppDispatch();
 
-    const { data: meProfile } = authAdminAPI.useGetProfileQuery('');
-
-    console.log("meProfile", meProfile)
-
     useEffect(() => {
         dispatch(setScroll(scrollRef.current.offsetTop))
     }, [])
+
+    // const {refresh_token} = useAppSelector(state => state.adminReducer)
+
+    // console.log('refresh_token111 ', refresh_token)
 
     return (
         <div className='App'>

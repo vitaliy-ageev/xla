@@ -7,16 +7,19 @@ export const authAdminAPI = adminAPI.injectEndpoints({
                 return {
                     url: '/auth/login?roles=admin',
                     method: "post",
-                    credentials: 'include',
                     body
                 }
             },
         }),
-        getProfile: build.query({
-            query: () => {
-                url: "/auth/me"
-            }
-        }),
+        // refreshAdmin: build.mutation({
+        //     query: (body: { refresh_token: string }) => {
+        //         return {
+        //             url: '/auth/refresh?roles=admin',
+        //             method: "post",
+        //             body
+        //         }
+        //     },
+        // }),
     })
 })
 

@@ -21,25 +21,28 @@ export const adminSlice = createSlice({
         setIsAdmin: (state, action: PayloadAction<boolean>) => {
             state.isAdmin = action.payload
         },
-        setAuthAdmin: (state, action: PayloadAction<{ user_id: number, access_token: string }>) => {
-            const { user_id, access_token } = action.payload
+        setAuthAdmin: (state, action: PayloadAction<{ user_id: number, access_token: string, refresh_token: string }>) => {
+            const { user_id, access_token, refresh_token } = action.payload
             state.user_id = user_id
             state.access_token = access_token
-            state.isAdmin = true
-            localStorage.setItem(
-                "user",
-                JSON.stringify({
-                    user_id: user_id,
-                    access_token: access_token,
-                    isAdmin: true
-                })
-            )
+            state.refresh_token = refresh_token
+
+            console.log('3234234', refresh_token)
+            // state.isAdmin = true
+            // localStorage.setItem(
+            //     "user",
+            //     JSON.stringify({
+            //         user_id: user_id,
+            //         access_token: access_token,
+            //         isAdmin: true
+            //     })
+            // )
         },
         logOutAdmin: (state) => {
             state.user_id = null
             state.access_token = null
            state.isAdmin = false
-            localStorage.removeItem("user")
+            // localStorage.removeItem("user")
         }
     }
 })

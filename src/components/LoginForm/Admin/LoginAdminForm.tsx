@@ -40,10 +40,11 @@ const LoginAdminForm: FunctionComponent = (prop) => {
     const handleLogin = async () => {
         try {
             if (username && password) {
-                const userData: any = await loginAdmin({ username, password })
+                const userData: any = await loginAdmin({ username, password }).unwrap()
                 const user_id = userData?.data?.user_id
                 const access_token = userData?.data?.access_token
-                dispatch(setAuthAdmin({ ...userData, user_id, access_token }))
+                const refresh_token = userData?.data?.refresh_token
+                dispatch(setAuthAdmin({ user_id, access_token, refresh_token }))
                 setFormValue(initialState)
             }
         } catch (e: any) {
@@ -62,8 +63,8 @@ const LoginAdminForm: FunctionComponent = (prop) => {
 
     useEffect(() => {
         if (isLoginSuccess) {
-            setIsAdmin(true)
-            navigate("/metamall")
+            // setIsAdmin(true)
+            // navigate("/metamall")
         }
     }, [isLoginSuccess])
 
