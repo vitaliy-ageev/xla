@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import { authAdminAPI } from '../services/admin/AuthAdminService';
 
 const Main: FunctionComponent = (props) => {
     window.scrollTo(0, 0);
@@ -66,6 +67,10 @@ const Main: FunctionComponent = (props) => {
     const scrollRef: any = useRef()
     const { setScroll } = generalSlice.actions;
     const dispatch = useAppDispatch();
+
+    const { data: meProfile } = authAdminAPI.useGetProfileQuery('');
+
+    console.log("meProfile", meProfile)
 
     useEffect(() => {
         dispatch(setScroll(scrollRef.current.offsetTop))

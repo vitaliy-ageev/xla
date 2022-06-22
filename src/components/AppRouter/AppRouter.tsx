@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 import { AdminRoutes, LoginRoutes, PublicRoutes, RouteNames } from '../../routes/routes'

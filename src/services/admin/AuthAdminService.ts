@@ -7,9 +7,15 @@ export const authAdminAPI = adminAPI.injectEndpoints({
                 return {
                     url: '/auth/login?roles=admin',
                     method: "post",
+                    credentials: 'include',
                     body
                 }
             },
+        }),
+        getProfile: build.query({
+            query: () => {
+                url: "/auth/me"
+            }
         }),
     })
 })

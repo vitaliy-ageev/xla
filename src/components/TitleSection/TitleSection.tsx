@@ -14,7 +14,7 @@ const TitleSection: FunctionComponent = () => {
                             Opportunities
                         </h1>
                         <h2 className={classes.title_section_subtitle}>
-                            Search for various job positions, contractors, vendors or services Megamall projects are seeking
+                            Search for various job positions, contractors, vendors or services Metamall projects are seeking
                         </h2>
                     </div>
                 </div>
