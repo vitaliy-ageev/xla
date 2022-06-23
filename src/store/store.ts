@@ -9,8 +9,9 @@ import reducers from "./reducers/reducers";
 
 const rootReducer = combineReducers(reducers)
 
-export const setupStore =  configureStore({
-        reducer: reducers,
+export const setupStore = () => {
+    return configureStore({
+        reducer: rootReducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([
             projectAPI.middleware,
             opportunityAPI.middleware,
@@ -20,7 +21,8 @@ export const setupStore =  configureStore({
             adminAPI.middleware,
         ])
     })
+}
 
-export type RootState = ReturnType<typeof rootReducer.getState>
-// export type AppStore = ReturnType<typeof setupStore>
-// export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']

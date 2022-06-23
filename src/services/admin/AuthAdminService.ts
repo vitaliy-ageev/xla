@@ -11,16 +11,20 @@ export const authAdminAPI = adminAPI.injectEndpoints({
                 }
             },
         }),
-        // refreshAdmin: build.mutation({
-        //     query: (body: { refresh_token: string }) => {
-        //         return {
-        //             url: '/auth/refresh?roles=admin',
-        //             method: "post",
-        //             body
-        //         }
-        //     },
-        // }),
+        logOutAdmin: build.mutation<void, void>({
+            query: () => {
+                return {
+                    url: '/auth/logout',
+                    method: 'post'
+                }
+            }
+        }),
+        fetchProfile: build.query({
+            query: () => ({
+                url: '/profile/me'
+            })
+        }),
     })
 })
 
-export const { useLoginAdminMutation } = authAdminAPI
+export const { useLoginAdminMutation, useLogOutAdminMutation, useFetchProfileQuery } = authAdminAPI

@@ -1,10 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import classes from '@/assets/styles/form/form.module.scss'
 import { adminAPI } from '../../../services/admin/AdminService'
 import { useNavigate } from 'react-router-dom'
 import { adminSlice, setIsAdmin } from '../../../store/reducers/adminSlice/adminSlice'
 import { useDispatch } from 'react-redux'
 import { useLoginAdminMutation } from '../../../services/admin/AuthAdminService'
+import Title from '../../UI/Form/Title/Title'
+import Input from '../../UI/Form/Input/Input'
+import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
+import Form from '../../UI/Form/Form'
 
 const initialState = {
     username: "",
@@ -21,7 +24,7 @@ interface IResponseData {
 const LoginAdminForm: FunctionComponent = (prop) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {setAuthAdmin, logOutAdmin } = adminSlice.actions
+    const { setAuthAdmin, setLogOutAdmin } = adminSlice.actions
     const [formValue, setFormValue] = useState(initialState)
     const { username, password } = formValue
     const [loginAdmin,
@@ -41,10 +44,9 @@ const LoginAdminForm: FunctionComponent = (prop) => {
         try {
             if (username && password) {
                 const userData: any = await loginAdmin({ username, password }).unwrap()
-                const user_id = userData?.data?.user_id
-                const access_token = userData?.data?.access_token
-                const refresh_token = userData?.data?.refresh_token
-                dispatch(setAuthAdmin({ user_id, access_token, refresh_token }))
+                if (userData) {
+                    dispatch(setAuthAdmin(userData))
+                }
                 setFormValue(initialState)
             }
         } catch (e: any) {
@@ -63,54 +65,38 @@ const LoginAdminForm: FunctionComponent = (prop) => {
 
     useEffect(() => {
         if (isLoginSuccess) {
-            // setIsAdmin(true)
-            // navigate("/metamall")
+            navigate("/metamall")
         }
     }, [isLoginSuccess])
 
     return (
         <>
-            <form className={classes.form}
-                method="POST">
+            <Form action='post'>
                 {/* Title */}
-                <h1 className={classes.form_title}>
-                    Log in to your account
-                </h1>
+                <Title title='Log in to your account' marginBottom={25} />
                 {/* Email */}
-                <div className={classes.form_container}>
-                    <label htmlFor="username"
-                        className={classes.form_label}>
-                        Username
-                    </label>
-                    <input type="text"
-                        name='username'
-                        value={username}
-                        onChange={handleChange}
-                        placeholder='admin'
-                        autoComplete='off'
-                        className={classes.form_input} />
-                </div>
+                <Input label='Username'
+                    name='username'
+                    type='text'
+                    placeholder='admin'
+                    value={username}
+                    onChange={handleChange}
+                />
                 {/* Password */}
-                <div className={classes.form_container}>
-                    <label htmlFor="password"
-                        className={classes.form_label}>
-                        Password
-                    </label>
-                    <input type="password"
-                        name='password'
-                        value={password}
-                        onChange={handleChange}
-                        placeholder='●●●●●●●●'
-                        autoComplete='off'
-                        className={classes.form_input} />
-                </div>
+                <Input label='Password'
+                    name='password'
+                    type='password'
+                    placeholder='●●●●●●●●'
+                    value={password}
+                    onChange={handleChange}
+                />
                 {/* Button Submit */}
-                <button className={classes.form_button_submit}
-                    type='button'
-                    onClick={() => handleLogin()}>
-                    Log In
-                </button>
-            </form>
+                <ButtonSubmit
+                    name="Log In"
+                    type="button"
+                    onClick={handleLogin}
+                />
+            </Form>
         </>
     )
 }

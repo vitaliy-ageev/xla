@@ -1,0 +1,13 @@
+@import "@variables";
+@import "@mixins";
+
+.button_submit {
+    width: 100%;
+    padding: 15px 30px;
+    background: $Black;
+    height: 45px;
+    font-size: 16px;
+    line-height: 15px;
+    color: $White;
+    font-family: $PPNeueMachinaMedium;
+}

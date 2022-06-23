@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CustomButton from '../UI/CustomButton/CustomButton'
 import BurgerMenu from '../../components/Header/BurgerMenu/BurgerMenu'
 import Logotype from '../UI/Logotype/Logotype'
@@ -8,6 +8,8 @@ import { Embed } from '../../utils/embed'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
 import { RouteNames } from '../../routes/routes'
+import { useLogOutAdminMutation } from '../../services/admin/AuthAdminService'
+import { setLogOutAdmin } from '../../store/reducers/adminSlice/adminSlice'
 
 interface IHeader {
     style: string,
@@ -54,6 +56,14 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
         clickOnOpp()
     }
 
+    const [logOutAdmin] = useLogOutAdminMutation()
+    const navigate = useNavigate()
+    const logOutHandler = () => {
+        // logOutAdmin()
+        dispatch(setLogOutAdmin())
+        navigate("/metamall/login/admin")
+    }
+
     return (
         <div className={rootClasses.join(' ')}>
             <div className='container'>
@@ -87,12 +97,16 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
 
                         {isAdmin &&
                             <>
-                                {/* <Link to={RouteNames.CREATE_PROJECT}
+                                <Link to={RouteNames.CREATE_PROJECT}
                                     className={classes.header_buttons_create_project}>
                                     Create Project
-                                </Link> */}
+                                </Link>
 
-                                
+                                <div className={classes.header_buttons_create_project}
+                                    onClick={logOutHandler}>
+                                    Log Out
+                                </div>
+
                             </>
                         }
                     </div>

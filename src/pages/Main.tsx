@@ -72,10 +72,6 @@ const Main: FunctionComponent = (props) => {
         dispatch(setScroll(scrollRef.current.offsetTop))
     }, [])
 
-    // const {refresh_token} = useAppSelector(state => state.adminReducer)
-
-    // console.log('refresh_token111 ', refresh_token)
-
     return (
         <div className='App'>
             {/* Header */}

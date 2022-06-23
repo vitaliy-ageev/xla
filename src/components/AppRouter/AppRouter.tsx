@@ -9,9 +9,9 @@ import { authReducer } from '../../store/reducers/isAuth/isAuth';
 
 
 const AppRouter = () => {
-  const { isAuth } = useAppSelector(state => state.authReducer);
-  const adminAuth: any = localStorage.getItem("user")
   const dispatch = useDispatch();
+  const { isAuth } = useAppSelector(state => state.authReducer);
+  const adminAuth: any = localStorage.getItem("admin")
   const { isAdmin } = useAppSelector(state => state.adminReducer)
 
   useEffect(() => {

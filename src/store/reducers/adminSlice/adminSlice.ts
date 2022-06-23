@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { useLogOutAdminMutation } from "../../../services/admin/AuthAdminService"
 
 interface adminState {
     isAdmin: boolean,
@@ -14,6 +15,13 @@ const initialState: adminState = {
     refresh_token: null,
 }
 
+interface IUserData {
+    user_id: number,
+    access_token: string,
+    refresh_token: string,
+    expires_in: number
+}
+
 export const adminSlice = createSlice({
     name: 'adminSlice',
     initialState,
@@ -21,33 +29,31 @@ export const adminSlice = createSlice({
         setIsAdmin: (state, action: PayloadAction<boolean>) => {
             state.isAdmin = action.payload
         },
-        setAuthAdmin: (state, action: PayloadAction<{ user_id: number, access_token: string, refresh_token: string }>) => {
-            const { user_id, access_token, refresh_token } = action.payload
-            state.user_id = user_id
-            state.access_token = access_token
-            state.refresh_token = refresh_token
-
-            console.log('3234234', refresh_token)
-            // state.isAdmin = true
-            // localStorage.setItem(
-            //     "user",
-            //     JSON.stringify({
-            //         user_id: user_id,
-            //         access_token: access_token,
-            //         isAdmin: true
-            //     })
-            // )
+        setAuthAdmin: (state, action: PayloadAction<IUserData>) => {
+            state.user_id = action.payload.user_id
+            state.access_token = action.payload.access_token
+            state.refresh_token = action.payload.refresh_token
+            state.isAdmin = true
+            localStorage.setItem(
+                "admin",
+                JSON.stringify({
+                    user_id: action.payload.user_id,
+                    access_token: action.payload.access_token,
+                    isAdmin: true
+                })
+            )
         },
-        logOutAdmin: (state) => {
+        setLogOutAdmin: (state) => {
             state.user_id = null
             state.access_token = null
-           state.isAdmin = false
-            // localStorage.removeItem("user")
+            state.refresh_token = null
+            state.isAdmin = false
+            localStorage.removeItem("admin")
         }
     }
 })
 
-export const { setAuthAdmin, logOutAdmin, setIsAdmin } = adminSlice.actions
+export const { setAuthAdmin, setLogOutAdmin, setIsAdmin } = adminSlice.actions
 export const selectCurrentAdmin = (state: any) => state.adminSlice.user_id
 export const selectCurrentToken = (state: any) => state.adminSlice.access_token
 
