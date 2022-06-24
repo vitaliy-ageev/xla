@@ -1,0 +1,28 @@
+@import "@variables";
+@import "@mixins";
+
+.steps {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_item {
+        width: 100%;
+        height: 10px;
+        background: #16B364;
+        margin-right: 20px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.active {
+            background: #98A2B3;
+        }
+
+        &.active~& {
+            background: #F2F4F7;
+        }
+    }
+}
