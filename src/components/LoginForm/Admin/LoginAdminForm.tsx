@@ -1,13 +1,12 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { adminAPI } from '../../../services/admin/AdminService'
 import { useNavigate } from 'react-router-dom'
-import { adminSlice, setIsAdmin } from '../../../store/reducers/adminSlice/adminSlice'
+import { setRole, userSlice } from '../../../store/reducers/userSlice/userSlice'
 import { useDispatch } from 'react-redux'
-import { useLoginAdminMutation } from '../../../services/admin/AuthAdminService'
 import Title from '../../UI/Form/Title/Title'
 import Input from '../../UI/Form/Input/Input'
 import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
 import Form from '../../UI/Form/Form'
+import { useLoginAdminMutation } from '../../../services/auth/authService'
 
 const initialState = {
     username: "",
@@ -24,7 +23,7 @@ interface IResponseData {
 const LoginAdminForm: FunctionComponent = (prop) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { setAuthAdmin, setLogOutAdmin } = adminSlice.actions
+    const { setAuth, setLogOut } = userSlice.actions
     const [formValue, setFormValue] = useState(initialState)
     const { username, password } = formValue
     const [loginAdmin,
@@ -45,7 +44,8 @@ const LoginAdminForm: FunctionComponent = (prop) => {
             if (username && password) {
                 const userData: any = await loginAdmin({ username, password }).unwrap()
                 if (userData) {
-                    dispatch(setAuthAdmin(userData))
+                    dispatch(setRole('admin'))
+                    dispatch(setAuth(userData))
                 }
                 setFormValue(initialState)
             }

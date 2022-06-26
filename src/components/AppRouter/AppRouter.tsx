@@ -2,20 +2,18 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
-import { AdminRoutes, LoginRoutes, PublicRoutes, RouteNames } from '../../routes/routes'
-import { setIsAdmin } from '../../store/reducers/adminSlice/adminSlice';
-import { authReducer } from '../../store/reducers/isAuth/isAuth';
+import { AdminRoutes, LoginRoutes, PrivateRoutes, PublicRoutes, RouteNames } from '../../routes/routes'
+import { setRole } from '../../store/reducers/userSlice/userSlice';
 
 
 
 const AppRouter = () => {
   const dispatch = useDispatch();
-  const { isAuth } = useAppSelector(state => state.authReducer);
-  const adminAuth: any = localStorage.getItem("admin")
-  const { isAdmin } = useAppSelector(state => state.adminReducer)
+  const userAuth: any = localStorage.getItem("user")
+  const { isAdmin, isUser } = useAppSelector(state => state.userReducer)
 
   useEffect(() => {
-    dispatch(setIsAdmin(adminAuth ? JSON.parse(adminAuth).isAdmin : false))
+    dispatch(setRole(userAuth ? JSON.parse(userAuth).role : 'clear'))
   }, [])
 
   return (
@@ -34,9 +32,9 @@ const AppRouter = () => {
         :
         <Route path="*" element={<Navigate to={RouteNames.MAIN} />} />
       }
-      {isAuth ?
+      {isUser ?
         <>
-          {PublicRoutes.map(route =>
+          {PrivateRoutes.map(route =>
             <Route
               element={<route.element />}
               path={route.path}
@@ -47,7 +45,7 @@ const AppRouter = () => {
         :
         <Route path="*" element={<Navigate to={RouteNames.MAIN} />} />
       }
-      {!isAdmin && !isAuth ?
+      {!isAdmin && !isUser ?
         <>
           {LoginRoutes.map(route =>
             <Route

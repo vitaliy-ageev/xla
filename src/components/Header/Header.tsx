@@ -8,8 +8,9 @@ import { Embed } from '../../utils/embed'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
 import { RouteNames } from '../../routes/routes'
-import { useLogOutAdminMutation } from '../../services/admin/AuthAdminService'
-import { setLogOutAdmin } from '../../store/reducers/adminSlice/adminSlice'
+import { setLogOut } from '../../store/reducers/userSlice/userSlice'
+import { useLogOutAdminMutation } from '../../services/user/userAdminService'
+
 
 interface IHeader {
     style: string,
@@ -20,8 +21,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     const { setProjectId } = filterSlice.actions;
     const dispatch = useAppDispatch();
 
-    const { isAuth } = useAppSelector(state => state.authReducer);
-    const { isAdmin } = useAppSelector(state => state.adminReducer);
+    const { isAdmin, isUser } = useAppSelector(state => state.userReducer);
 
     useEffect(() => {
         Embed()
@@ -60,7 +60,7 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
     const navigate = useNavigate()
     const logOutHandler = () => {
         // logOutAdmin()
-        dispatch(setLogOutAdmin())
+        dispatch(setLogOut())
         navigate("/metamall/login/admin")
     }
 
