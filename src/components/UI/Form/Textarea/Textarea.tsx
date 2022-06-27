@@ -7,7 +7,8 @@ interface TextareaProps {
     placeholder: string,
     rows?: number,
     cols?: number,
-    maxLength: number
+    maxLength: number,
+    onChange?: React.ChangeEventHandler
 }
 
 const Textarea: FunctionComponent<TextareaProps> = (props) => {
@@ -24,7 +25,8 @@ const Textarea: FunctionComponent<TextareaProps> = (props) => {
                 rows={props.rows}
                 cols={props.cols}
                 maxLength={props.maxLength}
-                placeholder={props.placeholder}>
+                placeholder={props.placeholder}
+                onChange={props.onChange}>
             </textarea>
         </div>
     )

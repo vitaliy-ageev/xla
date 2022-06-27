@@ -7,9 +7,6 @@ import CloseWindow from '../components/UI/Icons/CloseWindow/CloseWindow'
 
 const CreateProject: FunctionComponent = (props) => {
     const history = useNavigate();
-
-    console.log("HISTORY", history)
-
     return (
         <div className='App'>
             <CenteredWindow>

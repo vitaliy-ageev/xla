@@ -1,0 +1,16 @@
+@import "@variables";
+@import "@mixins";
+
+.container {
+    width: 100%;
+    margin-bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

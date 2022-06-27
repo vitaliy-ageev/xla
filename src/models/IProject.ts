@@ -1,3 +1,10 @@
+export interface ISteps {
+    id: number,
+    title: string,
+    description: string,
+    isActive: boolean,
+}
+
 export interface ICategories {
     id: number,
     name: string
@@ -53,4 +60,20 @@ export interface IFetchProject {
     offset: number,
     total: number,
     projects: IProject[]
+}
+
+export interface ICreateProjectAdmin {
+    name: string,
+    title: string,
+    description: string,
+    logo: string,
+    images: [],
+    categories: ICategories[],
+    tags: ITag[],
+    url: string,
+    forum_url: string,
+    typeform_competitor_popup: string,
+    typeform_question_popup: string,
+    start_date: string,
+    close_date: string,
 }

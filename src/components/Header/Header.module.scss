@@ -100,7 +100,7 @@
         align-items: center;
 
         @include breakpoint (Large) {
-            display: none;
+            // display: none;
         }
     }
 

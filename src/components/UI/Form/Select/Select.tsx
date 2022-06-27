@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import classes from './Select.module.scss'
 
-interface IOtions {
+interface IOptions {
     id: number,
     name: string,
     key?: string
@@ -11,7 +11,8 @@ interface SelectProps {
     label: string,
     name: string,
     placeholder: string,
-    options: IOtions[]
+    options: IOptions[] | undefined,
+    onSelect?: React.ReactEventHandler
 }
 
 const Select: FunctionComponent<SelectProps> = (props) => {
@@ -26,6 +27,7 @@ const Select: FunctionComponent<SelectProps> = (props) => {
             <select className={classes.container_select}
                 name={props.name}
                 required
+                onChange={props.onSelect}
             >
                 <option className={[classes.container_option, classes.placeholder].join(' ')}
                     value=""
@@ -33,12 +35,15 @@ const Select: FunctionComponent<SelectProps> = (props) => {
                     disabled>
                     {props.placeholder}
                 </option>
-                {props.options.map(item =>
-                    <option key={item.id} className={classes.container_option}
-                        value={item.name}>
-                        {item.name}
-                    </option>
-                )}
+                {props.options ?
+                    props.options.map(item =>
+                        <option key={item.id} className={classes.container_option}
+                            value={item.name}>
+                            {item.name}
+                        </option>
+                    )
+                    : null
+                }
             </select>
         </div>
     )

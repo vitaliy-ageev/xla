@@ -4,15 +4,14 @@ import { projectAPI } from '../../services/ProjectService'
 import { statusAPI } from '../../services/StatusService'
 import { workingModeAPI } from '../../services/WorkingModeService'
 import generalReducer from './generalSlice/generalSlice'
-import authReducer from './isAuth/isAuth'
 import filterReducer from './filterSlice/filterSlice'
 import userReducer from './userSlice/userSlice'
 import { userAPI } from '../../services/user/userAPI'
 import { authAPI } from '../../services/auth/authAPI'
+import { categoryAPI } from '../../services/categoryService'
 
 
 export default {
-    authReducer,
     generalReducer,
     filterReducer,
     userReducer,
@@ -23,4 +22,5 @@ export default {
     [workingModeAPI.reducerPath]: workingModeAPI.reducer,
     [userAPI.reducerPath]: userAPI.reducer,
     [authAPI.reducerPath]: authAPI.reducer,
+    [categoryAPI.reducerPath]: categoryAPI.reducer,
 }

@@ -10,6 +10,7 @@ import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
 import { RouteNames } from '../../routes/routes'
 import { setLogOut } from '../../store/reducers/userSlice/userSlice'
 import { useLogOutAdminMutation } from '../../services/user/userAdminService'
+import AdminPanel from './AdminPanel/AdminPanel'
 
 
 interface IHeader {
@@ -95,24 +96,25 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                             </button>
                         </CustomButton> */}
 
-                        {isAdmin &&
-                            <>
-                                <Link to={RouteNames.CREATE_PROJECT}
+                        {/* {isAdmin && */}
+                        <>
+                            <AdminPanel />
+                            {/* <Link to={RouteNames.CREATE_PROJECT}
                                     className={classes.header_buttons_create_project}>
                                     Create Project
-                                </Link>
+                                </Link> */}
 
-                                <div className={classes.header_buttons_create_project}
-                                    onClick={logOutHandler}>
-                                    Log Out
-                                </div>
+                            <div className={classes.header_buttons_create_project}
+                                onClick={logOutHandler}>
+                                Log Out
+                            </div>
+                        </>
+                        {/* } */}
+                        <div className={classes.header_burger_menu}>
+                            <BurgerMenu style={style} />
+                        </div>
+                    </div>
 
-                            </>
-                        }
-                    </div>
-                    <div className={classes.header_burger_menu}>
-                        <BurgerMenu style={style} />
-                    </div>
                 </div>
             </div>
         </div >

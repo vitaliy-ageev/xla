@@ -1,0 +1,19 @@
+@import "@variables";
+@import "@mixins";
+
+.star {
+    width: 35px;
+    height: 35px;
+    fill: rgba($color: #fff, $alpha: 1);
+    position: absolute;
+
+    @include breakpoint(SemiLarge) {
+        width: 30px;
+        height: 30px;
+    }
+
+    @include breakpoint(Large) {
+        width: 18px;
+        height: 18px;
+    }
+}

@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../../hooks/hooks'
+import { ICreateProjectAdmin, ISteps } from '../../../models/IProject'
+import { useFetchAllCategoriesQuery } from '../../../services/categoryService'
+import { useCreateProjectMutation } from '../../../services/user/userAdminService'
 import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
 import Description from '../../UI/Form/Description/Description'
 import File from '../../UI/Form/File/File'
@@ -10,98 +15,134 @@ import Textarea from '../../UI/Form/Textarea/Textarea'
 import Title from '../../UI/Form/Title/Title'
 
 
-interface ISteps {
-  id: number,
-  title: string,
-  description: string,
-  isActive: boolean,
+const InitialState: ICreateProjectAdmin = {
+  name: '',
+  title: '',
+  description: '',
+  logo: '',
+  images: [],
+  categories: [],
+  tags: [],
+  url: '',
+  forum_url: '',
+  typeform_competitor_popup: '',
+  typeform_question_popup: '',
+  start_date: '',
+  close_date: '',
 }
 
 const CreateProjectForm: FunctionComponent = (props) => {
-  const category = [
-    { id: 1, name: "Babka drop", key: "babka" },
-    { id: 2, name: "Multiverse", key: "babka" },
-    { id: 3, name: "Metaverse", key: "babka" },
-    { id: 4, name: "Story3", key: "babka" },
-    { id: 5, name: "Drop", key: "babka" },
-  ]
-
-  const tags = [
-    { id: 1, name: "web3", key: "babka" },
-    { id: 2, name: "design", key: "babka" },
-    { id: 3, name: "dev", key: "babka" },
-    { id: 4, name: "opportunity", key: "babka" },
-    { id: 5, name: "Drop", key: "babka" },
-  ]
-
   const steps = [
     { id: 0, title: "Create new project", description: "Please fill in all required fields below!", isActive: true },
     { id: 1, title: "Projects Links", description: "Please fill in all required fields below!", isActive: false },
     { id: 2, title: "Logotype", description: "Upload project logotype.", isActive: false },
     { id: 3, title: "Screenshots", description: "You can upload a maximum of three screenshots of your project.", isActive: false },
-    { id: 4, title: "Screenshots", description: "You can upload a maximum of three screenshots of your project.", isActive: false},
   ]
 
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const [formValue, setFormValue] = useState(InitialState)
+  const {
+    name,
+    title,
+    description,
+    logo,
+    images,
+    categories,
+    tags,
+    url,
+    forum_url,
+    typeform_competitor_popup,
+    typeform_question_popup,
+    start_date,
+    close_date,
+  } = formValue
+  const { data: category } = useFetchAllCategoriesQuery()
+  const [createProject,
+    {
+      data: projectData,
+      isSuccess: isProjectSuccess,
+      isError: isProjectError,
+      error: projectrror
+    }
+  ] = useCreateProjectMutation()
+
   const [stp, setStp] = useState<ISteps[]>(steps)
-  const [title, setTitle] = useState<string>(steps[0].title)
-  const [description, setDescription] = useState<string>(steps[0].description)
+  const [titleCmp, setTitleCmp] = useState<string>(steps[0].title)
+  const [desc, setDesc] = useState<string>(steps[0].description)
   const [stepState, setStepState] = useState<number>(0)
 
-  const firstStepHandle = () => {
-    const newSteps = steps.map((stps) => (
-      stps.id === 1 ?
-        { ...stps, isActive: true }
-        : { ...stps, isActive: false }
-    ))
-    setStp(newSteps)
-    setStepState(1)
-    setTitle(steps[1].title)
-    setDescription(steps[1].description)
+  const handleChange = (e: any) => {
+    setFormValue({ ...formValue, [e.target.name]: e.target.value })
   }
 
-  const secondStepHandle = () => {
+  const stepHandle = () => {
+    setStepState(stepState + 1)
     const newSteps = steps.map((stps) => (
-      stps.id === 2 ?
+      stps.id === (stepState + 1) ?
         { ...stps, isActive: true }
         : { ...stps, isActive: false }
     ))
     setStp(newSteps)
-    setStepState(2)
-    setTitle(steps[2].title)
-    setDescription(steps[2].description)
+    setTitleCmp(steps[stepState].title)
+    setDesc(steps[stepState].description)
   }
 
-  const thirdStepHandle = () => {
-    const newSteps = steps.map((stps) => (
-      stps.id === 3 ?
-        { ...stps, isActive: true }
-        : { ...stps, isActive: false }
-    ))
-    setStp(newSteps)
-    setStepState(3)
-    setTitle(steps[3].title)
-    setDescription(steps[3].description)
+  const handleCreate = async () => {
+    try {
+      if (name && title) {
+        // const projectData: any = await createProject({
+        //   name,
+        //   title,
+        //   description,
+        //   logo,
+        //   images,
+        //   categories,
+        //   tags,
+        //   url,
+        //   forum_url,
+        //   typeform_competitor_popup,
+        //   typeform_question_popup,
+        //   start_date,
+        //   close_date
+        // }).unwrap()
+        // setFormValue(InitialState)
+
+        console.log({
+          name,
+          title,
+          description,
+          logo,
+          images,
+          categories,
+          tags,
+          url,
+          forum_url,
+          typeform_competitor_popup,
+          typeform_question_popup,
+          start_date,
+          close_date
+        })
+      }
+    } catch (e: any) {
+      console.log("Error", e)
+    }
+
   }
 
-  const fourthStepHandle = () => {
-    const newSteps = steps.map((stps) => (
-      stps.id === 0 ?
-        { ...stps, isActive: true }
-        : { ...stps, isActive: false }
-    ))
-    setStp(newSteps)
-    setStepState(0)
-    setTitle(steps[0].title)
-    setDescription(steps[0].description)
-  }
+  useEffect(() => {
+    if (isProjectSuccess) {
+      navigate("/metamall")
+    }
+  }, [isProjectSuccess])
 
   return (
     <Form action='post'>
       {/* Title */}
-      <Title title={title}
+      <Title title={titleCmp}
         marginBottom={15} />
       {/* Description */}
-      <Description description={description}
+      <Description description={desc}
         marginBottom={30} />
       {/* Steps */}
       <Steps steps={stp}
@@ -114,8 +155,9 @@ const CreateProjectForm: FunctionComponent = (props) => {
           < Input
             label='Project'
             type="text"
-            name="project"
+            name="name"
             placeholder='Proect name'
+            onChange={handleChange}
           />
           {/* Title */}
           <Input
@@ -123,29 +165,26 @@ const CreateProjectForm: FunctionComponent = (props) => {
             type="text"
             name="title"
             placeholder='Project title'
+            onChange={handleChange}
           />
           {/* Description */}
           <Textarea label="Description"
             name="description"
             maxLength={400}
             placeholder="A description of the project"
+            onChange={handleChange}
           />
           {/* Category */}
           <Select label='Category'
-            name='category'
+            name='categories'
             placeholder='Select category project'
-            options={category}
-          />
-          {/* Tags */}
-          <Select label='Tags'
-            name='tags'
-            placeholder='Select tags project'
-            options={tags}
+            options={category?.categories}
+            onSelect={handleChange}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Next Step'
             type='button'
-            onClick={firstStepHandle} />
+            onClick={stepHandle} />
         </>
         : <></>
       }
@@ -158,29 +197,33 @@ const CreateProjectForm: FunctionComponent = (props) => {
             type='text'
             name="forum"
             placeholder='https://example.com'
+            onChange={handleChange}
+          />
+          {/* Website Url */}
+          <Input label="Website url"
+            type='text'
+            name="website"
+            placeholder='https://example.com'
+            onChange={handleChange}
           />
           {/* Typeform_competitor_popup */}
           <Input label="Compretitor typeform"
             type='text'
             name="compretitor"
             placeholder='#1235434'
+            onChange={handleChange}
           />
           {/* Typeform_question_popup */}
           <Input label="Question typeform"
             type='text'
             name="question"
             placeholder='#1235434'
-          />
-          {/* Website Url */}
-          <Input label="Website link"
-            type='text'
-            name="website"
-            placeholder='https://example.com'
+            onChange={handleChange}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Next Step'
             type='button'
-            onClick={secondStepHandle} />
+            onClick={stepHandle} />
         </>
         : <></>
       }
@@ -192,11 +235,12 @@ const CreateProjectForm: FunctionComponent = (props) => {
           {/* Upload logo */}
           <File name='logotype'
             placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
+            onChange={handleChange}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Final Step'
             type='button'
-            onClick={thirdStepHandle} />
+            onClick={stepHandle} />
         </>
         : <></>
       }
@@ -207,12 +251,13 @@ const CreateProjectForm: FunctionComponent = (props) => {
           {/* Upload Gallery Images */}
           <File name='gallery'
             placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
+            onChange={handleChange}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Submit Form'
             type='button'
-            onClick={fourthStepHandle}
-            />
+            onClick={handleCreate}
+          />
         </>
         : <></>
       }

@@ -7,6 +7,7 @@ import Input from '../../UI/Form/Input/Input'
 import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
 import Form from '../../UI/Form/Form'
 import { useLoginAdminMutation } from '../../../services/auth/authService'
+import { useAppDispatch } from '../../../hooks/hooks'
 
 const initialState = {
     username: "",
@@ -22,7 +23,7 @@ interface IResponseData {
 
 const LoginAdminForm: FunctionComponent = (prop) => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const { setAuth, setLogOut } = userSlice.actions
     const [formValue, setFormValue] = useState(initialState)
     const { username, password } = formValue
