@@ -18,4 +18,28 @@
         margin-bottom: 0;
     }
 
+    &.green {
+        background: #16B364;
+
+        &:hover {
+            background: #168950;
+        }
+    }
+
+    &.grey {
+        background: #98A2B3;
+
+        &:hover {
+            background: #828894;
+        }
+    }
+
+    &.red {
+        background: #F04438;
+
+        &:hover {
+            background: #c83d33;
+        }
+    }
+
 }

@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../../hooks/hooks'
 import { ICreateProjectAdmin, ISteps } from '../../../models/IProject'
 import { useFetchAllCategoriesQuery } from '../../../services/categoryService'
 import { useCreateProjectMutation } from '../../../services/user/userAdminService'
+import { ValidateField } from '../../../utils/validate'
 import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
 import Description from '../../UI/Form/Description/Description'
 import File from '../../UI/Form/File/File'
@@ -76,7 +77,15 @@ const CreateProjectForm: FunctionComponent = (props) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
   }
 
+  const selectChange = (e: any) => {
+    setFormValue({
+      ...formValue, categories: [{ id: e.target.value.split(',')[0], name: e.target.value.split(',')[1], key: e.target.value.split(',')[2] }]
+    })
+
+  }
+
   const stepHandle = () => {
+    ValidateField(formValue)
     setStepState(stepState + 1)
     const newSteps = steps.map((stps) => (
       stps.id === (stepState + 1) ?
@@ -153,7 +162,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
         <>
           {/* Name */}
           < Input
-            label='Project'
+            label='Name'
             type="text"
             name="name"
             placeholder='Proect name'
@@ -179,7 +188,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
             name='categories'
             placeholder='Select category project'
             options={category?.categories}
-            onSelect={handleChange}
+            onSelect={selectChange}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Next Step'

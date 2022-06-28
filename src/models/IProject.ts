@@ -7,6 +7,7 @@ export interface ISteps {
 
 export interface ICategories {
     id: number,
+    key?: string,
     name: string
 }
 

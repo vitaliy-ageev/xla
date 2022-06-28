@@ -96,20 +96,20 @@ const Header: FunctionComponent<IHeader> = ({ style }) => {
                             </button>
                         </CustomButton> */}
 
-                        {/* {isAdmin && */}
-                        <>
-                            <AdminPanel />
-                            {/* <Link to={RouteNames.CREATE_PROJECT}
+                        {isAdmin &&
+                            <>
+                                <AdminPanel />
+                                {/* <Link to={RouteNames.CREATE_PROJECT}
                                     className={classes.header_buttons_create_project}>
                                     Create Project
                                 </Link> */}
 
-                            <div className={classes.header_buttons_create_project}
-                                onClick={logOutHandler}>
-                                Log Out
-                            </div>
-                        </>
-                        {/* } */}
+                                <div className={classes.header_buttons_create_project}
+                                    onClick={logOutHandler}>
+                                    Log Out
+                                </div>
+                            </>
+                        }
                         <div className={classes.header_burger_menu}>
                             <BurgerMenu style={style} />
                         </div>

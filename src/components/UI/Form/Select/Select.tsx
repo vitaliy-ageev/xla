@@ -38,14 +38,14 @@ const Select: FunctionComponent<SelectProps> = (props) => {
                 {props.options ?
                     props.options.map(item =>
                         <option key={item.id} className={classes.container_option}
-                            value={item.name}>
+                            value={[`${item.id}`, `${item.name}`, `${item.key}`]}>
                             {item.name}
                         </option>
                     )
                     : null
                 }
             </select>
-        </div>
+        </div >
     )
 }
 

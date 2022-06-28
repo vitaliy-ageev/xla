@@ -11,28 +11,28 @@ const AdminPanel: FunctionComponent = (props) => {
     const panels = [
         {
             id: 1, title: "Project", buttons: [
-                { id: 1, name: "Create", path: "/metamall/project/create", color: "#16B364" },
-                { id: 2, name: "Edit", path: "", color: "#98A2B3" },
+                { id: 1, name: "Create", path: "/metamall/project/create", style: "green" },
+                { id: 2, name: "Edit", path: "", style: "grey" },
             ]
         },
         {
             id: 2, title: "Opportunity", buttons: [
-                { id: 1, name: "Create", path: "", color: "#16B364" },
-                { id: 2, name: "Edit", path: "", color: "#98A2B3" },
+                { id: 1, name: "Create", path: "", style: "green" },
+                { id: 2, name: "Edit", path: "", style: "grey" },
             ]
         },
         {
             id: 3, title: "Categories", buttons: [
-                { id: 1, name: "Create", path: "", color: "#16B364" },
-                { id: 3, name: "Edit", path: "", color: "#98A2B3" },
-                { id: 2, name: "Delete", path: "", color: "#F04438" },
+                { id: 1, name: "Create", path: "", style: "green" },
+                { id: 3, name: "Edit", path: "", style: "grey" },
+                { id: 2, name: "Delete", path: "", style: "red" },
             ]
         },
         {
             id: 4, title: "Tags", buttons: [
-                { id: 1, name: "Create", path: "", color: "#16B364" },
-                { id: 3, name: "Edit", path: "", color: "#98A2B3" },
-                { id: 2, name: "Delete", path: "", color: "#F04438" },
+                { id: 1, name: "Create", path: "", style: "green" },
+                { id: 3, name: "Edit", path: "", style: "grey" },
+                { id: 2, name: "Delete", path: "", style: "red" },
             ]
         },
     ]
@@ -58,7 +58,7 @@ const AdminPanel: FunctionComponent = (props) => {
                                     <>
                                         {
                                             panel.buttons.map(button =>
-                                                <Button key={button.id} name={button.name} path={button.path} color={button.color} />
+                                                <Button key={button.id} name={button.name} path={button.path} style={button.style} />
                                             )
                                         }
                                     </>

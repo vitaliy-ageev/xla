@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import { authAdminAPI } from '../services/admin/AuthAdminService';
+import { useFetchAdminProfileQuery } from '../services/user/userAdminService';
 
 const Main: FunctionComponent = (props) => {
     window.scrollTo(0, 0);
@@ -67,6 +67,10 @@ const Main: FunctionComponent = (props) => {
     const scrollRef: any = useRef()
     const { setScroll } = generalSlice.actions;
     const dispatch = useAppDispatch();
+
+    const { data: adminProfile } = useFetchAdminProfileQuery()
+
+    console.log("ddd", adminProfile)
 
     useEffect(() => {
         dispatch(setScroll(scrollRef.current.offsetTop))

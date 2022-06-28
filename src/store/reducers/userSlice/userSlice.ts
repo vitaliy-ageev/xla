@@ -61,7 +61,9 @@ export const userSlice = createSlice({
             state.user_id = null
             state.access_token = null
             state.refresh_token = null
-            setRole('clear')
+            state.isUser = false;
+            state.isAdmin = false;
+            state.role = null
             localStorage.removeItem("user")
         }
     }
