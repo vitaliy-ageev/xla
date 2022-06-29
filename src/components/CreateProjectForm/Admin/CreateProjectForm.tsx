@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import { ICreateProjectAdmin, ISteps } from '../../../models/IProject'
 import { useFetchAllCategoriesQuery } from '../../../services/categoryService'
 import { useCreateProjectMutation } from '../../../services/user/userAdminService'
-import { ValidateField } from '../../../utils/validate'
+import validateSlice, { resetField, resetValidate, validateField, validateSubmit } from '../../../store/reducers/validateSlice/validateSlice'
 import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
 import Description from '../../UI/Form/Description/Description'
 import File from '../../UI/Form/File/File'
@@ -73,8 +73,49 @@ const CreateProjectForm: FunctionComponent = (props) => {
   const [desc, setDesc] = useState<string>(steps[0].description)
   const [stepState, setStepState] = useState<number>(0)
 
+  const {
+    isValidate,
+    nameError,
+    titleError,
+    descriptionError,
+    categoryError,
+    forumError,
+    websiteError,
+    compretitorError,
+    questionError,
+  } = useAppSelector(state => state.validateReducer)
+  const blurHandle = (e: any) => {
+    switch (e.target.name) {
+      case 'name':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 40 }))
+        break;
+      case 'title':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 40 }))
+        break
+      case 'description':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 400 }))
+        break
+      case 'categories':
+        dispatch(validateField({ element: e, required: true }))
+        break
+      case 'forum_url':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 100 }))
+        break
+      case 'url':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 100 }))
+        break
+      case 'typeform_competitor_popup':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 9 }))
+        break
+      case 'typeform_question_popup':
+        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 9 }))
+        break
+    }
+  }
+
   const handleChange = (e: any) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
+    console.log('ele', formValue)
   }
 
   const selectChange = (e: any) => {
@@ -85,18 +126,32 @@ const CreateProjectForm: FunctionComponent = (props) => {
   }
 
   const stepHandle = () => {
-    ValidateField(formValue)
-    setStepState(stepState + 1)
-    const newSteps = steps.map((stps) => (
-      stps.id === (stepState + 1) ?
-        { ...stps, isActive: true }
-        : { ...stps, isActive: false }
-    ))
-    setStp(newSteps)
-    setTitleCmp(steps[stepState].title)
-    setDesc(steps[stepState].description)
-  }
+    if (stepState == 0) {
+      dispatch(validateSubmit({ element: 'name', value: name, required: true }))
+      dispatch(validateSubmit({ element: 'title', value: title, required: true }))
+      dispatch(validateSubmit({ element: 'description', value: description, required: true }))
+      dispatch(validateSubmit({ element: 'categories', value: categories, required: true }))
+    }
+    if (stepState == 1) {
+      dispatch(validateSubmit({ element: 'forum_url', value: forum_url, required: true }))
+      dispatch(validateSubmit({ element: 'url', value: url, required: true }))
+      dispatch(validateSubmit({ element: 'typeform_competitor_popup', value: typeform_competitor_popup, required: true }))
+      dispatch(validateSubmit({ element: 'typeform_question_popup', value: typeform_question_popup, required: true }))
+    }
 
+    if (isValidate) {
+      setStepState(stepState + 1)
+      const newSteps = steps.map((stps) => (
+        stps.id === (stepState + 1) ?
+          { ...stps, isActive: true }
+          : { ...stps, isActive: false }
+      ))
+      setStp(newSteps)
+      setTitleCmp(steps[stepState].title)
+      setDesc(steps[stepState].description)
+      dispatch(resetValidate(false))
+    }
+  }
   const handleCreate = async () => {
     try {
       if (name && title) {
@@ -145,6 +200,10 @@ const CreateProjectForm: FunctionComponent = (props) => {
     }
   }, [isProjectSuccess])
 
+  useEffect(() => {
+    dispatch(resetField())
+  }, [])
+
   return (
     <Form action='post'>
       {/* Title */}
@@ -167,6 +226,8 @@ const CreateProjectForm: FunctionComponent = (props) => {
             name="name"
             placeholder='Proect name'
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={nameError ? nameError : ""}
           />
           {/* Title */}
           <Input
@@ -175,6 +236,8 @@ const CreateProjectForm: FunctionComponent = (props) => {
             name="title"
             placeholder='Project title'
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={titleError ? titleError : ""}
           />
           {/* Description */}
           <Textarea label="Description"
@@ -182,6 +245,8 @@ const CreateProjectForm: FunctionComponent = (props) => {
             maxLength={400}
             placeholder="A description of the project"
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={descriptionError ? descriptionError : ""}
           />
           {/* Category */}
           <Select label='Category'
@@ -189,6 +254,8 @@ const CreateProjectForm: FunctionComponent = (props) => {
             placeholder='Select category project'
             options={category?.categories}
             onSelect={selectChange}
+            onBlur={blurHandle}
+            error={categoryError ? categoryError : ""}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Next Step'
@@ -204,30 +271,38 @@ const CreateProjectForm: FunctionComponent = (props) => {
           {/* Forum Url */}
           <Input label="Forum url"
             type='text'
-            name="forum"
+            name="forum_url"
             placeholder='https://example.com'
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={forumError ? forumError : ""}
           />
           {/* Website Url */}
           <Input label="Website url"
             type='text'
-            name="website"
+            name="url"
             placeholder='https://example.com'
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={websiteError ? websiteError : ""}
           />
           {/* Typeform_competitor_popup */}
-          <Input label="Compretitor typeform"
+          <Input label="Competitor typeform"
             type='text'
-            name="compretitor"
+            name="typeform_competitor_popup"
             placeholder='#1235434'
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={compretitorError ? compretitorError : ""}
           />
           {/* Typeform_question_popup */}
           <Input label="Question typeform"
             type='text'
-            name="question"
+            name="typeform_question_popup"
             placeholder='#1235434'
             onChange={handleChange}
+            onBlur={blurHandle}
+            error={questionError ? questionError : ""}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Next Step'

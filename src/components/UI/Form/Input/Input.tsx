@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { FieldError } from 'react-hook-form'
 import classes from './Input.module.scss'
 
 interface InputProps {
@@ -7,7 +8,9 @@ interface InputProps {
     name: string,
     placeholder?: string,
     value?: string,
-    onChange?: React.ChangeEventHandler
+    onChange?: React.ChangeEventHandler,
+    onBlur?: React.FocusEventHandler
+    error?: string,
 }
 
 const Input: FunctionComponent<InputProps> = (props) => {
@@ -25,7 +28,11 @@ const Input: FunctionComponent<InputProps> = (props) => {
                 placeholder={props.placeholder}
                 autoComplete='off'
                 onChange={props.onChange}
+                onBlur={props.onBlur}
                 className={classes.container_input} />
+            <div style={{ color: 'red' }}>
+                {props.error && <>{props.error}</>}
+            </div>
         </div>
     )
 }

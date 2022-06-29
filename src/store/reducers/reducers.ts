@@ -3,6 +3,7 @@ import { opportunityAPI } from '../../services/OpportunityService'
 import { projectAPI } from '../../services/ProjectService'
 import { statusAPI } from '../../services/StatusService'
 import { workingModeAPI } from '../../services/WorkingModeService'
+import validateReducer from './validateSlice/validateSlice'
 import generalReducer from './generalSlice/generalSlice'
 import filterReducer from './filterSlice/filterSlice'
 import userReducer from './userSlice/userSlice'
@@ -15,6 +16,7 @@ export default {
     generalReducer,
     filterReducer,
     userReducer,
+    validateReducer,
     [projectAPI.reducerPath]: projectAPI.reducer,
     [opportunityAPI.reducerPath]: opportunityAPI.reducer,
     [statusAPI.reducerPath]: statusAPI.reducer,

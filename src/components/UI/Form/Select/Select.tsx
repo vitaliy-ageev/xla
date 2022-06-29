@@ -12,7 +12,9 @@ interface SelectProps {
     name: string,
     placeholder: string,
     options: IOptions[] | undefined,
-    onSelect?: React.ReactEventHandler
+    onSelect?: React.ReactEventHandler,
+    onBlur?: React.FocusEventHandler,
+    error?: string,
 }
 
 const Select: FunctionComponent<SelectProps> = (props) => {
@@ -28,6 +30,7 @@ const Select: FunctionComponent<SelectProps> = (props) => {
                 name={props.name}
                 required
                 onChange={props.onSelect}
+                onBlur={props.onBlur}
             >
                 <option className={[classes.container_option, classes.placeholder].join(' ')}
                     value=""
@@ -45,6 +48,9 @@ const Select: FunctionComponent<SelectProps> = (props) => {
                     : null
                 }
             </select>
+            <div style={{ color: 'red' }}>
+                {props.error && <>{props.error}</>}
+            </div>
         </div >
     )
 }

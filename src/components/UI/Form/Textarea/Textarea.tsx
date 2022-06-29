@@ -8,7 +8,9 @@ interface TextareaProps {
     rows?: number,
     cols?: number,
     maxLength: number,
-    onChange?: React.ChangeEventHandler
+    onChange?: React.ChangeEventHandler,
+    onBlur?: React.FocusEventHandler,
+    error?: string,
 }
 
 const Textarea: FunctionComponent<TextareaProps> = (props) => {
@@ -26,8 +28,12 @@ const Textarea: FunctionComponent<TextareaProps> = (props) => {
                 cols={props.cols}
                 maxLength={props.maxLength}
                 placeholder={props.placeholder}
-                onChange={props.onChange}>
+                onChange={props.onChange}
+                onBlur={props.onBlur}>
             </textarea>
+            <div style={{ color: 'red' }}>
+                {props.error && <>{props.error}</>}
+            </div>
         </div>
     )
 }

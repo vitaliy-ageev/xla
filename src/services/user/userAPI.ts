@@ -18,10 +18,9 @@ const userQuery = fetchBaseQuery({
 const userQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {
     let result = await userQuery(args, api, extraOptions)
 
-    if (!result?.error) {
+    if (result?.error && result?.error?.status === 401) {
         const refresh_token: any = (api.getState() as RootState).userReducer.refresh_token
         if (refresh_token) {
-            console.log("refresh_token", refresh_token)
             const role: any = (api.getState() as RootState).userReducer.role
             if (role !== null) {
                 const refreshResult: any = await userQuery({ url: '/auth/refresh?roles=' + `${role}`, method: 'post', body: { "refresh_token": refresh_token } }, api, extraOptions)
