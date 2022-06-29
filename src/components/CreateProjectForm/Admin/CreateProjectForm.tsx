@@ -85,37 +85,40 @@ const CreateProjectForm: FunctionComponent = (props) => {
     questionError,
   } = useAppSelector(state => state.validateReducer)
   const blurHandle = (e: any) => {
-    switch (e.target.name) {
-      case 'name':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 40 }))
-        break;
-      case 'title':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 40 }))
-        break
-      case 'description':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 400 }))
-        break
-      case 'categories':
-        dispatch(validateField({ element: e, required: true }))
-        break
-      case 'forum_url':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 100 }))
-        break
-      case 'url':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 100 }))
-        break
-      case 'typeform_competitor_popup':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 9 }))
-        break
-      case 'typeform_question_popup':
-        dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 9 }))
-        break
-    }
+    // switch (e.target.name) {
+    //   case 'name':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 40 }))
+    //     break;
+    //   case 'title':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 40 }))
+    //     break
+    //   case 'description':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 400 }))
+    //     break
+    //   case 'categories':
+    //     dispatch(validateField({ element: e, required: true }))
+    //     break
+    //   case 'forum_url':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 100 }))
+    //     break
+    //   case 'url':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 100 }))
+    //     break
+    //   case 'typeform_competitor_popup':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 9 }))
+    //     break
+    //   case 'typeform_question_popup':
+    //     dispatch(validateField({ element: e, required: true, minLenght: 5, maxLenght: 9 }))
+    //     break
+    // }
   }
-
+  const [file, setFile] = useState()
   const handleChange = (e: any) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
-    console.log('ele', formValue)
+    console.log('ele', e.target.files)
+    if (e.target.files.length > 0) {
+      setFile(e.target.files)
+    }
   }
 
   const selectChange = (e: any) => {
@@ -126,18 +129,18 @@ const CreateProjectForm: FunctionComponent = (props) => {
   }
 
   const stepHandle = () => {
-    if (stepState == 0) {
-      dispatch(validateSubmit({ element: 'name', value: name, required: true }))
-      dispatch(validateSubmit({ element: 'title', value: title, required: true }))
-      dispatch(validateSubmit({ element: 'description', value: description, required: true }))
-      dispatch(validateSubmit({ element: 'categories', value: categories, required: true }))
-    }
-    if (stepState == 1) {
-      dispatch(validateSubmit({ element: 'forum_url', value: forum_url, required: true }))
-      dispatch(validateSubmit({ element: 'url', value: url, required: true }))
-      dispatch(validateSubmit({ element: 'typeform_competitor_popup', value: typeform_competitor_popup, required: true }))
-      dispatch(validateSubmit({ element: 'typeform_question_popup', value: typeform_question_popup, required: true }))
-    }
+    // if (stepState == 0) {
+    //   dispatch(validateSubmit({ element: 'name', value: name, required: true }))
+    //   dispatch(validateSubmit({ element: 'title', value: title, required: true }))
+    //   dispatch(validateSubmit({ element: 'description', value: description, required: true }))
+    //   dispatch(validateSubmit({ element: 'categories', value: categories, required: true }))
+    // }
+    // if (stepState == 1) {
+    //   dispatch(validateSubmit({ element: 'forum_url', value: forum_url, required: true }))
+    //   dispatch(validateSubmit({ element: 'url', value: url, required: true }))
+    //   dispatch(validateSubmit({ element: 'typeform_competitor_popup', value: typeform_competitor_popup, required: true }))
+    //   dispatch(validateSubmit({ element: 'typeform_question_popup', value: typeform_question_popup, required: true }))
+    // }
 
     if (isValidate) {
       setStepState(stepState + 1)
@@ -149,7 +152,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
       setStp(newSteps)
       setTitleCmp(steps[stepState].title)
       setDesc(steps[stepState].description)
-      dispatch(resetValidate(false))
+      // dispatch(resetValidate(false))
     }
   }
   const handleCreate = async () => {
@@ -320,6 +323,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
           <File name='logotype'
             placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
             onChange={handleChange}
+            file={file}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Final Step'
@@ -336,6 +340,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
           <File name='gallery'
             placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
             onChange={handleChange}
+            file={file}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Submit Form'

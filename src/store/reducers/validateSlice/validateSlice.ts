@@ -29,7 +29,7 @@ interface validateSlice {
 }
 
 const initialState: validateSlice = {
-    isValidate: false,
+    isValidate: true,
     nameError: '',
     titleError: '',
     descriptionError: '',
@@ -220,7 +220,7 @@ export const validateSlice = createSlice({
             state.websiteError = ''
             state.compretitorError = ''
             state.questionError = ''
-            state.isValidate = false
+            // state.isValidate = false
         },
     }
 })
