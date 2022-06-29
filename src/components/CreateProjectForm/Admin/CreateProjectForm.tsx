@@ -16,6 +16,13 @@ import Textarea from '../../UI/Form/Textarea/Textarea'
 import Title from '../../UI/Form/Title/Title'
 
 
+interface IFile {
+  id: number,
+  name: string,
+  size: string,
+  type: string,
+}
+
 const InitialState: ICreateProjectAdmin = {
   name: '',
   title: '',
@@ -112,14 +119,26 @@ const CreateProjectForm: FunctionComponent = (props) => {
     //     break
     // }
   }
-  const [file, setFile] = useState()
+  const [file, setFile] = useState<IFile | any>([])
   const handleChange = (e: any) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value })
-    console.log('ele', e.target.files)
     if (e.target.files.length > 0) {
-      setFile(e.target.files)
+      let arr: any = []
+      for (let i = 0; i <= e.target.files.length; i++) {
+        arr.push({
+          id: i,
+          name: e.target.files[i].name,
+          size: e.target.files[i].size,
+          type: e.target.files[i].type
+        })
+        setFile(arr)
+      }
+      arr = []
+      setFile(arr)
     }
   }
+
+
 
   const selectChange = (e: any) => {
     setFormValue({
@@ -324,6 +343,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
             placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
             onChange={handleChange}
             file={file}
+            multiple={false}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Final Step'
@@ -341,6 +361,7 @@ const CreateProjectForm: FunctionComponent = (props) => {
             placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
             onChange={handleChange}
             file={file}
+            multiple={true}
           />
           {/* Button Submit */}
           <ButtonSubmit name='Submit Form'

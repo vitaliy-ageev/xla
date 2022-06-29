@@ -1,16 +1,37 @@
 import { file } from '@babel/types'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import FileIcon from '../../Icons/File/FileIcon'
+import Image from '../../Icons/Image/Image'
+import Trash from '../../Icons/Trash/Trash'
 import classes from './File.module.scss'
+
+interface IFile {
+    id: number,
+    name: string,
+    size: string,
+    type: string,
+}
 
 interface FileProps {
     name: string,
     placeholder?: string,
     onChange?: React.ChangeEventHandler
-    file?: File[]
+    file?: IFile[] | undefined,
+    multiple?: boolean
 }
 
 const File: FunctionComponent<FileProps> = (props) => {
+    const [arr, setArr] = useState<IFile[]>([])
+
+    useEffect(() => {
+        setArr(props.file as [])
+    }, [props.file])
+
+    console.log('555,', arr)
+
+    const resetHandle = (e: any) => {
+        setArr(arr.filter(p => p.id !== e.id))
+    }
     return (
         <div className={classes.container}>
             {/* Label */}
@@ -28,22 +49,27 @@ const File: FunctionComponent<FileProps> = (props) => {
                 // placeholder={props.placeholder}
                 onChange={props.onChange}
                 className={classes.container_input}
-                multiple />
+                multiple={props.multiple ? props.multiple : false} />
+            {/* Images */}
             <div className={classes.container_files}>
-                <div className={classes.container_files_item}>
-                    {/* Image */}
-                    {/* Title Block */}
-                    <div>
-                        <div>
-                            {/* {props.file && <>
-                                {props.file}
-                            </>} */}
+                {arr.map(fl =>
+                    <div key={fl.id} className={classes.container_files_item}>
+                        <Image />
+                        <div className={classes.container_files_item_block}>
+                            <div className={classes.container_files_item_block_name}>
+                                {fl.name}
+                            </div>
+                            <div className={classes.container_files_item_block_size}>
+                                {Math.ceil(Number(fl.size) / 1000) + ' KB'}
+                            </div>
                         </div>
-                        <div>
-
+                        <div className={classes.container_files_item_trash}
+                            onClick={() => resetHandle(fl)}>
+                            <Trash />
                         </div>
                     </div>
-                </div>
+                )}
+
             </div>
         </div>
     )
