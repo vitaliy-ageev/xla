@@ -10,7 +10,7 @@
         left: -15px;
         background-color: $Background;
         filter: blur($OpportunitiesHiringBLur);
-        z-index: 30;
+        // z-index: 30;
 
         @include breakpoint (Large) {
             filter: blur($OpportunitiesHiringMobileBLur);
@@ -25,7 +25,7 @@
         right: -15px;
         background-color: $Background;
         filter: blur($OpportunitiesHiringBLur);
-        z-index: 30;
+        // z-index: 30;
 
         @include breakpoint (Large) {
             filter: blur($OpportunitiesHiringMobileBLur);
@@ -40,7 +40,7 @@
         left: -10px;
         background-color: $Background;
         filter: blur($OpportunitiesHiringBLur);
-        z-index: 30;
+        // z-index: 30;
 
         @include breakpoint (Large) {
             filter: blur($OpportunitiesHiringMobileBLur);
@@ -55,7 +55,7 @@
         left: -10px;
         background-color: $Background;
         filter: blur($OpportunitiesHiringBLur);
-        z-index: 30;
+        // z-index: 30;
 
         @include breakpoint (Large) {
             filter: blur($OpportunitiesHiringMobileBLur);

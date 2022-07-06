@@ -7,4 +7,11 @@
     background: $White;
     box-shadow: 0px 0px 30px rgba(16, 24, 40, 0.08);
     padding: 40px 90px;
+
+    @include breakpoint (Medium) {
+        width: 100%;
+        max-width: 520px;
+        box-shadow: none;
+        padding: 40px 15px;
+    }
 }

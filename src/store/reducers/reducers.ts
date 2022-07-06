@@ -1,6 +1,6 @@
 import { jobTypeAPI } from '../../services/JobTypeService'
 import { opportunityAPI } from '../../services/OpportunityService'
-import { projectAPI } from '../../services/ProjectService'
+import { projectAPI } from '../../services/projectService'
 import { statusAPI } from '../../services/StatusService'
 import { workingModeAPI } from '../../services/WorkingModeService'
 import validateReducer from './validateSlice/validateSlice'
@@ -10,6 +10,7 @@ import userReducer from './userSlice/userSlice'
 import { userAPI } from '../../services/user/userAPI'
 import { authAPI } from '../../services/auth/authAPI'
 import { categoryAPI } from '../../services/categoryService'
+import { forumAPI } from '../../services/forumService'
 
 
 export default {
@@ -25,4 +26,5 @@ export default {
     [userAPI.reducerPath]: userAPI.reducer,
     [authAPI.reducerPath]: authAPI.reducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
+    [forumAPI.reducerPath]: forumAPI.reducer,
 }

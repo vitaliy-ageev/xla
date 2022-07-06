@@ -47,7 +47,7 @@ export interface IProject {
     created_at: string,
     start_date: string,
     close_date: string | null,
-    forum_url: string,
+    forum_topic_url: string,
     typeform_competitor_popup: string,
     typeform_question_popup: string,
     logo_url: string,
@@ -63,18 +63,23 @@ export interface IFetchProject {
     projects: IProject[]
 }
 
-export interface ICreateProjectAdmin {
-    name: string,
-    title: string,
-    description: string,
-    logo: string,
-    images: [],
-    categories: ICategories[],
-    tags: ITag[],
-    url: string,
-    forum_url: string,
-    typeform_competitor_popup: string,
-    typeform_question_popup: string,
-    start_date: string,
-    close_date: string,
+export interface ICreateProject {
+    name: string | undefined,
+    title: string | undefined,
+    description: string | undefined,
+    logo?: string | undefined,
+    // images: [] | undefined,
+    categories: number[] | undefined,
+    tags: ITag[] | undefined,
+    url: string | null | undefined,
+    forum_url: string | undefined,
+    typeform_competitor_popup: string | undefined,
+    typeform_question_popup: string | undefined,
+    start_date: string | undefined,
+    close_date: string | null | undefined,
+}
+
+export interface IUpdateProject {
+    project_id: number
+    project: ICreateProject
 }

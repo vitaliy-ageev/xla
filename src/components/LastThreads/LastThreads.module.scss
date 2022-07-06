@@ -107,6 +107,7 @@
             line-height: 18px;
             color: $White;
             font-family: $PPNeueMachinaRegular;
+            display: none;
 
             @include breakpoint (ExtraLarge) {
                 font-size: 14px;
@@ -119,6 +120,10 @@
                 line-height: 16px;
                 padding: 5px 10px;
             }
+        }
+
+        &:first-child &_tranding_block {
+            display: block;
         }
 
         &_title {

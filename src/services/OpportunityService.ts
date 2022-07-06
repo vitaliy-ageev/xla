@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
 import { IFethOpportunity, IOpportunity, ISkills, paramsQuery } from "../models/IOpportunity"
+import { API_BASE_URL } from '../utils/const'
 
 export const opportunityAPI = createApi({
     reducerPath: 'OpportunityAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://megamall-api-dev.x.la/projects/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${API_BASE_URL}/projects` }),
     tagTypes: ['Opportunity'],
     endpoints: (build) => ({
         fetchAllOpportunities: build.query<IFethOpportunity, paramsQuery>({

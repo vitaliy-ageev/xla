@@ -14,7 +14,7 @@ import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import { statusAPI } from '../services/StatusService'
 import { workingModeAPI } from '../services/WorkingModeService'
 import { jobTypeAPI } from '../services/JobTypeService'
-import { projectAPI } from '../services/ProjectService'
+import { projectAPI } from '../services/projectService'
 
 const Opportunities: FunctionComponent = () => {
     window.scrollTo(0, 0);

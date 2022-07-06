@@ -9,10 +9,10 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    z-index: 10001;
 
     &.active {
         position: fixed;
+        z-index: 100001;
     }
 
     &_line {

@@ -5,6 +5,7 @@ interface TextareaProps {
     label: string,
     name: string,
     placeholder: string,
+    value?: string,
     rows?: number,
     cols?: number,
     maxLength: number,
@@ -26,6 +27,7 @@ const Textarea: FunctionComponent<TextareaProps> = (props) => {
                 name={props.name}
                 rows={props.rows}
                 cols={props.cols}
+                value={props.value}
                 maxLength={props.maxLength}
                 placeholder={props.placeholder}
                 onChange={props.onChange}

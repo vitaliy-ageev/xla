@@ -1,42 +1,36 @@
 import { file } from '@babel/types'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import FileIcon from '../../Icons/File/FileIcon'
-import Image from '../../Icons/Image/Image'
+import ImageIcon from '../../Icons/Image/ImageIcon'
 import Trash from '../../Icons/Trash/Trash'
-import classes from './File.module.scss'
+import classes from './Image.module.scss'
 
-interface IFile {
+interface IImage {
     id: number,
     name: string,
     size: string,
     type: string,
 }
 
-interface FileProps {
+interface ImageProps {
     name: string,
     placeholder?: string,
     onChange?: React.ChangeEventHandler
-    file?: IFile[] | undefined,
-    multiple?: boolean
+    image?: IImage[] | undefined,
+    accept?: string,
+    multiple?: boolean,
+    resetHandler: Function,
+    onBlur?: React.ReactEventHandler,
+    error?: string,
 }
 
-const File: FunctionComponent<FileProps> = (props) => {
-    const [arr, setArr] = useState<IFile[]>([])
-
-    useEffect(() => {
-        setArr(props.file as [])
-    }, [props.file])
-
-    console.log('555,', arr)
-
-    const resetHandle = (e: any) => {
-        setArr(arr.filter(p => p.id !== e.id))
-    }
+const Image: FunctionComponent<ImageProps> = (props) => {
     return (
         <div className={classes.container}>
             {/* Label */}
             <label htmlFor={props.name}
-                className={classes.container_label}>
+                className={classes.container_label}
+                onClick={props.onBlur}>
                 <FileIcon />
                 <span className={classes.container_label_text}>
                     {props.placeholder}
@@ -49,12 +43,16 @@ const File: FunctionComponent<FileProps> = (props) => {
                 // placeholder={props.placeholder}
                 onChange={props.onChange}
                 className={classes.container_input}
-                multiple={props.multiple ? props.multiple : false} />
+                multiple={props.multiple ? props.multiple : false}
+                accept={props.accept} />
+            <div style={{ color: 'red' }}>
+                {props.error && <>{props.error}</>}
+            </div>
             {/* Images */}
-            <div className={classes.container_files}>
-                {arr.map(fl =>
+            {/* <div className={classes.container_files}>
+                {props?.image && props?.image.map(fl =>
                     <div key={fl.id} className={classes.container_files_item}>
-                        <Image />
+                        <ImageIcon />
                         <div className={classes.container_files_item_block}>
                             <div className={classes.container_files_item_block_name}>
                                 {fl.name}
@@ -64,15 +62,15 @@ const File: FunctionComponent<FileProps> = (props) => {
                             </div>
                         </div>
                         <div className={classes.container_files_item_trash}
-                            onClick={() => resetHandle(fl)}>
+                            onClick={() => props?.resetHandler(fl)}>
                             <Trash />
                         </div>
                     </div>
                 )}
 
-            </div>
+            </div> */}
         </div>
     )
 }
 
-export default File
+export default Image

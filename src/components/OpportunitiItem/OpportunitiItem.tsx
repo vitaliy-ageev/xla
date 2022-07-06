@@ -8,7 +8,7 @@ import Header from './Header/Header'
 import { useParams } from 'react-router-dom';
 import classes from './OpportunitiItem.module.scss'
 import { opportunityAPI } from '../../services/OpportunityService'
-import { projectAPI } from '../../services/ProjectService'
+import { projectAPI } from '../../services/projectService'
 import { Embed } from '../../utils/embed'
 import { Link } from 'react-router-dom'
 

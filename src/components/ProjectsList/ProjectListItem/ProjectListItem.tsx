@@ -3,7 +3,7 @@ import classes from './ProjectListItem.module.scss'
 import Like from '../../UI/Icons/Like/Like'
 import Tags from './Tags/Tags'
 import { Link } from 'react-router-dom'
-import { projectAPI } from '../../../services/ProjectService'
+import { projectAPI } from '../../../services/projectService'
 import { RouteNames } from '../../../routes/routes'
 import Blur from './Blur/Blur'
 

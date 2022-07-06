@@ -8,6 +8,9 @@ interface InputProps {
     name: string,
     placeholder?: string,
     value?: string,
+    min?: string,
+    max?: string,
+    pattern?: string,
     onChange?: React.ChangeEventHandler,
     onBlur?: React.FocusEventHandler
     error?: string,
@@ -25,6 +28,8 @@ const Input: FunctionComponent<InputProps> = (props) => {
             <input type={props.type}
                 name={props.name}
                 value={props.value}
+                min={props.min}
+                max={props.max}
                 placeholder={props.placeholder}
                 autoComplete='off'
                 onChange={props.onChange}

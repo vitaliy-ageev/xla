@@ -4,6 +4,7 @@ import LoginAdminForm from '../components/LoginForm/Admin/LoginAdminForm'
 import BlockWithShadow from '../components/UI/BlockWithShadow/BlockWithShadow'
 import CenteredWindow from '../components/UI/CenteredWindow/CenteredWindow'
 import CloseWindow from '../components/UI/Icons/CloseWindow/CloseWindow'
+import XLA from '../components/UI/Logotype/XLA/XLA'
 
 const LoginAdmin: FunctionComponent = (props) => {
     const history = useNavigate();
@@ -11,6 +12,7 @@ const LoginAdmin: FunctionComponent = (props) => {
     return (
         <div className='App'>
             <CenteredWindow>
+                <XLA />
                 <BlockWithShadow>
                     <LoginAdminForm />
                     {/* Close Icon */}

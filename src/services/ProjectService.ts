@@ -1,10 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
-import { IFetchProject, IProject, IFAQ, IUpdates } from "../models/IProject"
+import { IFetchProject, IProject, IFAQ, IUpdates, ICreateProject } from "../models/IProject"
+import { baseAPI } from "./baseAPI"
 
-export const projectAPI = createApi({
-    reducerPath: 'ProjectAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://megamall-api-dev.x.la' }),
-    tagTypes: ['Project'],
+export const projectAPI = baseAPI.injectEndpoints({
     endpoints: (build) => ({
         fetchAllProjects: build.query<IFetchProject, number>({
             query: (limit: number = 9) => ({
@@ -13,7 +10,6 @@ export const projectAPI = createApi({
                     limit: limit
                 }
             }),
-            providesTags: result => ['Project'],
         }),
         fetchOneProject: build.query<IProject, string>({
             query: (id: string) => ({
@@ -22,7 +18,6 @@ export const projectAPI = createApi({
                     id: id
                 }
             }),
-            providesTags: result => ['Project'],
         }),
         fetchProjectFAQ: build.query<IFAQ[], string>({
             query: (id: string) => ({
@@ -39,6 +34,52 @@ export const projectAPI = createApi({
                     id: id
                 }
             })
-        })
+        }),
+        createProject: build.mutation({
+            query: (body: ICreateProject) => {
+                return {
+                    url: '/projects/create',
+                    method: 'post',
+                    body
+                }
+            }
+        }),
+        updateProject: build.mutation({
+            query: (IUpdateProject) => {
+                return {
+                    url: `/projects/${IUpdateProject.project_id}`,
+                    method: 'patch',
+                    body: IUpdateProject.project
+                }
+            }
+        }),
+        uploadImages: build.mutation({
+            query: (formData) => {
+                return {
+                    url: '/projects/images/upload?source=create_project_logo',
+                    method: 'post',
+                    body: formData
+                }
+            }
+        }),
+        deleteImages: build.mutation({
+            query: (objectKey: string) => {
+                return {
+                    url: `/projects/images/${objectKey}`,
+                    method: 'delete',
+                }
+            }
+        }),
     })
 })
+
+export const {
+    useFetchAllProjectsQuery,
+    useFetchOneProjectQuery,
+    useFetchProjectFAQQuery,
+    useFetchProjectUpdatesQuery,
+    useCreateProjectMutation,
+    useUpdateProjectMutation,
+    useUploadImagesMutation,
+    useDeleteImagesMutation,
+} = projectAPI

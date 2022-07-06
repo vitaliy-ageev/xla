@@ -12,7 +12,7 @@ import OpportunityHiring from '../components/OpportunityHiring/OpportunityHiring
 import Projects from '../components/ProjectsList/ProjectsList';
 import StartBlock from '../components/StartBlock/StartBlock';
 import Title from '../components/UI/Title/Title';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { useAppDispatch } from '../hooks/hooks';
 import { opportunityAPI } from '../services/OpportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
@@ -20,48 +20,6 @@ import { useFetchAdminProfileQuery } from '../services/user/userAdminService';
 
 const Main: FunctionComponent = (props) => {
     window.scrollTo(0, 0);
-
-    const LastThreadsItems = [
-        {
-            id: 1,
-            title: "Share your ideas and get rewarded with NFTs",
-            mobile_title: "Be creative and get rewarded!",
-            isTrending: true,
-            comments: 50,
-            tags: [
-                { id: 1, name: "web3" },
-                { id: 2, name: "NFTs" },
-                { id: 3, name: "contest" },
-            ],
-            link: "https://x.la/forum/viewtopic.php?t=137"
-        },
-        {
-            id: 2,
-            title: "From Web2 to Web3: Is the future closer than we think?",
-            mobile_title: "Moving from Web2 to Web3",
-            isTrending: false,
-            comments: 50,
-            tags: [
-                { id: 1, name: "web3" },
-                { id: 2, name: "future" },
-                { id: 3, name: "blockchain" },
-            ],
-            link: "https://x.la/forum/viewtopic.php?t=78"
-        },
-        {
-            id: 3,
-            title: "Earn crypto while learning about crypto",
-            mobile_title: "Earn crypto while learning",
-            isTrending: false,
-            comments: 50,
-            tags: [
-                { id: 1, name: "L2E" },
-                { id: 2, name: "crypto" },
-                { id: 3, name: "blockchain" },
-            ],
-            link: "https://x.la/forum/viewtopic.php?t=84"
-        },
-    ]
 
     const { data: opportunities } = opportunityAPI.useFetchAllOpportunitiesQuery({ limit: 51, offset: 0 })
     const scrollRef: any = useRef()
@@ -94,9 +52,9 @@ const Main: FunctionComponent = (props) => {
                             {/* Article */}
                             <Article />
                             {/* Last Threads */}
-                            <LastThreads threadItems={LastThreadsItems} />
+                            <LastThreads />
                             {/* Opportunity */}
-                            <OpportunityHiring opportunities={opportunities?.opportunities} />
+                            {/* <OpportunityHiring opportunities={opportunities?.opportunities} /> */}
                         </RightSection>
                     </LeftRightSection>
                 </MainSection>

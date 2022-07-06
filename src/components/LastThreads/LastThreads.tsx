@@ -1,32 +1,28 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { useFetchAllTopicsQuery } from '../../services/forumService';
 import Comments from '../UI/Icons/Comments/Comments';
-import NoiseEffect from '../UI/NoiseEffect/NoiseEffect';
 import classes from './LastThreads.module.scss'
 
-interface IThreadTags {
-    id: number,
-    name: string
+interface LastThreadsProps {
+    style?: string
 }
 
-interface IThreads {
-    id: number,
-    title: string,
-    mobile_title: string,
-    isTrending: boolean,
-    comments: number,
-    tags: IThreadTags[],
-    link: string
-}
+const LastThreads: FunctionComponent<LastThreadsProps> = (props) => {
+    const [offset, setOffset] = useState<number>(0)
+    const [limit, setLimit] = useState<number>(3)
+    const { data: topics } = useFetchAllTopicsQuery({ limit: limit, offset: offset })
 
-interface ILastThreads {
-    style?: string,
-    threadItems: IThreads[]
-}
+    useEffect(() => {
+        if (topics && topics?.total && offset !== (topics.offset - 3)) {
+            setOffset(topics.total - 3)
+        }
+    }, [topics])
 
-const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) => {
+
+
     let rootClasses = [classes.last_threads];
 
-    if (style == 'project_page') {
+    if (props.style == 'project_page') {
         rootClasses.push(classes.project_page)
     }
 
@@ -40,26 +36,25 @@ const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) =>
                 </span>
                 {/* Count */}
                 <span className={[classes.last_threads_title, classes.count].join(' ')}>
-                    {threadItems.length}
+                    {topics?.topics.length}
                 </span>
             </div>
             <div>
-                {threadItems.map(threadItem =>
-                    <a href={threadItem.link} target="_blank" key={threadItem.id} className={classes.last_threads_item}>
+                {topics?.topics.map(item =>
+                    <a href={item.url} target="_blank" key={item.url} className={classes.last_threads_item}>
                         {/* Tranding? */}
-                        {threadItem.isTrending ? <div className={classes.last_threads_item_tranding_block}>
+                        <div className={classes.last_threads_item_tranding_block}>
                             Trending 🔥
                         </div>
-                            : ''}
                         {/* Title */}
                         <span className={classes.last_threads_item_title}>
-                            {window.screen.width > 767 && window.screen.width < 1366 || window.screen.width > 1920 ? threadItem.title : threadItem.mobile_title}
+                            {item.title}
                             <div className={classes.last_threads_item_title_hover} />
                         </span>
                         <div className={classes.last_threads_container}>
                             {/* Tags */}
                             <div className={classes.last_threads_item_tags}>
-                                {threadItem.tags.map(
+                                {item.tags.map(
                                     tag =>
 
                                         <span key={tag.id} className={classes.last_threads_item_tag}>
@@ -68,12 +63,12 @@ const LastThreads: FunctionComponent<ILastThreads> = ({ style, threadItems }) =>
                                 )}
                             </div>
                             {/* Comments */}
-                            {/* < div className={classes.last_threads_item_comments} >
+                            < div className={classes.last_threads_item_comments} >
                                 <Comments />
                                 <span className={classes.last_threads_item_comments_count}>
-                                    {threadItem.comments}
+                                    {item.posts_count}
                                 </span>
-                            </div> */}
+                            </div>
                         </div>
                     </a>
                 )

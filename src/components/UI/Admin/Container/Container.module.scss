@@ -7,10 +7,18 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: flex-start;
 
     &:last-child {
         margin-bottom: 0;
+    }
+
+    @include breakpoint(SemiLarge) {
+        max-width: 200px;
+    }
+
+    @include breakpoint(Large) {
+        max-width: 400px;
     }
 }

@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import CreateProjectForm from '../components/CreateProjectForm/Admin/CreateProjectForm'
+import EditProjectForm from '../components/EditProjectForm/EditProjectForm'
 import BlockWithShadow from '../components/UI/BlockWithShadow/BlockWithShadow'
 import CenteredWindow from '../components/UI/CenteredWindow/CenteredWindow'
 import CloseWindow from '../components/UI/Icons/CloseWindow/CloseWindow'
 import XLA from '../components/UI/Logotype/XLA/XLA'
 
-const CreateProject: FunctionComponent = (props) => {
-    const history = useNavigate();
+const EditProject: FunctionComponent = (props) => {
+    const history = useNavigate()
     return (
         <div className='App'>
             <CenteredWindow>
@@ -15,7 +15,7 @@ const CreateProject: FunctionComponent = (props) => {
                 <XLA />
                 {/* Form */}
                 <BlockWithShadow>
-                    <CreateProjectForm />
+                    <EditProjectForm />
                 </BlockWithShadow>
                 {/* Close Icon */}
                 <div onClick={() => history(-1)}>
@@ -26,4 +26,4 @@ const CreateProject: FunctionComponent = (props) => {
     )
 }
 
-export default CreateProject
+export default EditProject
