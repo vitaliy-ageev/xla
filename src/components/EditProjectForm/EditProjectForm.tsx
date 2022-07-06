@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { ICreateProject, ISteps } from '../../models/IProject'
 import { useFetchAllCategoriesQuery } from '../../services/categoryService'
 import { useFetchAllProjectsQuery, useFetchOneProjectQuery, useUpdateProjectMutation } from '../../services/projectService'
-import { resetField, resetValidate, validateField, validateSubmit } from '../../store/reducers/validateSlice/validateSlice'
+import { resetField, resetValidate, validateField } from '../../store/reducers/validateSlice/validateSlice'
 import ButtonSubmit from '../UI/Form/ButtonSubmit/ButtonSubmit'
 import Description from '../UI/Form/Description/Description'
 import Form from '../UI/Form/Form'
@@ -217,8 +217,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                 typeform_question_popup: project?.typeform_question_popup ? project?.typeform_question_popup : '',
                 start_date: project?.start_date ? project?.start_date : '',
                 close_date: project?.close_date ? project?.close_date : ''
-
-
             })
         }
     }, [project])
@@ -293,7 +291,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         value={categories && categories[0]}
                         options={category?.categories}
                         onSelect={selectChange}
-                        onBlur={() => blurHandle('categories')}
                         error={categoryError ? categoryError : ""}
                     />
                     {/* Button Submit */}
@@ -316,7 +313,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         value={forum_url}
                         placeholder='https://example.com'
                         onChange={handleChange}
-                        onBlur={() => blurHandle('forum_url')}
                         error={forumError ? forumError : ""}
                     />
                     {/* Website Url */}
@@ -326,7 +322,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         value={url as string}
                         placeholder='https://example.com'
                         onChange={handleChange}
-                        onBlur={() => blurHandle('url')}
                         error={websiteError ? websiteError : ""}
                     />
                     {/* Typeform_competitor_popup */}
@@ -336,7 +331,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         value={typeform_competitor_popup}
                         placeholder='#1235434'
                         onChange={handleChange}
-                        onBlur={() => blurHandle('typeform_competitor_popup')}
                         error={compretitorError ? compretitorError : ""}
                     />
                     {/* Typeform_question_popup */}
@@ -346,7 +340,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         value={typeform_question_popup}
                         placeholder='#1235434'
                         onChange={handleChange}
-                        onBlur={() => blurHandle('typeform_question_popup')}
                         error={questionError ? questionError : ""}
                     />
                     {/* Date Start */}
@@ -357,7 +350,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         max='2025-01-01'
                         value={start_date}
                         onChange={handleChange}
-                        onBlur={() => blurHandle('start_date')}
                         error={startDateError ? startDateError : ""}
                     />
                     {/* Date Close */}
@@ -368,7 +360,6 @@ const EditProjectForm: FunctionComponent = (props) => {
                         max='2025-01-01'
                         value={close_date as string}
                         onChange={handleChange}
-                        onBlur={() => blurHandle('close_date')}
                         error={closeDateError ? closeDateError : ""}
                     />
                     {/* Button Submit */}

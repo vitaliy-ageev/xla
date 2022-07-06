@@ -208,79 +208,6 @@ export const validateSlice = createSlice({
                 }
             }
         },
-        validateSubmit(state, action: PayloadAction<IValidate>) {
-            if (action.payload.element) {
-                const { element, value, required } = action.payload
-                switch (element) {
-                    case 'project':
-                        if (state.projectError !== '' || (required && value == '')) {
-                            state.projectError = state.projectError ? state.projectError : errorMesage.required
-                        }
-                        break
-                    case 'name':
-                        if (state.nameError !== '' || (required && value == '')) {
-                            state.nameError = state.nameError ? state.nameError : errorMesage.required
-                        }
-                        break
-                    case 'title':
-                        if (state.titleError !== '' || (required && value == '')) {
-                            state.titleError = state.titleError ? state.titleError : errorMesage.required
-                        }
-                        break
-                    case 'description':
-                        if (state.descriptionError !== '' || (required && value == '')) {
-                            state.descriptionError = state.descriptionError ? state.descriptionError : errorMesage.required
-                        }
-                        break
-                    // case 'categories':
-                    //     if (state.categoryError !== '' || (required && value == '')) {
-                    //         state.categoryError = state.categoryError ? state.categoryError : errorMesage.required
-                    //     }
-                    //     break
-                    case 'forum_url':
-                        if (state.forumError !== '' || (required && value == '')) {
-                            state.forumError = state.forumError ? state.forumError : errorMesage.required
-                        }
-                        break
-                    case 'url':
-                        if (state.websiteError !== '' || (required && value == '')) {
-                            state.websiteError = state.websiteError ? state.websiteError : errorMesage.required
-                        }
-                        break
-                    case 'typeform_competitor_popup':
-                        if (state.compretitorError !== '' || (required && value == '')) {
-                            state.compretitorError = state.compretitorError ? state.compretitorError : errorMesage.required
-                        }
-                        break
-                    case 'typeform_question_popup':
-                        if (state.questionError !== '' || (required && value == '')) {
-                            state.questionError = state.questionError ? state.questionError : errorMesage.required
-                        }
-                        break
-                    case 'start_date':
-                        if (state.startDateError !== '' || (required && value == '')) {
-                            state.startDateError = state.startDateError ? state.startDateError : errorMesage.required
-                        }
-                        break
-                    case 'close_date':
-                        if (state.closeDateError !== '' || (required && value == '')) {
-                            state.closeDateError = state.closeDateError ? state.closeDateError : errorMesage.required
-                        }
-                        break
-                    case 'logo':
-                        if (state.logoError !== '' || (required && value == '')) {
-                            state.logoError = state.logoError ? state.logoError : errorMesage.required
-                        }
-                        break
-                    case 'images':
-                        if (state.imagesError !== '' || (required && value == '')) {
-                            state.imagesError = state.imagesError ? state.imagesError : errorMesage.required
-                        }
-                        break
-                    default:
-                }
-            }
-        },
         resetValidate(state, action: PayloadAction<boolean>) {
             state.isValidate = action.payload
         },
@@ -304,7 +231,7 @@ export const validateSlice = createSlice({
 })
 
 
-export const { validateField, validateSubmit, resetField, resetValidate } = validateSlice.actions
+export const { validateField, resetField, resetValidate } = validateSlice.actions
 export default validateSlice.reducer;
 
 
