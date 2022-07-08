@@ -17,3 +17,25 @@
         height: 18px;
     }
 }
+
+.close {
+    width: 18px;
+    height: 18px;
+    fill: $Black;
+    transform: rotate(45deg);
+
+    @include breakpoint(ExtraLarge) {
+        width: 15px;
+        height: 15px;
+    }
+
+    @include breakpoint(SemiLarge) {
+        width: 9px;
+        height: 9px;
+    }
+
+    @include breakpoint(ExtraLarge) {
+        width: 15px;
+        height: 15px;
+    }
+}

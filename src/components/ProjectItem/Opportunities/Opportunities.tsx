@@ -1,21 +1,30 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { IOpportunity } from '../../../models/IOpportunity'
-import { Embed } from '../../../utils/embed'
 import classes from './Opportunities.module.scss'
-import { Link } from 'react-router-dom'
-import { RouteNames } from '../../../routes/routes'
+import OpportunityModal from '../OpportunityModal/OpportunityModal'
 
 interface OpportunitiesItemProps {
-    opportunities: IOpportunity[] | undefined
+    opportunities: IOpportunity[]
 }
 
 const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
+    const [isOpportunityModalOpen, setisOpportunityModalOpen] = useState<boolean>(false);
+    const [opportunityModalContent, setOpportunityModalContent] = useState<IOpportunity | null>(null);
+
+    const openOpportunityModal = (opportunity: IOpportunity) => {
+        setOpportunityModalContent(opportunity)
+        setisOpportunityModalOpen(true)
+    }
+
+    const closeOpportunityModal = () => {
+        setisOpportunityModalOpen(false)
+    }
+
     return (
-        <div className={classes.opportunities_section}>
-            {props.opportunities && props.opportunities.map(item =>
-                <>
-                    <Link to={RouteNames.OPPORTUNITY + '/id=' + item.id}
-                        key={item.id} className={classes.opportunities_section_item}>
+        props.opportunities && (
+            <div className={classes.opportunities_section}>
+                {props.opportunities.map(item =>
+                    <button className={classes.opportunities_section_item} key={item.id} onClick={() => openOpportunityModal(item)}>
                         {/* Background */}
                         <div className={classes.opportunities_section_item_left_container}>
                             <div className={classes.opportunities_section_item_background}>
@@ -28,10 +37,12 @@ const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
                                     }}
                                 >
                                 </div>
+
                                 <div className={classes.opportunities_section_item_background_corner_upper}></div>
                                 <div className={classes.opportunities_section_item_background_corner_down}></div>
                             </div>
                         </div>
+
                         {/* Description */}
                         <div className={classes.opportunities_section_item_right_container}>
                             <span className={classes.opportunities_section_item_title}>
@@ -42,10 +53,12 @@ const Opportunities: FunctionComponent<OpportunitiesItemProps> = (props) => {
                             </span> */}
                             <div className={classes.opportunities_section_item_title_hover} />
                         </div>
-                    </Link>
-                </>
-            )}
-        </div >
+                    </button>
+                )}
+
+                <OpportunityModal opportunity={opportunityModalContent} opportunities={props.opportunities} isOpen={isOpportunityModalOpen} closeModal={closeOpportunityModal} />
+            </div >
+        )
     )
 }
 

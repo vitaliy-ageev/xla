@@ -1,18 +1,18 @@
 // Breakpoint of screen sizes
 @mixin breakpoint($point) {
     @if $point ==ExtraLarge {
-        @media (max-width: 2559px) {
+        @media (max-width: 2559px) { // Desktop HD
             @content;
         }
     }
 
-    @else if $point ==SemiLarge {
+    @else if $point ==SemiLarge { // Desktop
         @media (max-width: 1919px) {
             @content;
         }
     }
 
-    @else if $point ==Large {
+    @else if $point ==Large { // Tablet
         @media (max-width: 1365px) {
             @content;
         }
@@ -30,13 +30,13 @@
         }
     }
 
-    @else if $point ==Medium {
+    @else if $point ==Medium { // Mobile HD
         @media (max-width: 767px) {
             @content;
         }
     }
 
-    @else if $point ==SemiMedium {
+    @else if $point ==SemiMedium { // Mobile
         @media (max-width: 427px) {
             @content;
         }

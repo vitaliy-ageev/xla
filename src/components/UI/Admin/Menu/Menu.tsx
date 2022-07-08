@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import classes from './menu.module.scss'
+import classes from './Menu.module.scss'
 
 interface MenuProps {
     visible: boolean,

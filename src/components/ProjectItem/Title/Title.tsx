@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import classes from './Title.module.scss'
-
 interface TitleProps {
     title: string,
-    link?: string
+    link?: string,
+    onLinkClick?: () => void
 }
 
 const Title: FunctionComponent<TitleProps> = (props) => {
@@ -12,9 +12,14 @@ const Title: FunctionComponent<TitleProps> = (props) => {
             <h3 className={classes.block_title}>
                 {props.title}
             </h3>
-            <h4 className={classes.block_link}>
-                {props.link}
-            </h4>
+
+            {
+                props.link
+                    ? <button className={classes.block_link} onClick={props.onLinkClick}>
+                        {props.link}
+                    </button>
+                    : null
+            }
         </div>
     )
 }

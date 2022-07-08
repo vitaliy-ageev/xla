@@ -36,13 +36,17 @@
     }
 
     &_link {
-        cursor: pointer;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: none;
+        margin-right: 10px;
         font-size: 16px;
         line-height: 22px;
         color: $Blue;
         font-family: $PPNeueMachinaRegular;
         text-decoration: underline;
-        margin-right: 10px;
+        cursor: pointer;
 
         @include breakpoint (ExtraLarge) {
             font-size: 16px;

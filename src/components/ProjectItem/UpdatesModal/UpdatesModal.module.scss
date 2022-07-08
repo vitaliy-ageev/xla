@@ -1,0 +1,211 @@
+@import "@variables";
+@import "@mixins";
+
+.updates-modal {
+    visibility: hidden;
+    transition: visibility $transition;
+
+    &--open {
+        visibility: visible;
+
+        .updates-modal__overlay {
+            opacity: 1;
+        }
+
+        .updates-modal__container {
+            transform: translateX(0);
+        }
+    }
+
+    &__overlay {
+        position: fixed;
+        z-index: 1010;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: flex-end;
+        background: rgba($Black, 0.25);
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        transition: opacity $transition;
+
+        @include breakpoint(Medium) {
+            backdrop-filter: none;
+        }
+    }
+
+    &__container {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 57%;
+        background-color: $White;
+        overflow: hidden;
+        transform: translateX(100%);
+        transition: transform $transition;
+
+        @include breakpoint(Large) {
+            width: 85%;
+        }
+
+        @include breakpoint(Medium) {
+            width: 100%;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba($Black, 0.1);
+    }
+
+    &__title-wrapper {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        padding: 50px 50px 41px;
+        border-right: 1px solid rgba($Black, 0.1);
+
+        @include breakpoint (SemiLarge) {
+            padding: 26px 30px;
+        }
+
+        @include breakpoint(Large) {
+            padding: 26px 20px;
+        }
+    }
+
+    &__title {
+        font-family: 'PPNeueMachinaMedium';
+        font-size: 36px;
+        line-height: 1;
+        font-weight: 500;
+        font-style: normal;
+        letter-spacing: 0.02em;
+        color: $Black;
+
+        @include breakpoint (SemiLarge) {
+            font-size: 18px;
+        }
+    }
+
+    &__close {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        margin: 38px;
+        padding: 0;
+        background: $White;
+        border: 1px solid $Black;
+        transition: background-color $transition;
+
+        @include breakpoint (SemiLarge) {
+            width: 30px;
+            height: 30px;
+            margin: 20px;
+        }
+
+        svg {
+            transition: fill $transition;
+        }
+
+        &:hover {
+            background-color: $Black;
+
+            svg {
+                fill: $White;
+            }
+        }
+    }
+
+    &__content {
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 50px;
+
+        @include breakpoint (SemiLarge) {
+            padding: 30px;
+        }
+
+        @include breakpoint(Large) {
+            padding: 20px;
+        }
+    }
+
+    &__item {
+        margin: 0;
+
+        &+& {
+            margin-top: 10px;
+        }
+    }
+}
+
+.update-item {
+    padding: 30px 0;
+    border-bottom: 2px solid $Grey;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    @include breakpoint (SemiLarge) {
+        padding: 20px 0;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        flex-grow: 1;
+        margin: 0 35px 0 0;
+        font-family: 'HelveticaBold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1.17;
+        letter-spacing: 0.02em;
+        color: $Black;
+
+        @include breakpoint (SemiLarge) {
+            font-size: 16px;
+        }
+    }
+
+    &__date {
+        font-family: 'HelveticaMedium';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.29;
+        letter-spacing: 0.02em;
+        color: rgba($Black, 0.5);
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    &__description {
+        margin: 20px 0 0;
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.38;
+        letter-spacing: 0.02em;
+        color: rgba($Black, 0.75);
+
+        @include breakpoint (SemiLarge) {
+            font-size: 14px;
+            line-height: 1.29;
+        }
+    }
+}

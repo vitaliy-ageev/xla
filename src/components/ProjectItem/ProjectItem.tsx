@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import LinearSeparation from '../UI/LinearCornerSeparation/LinearCornerSeparation';
 import classes from './ProjectItem.module.scss';
 import Opportunities from './Opportunities/Opportunities';
@@ -11,6 +11,7 @@ import Gallery from './Gallery/Gallery';
 import RecentUpdates from './RecentUpdates/RecentUpdates';
 import { IOpportunity } from '../../models/IOpportunity';
 import { IFAQ, IProject, IUpdates } from '../../models/IProject';
+import UpdatesModal from './UpdatesModal/UpdatesModal';
 
 interface ProjectItemProps {
     project: IProject | undefined,
@@ -20,6 +21,16 @@ interface ProjectItemProps {
 }
 
 const ProjectItem: FunctionComponent<ProjectItemProps> = (props) => {
+    const [isUpdatesModalOpen, setIsUpdatesModalOpen] = useState<boolean>(false);
+
+    const openUpdatesModal = () => {
+        setIsUpdatesModalOpen(true)
+    }
+
+    const closeUpdatesModal = () => {
+        setIsUpdatesModalOpen(false)
+    }
+
     return (
         <>
             {props.project && <div className={classes.project_item}>
@@ -41,9 +52,10 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = (props) => {
                 </>}
                 {/* Recent updates */}
                 {props.updates?.toString() && <>
-                    <Title title='Recent updates' link='Version history' />
+                    <Title title='Recent updates' link='Version history' onLinkClick={openUpdatesModal} />
                     <LinearSeparation mobile={true} />
                     <RecentUpdates updates={props.updates} />
+                    <UpdatesModal updates={props.updates} isOpen={isUpdatesModalOpen} closeModal={closeUpdatesModal} />
                 </>}
                 {/* Opportunities */}
                 {props.opportunities && <>
