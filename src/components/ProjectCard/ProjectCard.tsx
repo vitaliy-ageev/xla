@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { RouteNames } from '../../routes/routes'
-import { opportunityAPI } from '../../services/OpportunityService'
+import { opportunityAPI } from '../../services/opportunityService'
 import { Embed } from '../../utils/embed'
 import CardWithCorner from '../UI/CardWithCorner/CardWithCorner'
 import CustomButton from '../UI/CustomButton/CustomButton'

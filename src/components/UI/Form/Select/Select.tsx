@@ -11,7 +11,7 @@ interface SelectProps {
     label: string,
     name: string,
     placeholder: string,
-    value?: number,
+    value?: number | string,
     options: IOptions[] | undefined,
     onSelect?: React.ReactEventHandler,
     onBlur?: React.FocusEventHandler,
@@ -43,7 +43,7 @@ const Select: FunctionComponent<SelectProps> = (props) => {
                     props.options.map(item =>
                         <option key={item.id} className={classes.container_option}
                             value={item.id}
-                            selected={item.id == props.value ? true : false}
+                            selected={item.id === props.value ? true : false}
                         >
                             {item.name}
                         </option>

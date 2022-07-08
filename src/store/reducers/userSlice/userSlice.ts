@@ -52,7 +52,8 @@ export const userSlice = createSlice({
                 "user",
                 JSON.stringify({
                     user: action.payload.user_id,
-                    token: action.payload.access_token,
+                    token_a: action.payload.access_token,
+                    token_r: action.payload.refresh_token,
                     role: state.role
                 })
             )

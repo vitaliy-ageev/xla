@@ -10,3 +10,17 @@ export interface IFetchCategories {
     offset: number,
     total: number
 }
+
+export interface CreateCategory {
+    key: string,
+    name: string
+}
+
+export interface UpdateCategory {
+    id: number,
+    category: CreateCategory
+}
+
+export interface DeleteCategory {
+    id: number
+}

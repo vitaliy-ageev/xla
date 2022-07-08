@@ -1,4 +1,4 @@
-import { IFetchProject, IProject, IFAQ, IUpdates, ICreateProject } from "../models/IProject"
+import { IFetchProject, IProject, IFAQ, IUpdates, ICreateProject, IUpdateProject, ImagesUpload, FileUpload } from "../models/IProject"
 import { baseAPI } from "./baseAPI"
 
 export const projectAPI = baseAPI.injectEndpoints({
@@ -44,21 +44,21 @@ export const projectAPI = baseAPI.injectEndpoints({
                 }
             }
         }),
-        updateProject: build.mutation({
+        updateProject: build.mutation<IUpdateProject, IUpdateProject>({
             query: (IUpdateProject) => {
                 return {
-                    url: `/projects/${IUpdateProject.project_id}`,
-                    method: 'patch',
+                    url: `/projects/${IUpdateProject.projectID}`,
+                    method: 'PATCH',
                     body: IUpdateProject.project
                 }
             }
         }),
-        uploadImages: build.mutation({
-            query: (formData) => {
+        uploadImages: build.mutation<FileUpload, ImagesUpload>({
+            query: (ImagesUpload) => {
                 return {
-                    url: '/projects/images/upload?source=create_project_logo',
+                    url: `/projects/images/upload?source=${ImagesUpload.provider}`,
                     method: 'post',
-                    body: formData
+                    body: ImagesUpload.file
                 }
             }
         }),

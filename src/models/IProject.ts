@@ -3,6 +3,7 @@ export interface ISteps {
     title: string,
     description: string,
     isActive: boolean,
+    isValidate: boolean,
 }
 
 export interface ICategories {
@@ -14,6 +15,13 @@ export interface ICategories {
 export interface ITag {
     id: number,
     name: string
+}
+
+export interface IFetchAllTags {
+    limit: number,
+    offset: number,
+    total: number,
+    tags: ITag[]
 }
 
 export interface IFAQ {
@@ -68,10 +76,10 @@ export interface ICreateProject {
     title: string | undefined,
     description: string | undefined,
     logo?: string | undefined,
-    // images: [] | undefined,
+    images?: [] | undefined,
     categories: number[] | undefined,
-    tags: ITag[] | undefined,
-    url: string | null | undefined,
+    tags?: ITag[] | undefined,
+    url: string | undefined,
     forum_url: string | undefined,
     typeform_competitor_popup: string | undefined,
     typeform_question_popup: string | undefined,
@@ -80,6 +88,23 @@ export interface ICreateProject {
 }
 
 export interface IUpdateProject {
-    project_id: number
+    projectID: number
     project: ICreateProject
+}
+
+export interface ImagesUpload {
+    provider: string,
+    file: FormData
+}
+
+export interface FileUpload {
+    file_name: string,
+    file_size: number | string
+    object_key: string,
+    source: string
+}
+
+export interface ResponceImagesUpload {
+    isUpload?: boolean,
+    fileUpload?: FileUpload | undefined
 }

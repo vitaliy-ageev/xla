@@ -1,0 +1,14 @@
+@import "@variables";
+@import "@mixins";
+
+.image_icon {
+    fill: #667085;
+
+    &.green {
+        fill: #16B364;
+    }
+
+    &.red {
+        fill: #F04438;
+    }
+}

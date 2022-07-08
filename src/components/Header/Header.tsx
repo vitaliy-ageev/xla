@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { filterSlice } from '../../store/reducers/filterSlice/filterSlice'
 import { RouteNames } from '../../routes/routes'
 import { setLogOut } from '../../store/reducers/userSlice/userSlice'
-import { useLogOutAdminMutation } from '../../services/user/userAdminService'
+import { useLogOutAdminMutation } from '../../services/userAdminService'
 import AdminPanel from './AdminPanel/AdminPanel'
 
 

@@ -6,18 +6,17 @@ interface ISteps {
     title: string,
     description: string,
     isActive: boolean,
+    isValidate: boolean,
 }
 
 interface StepProps {
     steps: ISteps[],
     marginTop?: number
     marginBottom?: number,
+    onClick: Function
 }
 
 const Steps: FunctionComponent<StepProps> = (props) => {
-    useEffect(() => {
-
-    }, [props.steps])
     return (
         <div className={classes.steps}
             style={{
@@ -26,7 +25,8 @@ const Steps: FunctionComponent<StepProps> = (props) => {
             }}>
             {props.steps.length > 1 && props.steps.map(step =>
                 <div key={step.id} className={step.isActive ? [classes.steps_item, classes.active].join(' ')
-                    : classes.steps_item}></div>
+                    : classes.steps_item}
+                    onClick={() => props.onClick(step)}></div>
             )}
         </div>
     )

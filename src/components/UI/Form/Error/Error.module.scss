@@ -1,0 +1,14 @@
+@import "@variables";
+@import "@mixins";
+
+.error {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #FFFBFA;
+    border: 1px solid #EAECF0;
+    font-size: 14px;
+    line-height: 14px;
+    color: #F04438;
+    font-family: $HelveticaLight;
+}

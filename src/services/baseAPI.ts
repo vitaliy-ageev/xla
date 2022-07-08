@@ -7,7 +7,8 @@ const baseQuery = fetchBaseQuery({
     baseUrl: API_BASE_URL,
     credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
-        const access_token: any = (getState() as RootState).userReducer.access_token
+        const userAuth: any = localStorage.getItem("user")
+        const access_token: any = userAuth ? JSON.parse(userAuth).token_a : ''
         if (access_token) {
             headers.set('Authorization', `Bearer ${access_token}`)
         }
@@ -20,15 +21,16 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     let result = await baseQuery(args, api, extraOptions)
 
     if (result?.error && result?.error?.status === 401) {
-        const refresh_token: any = (api.getState() as RootState).userReducer.refresh_token
+        const userAuth: any = localStorage.getItem("user")
+        const refresh_token: any = userAuth ? JSON.parse(userAuth).token_r : ''
         if (refresh_token) {
-            const role: any = (api.getState() as RootState).userReducer.role
+            const role: any = userAuth ? JSON.parse(userAuth).role : ''
             if (role !== null) {
                 const refreshResult: any = await baseQuery({ url: '/auth/refresh?roles=' + `${role}`, method: 'post', body: { "refresh_token": refresh_token } }, api, extraOptions)
                 if (refreshResult?.data) {
                     const user_id: any = (api.getState() as RootState).userReducer.user_id
                     const access_token: any = (api.getState() as RootState).userReducer.access_token
-                    api.dispatch(setAuth({ ...refreshResult.data, user_id, access_token }))
+                    api.dispatch(setAuth({ ...refreshResult.data, user_id, access_token, refresh_token }))
                     result = await baseQuery(args, api, extraOptions)
                 } else {
                     api.dispatch(setLogOut())
@@ -44,6 +46,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 export const baseAPI = createApi({
     reducerPath: "baseAPI",
     baseQuery: baseQueryWithReauth,
+    tagTypes: ['Categories', 'Tags'],
     endpoints: (build) => ({})
 })
 

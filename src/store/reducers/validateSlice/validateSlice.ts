@@ -10,7 +10,7 @@ const enum errorMesage {
 
 interface IValidate {
     element: any,
-    value?: string | object | Array<string> | null | undefined
+    value?: string | number | object | Array<string> | null | undefined
     required?: boolean,
     minLenght?: number,
     maxLenght?: number
@@ -23,6 +23,7 @@ interface validateSlice {
     titleError: string,
     descriptionError: string,
     categoryError: string,
+    tagsError: string,
     forumError: string,
     websiteError: string,
     compretitorError: string,
@@ -31,6 +32,7 @@ interface validateSlice {
     closeDateError: string,
     logoError: string,
     imagesError: string,
+    keyError: string,
 }
 
 const initialState: validateSlice = {
@@ -40,6 +42,7 @@ const initialState: validateSlice = {
     titleError: '',
     descriptionError: '',
     categoryError: '',
+    tagsError: '',
     forumError: '',
     websiteError: '',
     compretitorError: '',
@@ -48,6 +51,7 @@ const initialState: validateSlice = {
     closeDateError: '',
     logoError: '',
     imagesError: '',
+    keyError: '',
 }
 
 export const validateSlice = createSlice({
@@ -101,13 +105,20 @@ export const validateSlice = createSlice({
                             state.descriptionError = ''
                         }
                         break
-                    // case 'categories':
-                    //     if (required && value == '') {
-                    //         state.categoryError = errorMesage.required
-                    //     } else {
-                    //         state.categoryError = ''
-                    //     }
-                    //     break
+                    case 'categories':
+                        if (required && (value == '' || value == -1)) {
+                            state.categoryError = errorMesage.required
+                        } else {
+                            state.categoryError = ''
+                        }
+                        break
+                    case 'tags':
+                        if (required && (value == '' || value == -1)) {
+                            state.tagsError = errorMesage.required
+                        } else {
+                            state.tagsError = ''
+                        }
+                        break
                     case 'forum_url':
                         if (required && value == '') {
                             state.forumError = errorMesage.required
@@ -182,10 +193,21 @@ export const validateSlice = createSlice({
                         }
                         break
                     case 'images':
-                        if (required && value && value.toString().length < 0) {
+                        if (required && value && value.toString().length <= 0) {
                             state.imagesError = errorMesage.required
                         } else {
                             state.imagesError = ''
+                        }
+                        break
+                    case 'key':
+                        if (required && value == '') {
+                            state.keyError = errorMesage.required
+                        } else if (minLenght && value && value.toString().length !== 0 && value.toString().length < minLenght) {
+                            state.keyError = errorMesage.minLen + minLenght
+                        } else if (maxLenght && value && value.toString().length !== 0 && value.toString().length > maxLenght) {
+                            state.keyError = errorMesage.maxLen + maxLenght
+                        } else {
+                            state.keyError = ''
                         }
                         break
                     default:
@@ -196,6 +218,7 @@ export const validateSlice = createSlice({
                     state.titleError == '' &&
                     state.descriptionError == '' &&
                     state.categoryError == '' &&
+                    state.tagsError == '' &&
                     state.forumError == '' &&
                     state.websiteError == '' &&
                     state.compretitorError == '' &&
@@ -203,8 +226,11 @@ export const validateSlice = createSlice({
                     state.startDateError == '' &&
                     state.closeDateError == '' &&
                     state.logoError == '' &&
+                    state.keyError == '' &&
                     state.imagesError == '') {
                     state.isValidate = true
+                } else {
+                    state.isValidate = false
                 }
             }
         },
@@ -217,6 +243,7 @@ export const validateSlice = createSlice({
             state.titleError = ''
             state.descriptionError = ''
             state.categoryError = ''
+            state.tagsError = ''
             state.forumError = ''
             state.websiteError = ''
             state.compretitorError = ''
@@ -225,6 +252,7 @@ export const validateSlice = createSlice({
             state.closeDateError = ''
             state.logoError = ''
             state.imagesError = ''
+            state.keyError = ''
             state.isValidate = false
         },
     }

@@ -28,7 +28,7 @@ const ProjectItem: FunctionComponent<ProjectItemProps> = (props) => {
                 <LinearSeparation />
                 {/* Buttons */}
                 <div className={classes.project_item_buttons}>
-                    <Buttons url={props.project.forum_url} typeform='dsd' name='dd' title='Discuss the project' style='black' ></Buttons>
+                    <Buttons url={props.project.forum_topic_url} typeform='dsd' name='dd' title='Discuss the project' style='black' ></Buttons>
                     <Buttons typeform={props.project.typeform_question_popup} name={props.project.name} title='Ask a Question' />
                     <Buttons typeform={props.project.typeform_competitor_popup} name={props.project.name} title='Share a similar project' />
                 </div>

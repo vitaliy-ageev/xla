@@ -16,24 +16,24 @@ const AdminPanel: FunctionComponent = (props) => {
                 { id: 2, name: "Edit", path: "/metamall/project/edit", style: "grey" },
             ]
         },
-        {
-            id: 2, title: "Opportunity", buttons: [
-                { id: 1, name: "Create", path: "", style: "green" },
-                { id: 2, name: "Edit", path: "", style: "grey" },
-            ]
-        },
+        // {
+        //     id: 2, title: "Opportunity", buttons: [
+        //         { id: 1, name: "Create", path: "", style: "green" },
+        //         { id: 2, name: "Edit", path: "", style: "grey" },
+        //     ]
+        // },
         {
             id: 3, title: "Categories", buttons: [
-                { id: 1, name: "Create", path: "", style: "green" },
-                { id: 3, name: "Edit", path: "", style: "grey" },
-                { id: 2, name: "Delete", path: "", style: "red" },
+                { id: 1, name: "Create", path: "/metamall/category/create", style: "green" },
+                { id: 3, name: "Edit", path: "/metamall/category/edit", style: "grey" },
+                { id: 2, name: "Delete", path: "/metamall/category/delete", style: "red" },
             ]
         },
         {
             id: 4, title: "Tags", buttons: [
-                { id: 1, name: "Create", path: "", style: "green" },
-                { id: 3, name: "Edit", path: "", style: "grey" },
-                { id: 2, name: "Delete", path: "", style: "red" },
+                { id: 1, name: "Create", path: "/metamall/tag/create", style: "green" },
+                { id: 3, name: "Edit", path: "/metamall/tag/edit", style: "grey" },
+                { id: 2, name: "Delete", path: "/metamall/tag/delete", style: "red" },
             ]
         },
     ]

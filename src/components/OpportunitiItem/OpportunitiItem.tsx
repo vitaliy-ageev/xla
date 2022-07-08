@@ -7,7 +7,7 @@ import Description from './Description/Description'
 import Header from './Header/Header'
 import { useParams } from 'react-router-dom';
 import classes from './OpportunitiItem.module.scss'
-import { opportunityAPI } from '../../services/OpportunityService'
+import { opportunityAPI } from '../../services/opportunityService'
 import { projectAPI } from '../../services/projectService'
 import { Embed } from '../../utils/embed'
 import { Link } from 'react-router-dom'

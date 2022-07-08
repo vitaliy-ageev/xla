@@ -1,14 +1,17 @@
 import { StringTypeAnnotation } from '@babel/types'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { idText } from 'typescript'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
-import { ICreateProject, ISteps } from '../../models/IProject'
+import { FileUpload, ICreateProject, ISteps, ResponceImagesUpload } from '../../models/IProject'
 import { useFetchAllCategoriesQuery } from '../../services/categoryService'
-import { useFetchAllProjectsQuery, useFetchOneProjectQuery, useUpdateProjectMutation } from '../../services/projectService'
+import { useDeleteImagesMutation, useFetchAllProjectsQuery, useFetchOneProjectQuery, useUpdateProjectMutation, useUploadImagesMutation } from '../../services/projectService'
 import { resetField, resetValidate, validateField } from '../../store/reducers/validateSlice/validateSlice'
 import ButtonSubmit from '../UI/Form/ButtonSubmit/ButtonSubmit'
 import Description from '../UI/Form/Description/Description'
+import Error from '../UI/Form/Error/Error'
 import Form from '../UI/Form/Form'
+import Image from '../UI/Form/Image/Image'
 import Input from '../UI/Form/Input/Input'
 import Select from '../UI/Form/Select/Select'
 import Steps from '../UI/Form/Step/Steps'
@@ -19,8 +22,8 @@ const InitialState: ICreateProject = {
     name: '',
     title: '',
     description: '',
-    // logo: '',
-    // images: [],
+    logo: '',
+    images: [],
     categories: [],
     tags: [],
     url: '',
@@ -33,10 +36,10 @@ const InitialState: ICreateProject = {
 
 const EditProjectForm: FunctionComponent = (props) => {
     const steps = [
-        { id: 0, title: "Edit project", description: "Please fill in all required fields below!", isActive: true },
-        { id: 1, title: "Projects Links", description: "Please fill in all required fields below!", isActive: false },
-        // { id: 2, title: "Logotype", description: "Upload project logotype.", isActive: false },
-        // { id: 3, title: "Screenshots", description: "You can upload a maximum of three screenshots of your project.", isActive: false },
+        { id: 0, title: "Edit project", description: "Please fill in all required fields below!", isActive: true, isValidate: false },
+        { id: 1, title: "Projects Links", description: "Please fill in all required fields below!", isActive: false, isValidate: false },
+        { id: 2, title: "Logotype", description: "Upload project logotype.", isActive: false, isValidate: false },
+        { id: 3, title: "Screenshots", description: "You can upload a maximum of three screenshots of your project.", isActive: false, isValidate: false },
     ]
 
     const navigate = useNavigate()
@@ -46,8 +49,8 @@ const EditProjectForm: FunctionComponent = (props) => {
         name,
         title,
         description,
-        // logo,
-        // images,
+        logo,
+        images,
         categories,
         tags,
         url,
@@ -59,10 +62,11 @@ const EditProjectForm: FunctionComponent = (props) => {
     } = formValue
     const [project_id, setProject_id] = useState<string>('')
     const [limitProjects, setLimitProjects] = useState<number>(0)
+    const [limitCategories, setLimitCategories] = useState<number>(0)
 
     const { data: projects } = useFetchAllProjectsQuery(limitProjects)
     const { data: project } = useFetchOneProjectQuery(project_id)
-    const { data: category } = useFetchAllCategoriesQuery()
+    const { data: category } = useFetchAllCategoriesQuery(limitCategories)
 
     const [stp, setStp] = useState<ISteps[]>(steps)
     const [titleCmp, setTitleCmp] = useState<string>(steps[0].title)
@@ -77,6 +81,33 @@ const EditProjectForm: FunctionComponent = (props) => {
             error: updateError
         }
     ] = useUpdateProjectMutation()
+    const [
+        uploadLogotype,
+        {
+            data: uploadLogotypeData,
+            isSuccess: isUploadLogotypeSuccess,
+            isError: isUploadLogotypeError,
+            error: uploadLogotypeError
+        }
+    ] = useUploadImagesMutation()
+    const [
+        uploadImages,
+        {
+            data: uploadImagesData,
+            isSuccess: isUploadImagesSuccess,
+            isError: isUploadImagesError,
+            error: uploadImagesError
+        }
+    ] = useUploadImagesMutation()
+    const [
+        deleteImage,
+        {
+            data: deleteImageData,
+            isSuccess: isDeleteImageSuccess,
+            isError: isDeleteImageError,
+            error: ddeleteImageError
+        }
+    ] = useDeleteImagesMutation()
 
     const {
         isValidate,
@@ -94,21 +125,27 @@ const EditProjectForm: FunctionComponent = (props) => {
         logoError,
         imagesError,
     } = useAppSelector(state => state.validateReducer)
-    const validateRuls = () => {
-        if (stepState == 0) {
+    const validateRuls = (step?: number) => {
+        if (stepState == 0 || step === 0) {
             dispatch(validateField({ element: 'project', value: project_id, required: true }))
             dispatch(validateField({ element: 'name', value: name, required: true, minLenght: 5, maxLenght: 40 }))
             dispatch(validateField({ element: 'title', value: title, required: true, minLenght: 5, maxLenght: 40 }))
             dispatch(validateField({ element: 'description', value: description, required: true, minLenght: 5, maxLenght: 400 }))
             dispatch(validateField({ element: 'categories', value: categories, required: true }))
         }
-        if (stepState == 1) {
+        if (stepState == 1 || step === 1) {
             dispatch(validateField({ element: 'forum_url', value: forum_url, required: true, minLenght: 5, maxLenght: 100 }))
             dispatch(validateField({ element: 'url', value: url, required: true, minLenght: 5, maxLenght: 100 }))
             dispatch(validateField({ element: 'typeform_competitor_popup', value: typeform_competitor_popup, required: true, minLenght: 5, maxLenght: 9 }))
             dispatch(validateField({ element: 'typeform_question_popup', value: typeform_question_popup, required: true, minLenght: 5, maxLenght: 9 }))
             dispatch(validateField({ element: 'start_date', value: start_date, required: true }))
             dispatch(validateField({ element: 'close_date', value: close_date, required: true }))
+        }
+        if (stepState == 2 || step === 2) {
+            dispatch(validateField({ element: 'logo', value: logo, required: true }))
+        }
+        if (stepState == 3 || step === 3) {
+            dispatch(validateField({ element: 'images', value: images, required: true }))
         }
     }
 
@@ -118,10 +155,8 @@ const EditProjectForm: FunctionComponent = (props) => {
 
     const selectChange = (e: any) => {
         setFormValue({
-            // ...formValue, categories: [{ id: e.target.value.split(',')[0], name: e.target.value.split(',')[1], key: e.target.value.split(',')[2] }]
-            ...formValue, categories: []
+            ...formValue, categories: [Number(e.target.value)]
         })
-
     }
 
     const projectHandle = (e: any) => {
@@ -130,14 +165,113 @@ const EditProjectForm: FunctionComponent = (props) => {
         }
     }
 
+    const [logotype, setLogotype] = useState<ResponceImagesUpload[]>([])
+    const [thisLogo, setThisLogo] = useState<any>()
+    const handleLogoChange = async (e: any) => {
+        const file = new FormData()
+        if (e.target.files.length > 0) {
+            setThisLogo(e.target.files[0])
+            file.append("file", e.target.files[0])
+            const provider = 'create_project_logo'
+            const uploadLogotypeData: any = await uploadLogotype({
+                provider,
+                file
+            })
+        }
+    }
+
+    useEffect(() => {
+        if (isUploadLogotypeSuccess) {
+            setLogotype([{
+                isUpload: true,
+                fileUpload: uploadLogotypeData
+            }])
+            setFormValue({ ...formValue, logo: uploadLogotypeData?.object_key })
+        }
+    }, [isUploadLogotypeSuccess])
+
+    useEffect(() => {
+        if (isUploadLogotypeError) {
+            setLogotype([{
+                isUpload: false,
+                fileUpload: {
+                    file_name: thisLogo?.name,
+                    file_size: thisLogo?.size,
+                    object_key: '',
+                    source: ''
+                }
+            }])
+        }
+    }, [isUploadLogotypeError])
+
+    const resetLogotypeHandler = async (e: FileUpload) => {
+        const deleteImageData: any = await deleteImage(e.object_key)
+        setLogotype([])
+        setFormValue({ ...formValue, logo: '' })
+        dispatch(resetValidate(false))
+    }
+
+    const [image, setImage] = useState<ResponceImagesUpload[]>([])
+    const [imageKey, setImageKey] = useState<string[] | any>([])
+    const [thisImages, setThisImages] = useState<any>()
+    const handleImageChange = async (e: any) => {
+
+        const file = new FormData()
+        if (e.target.files.length > 0) {
+            setThisImages(e.target.files[0])
+            file.append("file", e.target.files[0])
+            const provider = 'create_project_image'
+            const uploadImagesData: any = await uploadImages({
+                provider,
+                file
+            })
+        }
+    }
+
+    useEffect(() => {
+        if (isUploadImagesSuccess) {
+            setImage([...image, {
+                isUpload: true,
+                fileUpload: uploadImagesData
+            }])
+            setImageKey([...imageKey, uploadImagesData?.object_key])
+        }
+    }, [isUploadImagesSuccess])
+
+    useEffect(() => {
+        setFormValue({ ...formValue, images: imageKey })
+    }, [imageKey])
+
+    useEffect(() => {
+        if (isUploadImagesError) {
+            setImage([...image, {
+                isUpload: false,
+                fileUpload: {
+                    file_name: thisImages?.name,
+                    file_size: thisImages?.size,
+                    object_key: '',
+                    source: ''
+                }
+            }])
+        }
+    }, [isUploadImagesError])
+
+    const resetImageHandler = (e: any) => {
+        setImage(image.filter(p => p.fileUpload?.object_key !== e.fileUpload?.object_key))
+        setImageKey(imageKey.filter((p: string) => p !== e.fileUpload?.object_key))
+        dispatch(resetValidate(false))
+    }
+
     const stepHandle = () => {
         validateRuls()
         if (isValidate) {
             setStepState(stepState + 1)
-            const newSteps = steps.map((stps) => (
+            const newSteps: ISteps[] = steps.map((stps) => (
                 stps.id === (stepState + 1) ?
                     { ...stps, isActive: true }
-                    : { ...stps, isActive: false }
+                    : (stps.id) < (stepState + 1) ?
+                        { ...stps, isActive: false, isValidate: true }
+                        : { ...stps, isActive: false }
             ))
             setStp(newSteps)
             setTitleCmp(steps[stepState].title)
@@ -146,54 +280,67 @@ const EditProjectForm: FunctionComponent = (props) => {
         }
     }
 
+    const headerStepHandler = (step: ISteps) => {
+        // if (step.isValidate || step.isActive) {
+        //   setStepState(step.id)
+        //   setTitleCmp(steps[step.id].title)
+        //   setDesc(steps[step.id].description)
+        // }
+    }
+
     const handleCreate = async () => {
         try {
             validateRuls()
             if (isValidate) {
-                // const projectData: any = await createProject({
-                //   name,
-                //   title,
-                //   description,
-                //   logo,
-                //   // images,
-                //   categories,
-                //   tags,
-                //   url,
-                //   forum_url,
-                //   typeform_competitor_popup,
-                //   typeform_question_popup,
-                //   start_date,
-                //   close_date
-                // }).unwrap()
-                // setFormValue(InitialState)
-                // setImage([])
-                // setLogotype([])
-                // dispatch(resetValidate(false))
+                const projectID: number = Number(project_id)
+                const updateData: any = await updateProject(
+                    {
+                        projectID,
+                        project: {
+                            name,
+                            title,
+                            description,
+                            logo,
+                            images,
+                            categories,
+                            url,
+                            forum_url,
+                            typeform_competitor_popup,
+                            typeform_question_popup,
+                            start_date,
+                            close_date
+                        }
+                    }
+                ).unwrap()
+                setFormValue(InitialState)
+                dispatch(resetValidate(false))
 
                 console.log('form', {
                     project_id,
-                    name,
-                    title,
-                    description,
-                    categories,
-                    tags,
-                    url,
-                    forum_url,
-                    typeform_competitor_popup,
-                    typeform_question_popup,
-                    start_date,
-                    close_date
+                    project: {
+                        name,
+                        title,
+                        description,
+                        logo,
+                        images,
+                        categories,
+                        url,
+                        forum_url,
+                        typeform_competitor_popup,
+                        typeform_question_popup,
+                        start_date,
+                        close_date
+                    }
                 })
             }
         } catch (e: any) {
             console.log("Error", e)
         }
-
     }
 
     useEffect(() => {
         if (isUpdateSuccess) {
-            navigate("/metamall")
+            navigate(`/metamall/project/id=${project_id}`)
         }
     }, [isUpdateSuccess])
 
@@ -204,26 +351,44 @@ const EditProjectForm: FunctionComponent = (props) => {
     }, [projects])
 
     useEffect(() => {
-        if (project_id) {
-            setFormValue({
-                ...formValue,
-                name: project?.name ? project?.name : '',
-                title: project?.title ? project?.title : '',
-                description: project?.description ? project?.description : '',
-                categories: [project?.categories && project?.categories.length > 0 ? project?.categories[0].id : 0],
-                forum_url: project?.forum_topic_url ? project?.forum_topic_url : '',
-                url: project?.url ? project?.url : '',
-                typeform_competitor_popup: project?.typeform_competitor_popup ? project?.typeform_competitor_popup : '',
-                typeform_question_popup: project?.typeform_question_popup ? project?.typeform_question_popup : '',
-                start_date: project?.start_date ? project?.start_date : '',
-                close_date: project?.close_date ? project?.close_date : ''
-            })
+        if (category) {
+            setLimitCategories(category?.total)
         }
-    }, [project])
+    }, [category])
 
     useEffect(() => {
-        validateRuls()
-    }, [formValue])
+        if (project_id) {
+            if (stepState === 0) {
+                setFormValue({
+                    ...formValue,
+                    name: project?.name ? project?.name : '',
+                    title: project?.title ? project?.title : '',
+                    description: project?.description ? project?.description : '',
+                    categories: [project?.categories && project?.categories.length > 0 ? project?.categories[0].id : 1]
+                })
+            }
+
+            if (stepState === 1) {
+                setFormValue({
+                    ...formValue,
+                    forum_url: project?.forum_topic_url ? project?.forum_topic_url : '',
+                    url: project?.url ? project?.url : '',
+                    typeform_competitor_popup: project?.typeform_competitor_popup ? project?.typeform_competitor_popup : '',
+                    typeform_question_popup: project?.typeform_question_popup ? project?.typeform_question_popup : '',
+                    start_date: project?.start_date ? project?.start_date : '',
+                    close_date: project?.close_date ? project?.close_date : ''
+                })
+            }
+        }
+    }, [project, stepState])
+
+    console.log('formValue', formValue)
+
+    useEffect(() => {
+        if (project_id) {
+            validateRuls()
+        }
+    }, [formValue, project_id])
 
     useEffect(() => {
         dispatch(resetField())
@@ -239,7 +404,8 @@ const EditProjectForm: FunctionComponent = (props) => {
                 marginBottom={30} />
             {/* Steps */}
             <Steps steps={stp}
-                marginBottom={30} />
+                marginBottom={30}
+                onClick={headerStepHandler} />
 
             {/* Firts Step */}
             {stepState === 0 ?
@@ -363,12 +529,56 @@ const EditProjectForm: FunctionComponent = (props) => {
                         error={closeDateError ? closeDateError : ""}
                     />
                     {/* Button Submit */}
-                    <ButtonSubmit name='Submit Form'
+                    <ButtonSubmit name='Next Step'
                         type='button'
-                        onClick={handleCreate} />
+                        onClick={stepHandle} />
                 </>
 
                 : <></>}
+
+            {/* Third Step */}
+            {stepState === 2 ?
+                <>
+                    {/* Upload logo */}
+                    <Image name='file'
+                        placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
+                        onChange={handleLogoChange}
+                        image={logotype}
+                        accept='.png, .jpg, .jpeg'
+                        multiple={false}
+                        resetHandler={resetLogotypeHandler}
+                        error={logoError}
+                    />
+                    {/* Button Submit */}
+                    <ButtonSubmit name='Final Step'
+                        type='button'
+                        onClick={stepHandle} />
+                </>
+                : <></>
+            }
+
+            {/* Firth Step */}
+            {stepState === 3 ?
+                <>
+                    {isUpdateError ? <Error text='A technical error has occurred. Please try again later!' /> : <></>}
+                    {/* Upload Gallery Images */}
+                    <Image name='file'
+                        placeholder='Click to upload or darg and drop PNG, JPG (max 20mb)'
+                        onChange={handleImageChange}
+                        image={image}
+                        accept='.png, .jpg, .jpeg'
+                        multiple={false}
+                        resetHandler={resetImageHandler}
+                        error={imagesError}
+                    />
+                    {/* Button Submit */}
+                    <ButtonSubmit name='Submit Form'
+                        type='button'
+                        onClick={handleCreate}
+                    />
+                </>
+                : <></>
+            }
 
         </Form>
     )

@@ -1,8 +1,8 @@
-import { userAPI } from "./userAPI"
+import { baseAPI } from "./baseAPI"
 
-export const userService = userAPI.injectEndpoints({
+export const adminService = baseAPI.injectEndpoints({
     endpoints: (build) => ({
-        logOutUser: build.mutation<void, void>({
+        logOutAdmin: build.mutation<void, void>({
             query: () => {
                 return {
                     url: '/auth/logout',
@@ -10,7 +10,7 @@ export const userService = userAPI.injectEndpoints({
                 }
             }
         }),
-        fetchUserProfile: build.query<void, void>({
+        fetchAdminProfile: build.query<void, void>({
             query: () => ({
                 url: '/profile/me'
             })
@@ -18,4 +18,4 @@ export const userService = userAPI.injectEndpoints({
     })
 })
 
-export const { useLogOutUserMutation, useFetchUserProfileQuery } = userService
+export const { useLogOutAdminMutation, useFetchAdminProfileQuery, } = adminService

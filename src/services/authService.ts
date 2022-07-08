@@ -1,6 +1,6 @@
-import { authAPI } from "./authAPI"
+import { baseAPI } from "./baseAPI"
 
-export const authAdmin = authAPI.injectEndpoints({
+export const authAdmin = baseAPI.injectEndpoints({
     endpoints: (build) => ({
         loginAdmin: build.mutation({
             query: (body: { username: string, password: string }) => {
@@ -16,7 +16,7 @@ export const authAdmin = authAPI.injectEndpoints({
 
 export const { useLoginAdminMutation } = authAdmin
 
-export const authUser = authAPI.injectEndpoints({
+export const authUser = baseAPI.injectEndpoints({
     endpoints: (build) => ({
         loginUser: build.mutation({
             query: (body: { username: string, password: string }) => {

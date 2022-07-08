@@ -1,22 +1,15 @@
-import { file } from '@babel/types'
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import { ResponceImagesUpload } from '../../../../models/IProject'
 import FileIcon from '../../Icons/File/FileIcon'
 import ImageIcon from '../../Icons/Image/ImageIcon'
 import Trash from '../../Icons/Trash/Trash'
 import classes from './Image.module.scss'
 
-interface IImage {
-    id: number,
-    name: string,
-    size: string,
-    type: string,
-}
-
 interface ImageProps {
     name: string,
     placeholder?: string,
     onChange?: React.ChangeEventHandler
-    image?: IImage[] | undefined,
+    image?: ResponceImagesUpload[] | undefined,
     accept?: string,
     multiple?: boolean,
     resetHandler: Function,
@@ -40,7 +33,6 @@ const Image: FunctionComponent<ImageProps> = (props) => {
             <input type="file"
                 name={props.name}
                 id={props.name}
-                // placeholder={props.placeholder}
                 onChange={props.onChange}
                 className={classes.container_input}
                 multiple={props.multiple ? props.multiple : false}
@@ -49,26 +41,33 @@ const Image: FunctionComponent<ImageProps> = (props) => {
                 {props.error && <>{props.error}</>}
             </div>
             {/* Images */}
-            {/* <div className={classes.container_files}>
-                {props?.image && props?.image.map(fl =>
-                    <div key={fl.id} className={classes.container_files_item}>
-                        <ImageIcon />
-                        <div className={classes.container_files_item_block}>
-                            <div className={classes.container_files_item_block_name}>
-                                {fl.name}
+            <div className={classes.container_files}>
+                {props?.image ?
+                    props?.image.map((img: ResponceImagesUpload) =>
+                        <div key={img.fileUpload?.file_name}
+                            className={img.isUpload === true ? [classes.container_files_item, classes.upload].join(' ')
+                                : img.isUpload === false ? [classes.container_files_item, classes.no_upload].join(' ')
+                                    : [classes.container_files_item].join(' ')}>
+                            <ImageIcon color={img.isUpload === true ? 'green' : img.isUpload === false ? 'red' : 'grey'} />
+                            <div className={classes.container_files_item_block}>
+                                <div className={classes.container_files_item_block_name}>
+                                    {img.fileUpload?.file_name}
+                                </div>
+                                <div className={classes.container_files_item_block_size}>
+                                    {Math.ceil(Number(img.fileUpload?.file_size) / 1000) + ' KB '}
+                                    {img.isUpload === false ? <span>Upload failed. Please try again.</span> : ''}
+                                </div>
                             </div>
-                            <div className={classes.container_files_item_block_size}>
-                                {Math.ceil(Number(fl.size) / 1000) + ' KB'}
+                            <div className={classes.container_files_item_trash}
+                                onClick={() => props?.resetHandler(img)}>
+                                <Trash />
                             </div>
                         </div>
-                        <div className={classes.container_files_item_trash}
-                            onClick={() => props?.resetHandler(fl)}>
-                            <Trash />
-                        </div>
-                    </div>
-                )}
+                    )
+                    : <></>
+                }
 
-            </div> */}
+            </div>
         </div>
     )
 }

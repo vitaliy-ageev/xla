@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { opportunityAPI } from '../../services/OpportunityService'
+import { opportunityAPI } from '../../services/opportunityService'
 import NoiseEffect from '../UI/NoiseEffect/NoiseEffect'
 import classes from './OpportunityHiring.module.scss'
 import { RouteNames } from '../../routes/routes'

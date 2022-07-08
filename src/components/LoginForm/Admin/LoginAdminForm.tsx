@@ -6,7 +6,7 @@ import Title from '../../UI/Form/Title/Title'
 import Input from '../../UI/Form/Input/Input'
 import ButtonSubmit from '../../UI/Form/ButtonSubmit/ButtonSubmit'
 import Form from '../../UI/Form/Form'
-import { useLoginAdminMutation } from '../../../services/auth/authService'
+import { useLoginAdminMutation } from '../../../services/authService'
 import { useAppDispatch } from '../../../hooks/hooks'
 
 const initialState = {

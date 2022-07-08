@@ -8,6 +8,7 @@
     align-items: center;
 
     &_item {
+        cursor: pointer;
         width: 100%;
         height: 10px;
         background: #16B364;
@@ -18,10 +19,12 @@
         }
 
         &.active {
+            cursor: pointer;
             background: #98A2B3;
         }
 
         &.active~& {
+            cursor: default;
             background: #F2F4F7;
         }
     }

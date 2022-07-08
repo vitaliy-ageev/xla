@@ -11,9 +11,9 @@ import OpportunitiesList from '../components/OpportunitiesList/OpportunitiesList
 import TitleSection from '../components/TitleSection/TitleSection'
 import Title from '../components/UI/Title/Title'
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import { statusAPI } from '../services/StatusService'
-import { workingModeAPI } from '../services/WorkingModeService'
-import { jobTypeAPI } from '../services/JobTypeService'
+import { statusAPI } from '../services/statusService'
+import { workingModeAPI } from '../services/workingModeService'
+import { jobTypeAPI } from '../services/jobTypeService'
 import { projectAPI } from '../services/projectService'
 
 const Opportunities: FunctionComponent = () => {

@@ -13,10 +13,10 @@ import Projects from '../components/ProjectsList/ProjectsList';
 import StartBlock from '../components/StartBlock/StartBlock';
 import Title from '../components/UI/Title/Title';
 import { useAppDispatch } from '../hooks/hooks';
-import { opportunityAPI } from '../services/OpportunityService';
+import { opportunityAPI } from '../services/opportunityService';
 import { generalSlice } from '../store/reducers/generalSlice/generalSlice';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import { useFetchAdminProfileQuery } from '../services/user/userAdminService';
+import { useFetchAdminProfileQuery } from '../services/userAdminService';
 
 const Main: FunctionComponent = (props) => {
     window.scrollTo(0, 0);

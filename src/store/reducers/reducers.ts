@@ -1,16 +1,15 @@
-import { jobTypeAPI } from '../../services/JobTypeService'
-import { opportunityAPI } from '../../services/OpportunityService'
+import { jobTypeAPI } from '../../services/jobTypeService'
+import { opportunityAPI } from '../../services/opportunityService'
 import { projectAPI } from '../../services/projectService'
-import { statusAPI } from '../../services/StatusService'
-import { workingModeAPI } from '../../services/WorkingModeService'
+import { statusAPI } from '../../services/statusService'
+import { workingModeAPI } from '../../services/workingModeService'
 import validateReducer from './validateSlice/validateSlice'
 import generalReducer from './generalSlice/generalSlice'
 import filterReducer from './filterSlice/filterSlice'
 import userReducer from './userSlice/userSlice'
-import { userAPI } from '../../services/user/userAPI'
-import { authAPI } from '../../services/auth/authAPI'
 import { categoryAPI } from '../../services/categoryService'
 import { forumAPI } from '../../services/forumService'
+import { tagAPI } from '../../services/tagsService'
 
 
 export default {
@@ -23,8 +22,7 @@ export default {
     [statusAPI.reducerPath]: statusAPI.reducer,
     [jobTypeAPI.reducerPath]: jobTypeAPI.reducer,
     [workingModeAPI.reducerPath]: workingModeAPI.reducer,
-    [userAPI.reducerPath]: userAPI.reducer,
-    [authAPI.reducerPath]: authAPI.reducer,
     [categoryAPI.reducerPath]: categoryAPI.reducer,
     [forumAPI.reducerPath]: forumAPI.reducer,
+    [tagAPI.reducerPath]: tagAPI.reducer
 }

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 import { AdminRoutes, LoginRoutes, PrivateRoutes, PublicRoutes, RouteNames } from '../../routes/routes'
-import { setRole } from '../../store/reducers/userSlice/userSlice';
+import { setAuth, setRole } from '../../store/reducers/userSlice/userSlice';
 
 
 

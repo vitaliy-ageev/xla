@@ -8,6 +8,12 @@ import Admin from "../pages/LoginAdmin";
 import LoginAdmin from "../pages/LoginAdmin";
 import CreateProject from "../pages/CreateProject";
 import EditProject from "../pages/EditProject";
+import CreateCategory from "../pages/CreateCategory";
+import EditCategory from "../pages/EditCategory";
+import DeleteCategory from "../pages/DeleteCategory";
+import CreateTag from "../pages/CreateTag";
+import EditTag from "../pages/EditTag";
+import DeleteTag from "../pages/DeleteTag";
 
 export interface IRoute {
     path: string;
@@ -22,7 +28,13 @@ export enum RouteNames {
     USER = '/metamall/user',
     LOGIN_ADMIN = '/metamall/login/admin',
     CREATE_PROJECT = '/metamall/project/create',
-    EDIT_PROJECT = '/metamall/project/edit'
+    EDIT_PROJECT = '/metamall/project/edit',
+    CREATE_CATEGORY = '/metamall/category/create',
+    EDIT_CATEGORY = '/metamall/category/edit',
+    DELETE_CATEGORY = '/metamall/category/delete',
+    CREATE_TAG = '/metamall/tag/create',
+    EDIT_TAG = '/metamall/tag/edit',
+    DELETE_TAG = '/metamall/tag/delete',
 }
 
 export const PublicRoutes: IRoute[] = [
@@ -39,6 +51,13 @@ export const PrivateRoutes: IRoute[] = [
 export const AdminRoutes: IRoute[] = [
     { path: RouteNames.CREATE_PROJECT, element: CreateProject },
     { path: RouteNames.EDIT_PROJECT, element: EditProject },
+    { path: RouteNames.CREATE_CATEGORY, element: CreateCategory },
+    { path: RouteNames.EDIT_CATEGORY, element: EditCategory },
+    { path: RouteNames.DELETE_CATEGORY, element: DeleteCategory },
+    { path: RouteNames.CREATE_TAG, element: CreateTag },
+    { path: RouteNames.EDIT_TAG, element: EditTag },
+    { path: RouteNames.DELETE_TAG, element: DeleteTag },
+
 ]
 
 export const LoginRoutes: IRoute[] = [

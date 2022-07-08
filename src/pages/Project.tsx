@@ -10,7 +10,7 @@ import RightSection from '../components/LeftRightSection/RightSection';
 import MainSection from '../components/MainSection/MainSection';
 import OpportunityHiring from '../components/OpportunityHiring/OpportunityHiring';
 import ProjectItem from '../components/ProjectItem/ProjectItem';
-import { opportunityAPI } from '../services/OpportunityService';
+import { opportunityAPI } from '../services/opportunityService';
 import { projectAPI } from '../services/projectService';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
